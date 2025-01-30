@@ -19,8 +19,18 @@ public class FloorGrid : MonoBehaviour
 
     //    [1][2]
     //    [3][4]
-    public void ImportGridChunk(int ChunkSection, FloorGrid grid)
+    public void ImportGridChunk(int ChunkSection, Chunk grid)
     {
 
+    }
+
+    public Vector3 GetTilePositionFromGrid(int x, int y)
+    {
+        return grid[x][y].tileLocation;
+    }
+
+    public bool GetTileObstructed(int x, int y)
+    {
+        return grid[x][y].TileObstructs;
     }
 }

@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public bool isObstructing;
+    private bool isObstructing;
     private Vector2Int posInGrid;
     public Vector3 tileLocation;
+
+    public bool TileObstructs
+    {
+        get { return isObstructing; }
+    }
+
 
     private void Start()
     {
@@ -20,4 +26,5 @@ public class Tile : MonoBehaviour
     {
         isObstructing = obstructs;
     }
+
 }
