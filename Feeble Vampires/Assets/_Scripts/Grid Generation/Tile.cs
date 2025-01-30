@@ -17,9 +17,9 @@ public class Tile : MonoBehaviour
         tileLocation = transform.position;
     }
 
-    public void SetPosInGrid(Vector2Int pos)
+    public void SetPosInGrid(int row, int col)
     {
-        posInGrid = pos;
+        posInGrid = new Vector2Int(col, row);
     }
 
     public void SetObstructing(bool obstructs)

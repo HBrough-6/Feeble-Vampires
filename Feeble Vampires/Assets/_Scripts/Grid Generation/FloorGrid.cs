@@ -2,20 +2,54 @@ using UnityEngine;
 
 public class FloorGrid : MonoBehaviour
 {
-    private Tile[][] grid;
+    public int ChunkWidth;
+    public int ChunkHeight;
+    private Tile[,] grid;
     private int width;
     private int height;
     [SerializeField] private int tilesPerChunk = 8;
+    public GameObject whiteTilePrefab;
+    public GameObject blackTilePrefab;
+
+
+    private void Awake()
+    {
+        SetUpGrid(ChunkWidth, ChunkHeight);
+    }
 
     // set the grid size in chunks
-    public void SetGridSize(int gridChunkWidth, int gridChunkHeight)
+    public void SetUpGrid(int gridChunkWidth, int gridChunkHeight)
     {
-        grid = new Tile[gridChunkWidth * tilesPerChunk][];
-        for (int i = 0; i < gridChunkWidth; i++)
+        width = gridChunkWidth * tilesPerChunk;
+        height = gridChunkHeight * tilesPerChunk;
+        grid = new Tile[width, height];
+        bool isWhite = true;
+
+        for (int row = 0; row < width; row++)
         {
-            grid[i] = new Tile[gridChunkHeight * tilesPerChunk];
+            isWhite = !isWhite;
+            for (int col = 0; col < height; col++)
+            {
+                GameObject temp;
+                if (isWhite)
+                {
+                    temp = Instantiate(whiteTilePrefab, new Vector3(col, 0, row), Quaternion.Euler(0, 0, 0), transform);
+                    temp.AddComponent<Tile>();
+                }
+                else
+                {
+                    temp = Instantiate(blackTilePrefab, new Vector3(col, 0, row), Quaternion.Euler(0, 0, 0), transform);
+                    temp.AddComponent<Tile>();
+                }
+                isWhite = !isWhite;
+                temp.GetComponent<Tile>().SetPosInGrid(row, col);
+                grid[row, col] = temp.GetComponent<Tile>();
+
+            }
         }
     }
+
+
 
     //    [1][2]
     //    [3][4]
@@ -24,13 +58,13 @@ public class FloorGrid : MonoBehaviour
 
     }
 
-    public Vector3 GetTilePositionFromGrid(int x, int y)
+    public Vector3 GetTilePositionFromGrid(int row, int col)
     {
-        return grid[x][y].tileLocation;
+        return grid[row, col].tileLocation;
     }
 
-    public bool GetTileObstructed(int x, int y)
+    public bool GetTileObstructed(int row, int col)
     {
-        return grid[x][y].TileObstructs;
+        return grid[row, col].TileObstructs;
     }
 }
