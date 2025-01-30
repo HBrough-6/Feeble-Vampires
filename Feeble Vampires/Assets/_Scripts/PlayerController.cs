@@ -47,24 +47,40 @@ public class PlayerController : MonoBehaviour
         {
             upBlocked = true;
         }
+        /*
+         * else if (the tile at (transform.position.x, transform.position.y, transform.position.z + 1) == isObstructing)
+         * upBlocked = true;
+         */
         else upBlocked = false;
 
         if (transform.position.x == -7)
         {
             leftBlocked = true;
         }
+        /*
+         * else if (the tile at (transform.position.x - 1, transform.position.y, transform.position.z) == isObstructing)
+         * leftBlocked = true;
+         */
         else leftBlocked = false;
 
         if (transform.position.z == -7)
         {
             downBlocked = true;
         }
+        /*
+         * else if (the tile at (transform.position.x, transform.position.y, transform.position.z - 1) == isObstructing)
+         * downBlocked = true;
+         */
         else downBlocked = false;
 
         if (transform.position.x == 8)
         {
             rightBlocked = true;
         }
+        /*
+         * else if (the tile at (transform.position.x + 1, transform.position.y, transform.position.z) == isObstructing)
+         * rightBlocked = true;
+         */
         else rightBlocked = false;
     }
 }
