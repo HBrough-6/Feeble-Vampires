@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool upBlocked;
-    public bool leftBlocked;
-    public bool downBlocked;
-    public bool rightBlocked;
+    bool upBlocked;
+    bool leftBlocked;
+    bool downBlocked;
+    bool rightBlocked;
 
     // Start is called before the first frame update
     void Start()
