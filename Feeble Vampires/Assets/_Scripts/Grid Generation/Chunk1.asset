@@ -12,3 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854a9d58374ebaa4bbdb9c1495548084, type: 3}
   m_Name: Chunk1
   m_EditorClassIdentifier: 
+  row0: 0000000000000000
+  row1: 0000000000000000
+  row2: 0000000000000000
+  row3: 0000000000000000
+  row4: 0000000000000000
+  row5: 0000000000000000
+  row6: 0000000000000000
+  row7: 0000000000000000
+  gridChunk:
+    gridSize: {x: 3, y: 3}
+    cellSize: {x: 16, y: 16}
+    cells:
+    - row: 000000
+    - row: 000000
+    - row: 000000
