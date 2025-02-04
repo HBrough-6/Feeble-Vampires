@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 854a9d58374ebaa4bbdb9c1495548084, type: 3}
-  m_Name: Chunk1
+  m_Name: Chunk1 3
   m_EditorClassIdentifier: 
   gridChunk:
     gridSize: {x: 8, y: 8}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000000000000100
-    - row: 0001000000000000
-    - row: 0000010000010000
-    - row: 0000000001000000
-    - row: 0000010000000100
-    - row: 0000000000000000
-    - row: 0000000001000001
-    - row: 0000010000000000
+    - row: 0101010101010101
+    - row: 0100000000000001
+    - row: 0100000000000001
+    - row: 0100000000000001
+    - row: 0100000000000001
+    - row: 0100000000000001
+    - row: 0100000000000001
+    - row: 0101010101010101
