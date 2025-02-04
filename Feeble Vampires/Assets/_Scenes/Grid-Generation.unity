@@ -468,12 +468,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChunkWidth: 2
-  ChunkHeight: 2
+  ChunkHeight: 3
   tilesPerChunk: 8
   whiteTilePrefab: {fileID: 9042843471032817607, guid: 6aca70cd8a2a49149a8178df31e3ceb5,
     type: 3}
   blackTilePrefab: {fileID: 8324259094907236615, guid: b426d5d74e2d52c4a927bfe651c0ee71,
     type: 3}
+  tempChunk: {fileID: 11400000, guid: 230e71ea028558c4b890ae3290ad39e0, type: 2}
 --- !u!1 &1895536307
 GameObject:
   m_ObjectHideFlags: 0
