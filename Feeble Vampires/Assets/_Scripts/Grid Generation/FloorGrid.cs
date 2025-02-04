@@ -4,6 +4,7 @@ public class FloorGrid : MonoBehaviour
 {
     public int ChunkWidth;
     public int ChunkHeight;
+    private Chunk[] premadeChunks;
     private Tile[,] grid;
     private int width;
     private int height;
@@ -16,6 +17,7 @@ public class FloorGrid : MonoBehaviour
     private void Awake()
     {
         SetUpGrid(ChunkWidth, ChunkHeight);
+        premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
     }
 
     // set the grid size in chunks
@@ -72,6 +74,13 @@ public class FloorGrid : MonoBehaviour
         }
     }
 
+    private Chunk GetChunkFromFiles()
+    {
+        int randomChunk = Random.Range(0, premadeChunks.Length);
+        Debug.Log(randomChunk);
+        return premadeChunks[randomChunk];
+    }
+
     public Vector3 GetTilePositionFromGrid(int row, int col)
     {
         if (row < 0 || col < 0)
@@ -94,9 +103,10 @@ public class FloorGrid : MonoBehaviour
             {
                 for (int chunkCol = 0; chunkCol < ChunkWidth; chunkCol++)
                 {
-                    ImportGridChunk(new Vector2Int(chunkRow, chunkCol), tempChunk);
+                    ImportGridChunk(new Vector2Int(chunkRow, chunkCol), GetChunkFromFiles());
                 }
             }
+            //GetChunkFromFiles();
         }
     }
 }

@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour
     private Vector2Int posInGrid;
     public Vector3 tileLocation;
     public Material red;
+    public Material defaultMat;
 
     public bool TileObstructs
     {
@@ -16,6 +17,7 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         tileLocation = transform.position;
+        defaultMat = transform.GetChild(0).gameObject.GetComponent<Renderer>().material;
     }
 
     public void SetPosInGrid(int row, int col)
@@ -29,6 +31,10 @@ public class Tile : MonoBehaviour
         if (isObstructing)
         {
             transform.GetChild(0).gameObject.GetComponent<Renderer>().material = red;
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.GetComponent<Renderer>().material = defaultMat;
         }
     }
 
