@@ -25913,6 +25913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1156865503}
   spaceCap: 0
+  distance: 0
   endPoint: {fileID: 134115222}
   pathPoints: []
 --- !u!4 &1148639777
