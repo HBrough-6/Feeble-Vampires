@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &3748736
 BoxCollider:
@@ -289,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &8612476
 BoxCollider:
@@ -440,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &19831912
 BoxCollider:
@@ -560,7 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &23291732
 BoxCollider:
@@ -680,7 +677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &24683168
 BoxCollider:
@@ -996,7 +992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &48585489
 BoxCollider:
@@ -1116,7 +1111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &49234381
 BoxCollider:
@@ -1333,7 +1327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &55181745
 BoxCollider:
@@ -1453,7 +1446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &58534560
 BoxCollider:
@@ -1573,7 +1565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &58810444
 BoxCollider:
@@ -1792,7 +1783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &65445813
 BoxCollider:
@@ -1976,7 +1966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &77826446
 BoxCollider:
@@ -2096,7 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &80996458
 BoxCollider:
@@ -2249,7 +2237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &82219811
 BoxCollider:
@@ -2561,7 +2548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &98909248
 BoxCollider:
@@ -2778,7 +2764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &110256971
 BoxCollider:
@@ -2931,7 +2916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &113218729
 BoxCollider:
@@ -3082,7 +3066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &121183906
 BoxCollider:
@@ -3186,6 +3169,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1894822529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &124132735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124132736}
+  - component: {fileID: 124132738}
+  - component: {fileID: 124132737}
+  m_Layer: 5
+  m_Name: Turn Counter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &124132736
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124132735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1018483723}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -25}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &124132737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124132735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Turn X
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &124132738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124132735}
+  m_CullTransparentMesh: 1
 --- !u!1 &125943835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,7 +3443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &128895321
 BoxCollider:
@@ -3780,7 +3896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &157684062
 BoxCollider:
@@ -3933,7 +4048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &162210416
 BoxCollider:
@@ -4119,7 +4233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &167678605
 BoxCollider:
@@ -4334,7 +4447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &179511634
 BoxCollider:
@@ -4454,7 +4566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &181844383
 BoxCollider:
@@ -4669,7 +4780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &188968912
 BoxCollider:
@@ -4855,7 +4965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &197299556
 BoxCollider:
@@ -5039,7 +5148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &211069177
 BoxCollider:
@@ -5223,7 +5331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &221380361
 BoxCollider:
@@ -5343,7 +5450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &222764261
 BoxCollider:
@@ -5463,7 +5569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &230493691
 BoxCollider:
@@ -5806,7 +5911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &245283604
 BoxCollider:
@@ -5926,7 +6030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &246268262
 BoxCollider:
@@ -6046,7 +6149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &257264468
 BoxCollider:
@@ -6166,7 +6268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &261625166
 BoxCollider:
@@ -6317,7 +6418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &267930464
 BoxCollider:
@@ -6470,7 +6570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &269644917
 BoxCollider:
@@ -6590,7 +6689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &270371902
 BoxCollider:
@@ -6838,7 +6936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &280914290
 BoxCollider:
@@ -7247,7 +7344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &302263637
 BoxCollider:
@@ -7398,7 +7494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &306012108
 BoxCollider:
@@ -7646,7 +7741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &332899964
 BoxCollider:
@@ -7766,7 +7860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &334026056
 BoxCollider:
@@ -7886,7 +7979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &339311880
 BoxCollider:
@@ -8068,7 +8160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &342119659
 BoxCollider:
@@ -8188,7 +8279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &347451955
 BoxCollider:
@@ -8308,7 +8398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &348122395
 BoxCollider:
@@ -8554,7 +8643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &361921706
 BoxCollider:
@@ -8674,7 +8762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &366365518
 BoxCollider:
@@ -8794,7 +8881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &375112825
 BoxCollider:
@@ -8914,7 +9000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &375890004
 BoxCollider:
@@ -9131,7 +9216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &383176924
 BoxCollider:
@@ -9313,7 +9397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &389244151
 BoxCollider:
@@ -9433,7 +9516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &390451289
 BoxCollider:
@@ -9617,7 +9699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &393506701
 BoxCollider:
@@ -9933,7 +10014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &415524815
 BoxCollider:
@@ -10053,7 +10133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &416654740
 BoxCollider:
@@ -10173,7 +10252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &417543079
 BoxCollider:
@@ -10516,7 +10594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &439481352
 BoxCollider:
@@ -10884,7 +10961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &459316257
 BoxCollider:
@@ -11004,7 +11080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &464339690
 BoxCollider:
@@ -11157,7 +11232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &470791281
 BoxCollider:
@@ -11277,7 +11351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &471437756
 BoxCollider:
@@ -11397,7 +11470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &472070338
 BoxCollider:
@@ -11583,7 +11655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &484016102
 BoxCollider:
@@ -11833,7 +11904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &488795967
 BoxCollider:
@@ -11986,7 +12056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &495557909
 BoxCollider:
@@ -12234,7 +12303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &505118624
 BoxCollider:
@@ -12385,7 +12453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &511571533
 BoxCollider:
@@ -12666,7 +12733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &533699398
 BoxCollider:
@@ -12786,7 +12852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &534442037
 BoxCollider:
@@ -13034,7 +13099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &545031455
 BoxCollider:
@@ -13220,7 +13284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &547652978
 BoxCollider:
@@ -13371,7 +13434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &549256885
 BoxCollider:
@@ -13491,7 +13553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &552522106
 BoxCollider:
@@ -13925,7 +13986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &588308925
 BoxCollider:
@@ -14107,7 +14167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &605218809
 BoxCollider:
@@ -14227,7 +14286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &608520442
 BoxCollider:
@@ -14347,7 +14405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &612015605
 BoxCollider:
@@ -14593,7 +14650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &627134939
 BoxCollider:
@@ -15167,7 +15223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &662461364
 BoxCollider:
@@ -15512,7 +15567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &691214663
 BoxCollider:
@@ -15727,7 +15781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &705131785
 BoxCollider:
@@ -15940,7 +15993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &714240518
 BoxCollider:
@@ -16091,7 +16143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &717676130
 BoxCollider:
@@ -16211,7 +16262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &719339436
 BoxCollider:
@@ -16331,7 +16381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &719494320
 BoxCollider:
@@ -16670,7 +16719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &743638496
 BoxCollider:
@@ -16887,7 +16935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &751704111
 BoxCollider:
@@ -17007,7 +17054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &752673235
 BoxCollider:
@@ -17222,7 +17268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &761430632
 BoxCollider:
@@ -17342,7 +17387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &762681408
 BoxCollider:
@@ -17462,7 +17506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &762742061
 BoxCollider:
@@ -17741,7 +17784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &775386703
 BoxCollider:
@@ -17927,7 +17969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &782470067
 BoxCollider:
@@ -18080,7 +18121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &789910288
 BoxCollider:
@@ -18233,7 +18273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &794403833
 BoxCollider:
@@ -18578,7 +18617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &813724485
 BoxCollider:
@@ -18729,7 +18767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &815748358
 BoxCollider:
@@ -18849,7 +18886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &816231434
 BoxCollider:
@@ -19066,7 +19102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &829037049
 BoxCollider:
@@ -19438,7 +19473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &851146744
 BoxCollider:
@@ -19591,7 +19625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &859365803
 BoxCollider:
@@ -19742,7 +19775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &864750606
 BoxCollider:
@@ -19988,7 +20020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &878609682
 BoxCollider:
@@ -20234,7 +20265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &909727652
 BoxCollider:
@@ -20354,7 +20384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &912932389
 BoxCollider:
@@ -20474,7 +20503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &919641325
 BoxCollider:
@@ -20594,7 +20622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &920326738
 BoxCollider:
@@ -20798,12 +20825,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &924276199
 GameObject:
   m_ObjectHideFlags: 0
@@ -20944,7 +20971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &927613046
 BoxCollider:
@@ -21064,7 +21090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &927723375
 BoxCollider:
@@ -21310,7 +21335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &939459625
 BoxCollider:
@@ -21525,7 +21549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &956184710
 BoxCollider:
@@ -21676,7 +21699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &961249643
 BoxCollider:
@@ -21796,7 +21818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &963207761
 BoxCollider:
@@ -21916,7 +21937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &964521642
 BoxCollider:
@@ -22036,7 +22056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &965523161
 BoxCollider:
@@ -22156,7 +22175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &968630402
 BoxCollider:
@@ -22276,7 +22294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &968923968
 BoxCollider:
@@ -22619,7 +22636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &987535273
 BoxCollider:
@@ -22739,7 +22755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &989307103
 BoxCollider:
@@ -22956,7 +22971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &998139378
 BoxCollider:
@@ -23109,7 +23123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &999870007
 BoxCollider:
@@ -23326,7 +23339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1011652202
 BoxCollider:
@@ -23432,6 +23444,108 @@ Transform:
   - {fileID: 716247779}
   m_Father: {fileID: 1572626555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1018483719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018483723}
+  - component: {fileID: 1018483722}
+  - component: {fileID: 1018483721}
+  - component: {fileID: 1018483720}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1018483720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018483719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1018483721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018483719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1018483722
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018483719}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1018483723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018483719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 124132736}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1025842555
 GameObject:
   m_ObjectHideFlags: 0
@@ -23669,7 +23783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1046857064
 BoxCollider:
@@ -23789,7 +23902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1047739075
 BoxCollider:
@@ -23973,7 +24085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1052194904
 BoxCollider:
@@ -24155,7 +24266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1058141919
 BoxCollider:
@@ -24275,7 +24385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1063030658
 BoxCollider:
@@ -24556,7 +24665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1080438356
 BoxCollider:
@@ -24676,7 +24784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1090897322
 BoxCollider:
@@ -24920,7 +25027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1111850368
 BoxCollider:
@@ -25040,7 +25146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1113728887
 BoxCollider:
@@ -25321,7 +25426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1124950936
 BoxCollider:
@@ -25441,7 +25545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1126958316
 BoxCollider:
@@ -25658,7 +25761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1140195020
 BoxCollider:
@@ -25778,7 +25880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1147509589
 BoxCollider:
@@ -26182,7 +26283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1167512469
 BoxCollider:
@@ -26366,7 +26466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1169575287
 BoxCollider:
@@ -26903,7 +27002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1208692518
 BoxCollider:
@@ -27056,7 +27154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1214088736
 BoxCollider:
@@ -27333,7 +27430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1237304569
 BoxCollider:
@@ -27453,7 +27549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1240525646
 BoxCollider:
@@ -27573,7 +27668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1240626169
 BoxCollider:
@@ -27693,7 +27787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1243410789
 BoxCollider:
@@ -27945,7 +28038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1266941629
 BoxCollider:
@@ -28065,7 +28157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1267351125
 BoxCollider:
@@ -28249,7 +28340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1277292006
 BoxCollider:
@@ -28497,7 +28587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1296899974
 BoxCollider:
@@ -28681,7 +28770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1301014637
 BoxCollider:
@@ -28801,7 +28889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1302673601
 BoxCollider:
@@ -28952,7 +29039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1305082152
 BoxCollider:
@@ -29072,7 +29158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1306634809
 BoxCollider:
@@ -29254,7 +29339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1313433204
 BoxCollider:
@@ -29374,7 +29458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1315186116
 BoxCollider:
@@ -29494,7 +29577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1316582214
 BoxCollider:
@@ -29645,7 +29727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1325110180
 BoxCollider:
@@ -29862,7 +29943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1331329661
 BoxCollider:
@@ -29982,7 +30062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1338812629
 BoxCollider:
@@ -30102,7 +30181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1341420206
 BoxCollider:
@@ -30253,7 +30331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1349341080
 BoxCollider:
@@ -30406,7 +30483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1354432228
 BoxCollider:
@@ -30590,7 +30666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1362732380
 BoxCollider:
@@ -30774,7 +30849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1366832867
 BoxCollider:
@@ -30991,7 +31065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1394218333
 BoxCollider:
@@ -31144,7 +31217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1398012043
 BoxCollider:
@@ -31326,7 +31398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1403677840
 BoxCollider:
@@ -31591,6 +31662,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1133734372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1417922919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417922922}
+  - component: {fileID: 1417922921}
+  - component: {fileID: 1417922920}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1417922920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417922919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1417922921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417922919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1417922922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417922919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1418195351
 GameObject:
   m_ObjectHideFlags: 0
@@ -31638,7 +31777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1418195354
 BoxCollider:
@@ -31822,7 +31960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1425373981
 BoxCollider:
@@ -31973,7 +32110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1428498335
 BoxCollider:
@@ -32157,7 +32293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1429690016
 BoxCollider:
@@ -32339,7 +32474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1437797225
 BoxCollider:
@@ -32556,7 +32690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1441864650
 BoxCollider:
@@ -32676,7 +32809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1443914708
 BoxCollider:
@@ -32920,7 +33052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1466635537
 BoxCollider:
@@ -33040,7 +33171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1467358452
 BoxCollider:
@@ -33160,7 +33290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1467841184
 BoxCollider:
@@ -33280,7 +33409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1473813246
 BoxCollider:
@@ -33433,7 +33561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1475587270
 BoxCollider:
@@ -33650,7 +33777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1486287785
 BoxCollider:
@@ -34090,7 +34216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1533679162
 BoxCollider:
@@ -34276,7 +34401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1539978639
 BoxCollider:
@@ -34968,7 +35092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1586887075
 BoxCollider:
@@ -35214,7 +35337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1613503084
 BoxCollider:
@@ -35367,7 +35489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1613884144
 BoxCollider:
@@ -35553,7 +35674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1626357954
 BoxCollider:
@@ -35673,7 +35793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1626476534
 BoxCollider:
@@ -35857,7 +35976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1630704069
 BoxCollider:
@@ -36010,7 +36128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1633219114
 BoxCollider:
@@ -36225,7 +36342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1644418772
 BoxCollider:
@@ -36502,7 +36618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1659589536
 BoxCollider:
@@ -36655,7 +36770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1661242870
 BoxCollider:
@@ -36874,7 +36988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1666911485
 BoxCollider:
@@ -37025,7 +37138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1667699181
 BoxCollider:
@@ -37145,7 +37257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1667797642
 BoxCollider:
@@ -37298,7 +37409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1671494407
 BoxCollider:
@@ -37548,7 +37658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1685687515
 BoxCollider:
@@ -37668,7 +37777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1686493683
 BoxCollider:
@@ -38106,7 +38214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1718332244
 BoxCollider:
@@ -38356,7 +38463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1733331140
 BoxCollider:
@@ -38476,7 +38582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1733371063
 BoxCollider:
@@ -38596,7 +38701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1733825096
 BoxCollider:
@@ -38813,7 +38917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1741942147
 BoxCollider:
@@ -38933,7 +39036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1744875224
 BoxCollider:
@@ -39084,7 +39186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1752063961
 BoxCollider:
@@ -39235,7 +39336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1756269517
 BoxCollider:
@@ -39355,7 +39455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1762843997
 BoxCollider:
@@ -39572,7 +39671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1770238911
 BoxCollider:
@@ -39816,7 +39914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1796146237
 BoxCollider:
@@ -39936,7 +40033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1797953576
 BoxCollider:
@@ -40056,7 +40152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1802653308
 BoxCollider:
@@ -40207,7 +40302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1807114135
 BoxCollider:
@@ -40360,7 +40454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1812980292
 BoxCollider:
@@ -40513,7 +40606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1814824664
 BoxCollider:
@@ -40664,7 +40756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1818676117
 BoxCollider:
@@ -40784,7 +40875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1820016957
 BoxCollider:
@@ -41034,7 +41124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1830678092
 BoxCollider:
@@ -41251,7 +41340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1836529460
 BoxCollider:
@@ -41371,7 +41459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1839243747
 BoxCollider:
@@ -41586,7 +41673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1847905756
 BoxCollider:
@@ -41706,7 +41792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1849507201
 BoxCollider:
@@ -41956,7 +42041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1863434961
 BoxCollider:
@@ -42109,7 +42193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1874057041
 BoxCollider:
@@ -42229,7 +42312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1877344083
 BoxCollider:
@@ -42479,7 +42561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1888546606
 BoxCollider:
@@ -42632,7 +42713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1897842256
 BoxCollider:
@@ -42752,7 +42832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1899869059
 BoxCollider:
@@ -42872,7 +42951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1901624641
 BoxCollider:
@@ -43056,7 +43134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1905480582
 BoxCollider:
@@ -43176,7 +43253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1907718661
 BoxCollider:
@@ -43424,7 +43500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1928720943
 BoxCollider:
@@ -43577,7 +43652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1930859169
 BoxCollider:
@@ -43730,7 +43804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1937780061
 BoxCollider:
@@ -44009,7 +44082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1967264318
 BoxCollider:
@@ -44129,7 +44201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1971210374
 BoxCollider:
@@ -44249,7 +44320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1976575585
 BoxCollider:
@@ -44402,7 +44472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1978207639
 BoxCollider:
@@ -44619,7 +44688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &1997228134
 BoxCollider:
@@ -44834,7 +44902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2010299541
 BoxCollider:
@@ -44985,7 +45052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2013136426
 BoxCollider:
@@ -45169,7 +45235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2020702920
 BoxCollider:
@@ -45320,7 +45385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2023879846
 BoxCollider:
@@ -45568,7 +45632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2037984038
 BoxCollider:
@@ -45752,7 +45815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2044336653
 BoxCollider:
@@ -45872,7 +45934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2044876516
 BoxCollider:
@@ -46058,7 +46119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2057642413
 BoxCollider:
@@ -46178,7 +46238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2062945718
 BoxCollider:
@@ -46426,7 +46485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2081712298
 BoxCollider:
@@ -46612,7 +46670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2098551971
 BoxCollider:
@@ -46858,7 +46915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2115289169
 BoxCollider:
@@ -46978,7 +47034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2121868649
 BoxCollider:
@@ -47098,7 +47153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2124578955
 BoxCollider:
@@ -47284,7 +47338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2129492731
 BoxCollider:
@@ -47404,7 +47457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2130425534
 BoxCollider:
@@ -47588,7 +47640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2133421569
 BoxCollider:
@@ -47772,7 +47823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2135459504
 BoxCollider:
@@ -47958,7 +48008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObstructing: 0
   tileLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &2146307116
 BoxCollider:
@@ -48041,3 +48090,5 @@ SceneRoots:
   - {fileID: 1156865508}
   - {fileID: 1148639777}
   - {fileID: 134115226}
+  - {fileID: 1018483723}
+  - {fileID: 1417922922}
