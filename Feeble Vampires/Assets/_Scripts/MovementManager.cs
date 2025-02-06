@@ -9,13 +9,15 @@ public class MovementManager : MonoBehaviour
     public int distance;
     public GameObject endPoint;
 
+    public GameObject gridManager;
+
     public List<Vector2> pathPoints;
     Vector2 newPoint;
 
-    bool upBlocked;
-    bool leftBlocked;
-    bool downBlocked;
-    bool rightBlocked;
+    public bool upBlocked;
+    public bool leftBlocked;
+    public bool downBlocked;
+    public bool rightBlocked;
 
     // Start is called before the first frame update
     void Start()
@@ -121,16 +123,37 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
-            if (endPoint.transform.position.z == 8) upBlocked = true;
+            if (endPoint.transform.position.z == 0) upBlocked = true;
             else upBlocked = false;
 
-            if (endPoint.transform.position.x == -7) leftBlocked = true;
+            if (endPoint.transform.position.x == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.z == -7) downBlocked = true;
+            if (endPoint.transform.position.z == (gridManager.GetComponent<FloorGrid>().ChunkWidth * -8) + 1) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.x == 8) rightBlocked = true;
+            if (endPoint.transform.position.x == (gridManager.GetComponent<FloorGrid>().ChunkHeight * 8) - 1) rightBlocked = true;
+            else rightBlocked = false;
+
+            //check if tile is blocked
+            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x), Mathf.RoundToInt(endPoint.transform.position.z + 1)))
+                upBlocked = true;
+            else upBlocked = false;
+
+            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x - 1), Mathf.RoundToInt(endPoint.transform.position.z)))
+                leftBlocked = true;
+            else leftBlocked = false;
+
+            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x), Mathf.RoundToInt(endPoint.transform.position.z - 1)))
+                downBlocked = true;
+            else downBlocked = false;
+
+            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x + 1), Mathf.RoundToInt(endPoint.transform.position.z)))
+                rightBlocked = true;
             else rightBlocked = false;
         }
     }
