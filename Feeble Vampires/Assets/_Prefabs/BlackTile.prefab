@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileLocation: {x: 0, y: 0, z: 0}
+  red: {fileID: 2100000, guid: 1283be640b908be44963ae1b8a719b05, type: 2}

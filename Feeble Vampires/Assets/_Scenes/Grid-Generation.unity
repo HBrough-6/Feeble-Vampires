@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -372,8 +373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921402157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 5, y: 13, z: -14}
+  m_LocalRotation: {x: -0.59374803, y: -0.0007176576, z: 0.0005447488, w: -0.80465055}
+  m_LocalPosition: {x: 11.485337, y: 27.077974, z: -16.012072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -417,12 +418,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &1572626554
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,12 +469,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChunkWidth: 2
-  ChunkHeight: 2
+  ChunkHeight: 3
   tilesPerChunk: 8
   whiteTilePrefab: {fileID: 9042843471032817607, guid: 6aca70cd8a2a49149a8178df31e3ceb5,
     type: 3}
   blackTilePrefab: {fileID: 8324259094907236615, guid: b426d5d74e2d52c4a927bfe651c0ee71,
     type: 3}
+  tempChunk: {fileID: 11400000, guid: 230e71ea028558c4b890ae3290ad39e0, type: 2}
 --- !u!1 &1895536307
 GameObject:
   m_ObjectHideFlags: 0
