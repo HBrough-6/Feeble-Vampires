@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858873273}
   - component: {fileID: 858873272}
+  - component: {fileID: 858873274}
   m_Layer: 0
   m_Name: Traverser
   m_TagString: Untagged
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858873271}
   m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 226dffd1590a7ff46b077068e68c8724, type: 3}
   m_Name: 
@@ -287,6 +289,25 @@ Transform:
   - {fileID: 1895536308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858873274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858873271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc28130c54a78d6459726aabbc21ef26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  moveNodes:
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: 2, y: 2}
+  - {x: 0, y: 2}
+  moveDir: {x: 0, y: 0}
 --- !u!1 &921402157
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +394,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921402157}
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0.59374803, y: -0.0007176576, z: 0.0005447488, w: -0.80465055}
   m_LocalPosition: {x: 11.485337, y: 27.077974, z: -16.012072}
+=======
+  m_LocalRotation: {x: -0.58159274, y: 0.0065953876, z: -0.004700516, w: -0.81343985}
+  m_LocalPosition: {x: 11.452113, y: 21.057362, z: -14.140212}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
