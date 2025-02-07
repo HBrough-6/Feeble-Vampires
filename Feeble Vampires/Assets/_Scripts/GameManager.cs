@@ -6,20 +6,28 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverHolder;
+    public int playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
+        playerHealth = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Minus))
         {
-            gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
+            playerHealth--;
+            if (playerHealth == 0) gameOver();
         }
+    }
+
+    public void gameOver()
+    {
+        gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
     }
 
     public void restart()
