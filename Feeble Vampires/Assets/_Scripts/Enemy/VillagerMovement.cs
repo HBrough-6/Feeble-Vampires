@@ -5,6 +5,18 @@ using UnityEngine;
 public class VillagerMovement : MonoBehaviour
 {
 
+    //   posInGrid(y,x)
+    //   y x->
+    //   |
+    //   v   [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+    //       [][][][][][][][]
+
     public FloorGrid grid;
 
     public Vector2Int[] moveNodes;
@@ -17,7 +29,6 @@ public class VillagerMovement : MonoBehaviour
     {
         // get the floor grid of the scene
         grid = FindObjectOfType<FloorGrid>();
-
     }
 
     private void Start()
@@ -27,10 +38,10 @@ public class VillagerMovement : MonoBehaviour
 
     public void Move()
     {
-        // check if the node you are at is the target Node
-        if (posInGrid == moveNodes[targetNode])
+
+        // check if the tile you are at is the target tile
+        if (new Vector2Int(posInGrid.y, posInGrid.x) == moveNodes[targetNode])
         {
-            Debug.Log("jgdfg");
             if (targetNode == moveNodes.Length - 1)
             {
                 targetNode = 0;
@@ -39,17 +50,12 @@ public class VillagerMovement : MonoBehaviour
             {
                 targetNode++;
             }
+
             // find the next move direction and then 
-            moveDir = RotateTowardsNextNode();
+            RotateTowardsNextNode();
         }
-        // check for player
-        else
-        {
-            // move in the currentDirection
-            SetPosInGrid(posInGrid.y + moveDir.x, posInGrid.x + moveDir.y);
-        }
-
-
+        SetPosInGrid(posInGrid.y + moveDir.x, posInGrid.x + moveDir.y);
+        Debug.Log("current pos" + posInGrid + "   Target Node: " + moveNodes[targetNode]);
 
     }
 
@@ -60,37 +66,39 @@ public class VillagerMovement : MonoBehaviour
         transform.position = grid.GetTilePositionFromGrid(posInGrid.x, posInGrid.y);
     }
 
-    public Vector2Int RotateTowardsNextNode()
+    private void DisplayNodes()
     {
-        // get the move direction
-        Vector2Int td = moveNodes[targetNode] - moveDir;
-        Debug.Log(td);
-        if (td.y < 0)
+        for (int i = 0; i < moveNodes.Length; i++)
         {
-            td = new Vector2Int(1, 0);
+            grid.SetTileObstructed(moveNodes[i].y, moveNodes[i].x);
         }
-        else
-        {
-            td = new Vector2Int(-1, 0);
-        }
+    }
 
-        if (td.x < 0)
-        {
-            td = new Vector2Int(0, 1);
-        }
-        else
-        {
-            td = new Vector2Int(0, -1);
-        }
-
-        return td;
+    public void RotateTowardsNextNode()
+    {
+        // get the direction of the next node
+        // get the vector of movement 
+        Vector2 targetDirection = posInGrid - new Vector2Int(moveNodes[targetNode].y, moveNodes[targetNode].x);
+        Debug.Log("new Direction" + targetDirection);
+        // normalize movement
+        targetDirection.Normalize();
+        // convert Vector2 to Vector2Int
+        int vectX = (int)targetDirection.x;
+        int vectY = (int)targetDirection.y;
+        // assign new move direction
+        moveDir = new Vector2Int(-vectY, -vectX);
     }
 
     private void OnGUI()
     {
-        if (GUILayout.Button("move"))
+        if (GUILayout.Button("Move"))
         {
-            Move();
+            InvokeRepeating("Move", 0, 0.3f);
+            //Move();
+        }
+        if (GUILayout.Button("Display Path"))
+        {
+            DisplayNodes();
         }
     }
 }

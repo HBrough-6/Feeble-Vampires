@@ -95,6 +95,11 @@ public class FloorGrid : MonoBehaviour
         return grid[row, col].TileObstructs;
     }
 
+    public void SetTileObstructed(int row, int col)
+    {
+        grid[row, col].SetObstructing(true);
+    }
+
     /*private void OnGUI()
     {
         if (GUILayout.Button("Import"))
