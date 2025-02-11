@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void resetTimer(bool expired)
     {
         timer = 10;
+        internalTimer = 0;
 
         if (expired)
         {

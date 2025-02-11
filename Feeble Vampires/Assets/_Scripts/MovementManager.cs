@@ -21,6 +21,9 @@ public class MovementManager : MonoBehaviour
 
     public GameObject gameManager;
 
+    private int maxWidth;
+    private int maxHeight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,9 @@ public class MovementManager : MonoBehaviour
         initializeOrigin();
 
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
+        maxWidth = (gridManager.GetComponent<FloorGrid>().ChunkWidth * -8) + 1;
+        maxHeight = (gridManager.GetComponent<FloorGrid>().ChunkHeight * 8) - 1;
     }
 
     // Update is called once per frame
@@ -136,32 +142,49 @@ public class MovementManager : MonoBehaviour
             if (endPoint.transform.position.x == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.z == (gridManager.GetComponent<FloorGrid>().ChunkWidth * -8) + 1) downBlocked = true;
+            if (endPoint.transform.position.z == maxWidth) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.x == (gridManager.GetComponent<FloorGrid>().ChunkHeight * 8) - 1) rightBlocked = true;
+            if (endPoint.transform.position.x == maxHeight) rightBlocked = true;
             else rightBlocked = false;
 
             //check if tile is blocked
-            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x), Mathf.RoundToInt(endPoint.transform.position.z + 1)))
-                upBlocked = true;
-            else upBlocked = false;
-
-            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x - 1), Mathf.RoundToInt(endPoint.transform.position.z)))
-                leftBlocked = true;
-            else leftBlocked = false;
-
-            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x), Mathf.RoundToInt(endPoint.transform.position.z - 1)))
-                downBlocked = true;
-            else downBlocked = false;
-
-            if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x + 1), Mathf.RoundToInt(endPoint.transform.position.z)))
-                rightBlocked = true;
-            else rightBlocked = false;
+            if (player.transform.position.z != 0)
+            {
+                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x),
+                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1))))
+                    upBlocked = true;
+                else upBlocked = false;
+            }
+            if (player.transform.position.x != 0)
+            {
+                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x - 1),
+                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z))))
+                    leftBlocked = true;
+                else leftBlocked = false;
+            }
+            if (player.transform.position.z != maxWidth)
+            {
+                Debug.Log("Endpoint's downward z position: " + (endPoint.transform.position.z - 1));
+                Debug.Log("One tile down: " + gridManager.GetComponent<FloorGrid>().GetTilePositionFromGrid
+                    (Mathf.RoundToInt(endPoint.transform.position.x),
+                    Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1))));
+                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x),
+                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1))))
+                    downBlocked = true;
+                else downBlocked = false;
+            }
+            if (player.transform.position.x != maxHeight)
+            {
+                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                (Mathf.RoundToInt(endPoint.transform.position.x + 1),
+                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z))))
+                    rightBlocked = true;
+                else rightBlocked = false; 
+            }
         }
     }
 
