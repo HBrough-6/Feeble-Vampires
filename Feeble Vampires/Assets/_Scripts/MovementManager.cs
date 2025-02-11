@@ -19,12 +19,16 @@ public class MovementManager : MonoBehaviour
     public bool downBlocked;
     public bool rightBlocked;
 
+    public GameObject gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         spaceCap = 2;
         distance = 0;
         initializeOrigin();
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     // Update is called once per frame
@@ -36,79 +40,82 @@ public class MovementManager : MonoBehaviour
 
         movementBlocked();
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (gameManager.GetComponent<GameManager>().playerHealth > 0)
         {
-            if (distance > 0
-                && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x, endPoint.transform.position.z + 1))
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                endPoint.transform.position = new Vector3
-                    (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
-                removePathPoint();
+                if (distance > 0
+                    && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x, endPoint.transform.position.z + 1))
+                {
+                    endPoint.transform.position = new Vector3
+                        (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
+                    removePathPoint();
+                }
+                if (!upBlocked)
+                {
+                    endPoint.transform.position = new Vector3
+                        (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z + 1);
+                    addPathPoint();
+                }
             }
-            if (!upBlocked)
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                endPoint.transform.position = new Vector3
-                    (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z + 1);
-                addPathPoint();
+                if (distance > 0
+                    && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x - 1, endPoint.transform.position.z))
+                {
+                    endPoint.transform.position = new Vector3
+                        (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
+                    removePathPoint();
+                }
+                if (!leftBlocked)
+                {
+                    endPoint.transform.position = new Vector3
+                        (endPoint.transform.position.x - 1, endPoint.transform.position.y, endPoint.transform.position.z);
+                    addPathPoint();
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (distance > 0
-                && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x - 1, endPoint.transform.position.z))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                endPoint.transform.position = new Vector3
-                    (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
-                removePathPoint();
+                if (distance > 0
+                    && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x, endPoint.transform.position.z - 1))
+                {
+                    endPoint.transform.position = new Vector3
+                        (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
+                    removePathPoint();
+                }
+                if (!downBlocked)
+                {
+                    endPoint.transform.position = new Vector3
+                        (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z - 1);
+                    addPathPoint();
+                }
             }
-            if (!leftBlocked)
+            if (Input.GetKeyDown(KeyCode.D))
             {
-                endPoint.transform.position = new Vector3
-                    (endPoint.transform.position.x - 1, endPoint.transform.position.y, endPoint.transform.position.z);
-                addPathPoint();
+                if (distance > 0
+                    && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x + 1, endPoint.transform.position.z))
+                {
+                    endPoint.transform.position = new Vector3
+                        (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
+                    removePathPoint();
+                }
+                if (!rightBlocked)
+                {
+                    endPoint.transform.position = new Vector3
+                        (endPoint.transform.position.x + 1, endPoint.transform.position.y, endPoint.transform.position.z);
+                    addPathPoint();
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (distance > 0
-                && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x, endPoint.transform.position.z - 1))
-            {
-                endPoint.transform.position = new Vector3
-                    (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
-                removePathPoint();
-            }
-            if (!downBlocked)
-            {
-                endPoint.transform.position = new Vector3
-                    (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z - 1);
-                addPathPoint();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (distance > 0
-                && pathPoints[distance - 1] == new Vector2(endPoint.transform.position.x + 1, endPoint.transform.position.z))
-            {
-                endPoint.transform.position = new Vector3
-                    (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
-                removePathPoint();
-            }
-            if (!rightBlocked)
-            {
-                endPoint.transform.position = new Vector3
-                    (endPoint.transform.position.x + 1, endPoint.transform.position.y, endPoint.transform.position.z);
-                addPathPoint();
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            resetMovement();
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                resetMovement();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            submitMovement();
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                submitMovement();
+            }
         }
     }
 
@@ -169,6 +176,7 @@ public class MovementManager : MonoBehaviour
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
+        gameManager.GetComponent<GameManager>().resetTimer(false);
     }
 
     public void initializeOrigin()
