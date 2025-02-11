@@ -149,41 +149,39 @@ public class MovementManager : MonoBehaviour
             else rightBlocked = false;
 
             //check if tile is blocked
-            if (player.transform.position.z != 0)
+            if (endPoint.transform.position.z != 0)
             {
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x),
-                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1))))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
+                Mathf.RoundToInt(endPoint.transform.position.x)))
                     upBlocked = true;
                 else upBlocked = false;
             }
-            if (player.transform.position.x != 0)
+            if (endPoint.transform.position.x != 0)
             {
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x - 1),
-                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z))))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
+                Mathf.RoundToInt(endPoint.transform.position.x - 1)))
                     leftBlocked = true;
                 else leftBlocked = false;
             }
-            if (player.transform.position.z != maxWidth)
+            if (endPoint.transform.position.z != maxWidth)
             {
-                Debug.Log("Endpoint's downward z position: " + (endPoint.transform.position.z - 1));
-                Debug.Log("One tile down: " + gridManager.GetComponent<FloorGrid>().GetTilePositionFromGrid
-                    (Mathf.RoundToInt(endPoint.transform.position.x),
-                    Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1))));
+                Debug.Log(player.transform.position.z + ", " + maxWidth);
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x),
-                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1))))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
+                Mathf.RoundToInt(endPoint.transform.position.x)))
                     downBlocked = true;
                 else downBlocked = false;
             }
-            if (player.transform.position.x != maxHeight)
+            if (endPoint.transform.position.x != maxHeight)
             {
+                Debug.Log(player.transform.position.x + ", " + maxHeight);
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(endPoint.transform.position.x + 1),
-                Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z))))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
+                Mathf.RoundToInt(endPoint.transform.position.x + 1)))
                     rightBlocked = true;
-                else rightBlocked = false; 
+                else rightBlocked = false;
             }
         }
     }

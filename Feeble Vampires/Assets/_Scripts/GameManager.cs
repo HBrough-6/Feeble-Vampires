@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverHolder;
+    bool dead;
     public int playerHealth;
 
     public TextMeshProUGUI timerText;
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
         timer = 10;
+
+        dead = false;
     }
 
     // Update is called once per frame
@@ -33,11 +36,14 @@ public class GameManager : MonoBehaviour
             if (playerHealth == 0) gameOver();
         }
 
-        internalTimer += Time.deltaTime;
-        if (internalTimer >= 1)
+        if (!dead)
         {
-            timer--;
-            internalTimer = 0;
+            internalTimer += Time.deltaTime;
+            if (internalTimer >= 1)
+            {
+                timer--;
+                internalTimer = 0;
+            }
         }
 
         if (timer <= 0) resetTimer(true);
@@ -49,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void gameOver()
     {
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
+        dead = true;
     }
 
     public void restart()
