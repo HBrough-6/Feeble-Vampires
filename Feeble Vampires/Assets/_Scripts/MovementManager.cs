@@ -167,7 +167,6 @@ public class MovementManager : MonoBehaviour
             }
             if (endPoint.transform.position.z != maxWidth)
             {
-                Debug.Log(player.transform.position.z + ", " + maxWidth);
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
                 Mathf.RoundToInt(endPoint.transform.position.x)))
@@ -176,7 +175,6 @@ public class MovementManager : MonoBehaviour
             }
             if (endPoint.transform.position.x != maxHeight)
             {
-                Debug.Log(player.transform.position.x + ", " + maxHeight);
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
                 Mathf.RoundToInt(endPoint.transform.position.x + 1)))
