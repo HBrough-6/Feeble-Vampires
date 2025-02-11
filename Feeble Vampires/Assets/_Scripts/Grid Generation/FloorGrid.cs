@@ -95,7 +95,12 @@ public class FloorGrid : MonoBehaviour
         return grid[row, col].TileObstructs;
     }
 
-    private void OnGUI()
+    public void SetTileObstructed(int row, int col)
+    {
+        grid[row, col].SetObstructing(true);
+    }
+
+    /*private void OnGUI()
     {
         if (GUILayout.Button("Import"))
         {
@@ -108,5 +113,5 @@ public class FloorGrid : MonoBehaviour
             }
             //GetChunkFromFiles();
         }
-    }
+    }*/
 }
