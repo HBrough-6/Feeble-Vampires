@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    public GameObject mainMenuHolder;
+    public GameObject settingsMenuHolder;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        returnToMainMenu();
     }
 
     // Update is called once per frame
@@ -25,5 +28,17 @@ public class TitleManager : MonoBehaviour
     public void quitGame()
     {
         Application.Quit();
+    }
+
+    public void returnToMainMenu()
+    {
+        mainMenuHolder.SetActive(true);
+        settingsMenuHolder.SetActive(false);
+    }
+
+    public void settingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(true);
     }
 }
