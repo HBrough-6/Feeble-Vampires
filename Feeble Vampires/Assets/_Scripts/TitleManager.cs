@@ -7,6 +7,7 @@ public class TitleManager : MonoBehaviour
 {
     public GameObject mainMenuHolder;
     public GameObject settingsMenuHolder;
+    public GameObject audioSettingsMenuHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,19 @@ public class TitleManager : MonoBehaviour
     {
         mainMenuHolder.SetActive(true);
         settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(false);
     }
 
     public void settingsMenu()
     {
         mainMenuHolder.SetActive(false);
         settingsMenuHolder.SetActive(true);
+    }
+
+    public void audioSettingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(true);
     }
 }
