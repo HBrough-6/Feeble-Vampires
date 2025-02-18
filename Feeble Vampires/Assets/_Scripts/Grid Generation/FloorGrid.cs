@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class FloorGrid : MonoBehaviour
 {
-    public int ChunkWidth;
-    public int ChunkHeight;
     private Chunk[] premadeChunks;
     private Tile[,] grid;
-    private int width;
-    private int height;
+
+    public int ChunkWidth;
+    public int ChunkHeight;
+
+    public int width;
+    public int height;
+
     [SerializeField] private int tilesPerChunk = 8;
     public GameObject whiteTilePrefab;
     public GameObject blackTilePrefab;
+
+    public Material seenYellow;
 
     public Chunk tempChunk;
 
@@ -37,12 +42,10 @@ public class FloorGrid : MonoBehaviour
                 if (isWhite)
                 {
                     temp = Instantiate(whiteTilePrefab, new Vector3(col, 0, -row), Quaternion.Euler(0, 0, 0), transform);
-                    temp.AddComponent<Tile>();
                 }
                 else
                 {
                     temp = Instantiate(blackTilePrefab, new Vector3(col, 0, -row), Quaternion.Euler(0, 0, 0), transform);
-                    temp.AddComponent<Tile>();
                 }
                 isWhite = !isWhite;
                 temp.GetComponent<Tile>().SetPosInGrid(row, col);
@@ -98,6 +101,32 @@ public class FloorGrid : MonoBehaviour
     public void SetTileObstructed(int row, int col)
     {
         grid[row, col].SetObstructing(true);
+    }
+
+    public void SetTileSeen(int row, int col)
+    {
+
+        if (row == -1 || col == -1)
+        {
+            Debug.Log("out of bounds");
+        }
+        else
+        {
+            grid[row, col].SetMat(seenYellow);
+        }
+
+    }
+
+    public void ResetTileMat(int row, int col)
+    {
+        if (row == -1 || col == -1)
+        {
+            Debug.Log("out of bounds");
+        }
+        else
+        {
+            grid[row, col].ResetMat();
+        }
     }
 
     /*private void OnGUI()

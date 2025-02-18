@@ -18,7 +18,6 @@ public class VillagerMovement : MonoBehaviour
     //       [][][][][][][][]
 
     public FloorGrid grid;
-
     public Vector2Int[] moveNodes;
 
     public Vector2Int moveDir = Vector2Int.zero;
@@ -36,6 +35,8 @@ public class VillagerMovement : MonoBehaviour
         SetPosInGrid(moveNodes[0].x, moveNodes[0].y);
     }
 
+    /// Methods for moving the Enemy
+    #region Movement
     public void Move()
     {
 
@@ -55,7 +56,7 @@ public class VillagerMovement : MonoBehaviour
             RotateTowardsNextNode();
         }
         SetPosInGrid(posInGrid.y + moveDir.x, posInGrid.x + moveDir.y);
-        Debug.Log("current pos" + posInGrid + "   Target Node: " + moveNodes[targetNode]);
+        //Debug.Log("current pos" + posInGrid + "   Target Node: " + moveNodes[targetNode]);
 
     }
 
@@ -66,20 +67,13 @@ public class VillagerMovement : MonoBehaviour
         transform.position = grid.GetTilePositionFromGrid(posInGrid.x, posInGrid.y);
     }
 
-    private void DisplayNodes()
-    {
-        for (int i = 0; i < moveNodes.Length; i++)
-        {
-            grid.SetTileObstructed(moveNodes[i].y, moveNodes[i].x);
-        }
-    }
 
     public void RotateTowardsNextNode()
     {
         // get the direction of the next node
         // get the vector of movement 
         Vector2 targetDirection = posInGrid - new Vector2Int(moveNodes[targetNode].y, moveNodes[targetNode].x);
-        Debug.Log("new Direction" + targetDirection);
+        //Debug.Log("new Direction" + targetDirection);
         // normalize movement
         targetDirection.Normalize();
         // convert Vector2 to Vector2Int
@@ -89,7 +83,17 @@ public class VillagerMovement : MonoBehaviour
         moveDir = new Vector2Int(-vectY, -vectX);
     }
 
-    private void OnGUI()
+    #endregion
+
+    private void DisplayNodes()
+    {
+        for (int i = 0; i < moveNodes.Length; i++)
+        {
+            grid.SetTileObstructed(moveNodes[i].y, moveNodes[i].x);
+        }
+    }
+
+    /*private void OnGUI()
     {
         if (GUILayout.Button("Move"))
         {
@@ -100,5 +104,6 @@ public class VillagerMovement : MonoBehaviour
         {
             DisplayNodes();
         }
-    }
+
+    }*/
 }

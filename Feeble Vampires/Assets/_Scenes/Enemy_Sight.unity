@@ -252,6 +252,8 @@ GameObject:
   - component: {fileID: 858873273}
   - component: {fileID: 858873272}
   - component: {fileID: 858873274}
+  - component: {fileID: 858873276}
+  - component: {fileID: 858873275}
   m_Layer: 0
   m_Name: Traverser
   m_TagString: Untagged
@@ -302,16 +304,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   moveNodes:
-  - {x: 0, y: 0}
-  - {x: 15, y: 0}
-  - {x: 15, y: 4}
-  - {x: 10, y: 4}
-  - {x: 10, y: 6}
-  - {x: 4, y: 6}
-  - {x: 4, y: 4}
-  - {x: 0, y: 4}
+  - {x: 0, y: 1}
+  - {x: 15, y: 1}
+  - {x: 15, y: 5}
+  - {x: 10, y: 5}
+  - {x: 10, y: 7}
+  - {x: 4, y: 7}
+  - {x: 4, y: 5}
+  - {x: 0, y: 5}
   moveDir: {x: 0, y: 0}
   posInGrid: {x: -1, y: -1}
+--- !u!114 &858873275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858873271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec31b37967b72f44e9e30cf4596d98be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &858873276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858873271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7605cc468e217fa4db1b6524036b81dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  sightLength: 4
 --- !u!1 &921402157
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,11 +523,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChunkWidth: 2
   ChunkHeight: 2
+  width: 0
+  height: 0
   tilesPerChunk: 8
   whiteTilePrefab: {fileID: 9042843471032817607, guid: 6aca70cd8a2a49149a8178df31e3ceb5,
     type: 3}
   blackTilePrefab: {fileID: 8324259094907236615, guid: b426d5d74e2d52c4a927bfe651c0ee71,
     type: 3}
+  seenYellow: {fileID: 2100000, guid: ab5e2b2e1c6c2944a907e4b8f5492a8b, type: 2}
   tempChunk: {fileID: 11400000, guid: 230e71ea028558c4b890ae3290ad39e0, type: 2}
 --- !u!1 &1895536307
 GameObject:
