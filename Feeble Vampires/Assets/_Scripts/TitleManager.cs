@@ -8,6 +8,7 @@ public class TitleManager : MonoBehaviour
     public GameObject mainMenuHolder;
     public GameObject settingsMenuHolder;
     public GameObject audioSettingsMenuHolder;
+    public GameObject videoSettingsMenuHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class TitleManager : MonoBehaviour
         mainMenuHolder.SetActive(true);
         settingsMenuHolder.SetActive(false);
         audioSettingsMenuHolder.SetActive(false);
+        videoSettingsMenuHolder.SetActive(false);
     }
 
     public void settingsMenu()
@@ -49,5 +51,13 @@ public class TitleManager : MonoBehaviour
         mainMenuHolder.SetActive(false);
         settingsMenuHolder.SetActive(false);
         audioSettingsMenuHolder.SetActive(true);
+    }
+
+    public void videoSettingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(false);
+        videoSettingsMenuHolder.SetActive(true);
     }
 }
