@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
     public Material red;
     public Material defaultMat;
 
+    private Renderer ChildRenderer;
+
     public bool TileObstructs
     {
         get { return isObstructing; }
@@ -17,7 +19,8 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         tileLocation = transform.position;
-        defaultMat = transform.GetChild(0).gameObject.GetComponent<Renderer>().material;
+        ChildRenderer = GetComponentInChildren<Renderer>();
+        defaultMat = ChildRenderer.material;
     }
 
     public void SetPosInGrid(int row, int col)
@@ -30,12 +33,21 @@ public class Tile : MonoBehaviour
         isObstructing = obstructs;
         if (isObstructing)
         {
-            transform.GetChild(0).gameObject.GetComponent<Renderer>().material = red;
+            SetMat(red);
         }
         else
         {
-            transform.GetChild(0).gameObject.GetComponent<Renderer>().material = defaultMat;
+            ResetMat();
         }
     }
 
+    public void SetMat(Material mat)
+    {
+        ChildRenderer.material = mat;
+    }
+
+    public void ResetMat()
+    {
+        ChildRenderer.material = defaultMat;
+    }
 }
