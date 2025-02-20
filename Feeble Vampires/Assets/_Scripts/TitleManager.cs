@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TitleManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TitleManager : MonoBehaviour
     public GameObject audioSettingsMenuHolder;
     public GameObject videoSettingsMenuHolder;
     public GameObject keybindsMenuHolder;
+
+    public List<TextMeshProUGUI> buttonLabels;
 
     // Start is called before the first frame update
     void Start()
@@ -70,5 +73,10 @@ public class TitleManager : MonoBehaviour
         audioSettingsMenuHolder.SetActive(false);
         videoSettingsMenuHolder.SetActive(false);
         keybindsMenuHolder.SetActive(true);
+    }
+
+    public void rebindKey(int keySlot, KeyCode keyCode)
+    {
+        //buttonLabels[keySlot].GetComponent<TMP_Text>() = keyCode.ToString();
     }
 }

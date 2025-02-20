@@ -12,14 +12,22 @@ public class InputManager : MonoBehaviour
     public KeyCode cancel;
     public KeyCode useItem;
 
-    string keyToBind;
+    public GameObject titleManager;
+
+    int tempButtonPos;
 
     bool readyForBind;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (north == KeyCode.None) north = KeyCode.W;
+        if (west == KeyCode.None) west = KeyCode.A;
+        if (south == KeyCode.None) south = KeyCode.S;
+        if (east == KeyCode.None) east = KeyCode.D;
+        if (confirm == KeyCode.None) confirm = KeyCode.Return;
+        if (cancel == KeyCode.None) cancel = KeyCode.Escape;
+        if (useItem == KeyCode.None) useItem = KeyCode.Q;
 
         readyForBind = false;
     }
@@ -29,13 +37,20 @@ public class InputManager : MonoBehaviour
     {
         if (readyForBind)
         {
-
+            foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKey(keyCode))
+                {
+                    titleManager.GetComponent<TitleManager>().rebindKey(tempButtonPos, keyCode);
+                }
+            }
         }
     }
 
-    public void startBinding(KeyCode keyToSet)
+    public void startBinding(int buttonPosition)
     {
-        keyToBind = keyToSet.ToString();
+        tempButtonPos = buttonPosition;
+
         readyForBind = true;
     }
 
