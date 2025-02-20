@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public Chunk tempChunkStorage;
-    private Grid grid;
+    public Grid grid;
 
     public int height;
     public int width;
@@ -19,6 +19,8 @@ public class GridManager : MonoBehaviour
     public Transform obstructionsParent;
     public Transform tilesParent;
 
+    public int obstructedTiles;
+
     private Chunk[] premadeChunks;
     private int premadeChunksCount;
 
@@ -29,11 +31,11 @@ public class GridManager : MonoBehaviour
         grid = GetComponent<Grid>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
+
     }
 
     private void Start()
     {
-        Debug.Log(grid.WorldToCell(transform.position));
         GenerateGrid();
     }
 
@@ -79,6 +81,9 @@ public class GridManager : MonoBehaviour
 
     private void FillWholeGrid()
     {
+        // reset the number of obstructed tiles
+        obstructedTiles = 0;
+
         // clear tiles from the grid
         for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
         {
@@ -89,7 +94,7 @@ public class GridManager : MonoBehaviour
         {
             for (int chunkCol = 0; chunkCol < width; chunkCol++)
             {
-                ImportGridChunk(new Vector2Int(chunkRow, chunkCol), GetChunkFromFiles());
+                ImportGridChunk(new Vector2Int(chunkCol, chunkRow), GetChunkFromFiles());
             }
         }
     }
@@ -115,17 +120,19 @@ public class GridManager : MonoBehaviour
                 // check if the current piece is an obstructed tile
                 bool obstructs = newChunkGrid.GetCell(col, row);
 
-                // find the posiition of the tile in the world
+                // find the position of the tile in the world
                 if (obstructs)
                 {
                     tilePos.x = startX + col;
                     tilePos.z = startY + row;
                     Vector3 obstructionPos = grid.CellToWorld(tilePos);
 
+                    obstructedTiles++;
+
+
                     // create the obstruction in the world
                     Instantiate(Obstruction, obstructionPos, transform.rotation, obstructionsParent);
                 }
-
             }
         }
     }
@@ -133,7 +140,6 @@ public class GridManager : MonoBehaviour
     private Chunk GetChunkFromFiles()
     {
         int randomChunk = UnityEngine.Random.Range(0, premadeChunks.Length);
-        Debug.Log(randomChunk);
         return premadeChunks[randomChunk];
     }
 
@@ -142,7 +148,11 @@ public class GridManager : MonoBehaviour
         // convert chunk into a bool array
         bool[,] cells = chunk.gridChunk.GetCells();
         bool[,] rotatedChunk = new bool[8, 8];
+
+        // length of the array
         int n = cells.GetLength(0);
+
+        // temporary chunk storage
         Array2DBool temp = tempChunkStorage.gridChunk;
 
         // variable to store the random number of rotations
@@ -154,8 +164,6 @@ public class GridManager : MonoBehaviour
         else
             // rotate tiles to be right side up
             randomNum = 1;
-
-        Debug.Log("rotating " + randomNum + " times");
 
         // don't try to rotate, since 0 rotations are taking place
         if (randomNum == 0)
@@ -204,10 +212,30 @@ public class GridManager : MonoBehaviour
         {
             FillWholeGrid();
         }
-        if (GUILayout.Button("Clear"))
+        if (GUILayout.Button("check Obstructed"))
         {
-            Debug.Log(obstructionsParent.childCount);
-
+            Debug.Log(GetTileObstructed(0, 0));
         }
+    }
+    public Vector3 CellToWorldPos(int x, int y)
+    {
+        return grid.CellToWorld(new Vector3Int(x, 0, y));
+    }
+
+    public bool GetTileObstructed(int x, int y)
+    {
+        Vector3 rayPos = grid.CellToWorld(new Vector3Int(x, 0, y));
+        rayPos.y = transform.position.y + 4;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(rayPos, Vector3.down, out hit, 3))
+        {
+            if (hit.collider.CompareTag("Obstruction"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
