@@ -9,12 +9,11 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private GridManager gridManager;
-
+    private EnemyBrain enemyBrain;
 
     public Vector2Int[] moveNodes;
-    public Vector2Int moveDir = Vector2Int.zero;
     private int targetNode = 0;
-    public Vector2Int posInGrid = new Vector2Int(-1, -1);
+
 
     public MoveType moveType = MoveType.Loop;
     private bool retracingSteps = false;
@@ -27,6 +26,8 @@ public class EnemyMovement : MonoBehaviour
     {
         // get the grid
         gridManager = FindObjectOfType<GridManager>();
+        enemyBrain = GetComponent<EnemyBrain>();
+
         body = transform.GetChild(0);
     }
 
@@ -38,6 +39,9 @@ public class EnemyMovement : MonoBehaviour
 
     #region Movement
 
+    /// <summary>
+    /// moves the enemy based on their movement type
+    /// </summary>
     public void Move()
     {
         switch (moveType)
@@ -53,6 +57,9 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Looping enemy movement
+    /// </summary>
     private void LoopMove()
     {
         if (rotateOnNextMove)
@@ -61,10 +68,10 @@ public class EnemyMovement : MonoBehaviour
             rotateOnNextMove = false;
         }
         // move to the next position
-        SetPosInGrid(posInGrid.x + moveDir.x, posInGrid.y + moveDir.y);
+        SetPosInGrid(enemyBrain.posInGrid.x + enemyBrain.moveDir.x, enemyBrain.posInGrid.y + enemyBrain.moveDir.y);
 
         // check if the current tile is the target tile
-        if (posInGrid == moveNodes[targetNode])
+        if (enemyBrain.posInGrid == moveNodes[targetNode])
         {
 
             // reached the last node in the series
@@ -82,11 +89,10 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-
     private void PingPongMove()
     {
         // check if the current tile is the target tile
-        if (posInGrid == moveNodes[targetNode])
+        if (enemyBrain.posInGrid == moveNodes[targetNode])
         {
             // reached the last node in the series
             // go backwards
@@ -111,7 +117,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             // move to the next position
-            SetPosInGrid(posInGrid.x + moveDir.x, posInGrid.y + moveDir.y);
+            SetPosInGrid(enemyBrain.posInGrid.x + enemyBrain.moveDir.x, enemyBrain.posInGrid.y + enemyBrain.moveDir.y);
         }
     }
 
@@ -120,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
         // find the moveDir
         // get the direction of the next node
         // get the vector of movement 
-        Vector2 targetDirection = new Vector2Int(moveNodes[targetNode].x, moveNodes[targetNode].y) - posInGrid;
+        Vector2 targetDirection = new Vector2Int(moveNodes[targetNode].x, moveNodes[targetNode].y) - enemyBrain.posInGrid;
         //Debug.Log("new Direction" + targetDirection);
 
         // normalize movement
@@ -130,27 +136,27 @@ public class EnemyMovement : MonoBehaviour
         int vectX = (int)targetDirection.x;
         int vectY = (int)targetDirection.y;
         // assign new move direction
-        moveDir = new Vector2Int(vectX, vectY);
+        enemyBrain.moveDir = new Vector2Int(vectX, vectY);
 
         // rotate to face the MoveDir
 
         // facing right
-        if (moveDir == new Vector2Int(1, 0))
+        if (enemyBrain.moveDir == new Vector2Int(1, 0))
         {
             body.rotation = Quaternion.Euler(0, 90, 0);
         }
         // facing left
-        else if (moveDir == new Vector2Int(-1, 0))
+        else if (enemyBrain.moveDir == new Vector2Int(-1, 0))
         {
             body.rotation = Quaternion.Euler(0, -90, 0);
         }
         // facing forwards
-        else if (moveDir == new Vector2Int(0, 1))
+        else if (enemyBrain.moveDir == new Vector2Int(0, 1))
         {
             body.rotation = Quaternion.Euler(0, 0, 0);
         }
         // facing backwards
-        else if (moveDir == new Vector2Int(0, -1))
+        else if (enemyBrain.moveDir == new Vector2Int(0, -1))
         {
             body.rotation = Quaternion.Euler(0, 180, 0);
         }
@@ -159,7 +165,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetPosInGrid(int x, int y)
     {
-        posInGrid = new Vector2Int(x, y);
+        enemyBrain.posInGrid = new Vector2Int(x, y);
         transform.position = gridManager.CellToWorldPos(x, y);
 
     }

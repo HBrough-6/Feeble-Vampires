@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour
 
     private GridManager gridManager;
     private EnemyMovement enemyMovement;
+    private EnemyBrain enemyBrain;
 
     private Vector2Int[] rightSight;
     private Vector2Int[] leftSight;
@@ -18,12 +19,16 @@ public class EnemySight : MonoBehaviour
     private GameObject[] sightTileObjects;
     public GameObject sightTilePrefab;
 
+    private FakePlayer player;
 
     private void Awake()
     {
 
         gridManager = FindObjectOfType<GridManager>();
         enemyMovement = GetComponent<EnemyMovement>();
+        enemyBrain = GetComponent<EnemyBrain>();
+
+        player = FindObjectOfType<FakePlayer>();
 
         sightTileObjects = new GameObject[8];
         seenTilesLocations = new Vector2Int[8];
@@ -89,10 +94,10 @@ public class EnemySight : MonoBehaviour
 
     public void DetermineSightline()
     {
-        Vector2Int moveDir = enemyMovement.moveDir;
+        Vector2Int moveDir = enemyBrain.moveDir;
         Vector2Int[] tempTiles = new Vector2Int[8];
         Vector2Int[] sightedTileLocations = new Vector2Int[8];
-        Vector2Int enemyPos = enemyMovement.posInGrid;
+        Vector2Int enemyPos = enemyBrain.posInGrid;
 
         ResetSightline();
 
@@ -160,6 +165,8 @@ public class EnemySight : MonoBehaviour
             }
         }
 
+
+        CheckForPlayer(sightedTileLocations);
         DisplaySightline();
     }
 
@@ -189,5 +196,19 @@ public class EnemySight : MonoBehaviour
         return !gridManager.GetTileObstructed(location.x, location.y) &&
             location.x >= 0 && location.y >= 0 &&
             location.x < gridManager.width * 8 && location.y < gridManager.height * 8;
+    }
+
+    private void CheckForPlayer(Vector2Int[] seenTiles)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (tileSeen[i] && player != null)
+            {
+                if (player.posInGrid == seenTiles[i])
+                {
+                    player.seen();
+                }
+            }
+        }
     }
 }
