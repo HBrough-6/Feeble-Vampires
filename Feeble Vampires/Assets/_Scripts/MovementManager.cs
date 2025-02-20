@@ -42,7 +42,7 @@ public class MovementManager : MonoBehaviour
     {
         if (distance < 1) endPoint.transform.position = new Vector3
                 (endPoint.transform.position.x, -1, endPoint.transform.position.z);
-        else endPoint.transform.position = new Vector3(endPoint.transform.position.x, 1, endPoint.transform.position.z);
+        else endPoint.transform.position = new Vector3(endPoint.transform.position.x, 0.5f, endPoint.transform.position.z);
 
         movementBlocked();
 
