@@ -298,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &111426614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,6 +1812,7 @@ MonoBehaviour:
   downBlocked: 0
   rightBlocked: 0
   gameManager: {fileID: 0}
+  enemyManager: {fileID: 1931230595}
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -2204,7 +2205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1651404533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2952,7 +2953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1931230595
 MonoBehaviour:
   m_ObjectHideFlags: 0
