@@ -160,32 +160,32 @@ public class MovementManager : MonoBehaviour
             {
                 if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x + 1)),
                 Mathf.RoundToInt(endPoint.transform.position.z)))
-                    upBlocked = true;
-                else upBlocked = false;
+                    rightBlocked = true;
+                else rightBlocked = false;
             }
             if (endPoint.transform.position.z != 0)
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
                 Mathf.RoundToInt(endPoint.transform.position.z - 1)))
-                    leftBlocked = true;
-                else leftBlocked = false;
+                    downBlocked = true;
+                else downBlocked = false;
             }
             if (endPoint.transform.position.x != 0)
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x - 1)),
                 Mathf.RoundToInt(endPoint.transform.position.z)))
-                    downBlocked = true;
-                else downBlocked = false;
+                    leftBlocked = true;
+                else leftBlocked = false;
             }
             if (endPoint.transform.position.z != maxWidth)
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
                 Mathf.RoundToInt(endPoint.transform.position.z + 1)))
-                    rightBlocked = true;
-                else rightBlocked = false;
+                    upBlocked = true;
+                else upBlocked = false;
             }
         }
     }
