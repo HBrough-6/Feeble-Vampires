@@ -26,6 +26,8 @@ public class MovementManager : MonoBehaviour
     private int maxWidth;
     private int maxHeight;
 
+    public EnemyManager enemyManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -203,6 +205,8 @@ public class MovementManager : MonoBehaviour
         initializeOrigin();
         gameManager.resetTimer(false);
         playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
+
+        enemyManager.EnemiesTakeTurn();
     }
 
     public void initializeOrigin()
