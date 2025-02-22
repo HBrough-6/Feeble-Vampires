@@ -158,32 +158,32 @@ public class MovementManager : MonoBehaviour
             //check if tile is blocked
             if (endPoint.transform.position.x != maxHeight)
             {
-                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x + 1)),
-                Mathf.RoundToInt(endPoint.transform.position.z)))
+                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
+                Mathf.RoundToInt(endPoint.transform.position.x)))
                     upBlocked = true;
                 else upBlocked = false;
             }
             if (endPoint.transform.position.z != 0)
             {
                 if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
-                Mathf.RoundToInt(endPoint.transform.position.z - 1)))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
+                Mathf.RoundToInt(endPoint.transform.position.x - 1)))
                     leftBlocked = true;
                 else leftBlocked = false;
             }
             if (endPoint.transform.position.x != 0)
             {
                 if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x - 1)),
-                Mathf.RoundToInt(endPoint.transform.position.z)))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
+                Mathf.RoundToInt(endPoint.transform.position.x)))
                     downBlocked = true;
                 else downBlocked = false;
             }
             if (endPoint.transform.position.z != maxWidth)
             {
                 if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
-                Mathf.RoundToInt(endPoint.transform.position.z + 1)))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
+                Mathf.RoundToInt(endPoint.transform.position.z + x)))
                     rightBlocked = true;
                 else rightBlocked = false;
             }
