@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,10 @@ public class MovementManager : MonoBehaviour
     public int distance;
     public GameObject endPoint;
 
-    public GameObject gridManager;
+    // Heath Change
+    public GridManager gridManager;
+    // Heath Change
+    public Vector2Int playerPosInGrid;
 
     public List<Vector2> pathPoints;
     Vector2 newPoint;
@@ -19,7 +21,7 @@ public class MovementManager : MonoBehaviour
     public bool downBlocked;
     public bool rightBlocked;
 
-    public GameObject gameManager;
+    public GameManager gameManager;
 
     private int maxWidth;
     private int maxHeight;
@@ -31,10 +33,15 @@ public class MovementManager : MonoBehaviour
         distance = 0;
         initializeOrigin();
 
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = FindObjectOfType<GameManager>();
 
-        maxWidth = (gridManager.GetComponent<FloorGrid>().ChunkWidth * -8) + 1;
-        maxHeight = (gridManager.GetComponent<FloorGrid>().ChunkHeight * 8) - 1;
+        // Heath Change
+        gridManager = FindObjectOfType<GridManager>();
+        // Heath Change
+        playerPosInGrid = new Vector2Int(0, 0);
+
+        maxWidth = (gridManager.width * 8) - 1;
+        maxHeight = (gridManager.height * 8) - 1;
     }
 
     // Update is called once per frame
@@ -46,7 +53,7 @@ public class MovementManager : MonoBehaviour
 
         movementBlocked();
 
-        if (gameManager.GetComponent<GameManager>().playerHealth > 0)
+        if (gameManager.playerHealth > 0)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -159,7 +166,7 @@ public class MovementManager : MonoBehaviour
             }
             if (endPoint.transform.position.x != 0)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
                 Mathf.RoundToInt(endPoint.transform.position.x - 1)))
                     leftBlocked = true;
@@ -167,7 +174,7 @@ public class MovementManager : MonoBehaviour
             }
             if (endPoint.transform.position.z != maxWidth)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
                 Mathf.RoundToInt(endPoint.transform.position.x)))
                     downBlocked = true;
@@ -175,7 +182,7 @@ public class MovementManager : MonoBehaviour
             }
             if (endPoint.transform.position.x != maxHeight)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
+                if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
                 Mathf.RoundToInt(endPoint.transform.position.x + 1)))
                     rightBlocked = true;
@@ -195,7 +202,8 @@ public class MovementManager : MonoBehaviour
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
-        gameManager.GetComponent<GameManager>().resetTimer(false);
+        gameManager.resetTimer(false);
+        playerPosInGrid = gridManager.WorldToCellPos(transform.position);
     }
 
     public void initializeOrigin()
