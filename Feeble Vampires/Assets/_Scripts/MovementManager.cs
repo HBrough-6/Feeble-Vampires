@@ -143,47 +143,47 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
-            if (endPoint.transform.position.z == maxHeight) upBlocked = true;
+            if (endPoint.transform.position.x == maxHeight) upBlocked = true;
             else upBlocked = false;
 
-            if (endPoint.transform.position.x == 0) leftBlocked = true;
+            if (endPoint.transform.position.z == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.z == 0) downBlocked = true;
+            if (endPoint.transform.position.x == 0) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.x == maxWidth) rightBlocked = true;
+            if (endPoint.transform.position.z == maxWidth) rightBlocked = true;
             else rightBlocked = false;
 
             //check if tile is blocked
-            if (endPoint.transform.position.z != maxHeight)
+            if (endPoint.transform.position.x != maxHeight)
             {
-                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
-                Mathf.RoundToInt(endPoint.transform.position.x)))
+                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x + 1)),
+                Mathf.RoundToInt(endPoint.transform.position.z)))
                     upBlocked = true;
                 else upBlocked = false;
-            }
-            if (endPoint.transform.position.x != 0)
-            {
-                if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
-                Mathf.RoundToInt(endPoint.transform.position.x - 1)))
-                    leftBlocked = true;
-                else leftBlocked = false;
             }
             if (endPoint.transform.position.z != 0)
             {
                 if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
-                Mathf.RoundToInt(endPoint.transform.position.x)))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
+                Mathf.RoundToInt(endPoint.transform.position.z - 1)))
+                    leftBlocked = true;
+                else leftBlocked = false;
+            }
+            if (endPoint.transform.position.x != 0)
+            {
+                if (gridManager.GetTileObstructed
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x - 1)),
+                Mathf.RoundToInt(endPoint.transform.position.z)))
                     downBlocked = true;
                 else downBlocked = false;
             }
-            if (endPoint.transform.position.x != maxWidth)
+            if (endPoint.transform.position.z != maxWidth)
             {
                 if (gridManager.GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
-                Mathf.RoundToInt(endPoint.transform.position.x + 1)))
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
+                Mathf.RoundToInt(endPoint.transform.position.z + 1)))
                     rightBlocked = true;
                 else rightBlocked = false;
             }
