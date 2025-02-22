@@ -143,20 +143,20 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
-            if (endPoint.transform.position.z == 0) upBlocked = true;
+            if (endPoint.transform.position.z == maxHeight) upBlocked = true;
             else upBlocked = false;
 
             if (endPoint.transform.position.x == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.z == maxWidth) downBlocked = true;
+            if (endPoint.transform.position.z == 0) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.x == maxHeight) rightBlocked = true;
+            if (endPoint.transform.position.x == maxWidth) rightBlocked = true;
             else rightBlocked = false;
 
             //check if tile is blocked
-            if (endPoint.transform.position.z != 0)
+            if (endPoint.transform.position.z != maxHeight)
             {
                 if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
@@ -172,7 +172,7 @@ public class MovementManager : MonoBehaviour
                     leftBlocked = true;
                 else leftBlocked = false;
             }
-            if (endPoint.transform.position.z != maxWidth)
+            if (endPoint.transform.position.z != 0)
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
@@ -180,7 +180,7 @@ public class MovementManager : MonoBehaviour
                     downBlocked = true;
                 else downBlocked = false;
             }
-            if (endPoint.transform.position.x != maxHeight)
+            if (endPoint.transform.position.x != maxWidth)
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
