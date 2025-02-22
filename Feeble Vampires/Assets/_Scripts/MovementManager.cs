@@ -202,7 +202,7 @@ public class MovementManager : MonoBehaviour
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
         gameManager.resetTimer(false);
-        playerPosInGrid = gridManager.WorldToCellPos(transform.position);
+        playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
     }
 
     public void initializeOrigin()
