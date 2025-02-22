@@ -158,8 +158,7 @@ public class MovementManager : MonoBehaviour
             //check if tile is blocked
             if (endPoint.transform.position.z != maxHeight)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
+                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
                 Mathf.RoundToInt(endPoint.transform.position.x)))
                     upBlocked = true;
                 else upBlocked = false;
