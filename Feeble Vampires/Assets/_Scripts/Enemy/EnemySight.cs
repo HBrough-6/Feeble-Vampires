@@ -165,7 +165,7 @@ public class EnemySight : MonoBehaviour
             }
         }
 
-
+        seenTilesLocations = sightedTileLocations;
         CheckForPlayer(sightedTileLocations);
         DisplaySightline();
     }
