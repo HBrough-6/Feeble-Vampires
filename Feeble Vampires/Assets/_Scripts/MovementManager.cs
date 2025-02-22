@@ -183,7 +183,7 @@ public class MovementManager : MonoBehaviour
             {
                 if (gridManager.GetTileObstructed
                 (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
-                Mathf.RoundToInt(endPoint.transform.position.z + x)))
+                Mathf.RoundToInt(endPoint.transform.position.x + 1)))
                     rightBlocked = true;
                 else rightBlocked = false;
             }
