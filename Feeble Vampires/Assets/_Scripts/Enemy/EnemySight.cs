@@ -206,7 +206,7 @@ public class EnemySight : MonoBehaviour
             {
                 if (player.playerPosInGrid == seenTiles[i])
                 {
-                    // playerHealth.PlayerSpotted();
+                    enemyBrain.SpottedPlayer();
                 }
             }
         }

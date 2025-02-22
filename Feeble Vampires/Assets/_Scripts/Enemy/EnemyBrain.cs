@@ -45,4 +45,9 @@ public class EnemyBrain : MonoBehaviour
         // tell enemy manager that you died
         enemyManager.EnemyDied(this);
     }
+
+    public void SpottedPlayer()
+    {
+        enemyManager.PlayerSpotted();
+    }
 }

@@ -4,22 +4,18 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private GridManager gridManager;
+    private GameManager gameManager;
+
     private List<EnemyBrain> enemies;
     private List<EnemyBrain> deadEnemies;
 
     private void Awake()
     {
         gridManager = GetComponent<GridManager>();
+        gameManager = FindObjectOfType<GameManager>();
+
         enemies = new List<EnemyBrain>();
         deadEnemies = new List<EnemyBrain>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            EnemiesTakeTurn();
-        }
     }
 
     /// <summary>
@@ -51,5 +47,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemies[i].Activate();
         }
+    }
+
+    public void PlayerSpotted()
+    {
+        gameManager.gameOver();
     }
 }

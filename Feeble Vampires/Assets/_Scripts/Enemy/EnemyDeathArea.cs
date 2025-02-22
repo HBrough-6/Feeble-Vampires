@@ -3,13 +3,13 @@ using UnityEngine;
 public class EnemyDeathArea : MonoBehaviour
 {
     private Vector2Int[] deathTiles;
-    private FakePlayer player;
+    private MovementManager player;
     private EnemyBrain enemyBrain;
 
     private void Awake()
     {
         enemyBrain = GetComponent<EnemyBrain>();
-        player = FindObjectOfType<FakePlayer>();
+        player = FindObjectOfType<MovementManager>();
 
         deathTiles = new Vector2Int[8];
 
@@ -28,11 +28,11 @@ public class EnemyDeathArea : MonoBehaviour
         int sightedTile = findSightedTile();
         for (int i = 0; i < deathTiles.Length; i++)
         {
-            if (player.posInGrid == deathTiles[i] + enemyBrain.posInGrid)
+            if (player.playerPosInGrid == deathTiles[i] + enemyBrain.posInGrid)
             {
                 if (i == sightedTile)
                 {
-                    player.seen();
+                    enemyBrain.SpottedPlayer();
                 }
                 else
                 {
