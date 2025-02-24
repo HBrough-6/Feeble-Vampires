@@ -28,6 +28,8 @@ public class MovementManager : MonoBehaviour
 
     public EnemyManager enemyManager;
 
+    public UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,8 @@ public class MovementManager : MonoBehaviour
 
         maxWidth = (gridManager.width * 8) - 1;
         maxHeight = (gridManager.height * 8) - 1;
+
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -205,6 +209,8 @@ public class MovementManager : MonoBehaviour
         initializeOrigin();
         gameManager.resetTimer(false);
         playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
+
+        uiManager.makeMap();
 
         enemyManager.EnemiesTakeTurn();
     }

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int failedTimerCount;
     public float internalTimer;
 
+    UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,10 @@ public class GameManager : MonoBehaviour
         timer = 10;
 
         dead = false;
+
+        uiManager = FindObjectOfType<UIManager>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -34,6 +39,8 @@ public class GameManager : MonoBehaviour
         {
             takeDamage(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap();
 
         if (!dead)
         {
