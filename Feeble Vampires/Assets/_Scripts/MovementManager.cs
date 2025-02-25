@@ -4,6 +4,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     public GameObject player;
+    int baseCap;
     public int spaceCap;
     public int distance;
     public GameObject endPoint;
@@ -30,12 +31,18 @@ public class MovementManager : MonoBehaviour
 
     public UIManager uiManager;
 
+    private void Awake()
+    {
+        baseCap = 2;
+        spaceCap = baseCap;
+        distance = 0;
+        initializeOrigin();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        spaceCap = 2;
-        distance = 0;
-        initializeOrigin();
+        
 
         gameManager = FindObjectOfType<GameManager>();
 
@@ -149,16 +156,16 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
-            if (endPoint.transform.position.x == maxHeight) upBlocked = true;
+            if (endPoint.transform.position.z == maxHeight) upBlocked = true;
             else upBlocked = false;
 
-            if (endPoint.transform.position.z == 0) leftBlocked = true;
+            if (endPoint.transform.position.x == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.x == 0) downBlocked = true;
+            if (endPoint.transform.position.z == 0) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.z == maxWidth) rightBlocked = true;
+            if (endPoint.transform.position.x == maxWidth) rightBlocked = true;
             else rightBlocked = false;
 
             //check if tile is blocked
@@ -210,7 +217,7 @@ public class MovementManager : MonoBehaviour
         gameManager.resetTimer(false);
         playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
 
-        uiManager.makeMap();
+        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
 
         enemyManager.EnemiesTakeTurn();
     }

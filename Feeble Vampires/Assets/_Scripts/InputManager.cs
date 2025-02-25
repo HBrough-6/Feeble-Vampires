@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class InputManager : MonoBehaviour
     public KeyCode cancel;
     public KeyCode useItem;
 
-    public GameObject titleManager;
+    public KeyCode clockwise;
+    public KeyCode counterClockwise;
+
+    public TitleManager titleManager;
 
     int tempButtonPos;
 
@@ -21,6 +25,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         if (north == KeyCode.None) north = KeyCode.W;
         if (west == KeyCode.None) west = KeyCode.A;
         if (south == KeyCode.None) south = KeyCode.S;
@@ -28,6 +33,12 @@ public class InputManager : MonoBehaviour
         if (confirm == KeyCode.None) confirm = KeyCode.Return;
         if (cancel == KeyCode.None) cancel = KeyCode.Escape;
         if (useItem == KeyCode.None) useItem = KeyCode.Q;
+        */
+
+        if (SceneManager.GetActiveScene().name == "TitleScreen") titleManager = FindObjectOfType<TitleManager>();
+
+        clockwise = KeyCode.LeftArrow;
+        counterClockwise = KeyCode.RightArrow;
 
         readyForBind = false;
     }

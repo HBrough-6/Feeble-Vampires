@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         gridMiniMap.text = "";
 
+        
         for (int xAxis = gridManager.width * 8 - 1; xAxis >= 0; xAxis--)
         {
             for (int yAxis = gridManager.height * 8 - 1; yAxis >= 0; yAxis--)
