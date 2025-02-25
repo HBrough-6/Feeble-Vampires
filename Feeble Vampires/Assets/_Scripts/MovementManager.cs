@@ -4,6 +4,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     public GameObject player;
+    int baseCap;
     public int spaceCap;
     public int distance;
     public GameObject endPoint;
@@ -32,7 +33,8 @@ public class MovementManager : MonoBehaviour
 
     private void Awake()
     {
-        spaceCap = 2;
+        baseCap = 2;
+        spaceCap = baseCap;
         distance = 0;
         initializeOrigin();
     }
