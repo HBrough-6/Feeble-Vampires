@@ -1754,8 +1754,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 1
+  canEcholocate: 0
+  isSwifter: 1
+  swiftLevel: 0
   uiManager: {fileID: 0}
+  movementManager: {fileID: 0}
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1806,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   inputManager: {fileID: 0}
   cameraRotation: 0
+  uiManager: {fileID: 0}
 --- !u!1 &1167860514
 GameObject:
   m_ObjectHideFlags: 0
