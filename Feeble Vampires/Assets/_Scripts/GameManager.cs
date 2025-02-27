@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int failedTimerCount;
     public float internalTimer;
 
+    UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +27,20 @@ public class GameManager : MonoBehaviour
         timer = 10;
 
         dead = false;
+
+        uiManager = FindObjectOfType<UIManager>();
     }
+
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            playerHealth--;
-            if (playerHealth == 0) gameOver();
+            takeDamage(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap();
 
         if (!dead)
         {
@@ -56,6 +62,8 @@ public class GameManager : MonoBehaviour
     {
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
         dead = true;
+
+        if (playerHealth != 0) playerHealth = 0;
     }
 
     public void restart()
@@ -66,6 +74,12 @@ public class GameManager : MonoBehaviour
     public void exit()
     {
         Application.Quit();
+    }
+
+    public void takeDamage(int dealtDamage)
+    {
+        playerHealth -= dealtDamage;
+        if (playerHealth == 0) gameOver();
     }
 
     public void resetTimer(bool expired)

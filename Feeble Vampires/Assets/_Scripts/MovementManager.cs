@@ -1,15 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
     public GameObject player;
+    int baseCap;
     public int spaceCap;
     public int distance;
     public GameObject endPoint;
 
-    public GameObject gridManager;
+    // Heath Change
+    public GridManager gridManager;
+    // Heath Change
+    public Vector2Int playerPosInGrid;
 
     public List<Vector2> pathPoints;
     Vector2 newPoint;
@@ -19,22 +22,39 @@ public class MovementManager : MonoBehaviour
     public bool downBlocked;
     public bool rightBlocked;
 
-    public GameObject gameManager;
+    public GameManager gameManager;
 
     private int maxWidth;
     private int maxHeight;
 
+    public EnemyManager enemyManager;
+
+    public UIManager uiManager;
+
+    private void Awake()
+    {
+        baseCap = 2;
+        spaceCap = baseCap;
+        distance = 0;
+        initializeOrigin();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        spaceCap = 2;
-        distance = 0;
-        initializeOrigin();
+        
 
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = FindObjectOfType<GameManager>();
 
-        maxWidth = (gridManager.GetComponent<FloorGrid>().ChunkWidth * -8) + 1;
-        maxHeight = (gridManager.GetComponent<FloorGrid>().ChunkHeight * 8) - 1;
+        // Heath Change
+        gridManager = FindObjectOfType<GridManager>();
+        // Heath Change
+        playerPosInGrid = new Vector2Int(0, 0);
+
+        maxWidth = (gridManager.width * 8) - 1;
+        maxHeight = (gridManager.height * 8) - 1;
+
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -42,11 +62,11 @@ public class MovementManager : MonoBehaviour
     {
         if (distance < 1) endPoint.transform.position = new Vector3
                 (endPoint.transform.position.x, -1, endPoint.transform.position.z);
-        else endPoint.transform.position = new Vector3(endPoint.transform.position.x, 1, endPoint.transform.position.z);
+        else endPoint.transform.position = new Vector3(endPoint.transform.position.x, 0.5f, endPoint.transform.position.z);
 
         movementBlocked();
 
-        if (gameManager.GetComponent<GameManager>().playerHealth > 0)
+        if (gameManager.playerHealth > 0)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -136,50 +156,49 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
-            if (endPoint.transform.position.z == 0) upBlocked = true;
+            if (endPoint.transform.position.z == maxHeight) upBlocked = true;
             else upBlocked = false;
 
             if (endPoint.transform.position.x == 0) leftBlocked = true;
             else leftBlocked = false;
 
-            if (endPoint.transform.position.z == maxWidth) downBlocked = true;
+            if (endPoint.transform.position.z == 0) downBlocked = true;
             else downBlocked = false;
 
-            if (endPoint.transform.position.x == maxHeight) rightBlocked = true;
+            if (endPoint.transform.position.x == maxWidth) rightBlocked = true;
             else rightBlocked = false;
 
             //check if tile is blocked
+            if (endPoint.transform.position.x != maxHeight)
+            {
+                if (gridManager.GetTileObstructed(Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x + 1)),
+                Mathf.RoundToInt(endPoint.transform.position.z)))
+                    rightBlocked = true;
+                else rightBlocked = false;
+            }
             if (endPoint.transform.position.z != 0)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z + 1)),
-                Mathf.RoundToInt(endPoint.transform.position.x)))
-                    upBlocked = true;
-                else upBlocked = false;
+                if (gridManager.GetTileObstructed
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
+                Mathf.RoundToInt(endPoint.transform.position.z - 1)))
+                    downBlocked = true;
+                else downBlocked = false;
             }
             if (endPoint.transform.position.x != 0)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
-                Mathf.RoundToInt(endPoint.transform.position.x - 1)))
+                if (gridManager.GetTileObstructed
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x - 1)),
+                Mathf.RoundToInt(endPoint.transform.position.z)))
                     leftBlocked = true;
                 else leftBlocked = false;
             }
             if (endPoint.transform.position.z != maxWidth)
             {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z - 1)),
-                Mathf.RoundToInt(endPoint.transform.position.x)))
-                    downBlocked = true;
-                else downBlocked = false;
-            }
-            if (endPoint.transform.position.x != maxHeight)
-            {
-                if (gridManager.GetComponent<FloorGrid>().GetTileObstructed
-                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.z)),
-                Mathf.RoundToInt(endPoint.transform.position.x + 1)))
-                    rightBlocked = true;
-                else rightBlocked = false;
+                if (gridManager.GetTileObstructed
+                (Mathf.RoundToInt(Mathf.Abs(endPoint.transform.position.x)),
+                Mathf.RoundToInt(endPoint.transform.position.z + 1)))
+                    upBlocked = true;
+                else upBlocked = false;
             }
         }
     }
@@ -195,7 +214,12 @@ public class MovementManager : MonoBehaviour
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
-        gameManager.GetComponent<GameManager>().resetTimer(false);
+        gameManager.resetTimer(false);
+        playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
+
+        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+
+        enemyManager.EnemiesTakeTurn();
     }
 
     public void initializeOrigin()

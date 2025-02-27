@@ -19,7 +19,7 @@ public class EnemySight : MonoBehaviour
     private GameObject[] sightTileObjects;
     public GameObject sightTilePrefab;
 
-    private FakePlayer player;
+    private MovementManager player;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class EnemySight : MonoBehaviour
         enemyMovement = GetComponent<EnemyMovement>();
         enemyBrain = GetComponent<EnemyBrain>();
 
-        player = FindObjectOfType<FakePlayer>();
+        player = FindObjectOfType<MovementManager>();
 
         sightTileObjects = new GameObject[8];
         seenTilesLocations = new Vector2Int[8];
@@ -165,7 +165,7 @@ public class EnemySight : MonoBehaviour
             }
         }
 
-
+        seenTilesLocations = sightedTileLocations;
         CheckForPlayer(sightedTileLocations);
         DisplaySightline();
     }
@@ -204,9 +204,9 @@ public class EnemySight : MonoBehaviour
         {
             if (tileSeen[i] && player != null)
             {
-                if (player.posInGrid == seenTiles[i])
+                if (player.playerPosInGrid == seenTiles[i])
                 {
-                    player.seen();
+                    enemyBrain.SpottedPlayer();
                 }
             }
         }

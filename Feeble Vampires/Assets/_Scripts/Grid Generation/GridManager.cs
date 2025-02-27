@@ -222,6 +222,13 @@ public class GridManager : MonoBehaviour
         return grid.CellToWorld(new Vector3Int(x, 0, y));
     }
 
+    public Vector2Int WorldToCellPos(Vector3 pos)
+    {
+        Vector3Int vector3Temp = grid.WorldToCell(pos);
+        Vector2Int temp = new Vector2Int(vector3Temp.x, vector3Temp.z);
+        return temp;
+    }
+
     public bool GetTileObstructed(int x, int y)
     {
         Vector3 rayPos = grid.CellToWorld(new Vector3Int(x, 0, y));
