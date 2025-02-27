@@ -1758,8 +1758,8 @@ MonoBehaviour:
   canEcholocate: 0
   isSwifter: 0
   swiftLevel: 0
-  canRushAttack: 1
-  smarter: 0
+  canRushAttack: 0
+  smarter: 1
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262

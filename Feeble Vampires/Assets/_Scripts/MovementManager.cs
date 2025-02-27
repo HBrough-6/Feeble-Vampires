@@ -62,6 +62,8 @@ public class MovementManager : MonoBehaviour
         maxHeight = (gridManager.height * 8) - 1;
 
         uiManager = FindObjectOfType<UIManager>();
+
+        gameManager.resetTimer(false);
     }
 
     // Update is called once per frame

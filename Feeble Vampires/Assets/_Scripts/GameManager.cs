@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
     {
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
-        timer = movementManager.timeLimit;
-
         dead = false;
 
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
+
+        timer = movementManager.timeLimit;
     }
 
 
