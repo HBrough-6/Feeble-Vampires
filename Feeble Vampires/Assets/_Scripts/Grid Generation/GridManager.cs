@@ -14,10 +14,14 @@ public class GridManager : MonoBehaviour
 
     public GameObject whiteTile;
     public GameObject blackTile;
-    public GameObject Obstruction;
+
+    public GameObject wallPrefab;
+    public GameObject obstructionPrefab;
+    public GameObject sigilPrefab;
 
     public Transform obstructionsParent;
     public Transform tilesParent;
+    public Transform SigilParent;
 
     public int obstructedTiles;
 
@@ -31,7 +35,6 @@ public class GridManager : MonoBehaviour
         grid = GetComponent<Grid>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
-
     }
 
     private void Start()
@@ -107,7 +110,7 @@ public class GridManager : MonoBehaviour
         int startX = chunkPos.x * 8;
         int startY = chunkPos.y * 8;
 
-        Array2DBool newChunkGrid = RotateChunk(newChunk);
+        Array2DInt newChunkGrid = RotateChunk(newChunk);
 
         // create variable for storing the tile position in the grid.
         Vector3Int tilePos = Vector3Int.zero;
@@ -118,21 +121,38 @@ public class GridManager : MonoBehaviour
             for (int col = 0; col < 8; col++)
             {
                 // check if the current piece is an obstructed tile
-                bool obstructs = newChunkGrid.GetCell(col, row);
+                int tileInfo = newChunkGrid.GetCell(col, row);
 
-                // find the position of the tile in the world
-                if (obstructs)
+                // if the tile isn't empty, do something
+                if (tileInfo != 0)
                 {
+                    // find the position of the tile
                     tilePos.x = startX + col;
                     tilePos.z = startY + row;
                     Vector3 obstructionPos = grid.CellToWorld(tilePos);
+                    switch (tileInfo)
+                    {
+                        case 1:
+                            // place a wall
+                            Instantiate(wallPrefab, obstructionPos, transform.rotation, obstructionsParent);
+                            obstructedTiles++;
+                            break;
 
-                    obstructedTiles++;
+                        case 2:
+                            // place an obstruction
+                            Instantiate(obstructionPrefab, obstructionPos, transform.rotation, obstructionsParent);
+                            obstructedTiles++;
+                            break;
 
-
-                    // create the obstruction in the world
-                    Instantiate(Obstruction, obstructionPos, transform.rotation, obstructionsParent);
+                        case 3:
+                            // place a sigil
+                            Instantiate(sigilPrefab, obstructionPos, transform.rotation, obstructionsParent);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
             }
         }
     }
@@ -143,17 +163,17 @@ public class GridManager : MonoBehaviour
         return premadeChunks[randomChunk];
     }
 
-    private Array2DBool RotateChunk(Chunk chunk)
+    private Array2DInt RotateChunk(Chunk chunk)
     {
-        // convert chunk into a bool array
-        bool[,] cells = chunk.gridChunk.GetCells();
-        bool[,] rotatedChunk = new bool[8, 8];
+        // convert chunk into an int array
+        int[,] cells = chunk.chunkData.GetCells();
+        int[,] rotatedChunk = new int[8, 8];
 
         // length of the array
         int n = cells.GetLength(0);
 
         // temporary chunk storage
-        Array2DBool temp = tempChunkStorage.gridChunk;
+        Array2DInt preRotatedArray = tempChunkStorage.chunkData;
 
         // variable to store the random number of rotations
         int randomNum;
@@ -173,7 +193,7 @@ public class GridManager : MonoBehaviour
             {
                 for (int j = 0; j < n; j++)
                 {
-                    temp.SetCell(i, j, cells[i, j]);
+                    preRotatedArray.SetCell(i, j, cells[i, j]);
                 }
             }
         }
@@ -197,13 +217,13 @@ public class GridManager : MonoBehaviour
             {
                 for (int j = 0; j < n; j++)
                 {
-                    temp.SetCell(i, j, rotatedChunk[i, j]);
+                    preRotatedArray.SetCell(i, j, rotatedChunk[i, j]);
                 }
             }
         }
 
         // rotate the chunk
-        return temp;
+        return preRotatedArray;
     }
 
     private void OnGUI()
