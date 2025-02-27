@@ -31,6 +31,8 @@ public class MovementManager : MonoBehaviour
 
     public UIManager uiManager;
 
+    public bool hemoglobinRushing;
+
     private void Awake()
     {
         baseCap = 2;
@@ -220,6 +222,12 @@ public class MovementManager : MonoBehaviour
         if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
 
         enemyManager.EnemiesTakeTurn();
+
+        if (hemoglobinRushing)
+        {
+            spaceCap -= 2;
+            hemoglobinRushing = false;
+        }
     }
 
     public void initializeOrigin()

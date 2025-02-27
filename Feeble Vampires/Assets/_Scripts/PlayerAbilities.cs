@@ -7,6 +7,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool canEcholocate;
     public bool isSwifter;
     public int swiftLevel;
+    public bool canRushAttack;
 
     public UIManager uiManager;
     public MovementManager movementManager;
