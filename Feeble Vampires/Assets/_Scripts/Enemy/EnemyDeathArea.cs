@@ -6,10 +6,13 @@ public class EnemyDeathArea : MonoBehaviour
     private MovementManager player;
     private EnemyBrain enemyBrain;
 
+    private PlayerAbilities playerAbilities;
+
     private void Awake()
     {
         enemyBrain = GetComponent<EnemyBrain>();
         player = FindObjectOfType<MovementManager>();
+        playerAbilities = FindObjectOfType<PlayerAbilities>();
 
         deathTiles = new Vector2Int[8];
 
@@ -37,6 +40,10 @@ public class EnemyDeathArea : MonoBehaviour
                 else
                 {
                     enemyBrain.Kill();
+                    if (playerAbilities.canRushAttack)
+                    {
+                        player.startHemoglobinRush();
+                    }
                 }
                 break;
             }

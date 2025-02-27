@@ -264,6 +264,7 @@ MonoBehaviour:
   timer: 0
   failedTimerCount: 0
   internalTimer: 0
+  movementManager: {fileID: 0}
 --- !u!4 &9075496
 Transform:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &111426614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,8 +1756,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canEcholocate: 0
-  isSwifter: 1
+  isSwifter: 0
   swiftLevel: 0
+  canRushAttack: 1
+  smarter: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262
@@ -1955,6 +1958,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
+  hemoglobinRushing: 0
+  baseTime: 0
+  timeLimit: 0
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -3195,7 +3201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1931230595
 MonoBehaviour:
   m_ObjectHideFlags: 0

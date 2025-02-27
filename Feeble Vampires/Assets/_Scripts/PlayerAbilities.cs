@@ -8,6 +8,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool isSwifter;
     public int swiftLevel;
     public bool canRushAttack;
+    public bool smarter;
 
     public UIManager uiManager;
     public MovementManager movementManager;
@@ -24,6 +25,11 @@ public class PlayerAbilities : MonoBehaviour
         if (isSwifter)
         {
             swiftLevel += 1;
+        }
+
+        if (smarter)
+        {
+            movementManager.timeLimit = movementManager.baseTime + 2;
         }
 
         movementManager.spaceCap += swiftLevel;

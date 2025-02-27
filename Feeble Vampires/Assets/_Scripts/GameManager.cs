@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int failedTimerCount;
     public float internalTimer;
 
+    public MovementManager movementManager;
+
     UIManager uiManager;
 
     // Start is called before the first frame update
@@ -24,11 +26,12 @@ public class GameManager : MonoBehaviour
     {
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
-        timer = 10;
+        timer = movementManager.timeLimit;
 
         dead = false;
 
         uiManager = FindObjectOfType<UIManager>();
+        movementManager = FindObjectOfType<MovementManager>();
     }
 
 
@@ -84,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void resetTimer(bool expired)
     {
-        timer = 10;
+        timer = movementManager.timeLimit;
         internalTimer = 0;
 
         if (expired)

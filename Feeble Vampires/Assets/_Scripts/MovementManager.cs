@@ -33,10 +33,15 @@ public class MovementManager : MonoBehaviour
 
     public bool hemoglobinRushing;
 
+    public int baseTime;
+    public int timeLimit;
+
     private void Awake()
     {
         baseCap = 2;
         spaceCap = baseCap;
+        baseTime = 10;
+        timeLimit = baseTime;
         distance = 0;
         initializeOrigin();
     }
@@ -213,6 +218,12 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
+        if (hemoglobinRushing)
+        {
+            spaceCap -= 2;
+            hemoglobinRushing = false;
+        }
+
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
@@ -222,12 +233,6 @@ public class MovementManager : MonoBehaviour
         if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
 
         enemyManager.EnemiesTakeTurn();
-
-        if (hemoglobinRushing)
-        {
-            spaceCap -= 2;
-            hemoglobinRushing = false;
-        }
     }
 
     public void initializeOrigin()
@@ -248,5 +253,11 @@ public class MovementManager : MonoBehaviour
     {
         pathPoints.RemoveAt(distance);
         distance--;
+    }
+
+    public void startHemoglobinRush()
+    {
+        spaceCap += 2;
+        hemoglobinRushing = true;
     }
 }
