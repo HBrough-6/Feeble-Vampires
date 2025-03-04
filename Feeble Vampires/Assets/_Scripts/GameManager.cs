@@ -94,5 +94,10 @@ public class GameManager : MonoBehaviour
         {
             failedTimerCount++;
         }
+
+        if (movementManager.player.GetComponent<PlayerAbilities>().hideable)
+        {
+
+        }
     }
 }
