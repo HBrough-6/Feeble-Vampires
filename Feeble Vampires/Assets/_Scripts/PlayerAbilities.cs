@@ -10,6 +10,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool canRushAttack;
     public bool smarter;
     public bool hideable;
+    public bool isGreedy;
 
     public UIManager uiManager;
     public MovementManager movementManager;
