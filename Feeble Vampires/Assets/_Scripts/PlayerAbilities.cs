@@ -9,6 +9,7 @@ public class PlayerAbilities : MonoBehaviour
     public int swiftLevel;
     public bool canRushAttack;
     public bool smarter;
+    public bool hideable;
 
     public UIManager uiManager;
     public MovementManager movementManager;

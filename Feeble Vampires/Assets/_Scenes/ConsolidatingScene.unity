@@ -1759,7 +1759,8 @@ MonoBehaviour:
   isSwifter: 0
   swiftLevel: 0
   canRushAttack: 0
-  smarter: 1
+  smarter: 0
+  hideable: 1
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262
@@ -1959,6 +1960,7 @@ MonoBehaviour:
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
   hemoglobinRushing: 0
+  hanging: 0
   baseTime: 0
   timeLimit: 0
 --- !u!4 &1269597651
@@ -2453,7 +2455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1651404533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3201,7 +3203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1931230595
 MonoBehaviour:
   m_ObjectHideFlags: 0

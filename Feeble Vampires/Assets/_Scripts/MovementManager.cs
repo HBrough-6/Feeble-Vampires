@@ -32,6 +32,7 @@ public class MovementManager : MonoBehaviour
     public UIManager uiManager;
 
     public bool hemoglobinRushing;
+    public bool hanging;
 
     public int baseTime;
     public int timeLimit;
@@ -234,6 +235,8 @@ public class MovementManager : MonoBehaviour
 
         if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
 
+        hanging = false;
+
         enemyManager.EnemiesTakeTurn();
     }
 
@@ -261,5 +264,10 @@ public class MovementManager : MonoBehaviour
     {
         spaceCap += 2;
         hemoglobinRushing = true;
+    }
+
+    public void switchHangingStates()
+    {
+        hanging = !hanging;
     }
 }

@@ -49,6 +49,6 @@ public class EnemyBrain : MonoBehaviour
 
     public void SpottedPlayer()
     {
-        enemyManager.PlayerSpotted();
+        if (enemyManager.gameManager.movementManager.hanging == false) enemyManager.PlayerSpotted();
     }
 }
