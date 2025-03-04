@@ -90,14 +90,15 @@ public class GameManager : MonoBehaviour
         timer = movementManager.timeLimit;
         internalTimer = 0;
 
+        if (movementManager.player.GetComponent<PlayerAbilities>().hideable)
+        {
+            movementManager.switchHangingStates();
+        }
+
         if (expired)
         {
             failedTimerCount++;
-        }
-
-        if (movementManager.player.GetComponent<PlayerAbilities>().hideable)
-        {
-
+            movementManager.enemyManager.EnemiesTakeTurn();
         }
     }
 }

@@ -1760,6 +1760,7 @@ MonoBehaviour:
   swiftLevel: 0
   canRushAttack: 0
   smarter: 0
+  hideable: 1
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262
@@ -1959,6 +1960,7 @@ MonoBehaviour:
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
   hemoglobinRushing: 0
+  hanging: 0
   baseTime: 0
   timeLimit: 0
 --- !u!4 &1269597651

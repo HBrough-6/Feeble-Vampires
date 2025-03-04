@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private GridManager gridManager;
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     private List<EnemyBrain> enemies;
     private List<EnemyBrain> deadEnemies;
