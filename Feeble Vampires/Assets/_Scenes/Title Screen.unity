@@ -4604,10 +4604,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The player can select what direction they move using WASD, and confirm
+  m_text: 'The player can select what direction they move using WASD, and confirm
     the movement using Enter. The player starts with two move distance, and has 10
     seconds per move. If the player reaches three Timer Fails, they die and must
     restart.
+
+
+    If the player must collect pink sigils scattered around the map
+    in order to exit the level.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4634,8 +4638,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
