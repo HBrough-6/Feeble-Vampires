@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Array2DEditor;
 using UnityEngine;
@@ -58,12 +57,22 @@ public class GridManager : MonoBehaviour
         sigilLocations = new List<Vector2Int>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
-        levelManager = FindObjectOfType<LevelManager>();
+
     }
 
     private void Start()
     {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+
+    public void CreateGrid(int wid, int hei)
+    {
+        width = wid;
+        height = hei;
+
         GenerateGrid();
+        FillWholeGrid();
+        VerifyGrid();
     }
 
     #region GridCreation
@@ -73,12 +82,21 @@ public class GridManager : MonoBehaviour
         int cellHeight = height * chunkSize;
         int cellWidth = width * chunkSize;
 
+        // clear tiles from the grid
+        for (int i = tilesParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(tilesParent.GetChild(i).gameObject);
+        }
+
         // reset the sigil locations
         sigilLocations = new List<Vector2Int>();
 
         // start at the grid Manager Position
         Vector3 cellPos = transform.position;
         Vector3Int cellPosInGrid = Vector3Int.zero;
+
+        // delete old tiles
+
 
         bool isWhite = true;
 
@@ -106,9 +124,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-
-
-        VerifyGrid();
     }
 
     private void FillWholeGrid()
@@ -120,6 +135,10 @@ public class GridManager : MonoBehaviour
         for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
         {
             Destroy(obstructionsParent.GetChild(i).gameObject);
+        }
+        for (int i = SigilParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(SigilParent.GetChild(i).gameObject);
         }
         // clear sigil locations
         sigilLocations.Clear();
@@ -329,8 +348,8 @@ public class GridManager : MonoBehaviour
 
     public Vector2Int GetChunkLocation(Vector2Int pos)
     {
-        int x = pos.x % 8;
-        int y = pos.y % 8;
+        int x = pos.x / 8;
+        int y = pos.y / 8;
 
         return new Vector2Int(x, y);
     }
@@ -343,7 +362,7 @@ public class GridManager : MonoBehaviour
     #endregion
 
     // runs a modified version of breadth first search to discover all tiles that are accessible to the player
-    private IEnumerator VerifyGrid()
+    private void VerifyGrid()
     {
         // find all the points on the bottom and top row that are not obstructed
         List<Vector2Int> bottomRow = new List<Vector2Int>();
@@ -381,7 +400,7 @@ public class GridManager : MonoBehaviour
 
         while (bottomRow.Count > 0)
         {
-            Debug.Log(bottomRow.Count);
+            // Debug.Log(bottomRow.Count);
             for (int i = SigilParent.childCount - 1; i >= 0; i--)
             {
                 Destroy(SigilParent.GetChild(i).gameObject);
@@ -416,8 +435,8 @@ public class GridManager : MonoBehaviour
                 Vector2Int pos = tile.posInGrid;
 
                 // uncomment this and turn this function into a coroutine to show how the algorithm goes through the board
-                yield return new WaitForSeconds(timeBetweenIncrement);
-                Instantiate(foundTilePrefab, CellToWorldPos(pos) + Vector3.up, transform.rotation, SigilParent);
+                //yield return new WaitForSeconds(timeBetweenIncrement);
+                //Instantiate(foundTilePrefab, CellToWorldPos(pos) + Vector3.up, transform.rotation, SigilParent);
 
                 Vector2Int upTile = pos + new Vector2Int(0, 1);
                 Vector2Int downTile = pos + new Vector2Int(0, -1);
@@ -507,24 +526,27 @@ public class GridManager : MonoBehaviour
                 // keep the bigger BST
                 savedFoundTiles = tiles;
                 bestStartPos = currentStartPos;
+
+                Debug.Log("Updating found tiles");
             }
 
             if (bottomRow.Count > 0)
             {
                 // choose another random start point
                 randNum = UnityEngine.Random.Range(0, bottomRow.Count);
-                Debug.Log("Count: " + bottomRow.Count + " RandNum: " + randNum);
+                //Debug.Log("Count: " + bottomRow.Count + " RandNum: " + randNum);
                 currentStartPos = bottomRow[randNum];
             }
-            // destroy all found tile markers
+            // use when displaying BST
+            /*// destroy all found tile markers
             for (int i = SigilParent.childCount - 1; i >= 0; i--)
             {
                 Destroy(SigilParent.GetChild(i).gameObject);
-            }
+            }*/
         }
 
         // display the best start tile
-        Instantiate(foundTilePrefab, CellToWorldPos(bestStartPos) + Vector3.up, transform.rotation, SigilParent);
+        // Instantiate(foundTilePrefab, CellToWorldPos(bestStartPos) + Vector3.up, transform.rotation, SigilParent);
 
         List<Vector2Int> validSigilLocations = new List<Vector2Int>();
         Vector2Int startChunk = GetChunkLocation(bestStartPos);
@@ -535,9 +557,12 @@ public class GridManager : MonoBehaviour
             int tileIndex = sigilLocations[i].x + sigilLocations[i].y * 8 * width;
             // if the sigil location was found during the BST, add it to the list of valid sigils
             // don't include the sigil that is in the starting chunk
+            Debug.Log("Sigil at index " + i + " found is " + savedFoundTiles[tileIndex].found);
+            Debug.Log("chunk location " + GetChunkLocation(sigilLocations[i]));
             if (savedFoundTiles[tileIndex].found && GetChunkLocation(sigilLocations[i]) != startChunk)
             {
                 validSigilLocations.Add(sigilLocations[i]);
+                Debug.Log("found valid location");
             }
         }
 
@@ -569,7 +594,8 @@ public class GridManager : MonoBehaviour
             // do something about distance between sigils
             // spawn another random sigil
             randSigil = UnityEngine.Random.Range(0, validSigilLocations.Count);
-            Debug.Log(randSigil + "  validSigilLocations count " + validSigilLocations.Count);
+            //Debug.Log(randSigil + "  validSigilLocations count " + validSigilLocations.Count);
+            Debug.Log("Random number: " + randSigil + " number of sigil locations" + validSigilLocations.Count);
             Instantiate(sigilPrefab, CellToWorldPos(validSigilLocations[randSigil]), transform.rotation, obstructionsParent);
 
             validSigilLocations.RemoveAt(randSigil);
@@ -585,24 +611,23 @@ public class GridManager : MonoBehaviour
             int tileIndex = topRow[i].x + topRow[i].y * 8 * width;
             // check if there is a valid tile to the right of the current index
             // and check if that tile was found in the BST
-            Debug.Log(topRow[i].x + " " + topRow[i + 1].x);
             if (topRow[i].x == (topRow[i + 1].x - 1))
             {
-                Debug.Log("dooro " + i);
                 doorPositions.Add(topRow[i]);
             }
         }
 
         // choose a random position from the list and spawn a door there
         int randomDoor = UnityEngine.Random.Range(0, doorPositions.Count);
-        Debug.Log(randomDoor + "   " + doorPositions.Count);
-        Instantiate(doorPrefab, CellToWorldPos(doorPositions[randomDoor]), transform.rotation, SigilParent);
+        Vector2Int doorPosition = doorPositions[randomDoor];
+        // sDebug.Log(randomDoor + "   " + doorPositions.Count);
+        Instantiate(doorPrefab, CellToWorldPos(doorPosition), transform.rotation, SigilParent);
 
         // set positions
 
         levelManager.SetSigilRequirement(sigilCount);
         levelManager.SetStartLocation(bestStartPos);
-        levelManager.SetDoorLocation(doorPositions[randomDoor]);
+        levelManager.SetDoorLocation(doorPosition);
 
         // Generate Enemy Locations
 
@@ -610,17 +635,13 @@ public class GridManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUILayout.Button("Import"))
+        if (GUILayout.Button("Create Grid"))
         {
-            for (int i = SigilParent.childCount - 1; i >= 0; i--)
-            {
-                Destroy(SigilParent.GetChild(i).gameObject);
-            }
-            FillWholeGrid();
+            CreateGrid(2, 2);
         }
         if (GUILayout.Button("Verify the grid"))
         {
-            StartCoroutine(VerifyGrid());
+            VerifyGrid();
         }
     }
 }
