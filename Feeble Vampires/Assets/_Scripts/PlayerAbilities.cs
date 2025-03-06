@@ -13,6 +13,7 @@ public class PlayerAbilities : MonoBehaviour
     public UIManager uiManager;
     public MovementManager movementManager;
 
+    public int experiencePoints;
 
     // Start is called before the first frame update
     void Start()
@@ -45,10 +46,18 @@ public class PlayerAbilities : MonoBehaviour
     {
         swiftLevel += 1;
         movementManager.spaceCap += swiftLevel;
+        spendPoints();
     }
 
     public void GetSmart()
     {
         movementManager.timeLimit = movementManager.baseTime + 2;
+        spendPoints();
+    }
+
+    public void spendPoints()
+    {
+        if (isGreedy) experiencePoints--;
+        else experiencePoints -= 2;
     }
 }

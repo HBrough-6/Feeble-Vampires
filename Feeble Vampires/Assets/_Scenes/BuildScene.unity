@@ -2290,6 +2290,7 @@ MonoBehaviour:
   isGreedy: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
+  experiencePoints: 2
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
