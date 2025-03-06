@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class VillagerManager : MonoBehaviour
 {
-    private VillagerSight villagerSight;
+    /*private VillagerSight villagerSight;
     private VillagerMovement villagerMovement;
 
     private void Awake()
@@ -24,5 +24,5 @@ public class VillagerManager : MonoBehaviour
         {
             Activate();
         }
-    }
+    }*/
 }

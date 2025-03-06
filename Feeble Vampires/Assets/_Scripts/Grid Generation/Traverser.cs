@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Traverser : MonoBehaviour
 {
-    public FloorGrid grid;
+    /*public FloorGrid grid;
     private Vector2Int posInGrid = new Vector2Int(0, 0);
 
     private void Start()
@@ -33,5 +33,5 @@ public class Traverser : MonoBehaviour
             transform.position = grid.GetTilePositionFromGrid(posInGrid.x, posInGrid.y);
         }
 
-    }
+    }*/
 }
