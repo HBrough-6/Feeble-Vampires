@@ -114,7 +114,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2633858919101397681}
-  - component: {fileID: 7309186424537128982}
   m_Layer: 0
   m_Name: WhiteTile
   m_TagString: Untagged
@@ -138,17 +137,3 @@ Transform:
   - {fileID: 3545121176508198605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7309186424537128982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9042843471032817607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 119bbe7ab84afeb4b892debab3ba57e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileLocation: {x: 0, y: 0, z: 0}
-  red: {fileID: 2100000, guid: 1283be640b908be44963ae1b8a719b05, type: 2}

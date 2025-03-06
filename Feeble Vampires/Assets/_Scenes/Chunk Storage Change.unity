@@ -264,6 +264,7 @@ MonoBehaviour:
   timer: 0
   failedTimerCount: 0
   internalTimer: 0
+  movementManager: {fileID: 0}
 --- !u!4 &9075496
 Transform:
   m_ObjectHideFlags: 0
@@ -1430,7 +1431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226dffd1590a7ff46b077068e68c8724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1572626556}
 --- !u!4 &858873273
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,18 +1459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28130c54a78d6459726aabbc21ef26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  moveNodes:
-  - {x: 0, y: 1}
-  - {x: 15, y: 1}
-  - {x: 15, y: 5}
-  - {x: 10, y: 5}
-  - {x: 10, y: 7}
-  - {x: 4, y: 7}
-  - {x: 4, y: 5}
-  - {x: 0, y: 5}
-  moveDir: {x: 0, y: 0}
-  posInGrid: {x: -1, y: -1}
 --- !u!114 &858873275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,8 +1483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7605cc468e217fa4db1b6524036b81dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  sightLength: 4
 --- !u!1 &921402157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,8 +1569,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921402157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.61566144, y: 0, z: 0, w: 0.7880108}
-  m_LocalPosition: {x: 11.5, y: 21.5, z: 4}
+  m_LocalRotation: {x: 0.7071064, y: -0, z: -0, w: 0.7071072}
+  m_LocalPosition: {x: 15.5, y: 31.236017, z: 15.500004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1757,6 +1743,8 @@ MonoBehaviour:
   canEcholocate: 0
   isSwifter: 1
   swiftLevel: 0
+  canRushAttack: 0
+  smarter: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262
@@ -1837,10 +1825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d02da943a01b054bb15e758b0950541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenIncrement: 0.0001
   tempChunkStorage: {fileID: 11400000, guid: bb29fd8a92a8a394aa206355d707c719, type: 2}
   grid: {fileID: 0}
-  height: 3
-  width: 3
+  height: 4
+  width: 4
   chunkSize: 8
   whiteTile: {fileID: 9042843471032817607, guid: 584beab9faec9aa469dc069cafd27bbc,
     type: 3}
@@ -1852,10 +1841,15 @@ MonoBehaviour:
     type: 3}
   sigilPrefab: {fileID: 2893637882468283275, guid: 4e9bc7fa7d28fc044bfb3785216ec933,
     type: 3}
+  doorPrefab: {fileID: 6388116158150247451, guid: eb94e289ced0b7049a13424204ce4d68,
+    type: 3}
+  foundTilePrefab: {fileID: 6388116158150247451, guid: aa85c0d98c057734ebef4a5fa5bef7e1,
+    type: 3}
   obstructionsParent: {fileID: 1463990455}
   tilesParent: {fileID: 1304938276}
-  SigilParent: {fileID: 0}
+  SigilParent: {fileID: 2031347522}
   obstructedTiles: 0
+  sigilLocations: []
   RotateTiles: 1
 --- !u!156049354 &1167860516
 Grid:
@@ -1961,6 +1955,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
+  hemoglobinRushing: 0
+  baseTime: 0
+  timeLimit: 0
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -2289,17 +2286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543673d45096f0743879b5f890ebcbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChunkWidth: 2
-  ChunkHeight: 2
-  width: 0
-  height: 0
-  tilesPerChunk: 8
-  whiteTilePrefab: {fileID: 9042843471032817607, guid: 6aca70cd8a2a49149a8178df31e3ceb5,
-    type: 3}
-  blackTilePrefab: {fileID: 8324259094907236615, guid: b426d5d74e2d52c4a927bfe651c0ee71,
-    type: 3}
-  seenYellow: {fileID: 2100000, guid: ab5e2b2e1c6c2944a907e4b8f5492a8b, type: 2}
-  tempChunk: {fileID: 11400000, guid: 230e71ea028558c4b890ae3290ad39e0, type: 2}
 --- !u!1 &1601443548
 GameObject:
   m_ObjectHideFlags: 0
