@@ -10,8 +10,9 @@ public class LevelManager : MonoBehaviour
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
+    public GameObject winText;
 
-    private int currentLevel = 1;
+    public int currentLevel = 1;
 
     private void Awake()
     {
@@ -20,16 +21,22 @@ public class LevelManager : MonoBehaviour
         doorLocations = new Vector2Int[2];
     }
 
+    private void Start()
+    {
+        gridManager.GenerateGrid();
+        GenerateLevelOne();
+    }
+
     public void GenerateLevelOne()
     {
-        // reset grid
-        gridManager.GenerateGrid();
+        //load level one
+        gridManager.FakeLevelOne();
     }
 
     public void GenerateLevelTwo()
     {
         // reset the grid
-        gridManager.GenerateGrid();
+        gridManager.FakeLevelTwo();
     }
 
     public void FailLevel()
@@ -44,12 +51,13 @@ public class LevelManager : MonoBehaviour
         if (currentLevel == 2)
         {
             // pop up Skill select Screen
-            gridManager.CreateGrid(2, 2);
-            // gridManager.CreateGrid(2, 2);
+            movementManager.endLevel();
         }
         else if (currentLevel >= 3)
         {
             // you win screen
+            FindObjectOfType<GameManager>().Win();
+            winText.SetActive(true);
         }
     }
 
@@ -57,6 +65,7 @@ public class LevelManager : MonoBehaviour
     {
         if (currentSigilsCollected >= SigilsRequiredForUnlock)
         {
+            FindObjectOfType<EnemyManager>().ClearAllEnemies();
             CompleteLevel();
             Debug.Log("Hi");
         }

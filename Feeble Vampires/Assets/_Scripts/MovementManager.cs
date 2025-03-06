@@ -242,6 +242,12 @@ public class MovementManager : MonoBehaviour
         skillSelectionHolder.SetActive(true);
     }
 
+    public void FinishSelecting()
+    {
+        gameManager.skillSelecting = false;
+        skillSelectionHolder.SetActive(false);
+    }
+
     public void submitMovement()
     {
         RaycastHit hit;

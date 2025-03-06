@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,6 +66,11 @@ public class GameManager : MonoBehaviour
         dead = true;
 
         if (playerHealth != 0) playerHealth = 0;
+    }
+
+    public void Win()
+    {
+        skillSelecting = true;
     }
 
     public void restart()

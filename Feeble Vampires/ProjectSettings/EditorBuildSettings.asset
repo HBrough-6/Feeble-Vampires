@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/Title Screen.unity
     guid: 6f655ec7317ebf74a97d086385916221
   - enabled: 1
-    path: Assets/_Scenes/Player Movement mk.II.unity
-    guid: 50efa852fabee994d8a4eefd5debf686
+    path: Assets/_Scenes/BuildScene.unity
+    guid: 9ede07432a055f24b99511afb97f0d89
   m_configObjects: {}

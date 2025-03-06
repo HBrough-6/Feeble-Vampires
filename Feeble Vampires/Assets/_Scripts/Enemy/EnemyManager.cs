@@ -27,6 +27,15 @@ public class EnemyManager : MonoBehaviour
         enemies.Add(enemy);
     }
 
+    public void ClearAllEnemies()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            EnemyDied(enemies[i]);
+            i--;
+        }
+    }
+
     /// <summary>
     /// Removes enemy from the list of living enemies and sets it inactive
     /// </summary>

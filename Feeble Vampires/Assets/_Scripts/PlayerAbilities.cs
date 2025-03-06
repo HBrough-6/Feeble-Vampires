@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
@@ -40,6 +38,17 @@ public class PlayerAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void GetSwift()
+    {
+        swiftLevel += 1;
+        movementManager.spaceCap += swiftLevel;
+    }
+
+    public void GetSmart()
+    {
+        movementManager.timeLimit = movementManager.baseTime + 2;
     }
 }
