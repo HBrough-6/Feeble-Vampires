@@ -219,6 +219,12 @@ public class MovementManager : MonoBehaviour
         initializeOrigin();
     }
 
+    public void setPlayerPos(Vector3 startPos)
+    {
+        player.transform.position = startPos;
+        endPoint.transform.position = new Vector3(startPos.x, endPoint.transform.position.y, startPos.z);
+    }
+
     public void submitMovement()
     {
         if (hemoglobinRushing)
