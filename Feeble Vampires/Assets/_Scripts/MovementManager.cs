@@ -37,6 +37,8 @@ public class MovementManager : MonoBehaviour
     public int baseTime;
     public int timeLimit;
 
+    public LevelManager levelManager;
+
     private void Awake()
     {
         baseCap = 2;
@@ -50,7 +52,7 @@ public class MovementManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = FindObjectOfType<LevelManager>();
 
         gameManager = FindObjectOfType<GameManager>();
 
@@ -227,6 +229,8 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
+        //levelManager.AttemptDoorOpen();
+
         if (hemoglobinRushing)
         {
             spaceCap -= 2;
@@ -244,6 +248,13 @@ public class MovementManager : MonoBehaviour
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
+
+        /*
+        if (sigil is present)
+        {
+            sigil.Collect();
+        }
+        */
     }
 
     public void initializeOrigin()
