@@ -229,7 +229,19 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
-        //levelManager.AttemptDoorOpen();
+        RaycastHit hit;
+
+        if (Physics.Raycast(endPoint.transform.position, Vector3.down, out hit, 1.2f))
+        {
+            if (hit.collider.CompareTag("Sigil"))
+            {
+                hit.collider.GetComponent<Sigil>().Collect();
+            }
+            if (hit.collider.CompareTag("Door"))
+            {
+                levelManager.AttemptDoorOpen();
+            }
+        }
 
         if (hemoglobinRushing)
         {
@@ -248,13 +260,6 @@ public class MovementManager : MonoBehaviour
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
-
-        /*
-        if (sigil is present)
-        {
-            sigil.Collect();
-        }
-        */
     }
 
     public void initializeOrigin()
