@@ -11,6 +11,7 @@ public class TitleManager : MonoBehaviour
     public GameObject audioSettingsMenuHolder;
     public GameObject videoSettingsMenuHolder;
     public GameObject keybindsMenuHolder;
+    public GameObject tutorialMenuHolder;
 
     public List<TextMeshProUGUI> buttonLabels;
 
@@ -43,6 +44,7 @@ public class TitleManager : MonoBehaviour
         audioSettingsMenuHolder.SetActive(false);
         videoSettingsMenuHolder.SetActive(false);
         keybindsMenuHolder.SetActive(false);
+        tutorialMenuHolder.SetActive(false);
     }
 
     public void settingsMenu()
@@ -73,6 +75,12 @@ public class TitleManager : MonoBehaviour
         audioSettingsMenuHolder.SetActive(false);
         videoSettingsMenuHolder.SetActive(false);
         keybindsMenuHolder.SetActive(true);
+    }
+
+    public void tutorialMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        tutorialMenuHolder.SetActive(true);
     }
 
     public void rebindKey(int keySlot, KeyCode keyCode)
