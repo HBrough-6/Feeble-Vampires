@@ -227,6 +227,11 @@ public class MovementManager : MonoBehaviour
         endPoint.transform.position = new Vector3(startPos.x, endPoint.transform.position.y, startPos.z);
     }
 
+    public void endLevel()
+    {
+
+    }
+
     public void submitMovement()
     {
         RaycastHit hit;
