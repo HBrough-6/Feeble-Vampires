@@ -6,11 +6,18 @@ public class LevelManager : MonoBehaviour
     private int currentSigilsCollected = 0;
 
     private GridManager gridManager;
+    private MovementManager movementManager;
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
 
     private int currentLevel = 1;
+
+    private void Awake()
+    {
+        gridManager = FindAnyObjectByType<GridManager>();
+        movementManager = FindAnyObjectByType<MovementManager>();
+    }
 
     public void GenerateLevelOne()
     {
@@ -65,6 +72,8 @@ public class LevelManager : MonoBehaviour
     public void SetStartLocation(Vector2Int sPos)
     {
         startLocation = sPos;
+        movementManager.setPlayerPos(gridManager.CellToWorldPos(startLocation));
+        movementManager.playerPosInGrid = startLocation;
     }
 
     public void SetDoorLocation(Vector2Int dPos)

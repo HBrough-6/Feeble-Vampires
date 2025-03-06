@@ -598,9 +598,14 @@ public class GridManager : MonoBehaviour
         Debug.Log(randomDoor + "   " + doorPositions.Count);
         Instantiate(doorPrefab, CellToWorldPos(doorPositions[randomDoor]), transform.rotation, SigilParent);
 
+        // set positions
+
         levelManager.SetSigilRequirement(sigilCount);
         levelManager.SetStartLocation(bestStartPos);
         levelManager.SetDoorLocation(doorPositions[randomDoor]);
+
+        // Generate Enemy Locations
+
     }
 
     private void OnGUI()
