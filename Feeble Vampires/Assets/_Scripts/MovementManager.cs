@@ -223,7 +223,7 @@ public class MovementManager : MonoBehaviour
 
     public void setPlayerPos(Vector3 startPos)
     {
-        player.transform.position = startPos;
+        player.transform.position = startPos + Vector3.up;
         endPoint.transform.position = new Vector3(startPos.x, endPoint.transform.position.y, startPos.z);
     }
 
