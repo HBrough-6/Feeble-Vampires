@@ -39,6 +39,8 @@ public class MovementManager : MonoBehaviour
 
     public LevelManager levelManager;
 
+    public GameObject skillSelectionHolder;
+
     private void Awake()
     {
         baseCap = 2;
@@ -229,7 +231,8 @@ public class MovementManager : MonoBehaviour
 
     public void endLevel()
     {
-
+        gameManager.skillSelecting = true;
+        skillSelectionHolder.SetActive(true);
     }
 
     public void submitMovement()

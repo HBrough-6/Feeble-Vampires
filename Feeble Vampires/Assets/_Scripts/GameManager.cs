@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverHolder;
     bool dead;
+    public bool skillSelecting;
     public int playerHealth;
 
     public TextMeshProUGUI timerText;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
         dead = false;
+        skillSelecting = false;
 
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap();
 
-        if (!dead)
+        if (!dead && !skillSelecting)
         {
             internalTimer += Time.deltaTime;
             if (internalTimer >= 1)
