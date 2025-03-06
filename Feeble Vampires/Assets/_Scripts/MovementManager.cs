@@ -69,6 +69,8 @@ public class MovementManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
 
         gameManager.resetTimer(false);
+
+        skillSelectionHolder.SetActive(false);
     }
 
     // Update is called once per frame
@@ -155,6 +157,11 @@ public class MovementManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 submitMovement();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                endLevel();
             }
         }
     }
