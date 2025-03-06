@@ -19,6 +19,8 @@ public class GridManager : MonoBehaviour
 
     public float timeBetweenIncrement = 0.2f;
 
+    private LevelManager levelManager;
+
     public Chunk tempChunkStorage;
     public Grid grid;
 
@@ -56,6 +58,7 @@ public class GridManager : MonoBehaviour
         sigilLocations = new List<Vector2Int>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Start()
@@ -65,7 +68,7 @@ public class GridManager : MonoBehaviour
 
     #region GridCreation
 
-    private void GenerateGrid()
+    public void GenerateGrid()
     {
         int cellHeight = height * chunkSize;
         int cellWidth = width * chunkSize;
@@ -105,7 +108,7 @@ public class GridManager : MonoBehaviour
         }
 
 
-
+        VerifyGrid();
     }
 
     private void FillWholeGrid()
@@ -555,6 +558,8 @@ public class GridManager : MonoBehaviour
             sigilCount = 6;
         }
 
+
+
         // spawn the first sigil
         Instantiate(sigilPrefab, CellToWorldPos(validSigilLocations[randSigil]), transform.rotation, obstructionsParent);
 
@@ -592,6 +597,10 @@ public class GridManager : MonoBehaviour
         int randomDoor = UnityEngine.Random.Range(0, doorPositions.Count);
         Debug.Log(randomDoor + "   " + doorPositions.Count);
         Instantiate(doorPrefab, CellToWorldPos(doorPositions[randomDoor]), transform.rotation, SigilParent);
+
+        levelManager.SetSigilRequirement(sigilCount);
+        levelManager.SetStartLocation(bestStartPos);
+        levelManager.SetDoorLocation(doorPositions[randomDoor]);
     }
 
     private void OnGUI()

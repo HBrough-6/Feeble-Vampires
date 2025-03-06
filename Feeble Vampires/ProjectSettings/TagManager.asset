@@ -7,6 +7,8 @@ TagManager:
   - GameManager
   - Obstruction
   - TitleManager
+  - Sigil
+  - Door
   layers:
   - Default
   - TransparentFX
