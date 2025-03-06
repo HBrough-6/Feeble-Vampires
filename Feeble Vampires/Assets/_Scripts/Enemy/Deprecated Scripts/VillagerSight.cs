@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class VillagerSight : MonoBehaviour
 {
-    private Vector2Int[] seenTiles;
+    /*private Vector2Int[] seenTiles;
     private Vector2Int[] negativeReset;
     public FloorGrid grid;
     private VillagerMovement villagerMovement;
@@ -65,10 +65,10 @@ public class VillagerSight : MonoBehaviour
 
     private void ResetSightLine()
     {
-        /*        for (int i = 0; i < seenTiles.Length; i++)
+        *//*        for (int i = 0; i < seenTiles.Length; i++)
                 {
 
-                }*/
+                }*//*
         grid.ResetTileMat(seenTiles[0].y, seenTiles[0].x);
         Debug.Log(seenTiles[0]);
         grid.ResetTileMat(seenTiles[1].y, seenTiles[1].x);
@@ -95,5 +95,5 @@ public class VillagerSight : MonoBehaviour
         {
             grid.SetTileSeen(seenTiles[i].y, seenTiles[i].x);
         }
-    }
+    }*/
 }
