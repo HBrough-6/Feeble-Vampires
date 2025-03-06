@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private int SigilsRequiredForUnlock = 1;
-    private int currentSigilsCollected = 0;
+    public int SigilsRequiredForUnlock = 1;
+    public int currentSigilsCollected = 0;
 
     private GridManager gridManager;
     private MovementManager movementManager;
@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     {
         gridManager = FindAnyObjectByType<GridManager>();
         movementManager = FindAnyObjectByType<MovementManager>();
+        doorLocations = new Vector2Int[2];
     }
 
     public void GenerateLevelOne()
@@ -43,6 +44,8 @@ public class LevelManager : MonoBehaviour
         if (currentLevel == 2)
         {
             // pop up Skill select Screen
+            gridManager.CreateGrid(2, 2);
+            // gridManager.CreateGrid(2, 2);
         }
         else if (currentLevel >= 3)
         {
@@ -55,6 +58,7 @@ public class LevelManager : MonoBehaviour
         if (currentSigilsCollected >= SigilsRequiredForUnlock)
         {
             CompleteLevel();
+            Debug.Log("Hi");
         }
     }
 
