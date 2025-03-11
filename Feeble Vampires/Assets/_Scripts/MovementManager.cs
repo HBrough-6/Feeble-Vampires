@@ -41,6 +41,11 @@ public class MovementManager : MonoBehaviour
 
     public GameObject skillSelectionHolder;
 
+    public int timePieceExtension;
+
+
+    public bool timePieceActive;
+
     private void Awake()
     {
         baseCap = 2;
@@ -93,7 +98,7 @@ public class MovementManager : MonoBehaviour
                         (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
                     removePathPoint();
                 }
-                if (!upBlocked)
+                else if (!upBlocked)
                 {
                     endPoint.transform.position = new Vector3
                         (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z + 1);
@@ -109,7 +114,7 @@ public class MovementManager : MonoBehaviour
                         (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
                     removePathPoint();
                 }
-                if (!leftBlocked)
+                else if (!leftBlocked)
                 {
                     endPoint.transform.position = new Vector3
                         (endPoint.transform.position.x - 1, endPoint.transform.position.y, endPoint.transform.position.z);
@@ -125,7 +130,7 @@ public class MovementManager : MonoBehaviour
                         (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
                     removePathPoint();
                 }
-                if (!downBlocked)
+                else if (!downBlocked)
                 {
                     endPoint.transform.position = new Vector3
                         (endPoint.transform.position.x, endPoint.transform.position.y, endPoint.transform.position.z - 1);
@@ -141,7 +146,7 @@ public class MovementManager : MonoBehaviour
                         (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
                     removePathPoint();
                 }
-                if (!rightBlocked)
+                else if (!rightBlocked)
                 {
                     endPoint.transform.position = new Vector3
                         (endPoint.transform.position.x + 1, endPoint.transform.position.y, endPoint.transform.position.z);
@@ -270,6 +275,16 @@ public class MovementManager : MonoBehaviour
             hemoglobinRushing = false;
         }
 
+        if (timePieceActive)
+        {
+            timePieceExtension--;
+            if (timePieceExtension == 0)
+            {
+                timeLimit /= 2;
+                timePieceActive = false;
+            }
+        }
+
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
@@ -312,5 +327,14 @@ public class MovementManager : MonoBehaviour
     public void switchHangingStates()
     {
         hanging = !hanging;
+    }
+
+    public void hyperExtendTime()
+    {
+        timeLimit *= 2;
+        timePieceExtension = 3;
+        timePieceActive = true;
+        resetMovement();
+        submitMovement();
     }
 }
