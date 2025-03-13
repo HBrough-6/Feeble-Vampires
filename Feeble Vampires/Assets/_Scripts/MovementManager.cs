@@ -15,6 +15,8 @@ public class MovementManager : MonoBehaviour
     public Vector2Int playerPosInGrid;
 
     public List<Vector2> pathPoints;
+    public List<Vector2> historicPathPoints;
+
     Vector2 newPoint;
 
     public bool upBlocked;
@@ -268,6 +270,13 @@ public class MovementManager : MonoBehaviour
             {
                 levelManager.AttemptDoorOpen();
             }
+        }
+
+        historicPathPoints.Clear();
+        for (int i = 0; i < pathPoints.Count; i++)
+        {
+            Vector2 testPoint = pathPoints[i];
+            historicPathPoints.Add(testPoint);
         }
 
         if (hemoglobinRushing)
