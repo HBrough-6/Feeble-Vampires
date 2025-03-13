@@ -358,6 +358,6 @@ public class MovementManager : MonoBehaviour
 
     public void mirageSidestep()
     {
-
+        //expand out to find the first available empty safe space and move there
     }
 }
