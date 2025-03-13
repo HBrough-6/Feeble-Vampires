@@ -49,6 +49,16 @@ public class EnemyBrain : MonoBehaviour
 
     public void SpottedPlayer()
     {
-        if (enemyManager.gameManager.movementManager.hanging == false) enemyManager.PlayerSpotted();
+        if (enemyManager.gameManager.movementManager.hanging == false)
+        {
+            if (enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().mirage)
+            {
+                enemyManager.gameManager.movementManager.mirageSidestep();
+            }
+            else
+            {
+                enemyManager.PlayerSpotted();
+            }
+        }
     }
 }

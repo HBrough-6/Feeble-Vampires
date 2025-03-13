@@ -355,4 +355,9 @@ public class MovementManager : MonoBehaviour
         resetMovement();
         submitMovement();
     }
+
+    public void mirageSidestep()
+    {
+
+    }
 }

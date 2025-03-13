@@ -8,6 +8,7 @@ public class PlayerItems : MonoBehaviour
 
     public bool brokenTimePiece;
     public bool shriek;
+    public bool mirage;
     public bool batBuddy;
 
     public List<bool> itemSlots;
@@ -33,14 +34,6 @@ public class PlayerItems : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (shriek && !movementManager.isShrieking)
-            {
-                movementManager.startShrieking();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (batBuddy && !movementManager.isShrieking)
             {
                 movementManager.startShrieking();
             }
