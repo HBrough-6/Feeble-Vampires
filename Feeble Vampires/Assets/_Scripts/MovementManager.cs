@@ -41,10 +41,11 @@ public class MovementManager : MonoBehaviour
 
     public GameObject skillSelectionHolder;
 
-    public int timePieceExtension;
-
+    private int timePieceExtension;
+    private int shriekTimer;
 
     public bool timePieceActive;
+    public bool isShrieking;
 
     private void Awake()
     {
@@ -285,6 +286,15 @@ public class MovementManager : MonoBehaviour
             }
         }
 
+        if (isShrieking)
+        {
+            shriekTimer--;
+            if (shriekTimer == 0)
+            {
+                isShrieking = false;
+            }
+        }
+
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
@@ -334,6 +344,14 @@ public class MovementManager : MonoBehaviour
         timeLimit *= 2;
         timePieceExtension = 3;
         timePieceActive = true;
+        resetMovement();
+        submitMovement();
+    }
+
+    public void startShrieking()
+    {
+        isShrieking = true;
+        shriekTimer = 3;
         resetMovement();
         submitMovement();
     }

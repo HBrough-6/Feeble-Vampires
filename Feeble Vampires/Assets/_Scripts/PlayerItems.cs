@@ -7,6 +7,7 @@ public class PlayerItems : MonoBehaviour
     public MovementManager movementManager;
 
     public bool brokenTimePiece;
+    public bool shriek;
 
     public List<bool> itemSlots;
 
@@ -25,6 +26,13 @@ public class PlayerItems : MonoBehaviour
             {
                 movementManager.hyperExtendTime();
                 movementManager.timePieceActive = true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (shriek && !movementManager.isShrieking)
+            {
+                movementManager.startShrieking();
             }
         }
     }

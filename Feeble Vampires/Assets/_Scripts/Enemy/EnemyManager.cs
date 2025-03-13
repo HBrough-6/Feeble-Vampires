@@ -5,6 +5,7 @@ public class EnemyManager : MonoBehaviour
 {
     private GridManager gridManager;
     public GameManager gameManager;
+    private MovementManager movementManager;
 
     private List<EnemyBrain> enemies;
     private List<EnemyBrain> deadEnemies;
@@ -13,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     {
         gridManager = GetComponent<GridManager>();
         gameManager = FindObjectOfType<GameManager>();
+        movementManager = FindObjectOfType<MovementManager>();
 
         enemies = new List<EnemyBrain>();
         deadEnemies = new List<EnemyBrain>();
@@ -54,7 +56,7 @@ public class EnemyManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].Activate();
+            if (!movementManager.isShrieking) enemies[i].Activate();
         }
     }
 

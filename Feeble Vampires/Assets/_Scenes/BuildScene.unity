@@ -2305,7 +2305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementManager: {fileID: 0}
-  brokenTimePiece: 1
+  brokenTimePiece: 0
+  shriek: 1
   itemSlots: 
 --- !u!1 &1140736262
 GameObject:
@@ -2601,6 +2602,8 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   skillSelectionHolder: {fileID: 221079683}
   timePieceExtension: 0
+  timePieceActive: 0
+  isShrieking: 0
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
