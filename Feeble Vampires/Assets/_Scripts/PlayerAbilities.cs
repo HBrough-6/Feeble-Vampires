@@ -9,6 +9,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool smarter;
     public bool hideable;
     public bool isGreedy;
+    public bool strongestInstinct;
 
     public UIManager uiManager;
     public MovementManager movementManager;
