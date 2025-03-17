@@ -2283,12 +2283,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canEcholocate: 0
-  isSwifter: 0
-  swiftLevel: 0
+  isSwifter: 1
   canRushAttack: 0
-  smarter: 0
-  hideable: 1
+  smarter: 1
+  hideable: 0
   isGreedy: 0
+  strongestInstinct: 1
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
   experiencePoints: 2
@@ -2307,6 +2307,8 @@ MonoBehaviour:
   movementManager: {fileID: 0}
   brokenTimePiece: 0
   shriek: 1
+  mirage: 0
+  batBuddy: 0
   itemSlots: 
 --- !u!1 &1140736262
 GameObject:
@@ -2588,6 +2590,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
   pathPoints: []
+  historicPathPoints: []
   upBlocked: 0
   leftBlocked: 0
   downBlocked: 0
@@ -2601,7 +2604,6 @@ MonoBehaviour:
   timeLimit: 0
   levelManager: {fileID: 0}
   skillSelectionHolder: {fileID: 221079683}
-  timePieceExtension: 0
   timePieceActive: 0
   isShrieking: 0
 --- !u!4 &1269597651
