@@ -2290,6 +2290,7 @@ MonoBehaviour:
   isGreedy: 0
   strongestInstinct: 1
   scentTracker: 1
+  currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
   experiencePoints: 2
@@ -2962,7 +2963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridMiniMap: {fileID: 2124033200}
-  gridManager: {fileID: 0}
+  gridManager: {fileID: 1041244745}
 --- !u!1 &1572626554
 GameObject:
   m_ObjectHideFlags: 0
@@ -4309,7 +4310,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 35.223022, y: -82.22372, z: 180.68594, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

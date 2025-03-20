@@ -49,17 +49,17 @@ public class UIManager : MonoBehaviour
                         if (xAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.x &&
                             yAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.y)
                         {
-                            gridMiniMap.text += "<color=yellow>\u25a0</color>";
+                            gridMiniMap.text += "<color=orange>\u25a0</color>";
                         }
                     }
                 }
                 else if ((xAxis == yAxis) || ((xAxis + yAxis) % 2 == 0))
                 {
-                    gridMiniMap.text += "<color=black>\u25a0</color>";
+                    gridMiniMap.text += "<color=white>\u25a0</color>";
                 }
                 else
                 {
-                    gridMiniMap.text += "<color=white>\u25a0</color>";
+                    gridMiniMap.text += "<color=black>\u25a0</color>";
                 }
             }
             gridMiniMap.text += "\n";
