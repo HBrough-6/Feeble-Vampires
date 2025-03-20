@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         gridMiniMap.text = "";
 
+        string addedText;
         
         for (int xAxis = gridManager.width * 8 - 1; xAxis >= 0; xAxis--)
         {
@@ -35,32 +36,35 @@ public class UIManager : MonoBehaviour
             {
                 if (gridManager.GetTileObstructed(yAxis, xAxis))
                 {
-                    gridMiniMap.text += "<color=red>\u25a0</color>";
+                    addedText = "<color=red>\u25a0</color>";
                 }
                 else if (xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
                     yAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.x))
                 {
-                    gridMiniMap.text += "<color=blue>\u25a0</color>";
-                }
-                else if (FindObjectOfType<PlayerAbilities>().currentlyTracking)
-                {
-                    for (int i = 0; i < FindObjectOfType<EnemyManager>().enemies.Count; i++)
-                    {
-                        if (xAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.x &&
-                            yAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.y)
-                        {
-                            gridMiniMap.text += "<color=orange>\u25a0</color>";
-                        }
-                    }
+                    addedText = "<color=blue>\u25a0</color>";
                 }
                 else if ((xAxis == yAxis) || ((xAxis + yAxis) % 2 == 0))
                 {
-                    gridMiniMap.text += "<color=white>\u25a0</color>";
+                    addedText = "<color=white>\u25a0</color>";
+                    
                 }
                 else
                 {
-                    gridMiniMap.text += "<color=black>\u25a0</color>";
+                    addedText = "<color=black>\u25a0</color>";
                 }
+                if (FindObjectOfType<PlayerAbilities>().currentlyTracking)
+                {
+                    for (int i = 0; i < FindObjectOfType<EnemyManager>().enemies.Count; i++)
+                    {
+                        if (xAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.y &&
+                            yAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.x)
+                        {
+                            addedText = "<color=orange>\u25a0</color>";
+                        }
+                    }
+                }
+
+                gridMiniMap.text += addedText;
             }
             gridMiniMap.text += "\n";
         }
