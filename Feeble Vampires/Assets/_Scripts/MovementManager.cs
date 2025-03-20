@@ -269,6 +269,7 @@ public class MovementManager : MonoBehaviour
             {
                 hit.collider.GetComponent<Sigil>().Collect();
                 player.GetComponent<PlayerAbilities>().sniffEnemies();
+                if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
             }
             if (hit.collider.CompareTag("Door"))
             {
