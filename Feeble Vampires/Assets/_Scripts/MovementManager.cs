@@ -265,6 +265,7 @@ public class MovementManager : MonoBehaviour
             if (hit.collider.CompareTag("Sigil"))
             {
                 hit.collider.GetComponent<Sigil>().Collect();
+                player.GetComponent<PlayerAbilities>().sniffEnemies();
             }
             if (hit.collider.CompareTag("Door"))
             {

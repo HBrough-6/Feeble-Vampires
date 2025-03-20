@@ -42,6 +42,17 @@ public class UIManager : MonoBehaviour
                 {
                     gridMiniMap.text += "<color=blue>\u25a0</color>";
                 }
+                else if (FindObjectOfType<PlayerAbilities>().scentTracker)
+                {
+                    for (int i = 0; i < FindObjectOfType<EnemyManager>().enemies.Count; i++)
+                    {
+                        if (xAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.x &&
+                            yAxis == FindObjectOfType<EnemyManager>().enemies[i].posInGrid.y)
+                        {
+                            gridMiniMap.text += "<color=yellow>\u25a0</color>";
+                        }
+                    }
+                }
                 else if ((xAxis == yAxis) || ((xAxis + yAxis) % 2 == 0))
                 {
                     gridMiniMap.text += "<color=black>\u25a0</color>";

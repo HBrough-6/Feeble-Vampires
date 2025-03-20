@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     public GameManager gameManager;
     private MovementManager movementManager;
 
-    private List<EnemyBrain> enemies;
+    public List<EnemyBrain> enemies;
     private List<EnemyBrain> deadEnemies;
 
     private void Awake()

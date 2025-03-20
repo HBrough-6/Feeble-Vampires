@@ -11,6 +11,8 @@ public class PlayerAbilities : MonoBehaviour
     public bool strongestInstinct;
     public bool scentTracker;
 
+    public bool currentlyTracking;
+
     public UIManager uiManager;
     public MovementManager movementManager;
 
@@ -57,5 +59,13 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (isGreedy) experiencePoints--;
         else experiencePoints -= 2;
+    }
+
+    public void sniffEnemies()
+    {
+        if (scentTracker)
+        {
+            currentlyTracking = true;
+        }
     }
 }

@@ -2282,13 +2282,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 0
+  canEcholocate: 1
   isSwifter: 1
   canRushAttack: 0
   smarter: 1
   hideable: 0
   isGreedy: 0
   strongestInstinct: 1
+  scentTracker: 1
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
   experiencePoints: 2
@@ -3876,6 +3877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  enemies: []
 --- !u!4 &1931230596
 Transform:
   m_ObjectHideFlags: 0
