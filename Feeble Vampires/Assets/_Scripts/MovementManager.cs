@@ -262,6 +262,9 @@ public class MovementManager : MonoBehaviour
 
         if (Physics.Raycast(endPoint.transform.position, Vector3.down, out hit, 1.2f))
         {
+            if (player.GetComponent<PlayerAbilities>().currentlyTracking)
+                player.GetComponent<PlayerAbilities>().currentlyTracking = false;
+
             if (hit.collider.CompareTag("Sigil"))
             {
                 hit.collider.GetComponent<Sigil>().Collect();
