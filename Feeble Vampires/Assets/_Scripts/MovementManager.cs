@@ -319,6 +319,8 @@ public class MovementManager : MonoBehaviour
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
+
+        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
     }
 
     public void initializeOrigin()
