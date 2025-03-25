@@ -8,10 +8,10 @@ public class PlayerItems : MonoBehaviour
 
     public bool brokenTimePiece;
     public bool shriek;
-    public bool mirage;
+    //public bool mirage;
     public bool batBuddy;
 
-    public List<bool> itemSlots;
+    public List<bool> equippedItemSlots;
 
     // Start is called before the first frame update
     void Start()
