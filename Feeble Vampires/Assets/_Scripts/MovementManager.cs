@@ -49,6 +49,8 @@ public class MovementManager : MonoBehaviour
     public bool timePieceActive;
     public bool isShrieking;
 
+    int placeholderSpaceCap;
+
     private void Awake()
     {
         baseCap = 2;

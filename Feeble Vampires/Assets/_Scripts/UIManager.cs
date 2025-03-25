@@ -38,11 +38,6 @@ public class UIManager : MonoBehaviour
                 {
                     addedText = "<color=red>\u25a0</color>";
                 }
-                else if (xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
-                    yAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.x))
-                {
-                    addedText = "<color=blue>\u25a0</color>";
-                }
                 else if ((xAxis == yAxis) || ((xAxis + yAxis) % 2 == 0))
                 {
                     addedText = "<color=white>\u25a0</color>";
@@ -72,6 +67,11 @@ public class UIManager : MonoBehaviour
                     {
                         addedText = "<color=purple>\u25a0</color>";
                     }
+                }
+                if (xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
+                    yAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.x))
+                {
+                    addedText = "<color=blue>\u25a0</color>";
                 }
                 gridMiniMap.text += addedText;
             }

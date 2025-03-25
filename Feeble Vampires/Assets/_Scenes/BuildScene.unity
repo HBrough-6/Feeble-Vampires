@@ -2311,7 +2311,7 @@ MonoBehaviour:
   shriek: 1
   mirage: 0
   batBuddy: 0
-  itemSlots: 
+  equippedItemSlots: 0000
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
