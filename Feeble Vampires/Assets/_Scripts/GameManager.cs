@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap();
 
-        if (!dead && !skillSelecting)
+        if (!dead && !skillSelecting && !movementManager.spawningBatBuddy)
         {
             internalTimer += Time.deltaTime;
             if (internalTimer >= 1)

@@ -41,7 +41,11 @@ public class PlayerItems : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-
+            if (batBuddy && !movementManager.spawningBatBuddy)
+            {
+                movementManager.prepareBatBuddy();
+                movementManager.spawningBatBuddy = true;
+            }
         }
     }
 }

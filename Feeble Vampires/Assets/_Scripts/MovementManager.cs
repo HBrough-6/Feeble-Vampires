@@ -48,6 +48,9 @@ public class MovementManager : MonoBehaviour
 
     public bool timePieceActive;
     public bool isShrieking;
+    public bool spawningBatBuddy;
+
+    public GameObject batBuddy;
 
     int placeholderSpaceCap;
 
@@ -260,6 +263,16 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
+        if (spawningBatBuddy)
+        {
+            batBuddy.transform.position = endPoint.transform.position;
+            spaceCap = placeholderSpaceCap;
+            resetMovement();
+            gameManager.resetTimer(false);
+            spawningBatBuddy = false;
+            return;
+        }
+
         RaycastHit hit;
 
         if (Physics.Raycast(endPoint.transform.position, Vector3.down, out hit, 1.2f))
@@ -377,5 +390,11 @@ public class MovementManager : MonoBehaviour
     public void mirageSidestep()
     {
         //expand out to find the first available empty safe space and move there
+    }
+
+    public void prepareBatBuddy()
+    {
+        placeholderSpaceCap = spaceCap;
+        spaceCap = 9999;
     }
 }
