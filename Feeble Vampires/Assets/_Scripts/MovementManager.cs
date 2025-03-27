@@ -263,6 +263,7 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
+        //spawn the bat buddy if it's being prepared
         if (spawningBatBuddy)
         {
             batBuddy.transform.position = endPoint.transform.position;
@@ -387,9 +388,29 @@ public class MovementManager : MonoBehaviour
         submitMovement();
     }
 
-    public void mirageSidestep()
+    public void mirageSidestep(EnemyBrain specificEnemy)
     {
-        //expand out to find the first available empty safe space and move there
+        //backtrack to the previous space in your travel path
+        player.transform.position = new Vector3
+            (historicPathPoints[historicPathPoints.Count - 1].x, player.transform.position.y,
+            historicPathPoints[historicPathPoints.Count - 1].y);
+        historicPathPoints.RemoveAt(historicPathPoints.Count - 1);
+
+        for (int i = 0; i < specificEnemy.enemySight.seenTilesLocations.Length; i++)
+        {
+            if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && historicPathPoints.Count > 0)
+            {
+                //if you are still in enemy sight, and you still have spaces you moved through, do it again
+                mirageSidestep(specificEnemy);
+            }
+            else if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && historicPathPoints.Count == 0)
+            {
+                Debug.Log("Can't retreat further, I admit defeat...");
+                player.GetComponent<PlayerItems>().mirage = false;
+                specificEnemy.SpottedPlayer();
+                return;
+            }
+        }
     }
 
     public void prepareBatBuddy()

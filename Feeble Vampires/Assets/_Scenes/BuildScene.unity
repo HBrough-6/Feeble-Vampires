@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &111426614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seenTilesLocations: []
   sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
     type: 3}
 --- !u!114 &111426617
@@ -498,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f18ebfd23aad54fad8e7b70438309a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySight: {fileID: 0}
   posInGrid: {x: -1, y: -1}
   moveDir: {x: 0, y: 0}
 --- !u!114 &111426618
@@ -2414,8 +2416,8 @@ MonoBehaviour:
   movementManager: {fileID: 0}
   brokenTimePiece: 0
   shriek: 0
-  mirage: 0
-  batBuddy: 1
+  mirage: 1
+  batBuddy: 0
   equippedItemSlots: 0000
 --- !u!1 &1140736262
 GameObject:
@@ -3415,7 +3417,9 @@ MonoBehaviour:
   SigilsRequiredForUnlock: 1
   currentSigilsCollected: 0
   winText: {fileID: 409452997}
+  zoneTwoStart: 6
   currentLevel: 1
+  safeZoneVisited: 0
 --- !u!4 &1723147154
 Transform:
   m_ObjectHideFlags: 0
@@ -4596,6 +4600,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[0].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[1].y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[2].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[2].y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[3].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[3].y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2854191324044093814, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
       propertyPath: m_Name
@@ -4604,7 +4643,7 @@ PrefabInstance:
     - target: {fileID: 2854191324044093814, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5775706035621374076, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
