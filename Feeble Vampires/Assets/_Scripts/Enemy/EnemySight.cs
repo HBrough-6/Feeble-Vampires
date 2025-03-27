@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySight : MonoBehaviour
 {
-    private Vector2Int[] seenTilesLocations;
+    public Vector2Int[] seenTilesLocations;
     private bool[] tileSeen;
 
     private GridManager gridManager;

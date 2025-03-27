@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverHolder: {fileID: 258011026}
+  skillSelecting: 0
   playerHealth: 0
   timerText: {fileID: 1924110820}
   failedTimers: {fileID: 825738094}
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seenTilesLocations: []
   sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
     type: 3}
 --- !u!114 &111426617
@@ -1745,8 +1747,11 @@ MonoBehaviour:
   swiftLevel: 0
   canRushAttack: 0
   smarter: 0
+  hideable: 0
+  isGreedy: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
+  experiencePoints: 0
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,8 +1833,8 @@ MonoBehaviour:
   timeBetweenIncrement: 0.0001
   tempChunkStorage: {fileID: 11400000, guid: bb29fd8a92a8a394aa206355d707c719, type: 2}
   grid: {fileID: 0}
-  height: 4
-  width: 4
+  height: 2
+  width: 2
   chunkSize: 8
   whiteTile: {fileID: 9042843471032817607, guid: 584beab9faec9aa469dc069cafd27bbc,
     type: 3}
@@ -1843,6 +1848,7 @@ MonoBehaviour:
     type: 3}
   doorPrefab: {fileID: 6388116158150247451, guid: eb94e289ced0b7049a13424204ce4d68,
     type: 3}
+  EnemyPrefab: {fileID: 0}
   foundTilePrefab: {fileID: 6388116158150247451, guid: aa85c0d98c057734ebef4a5fa5bef7e1,
     type: 3}
   obstructionsParent: {fileID: 1463990455}
@@ -1851,6 +1857,7 @@ MonoBehaviour:
   obstructedTiles: 0
   sigilLocations: []
   RotateTiles: 1
+  successfullyGenerated: 0
 --- !u!156049354 &1167860516
 Grid:
   m_ObjectHideFlags: 0
@@ -1948,6 +1955,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
   pathPoints: []
+  historicPathPoints: []
   upBlocked: 0
   leftBlocked: 0
   downBlocked: 0
@@ -1956,8 +1964,13 @@ MonoBehaviour:
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
   hemoglobinRushing: 0
+  hanging: 0
   baseTime: 0
   timeLimit: 0
+  levelManager: {fileID: 0}
+  skillSelectionHolder: {fileID: 0}
+  timePieceActive: 0
+  isShrieking: 0
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,6 +2491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seenTilesLocations: []
   sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
     type: 3}
 --- !u!114 &1651404536
@@ -3037,6 +3051,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1919189958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919189960}
+  - component: {fileID: 1919189959}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1919189959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919189958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2530f956fba6e042bca6accec6eaf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SigilsRequiredForUnlock: 1
+  currentSigilsCollected: 0
+  winText: {fileID: 0}
+  zoneTwoStart: 6
+  currentLevel: 1
+  safeZoneVisited: 0
+--- !u!4 &1919189960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919189958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11, y: 0.2, z: 11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924110818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31f7076c5a19d54eb624a39e86be7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!4 &1931230596
 Transform:
   m_ObjectHideFlags: 0
@@ -3539,3 +3604,4 @@ SceneRoots:
   - {fileID: 1440215150}
   - {fileID: 1140736263}
   - {fileID: 1389284906}
+  - {fileID: 1919189960}
