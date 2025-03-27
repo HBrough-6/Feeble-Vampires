@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverHolder: {fileID: 258011026}
+  skillSelecting: 0
   playerHealth: 0
   timerText: {fileID: 1924110820}
   failedTimers: {fileID: 825738094}
@@ -1745,6 +1746,8 @@ MonoBehaviour:
   swiftLevel: 0
   canRushAttack: 0
   smarter: 0
+  hideable: 0
+  isGreedy: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
 --- !u!1 &1140736262
@@ -1828,8 +1831,8 @@ MonoBehaviour:
   timeBetweenIncrement: 0.0001
   tempChunkStorage: {fileID: 11400000, guid: bb29fd8a92a8a394aa206355d707c719, type: 2}
   grid: {fileID: 0}
-  height: 4
-  width: 4
+  height: 2
+  width: 2
   chunkSize: 8
   whiteTile: {fileID: 9042843471032817607, guid: 584beab9faec9aa469dc069cafd27bbc,
     type: 3}
@@ -1843,6 +1846,7 @@ MonoBehaviour:
     type: 3}
   doorPrefab: {fileID: 6388116158150247451, guid: eb94e289ced0b7049a13424204ce4d68,
     type: 3}
+  EnemyPrefab: {fileID: 0}
   foundTilePrefab: {fileID: 6388116158150247451, guid: aa85c0d98c057734ebef4a5fa5bef7e1,
     type: 3}
   obstructionsParent: {fileID: 1463990455}
@@ -1851,6 +1855,7 @@ MonoBehaviour:
   obstructedTiles: 0
   sigilLocations: []
   RotateTiles: 1
+  successfullyGenerated: 0
 --- !u!156049354 &1167860516
 Grid:
   m_ObjectHideFlags: 0
@@ -1956,8 +1961,11 @@ MonoBehaviour:
   enemyManager: {fileID: 1931230595}
   uiManager: {fileID: 0}
   hemoglobinRushing: 0
+  hanging: 0
   baseTime: 0
   timeLimit: 0
+  levelManager: {fileID: 0}
+  skillSelectionHolder: {fileID: 0}
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -3200,6 +3208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31f7076c5a19d54eb624a39e86be7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!4 &1931230596
 Transform:
   m_ObjectHideFlags: 0

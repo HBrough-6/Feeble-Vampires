@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Array2DEditor;
 using UnityEngine;
 
@@ -68,6 +70,25 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        GenerateGrid();
+    }
+
+    public IEnumerator CheckAllTiles()
+    {
+        for (int row = 0; row < height * 8; row++)
+        {
+            for (int col = 0; col < width * 8; col++)
+            {
+
+                if (!GetTileObstructed(col, row))
+                {
+                    Vector3 temp = CellToWorldPos(col, row);
+                    Instantiate(foundTilePrefab, temp + Vector3.up + Vector3.up, transform.rotation, SigilParent);
+                    yield return new WaitForSeconds(0.01f);
+                }
+
+            }
+        }
     }
 
     public void CreateGrid(int wid, int hei)
@@ -76,9 +97,9 @@ public class GridManager : MonoBehaviour
         height = hei;
 
         GenerateGrid();
-        FakeLevelTwo();
+        //        FakeLevelTwo();
 
-        /*StartTileInfo tileInfo = new StartTileInfo();
+        StartTileInfo tileInfo = new StartTileInfo();
 
 
         bool success = false;
@@ -88,9 +109,9 @@ public class GridManager : MonoBehaviour
         {
             Debug.Log("Generating new map");
             FillWholeGrid();
-            *//*success = *//*
-            success = VerifyGrid(out tileInfo);
-            *//*yield return new WaitForSeconds(timeBetweenIncrement);*//*
+            //VerifyGrid(/*out tileInfo*/);
+            StartCoroutine(VerifyGrid());
+            //*yield return new WaitForSeconds(timeBetweenIncrement);*//*
         }
 
         if (success)
@@ -102,11 +123,12 @@ public class GridManager : MonoBehaviour
         else
         {
             Debug.Log("Failed Generation");
-        }*/
+        }
     }
 
     #region GridCreation
 
+    #region Build Levels
     public void FakeLevelTwo()
     {
         for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
@@ -190,6 +212,9 @@ public class GridManager : MonoBehaviour
         levelManager.SetStartLocation(new Vector2Int(7, 0));
         levelManager.SetSigilRequirement(2);
     }
+
+    #endregion
+
     public void GenerateGrid()
     {
         int cellHeight = height * chunkSize;
@@ -209,8 +234,10 @@ public class GridManager : MonoBehaviour
             Destroy(SigilParent.GetChild(i).gameObject);
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // possible point of failure
         // reset the sigil locations
-        sigilLocations = new List<Vector2Int>();
+        List<Vector2Int> sigilLocations = new List<Vector2Int>();
 
         // start at the grid Manager Position
         Vector3 cellPos = transform.position;
@@ -261,6 +288,8 @@ public class GridManager : MonoBehaviour
         {
             Destroy(SigilParent.GetChild(i).gameObject);
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        // possible point of failure
         // clear sigil locations
         sigilLocations.Clear();
 
@@ -454,6 +483,111 @@ public class GridManager : MonoBehaviour
         return preRotatedArray;
     }
 
+    public int[,] GetRandomConvertedChunk()
+    {
+        Array2DInt temp = RotateChunk(GetChunkFromFiles());
+        return temp.GetCells();
+    }
+
+    public void FillLevel(int width, int height)
+    {
+        // clear tiles from the grid
+        for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(obstructionsParent.GetChild(i).gameObject);
+        }
+        for (int i = SigilParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(SigilParent.GetChild(i).gameObject);
+        }
+
+        // create digital grid variable
+        DigitalGrid dGrid = new DigitalGrid();
+        // set the width and height
+        dGrid.SetUpGrid(width, height);
+
+        // fill the grid with chunks
+        for (int row = 0; row < height; row++)
+        {
+            for (int col = 0; col < width; col++)
+            {
+                dGrid.PlaceChunk(GetRandomConvertedChunk(), new Vector2Int(col, row));
+            }
+        }
+
+        // verify the grid
+        DResult results = dGrid.Verify();
+        if (results == null)
+        {
+            int timesRun = 0;
+            while (results == null)
+            {
+                timesRun++;
+                // fill the grid with chunks
+                for (int row = 0; row < height; row++)
+                {
+                    for (int col = 0; col < width; col++)
+                    {
+                        dGrid.PlaceChunk(GetRandomConvertedChunk(), new Vector2Int(col, row));
+                    }
+                }
+                results = dGrid.Verify();
+                // bandaid patch for when the start point is covered over
+                if (results != null && results.resultOfBFS[dGrid.GetTileIndex(results.startPoint.x, results.startPoint.y)] != 0)
+                {
+                    Debug.Log("bug happened");
+                    results = null;
+                }
+            }
+            Debug.Log("Reran " + timesRun + " time(s)");
+        }
+
+        // spawn tiles
+        for (int row = 0; row < height * 8; row++)
+        {
+
+            for (int col = 0; col < width * 8; col++)
+            {
+                int temp = results.resultOfBFS[dGrid.GetTileIndex(col, row)];
+                switch (temp)
+                {
+                    case 1:
+                        // place a wall
+                        Instantiate(wallPrefab, CellToWorldPos(col, row), transform.rotation, obstructionsParent);
+                        obstructedTiles++;
+                        break;
+
+                    case 2:
+                        // place an obstruction
+                        Instantiate(obstructionPrefab, CellToWorldPos(col, row), transform.rotation, obstructionsParent);
+                        obstructedTiles++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        List<int> possible = Enumerable.Range(1, results.sigilPoints.Count).ToList();
+        List<int> randomSigils = new List<int>();
+        Debug.Log(results.sigilPoints.Count);
+        for (int i = 0; i < results.sigilCount; i++)
+        {
+            int index = UnityEngine.Random.Range(0, possible.Count);
+            randomSigils.Add(possible[index]);
+            possible.RemoveAt(index);
+        }
+        for (int i = 0; i < randomSigils.Count; i++)
+        {
+            Debug.Log(i + " sigilpoints: " + randomSigils.Count);
+            Instantiate(sigilPrefab, CellToWorldPos(results.sigilPoints[i]), transform.rotation, SigilParent);
+        }
+
+        Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
+        Vector2Int doorPos = results.endPoints[UnityEngine.Random.Range(0, results.endPoints.Count)];
+        Instantiate(doorPrefab, CellToWorldPos(doorPos), transform.rotation, obstructionsParent);
+    }
+
     private Array2DInt RotateChunk(Chunk chunk, int rotationTimes)
     {
         // convert chunk into an int array
@@ -589,9 +723,11 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
-    private bool VerifyGrid(out StartTileInfo tileInfo)
+
+    #region Verify
+    private IEnumerator VerifyGrid(/*out StartTileInfo tileInfo*/)
     {
-        tileInfo = new StartTileInfo();
+        // tileInfo = new StartTileInfo();
 
         // track all of the start tile options
         List<StartTileInfo> possibleStartTiles = new List<StartTileInfo>();
@@ -620,7 +756,7 @@ public class GridManager : MonoBehaviour
         if (untestedEndTiles.Count < 1 || untestedStartTiles.Count < 1)
         {
             Debug.Log("No space in top or bottom");
-            return false;
+            //return false;
         }
 
 
@@ -669,8 +805,8 @@ public class GridManager : MonoBehaviour
                 Vector2Int pos = tile.posInGrid;
 
                 // uncomment this and turn this function into a coroutine to show how the algorithm goes through the board
-                // yield return new WaitForSeconds(timeBetweenIncrement);
-                // Instantiate(foundTilePrefab, CellToWorldPos(pos) + Vector3.up, transform.rotation, SigilParent);
+                yield return new WaitForSeconds(timeBetweenIncrement);
+                Instantiate(foundTilePrefab, CellToWorldPos(pos) + Vector3.up, transform.rotation, SigilParent);
 
                 Vector2Int upTile = pos + new Vector2Int(0, 1);
                 Vector2Int downTile = pos + new Vector2Int(0, -1);
@@ -694,6 +830,14 @@ public class GridManager : MonoBehaviour
                     // increase the count of found tiles
                     numFoundTiles++;
                 }
+                else
+                {
+                    if (upTileIndex >= 0 && upTileIndex < height * 8)
+                    {
+                        Debug.Log("up tile failed: isPosValid: " + IsPosValid(upTile) + " isTileObstructed: "
+                        + !GetTileObstructed(upTile) + " already found: " + !tiles[upTileIndex].found + " Position: " + tiles[upTileIndex].posInGrid);
+                    }
+                }
                 // check the tile directly below
                 if (IsPosValid(downTile) && !GetTileObstructed(downTile) && !tiles[downTileIndex].found)
                 {
@@ -703,6 +847,15 @@ public class GridManager : MonoBehaviour
                     foundTiles.Enqueue(tiles[downTileIndex]);
                     // increase the count of found tiles
                     numFoundTiles++;
+                }
+                else
+                {
+                    if (downTileIndex >= 0)
+                    {
+                        Debug.Log("down tile failed: isPosValid: " + IsPosValid(downTile) + " isTileObstructed: "
+                        + !GetTileObstructed(downTile) + " already found: " + !tiles[downTileIndex].found + " Position: " + tiles[downTileIndex].posInGrid);
+                    }
+
                 }
                 // check the tile directly to the left
                 if (IsPosValid(leftTile) && !GetTileObstructed(leftTile) && !tiles[leftTileIndex].found)
@@ -714,6 +867,15 @@ public class GridManager : MonoBehaviour
                     // increase the count of found tiles
                     numFoundTiles++;
                 }
+                else
+                {
+                    if (leftTileIndex >= 0)
+                    {
+                        Debug.Log("left tile failed: isPosValid: " + IsPosValid(leftTile) + " isTileObstructed: "
+                                                + !GetTileObstructed(leftTile) + " already found: " + !tiles[leftTileIndex].found + " Position: " + tiles[leftTileIndex].posInGrid);
+                    }
+
+                }
                 // check the tile directly to the right
                 if (IsPosValid(rightTile) && !GetTileObstructed(rightTile) && !tiles[rightTileIndex].found)
                 {
@@ -723,6 +885,16 @@ public class GridManager : MonoBehaviour
                     foundTiles.Enqueue(tiles[rightTileIndex]);
                     // increase the count of found tiles
                     numFoundTiles++;
+                }
+                else
+                {
+
+                    if (rightTileIndex >= 0 && rightTileIndex < width * 8)
+                    {
+                        Debug.Log("right tile failed: isPosValid: " + IsPosValid(rightTile) + " isTileObstructed: "
+                                                + !GetTileObstructed(rightTile) + " already found: " + !tiles[rightTileIndex].found + " Position: " + tiles[rightTileIndex].posInGrid);
+                    }
+
                 }
                 #endregion
 
@@ -738,6 +910,7 @@ public class GridManager : MonoBehaviour
             {
                 // check if a valid tile in the final row was reached
                 int tileIndex = untestedEndTiles[i].x + untestedEndTiles[i].y * 8 * width;
+                Debug.Log(tileIndex);
                 if (tiles[tileIndex].found)
                 {
                     hasValidTile = true;
@@ -828,7 +1001,7 @@ public class GridManager : MonoBehaviour
         if (possibleStartTiles.Count < 1)
         {
             Debug.Log("No Start Tiles Added");
-            return false;
+            //return false;
         }
 
 
@@ -844,7 +1017,7 @@ public class GridManager : MonoBehaviour
 
         Debug.Log("Best Tile is at index:" + bestTileIndex);
 
-        tileInfo = possibleStartTiles[bestTileIndex];
+        //tileInfo = possibleStartTiles[bestTileIndex];
         /*        // run BST one more time on the best starting tile and then copy the BST out
                 List<Tile> bTiles = new List<Tile>();
                 for (int row = 0; row < height * 8; row++)
@@ -937,8 +1110,10 @@ public class GridManager : MonoBehaviour
                 tileInfo.tiles = bTiles;
                 tileInfo.startPos = possibleStartTiles[bestTileIndex].startPos;*/
 
-        return true;
+        //return true;
     }
+
+    #endregion
 
     private void PlaceObjects(StartTileInfo info)
     {
@@ -1265,12 +1440,19 @@ public class GridManager : MonoBehaviour
 
     //
 
-    /*private void OnGUI()
+    private void OnGUI()
     {
-        if (GUILayout.Button("Create Grid"))
+        if (GUILayout.Button("make new layout"))
         {
-            CreateGrid(2, 2);
+            FillWholeGrid();
         }
-
-    }*/
+        if (GUILayout.Button("make new layout"))
+        {
+            StartCoroutine(CheckAllTiles());
+        }
+        if (GUILayout.Button("Data Grid"))
+        {
+            FillLevel(width, height);
+        }
+    }
 }
