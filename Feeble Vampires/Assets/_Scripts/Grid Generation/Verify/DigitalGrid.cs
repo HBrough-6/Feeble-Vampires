@@ -97,7 +97,7 @@ public class DigitalGrid
     /// Checks if the digital grid is valid
     /// </summary>
     /// <returns>returns true if the grid is valid</returns>
-    public DResult Verify(int width, int height)
+    public DResult Verify()
     {
         int timesRun = 0;
         // reset all tiles to make sure they are all unfound
@@ -130,10 +130,7 @@ public class DigitalGrid
             DResult tempResult = new DResult();
 
             DTile startTile = root[Random.Range(0, root.Count)];
-            Debug.Log(startTile.pos);
-
             tempResult.startPoint = startTile.pos;
-            Debug.Log(tempResult.startPoint);
 
             Q.Enqueue(root[0]);
             root[0].found = true;
@@ -171,11 +168,11 @@ public class DigitalGrid
                 if (VerifyPos(v.adjacentTiles[3]))
                     rightIndex = GetTileIndex(v.adjacentTiles[3]);
 
-                //Debug.Log("Checking neighbors of tile " + v.pos +
-                //    "\n Up - Pos: " + v.adjacentTiles[0] + " Index: " + upIndex
-                //    + "\n Down - Pos: " + v.adjacentTiles[1] + " Index: " + downIndex
-                //    + "\n left - Pos: " + v.adjacentTiles[2] + " Index: " + leftIndex
-                //    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);
+                Debug.Log("Checking neighbors of tile " + v.pos +
+                    "\n Up - Pos: " + v.adjacentTiles[0] + " Index: " + upIndex
+                    + "\n Down - Pos: " + v.adjacentTiles[1] + " Index: " + downIndex
+                    + "\n left - Pos: " + v.adjacentTiles[2] + " Index: " + leftIndex
+                    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);
 
                 // check if the position was validated, tile has not been found, and the tile is not a wall
                 if (upIndex != -1
@@ -273,8 +270,6 @@ public class DigitalGrid
                 }
             }
 
-            Debug.Log(tempResult.startPoint);
-
             // if there are more starting tiles to check, reset all tiles status'
             if (root.Count > 0)
             {
@@ -284,9 +279,6 @@ public class DigitalGrid
                     grid[i].found = false;
                 }
             }
-
-            Debug.Log(tempResult.startPoint);
-
         }
 
         // determine the best start point

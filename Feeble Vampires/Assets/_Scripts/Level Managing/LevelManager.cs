@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
         // open the fail screen
     }
 
-    public Vector2Int GenerateDifficulty(int currentLevel)
+    private Vector2Int GenerateDifficulty(int currentLevel)
     {
         int rand = Random.Range(0, 2);
         // levels 2 and 3 are 2x2
@@ -62,14 +62,14 @@ public class LevelManager : MonoBehaviour
                 return new Vector2Int(2, 2);
             case 4:
             case 5:
-                return rand > 1 ? new Vector2Int(3, 2) : new Vector2Int(2, 3);
+                return rand > 0.5 ? new Vector2Int(3, 2) : new Vector2Int(2, 3);
             case 6:
             case 7:
                 return new Vector2Int(3, 3);
 
             case 8:
             case 9:
-                return rand > 1 ? new Vector2Int(3, 4) : new Vector2Int(4, 3);
+                return rand > 0.5 ? new Vector2Int(3, 4) : new Vector2Int(4, 3);
 
 
             default:
@@ -79,10 +79,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void GoToNextLevel()
+    public void GoToNextLevel()
     {
         // increase current level count
         currentLevel++;
+        Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
 
         // player is in zone 1 and the safe space hasn't been visited yet
@@ -93,19 +94,24 @@ public class LevelManager : MonoBehaviour
         }
         else if (!safeZoneVisited)
         {
-            // attempt to visit safe zone
-            if (Random.Range(0, 10) + currentLevel % zoneTwoStart > 9 || currentLevel == 5 || currentLevel == 9)
-            {
-                // gridManager.VisitSafeZone();
-                Debug.Log("Go to Safezone");
-            }
-            else
-            {
-                gridManager.width = LevelSize.x;
-                gridManager.height = LevelSize.y;
-                gridManager.GenerateGrid();
-                gridManager.FillLevel();
-            }
+            //// attempt to visit safe zone
+            //if (Random.Range(0, 10) + currentLevel % zoneTwoStart > 9 || currentLevel == 5 || currentLevel == 9 && false)
+            //{
+            //    // gridManager.VisitSafeZone();
+            //    Debug.Log("Go to Safezone");
+            //}
+            //else
+            //{
+            //    gridManager.width = LevelSize.x;
+            //    gridManager.height = LevelSize.y;
+            //    gridManager.GenerateGrid();
+            //    gridManager.FillLevel(LevelSize.x, LevelSize.y);
+            //}
+
+            gridManager.width = LevelSize.x;
+            gridManager.height = LevelSize.y;
+            gridManager.GenerateGrid();
+            gridManager.FillLevel(LevelSize.x, LevelSize.y);
         }
         else if (currentLevel == 9)
         {
