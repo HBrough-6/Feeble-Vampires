@@ -12,7 +12,11 @@ public class LevelManager : MonoBehaviour
     private Vector2Int[] doorLocations;
     public GameObject winText;
 
+    // The level that zone two starts at
+    public int zoneTwoStart = 6;
+
     public int currentLevel = 1;
+    public bool safeZoneVisited = false;
 
     private void Awake()
     {
@@ -44,21 +48,76 @@ public class LevelManager : MonoBehaviour
         // open the fail screen
     }
 
-    private void CompleteLevel()
+    public Vector2Int GenerateDifficulty(int currentLevel)
     {
-        // increase level count
+        int rand = Random.Range(0, 2);
+        // levels 2 and 3 are 2x2
+        // levels 4 and 5 are 2x3 or 3x2
+        // levels 6 and 7 are 3x3
+        // levels 8 and 9 are 4x3 or 3x4
+        switch (currentLevel)
+        {
+            case 2:
+            case 3:
+                return new Vector2Int(2, 2);
+            case 4:
+            case 5:
+                return rand > 1 ? new Vector2Int(3, 2) : new Vector2Int(2, 3);
+            case 6:
+            case 7:
+                return new Vector2Int(3, 3);
+
+            case 8:
+            case 9:
+                return rand > 1 ? new Vector2Int(3, 4) : new Vector2Int(4, 3);
+
+
+            default:
+                Debug.Log("Only generates Difficulty for levels 2-9");
+                return new Vector2Int(-1, -1);
+
+        }
+    }
+
+    private void GoToNextLevel()
+    {
+        // increase current level count
         currentLevel++;
-        if (currentLevel == 2)
+        Vector2Int LevelSize = GenerateDifficulty(currentLevel);
+
+        // player is in zone 1 and the safe space hasn't been visited yet
+        if (currentLevel == 1)
         {
-            // pop up Skill select Screen
-            movementManager.endLevel();
+            // import level 1;
+            GenerateLevelOne();
         }
-        else if (currentLevel >= 3)
+        else if (!safeZoneVisited)
         {
-            // you win screen
-            FindObjectOfType<GameManager>().Win();
-            winText.SetActive(true);
+            // attempt to visit safe zone
+            if (Random.Range(0, 10) + currentLevel % zoneTwoStart > 9 || currentLevel == 5 || currentLevel == 9)
+            {
+                // gridManager.VisitSafeZone();
+                Debug.Log("Go to Safezone");
+            }
+            else
+            {
+                gridManager.width = LevelSize.x;
+                gridManager.height = LevelSize.y;
+                gridManager.GenerateGrid();
+                gridManager.FillLevel();
+            }
         }
+        else if (currentLevel == 9)
+        {
+            // import final level
+            // gridManager.StartLevelTen()
+        }
+        else if (currentLevel == 10)
+        {
+            // end the game
+
+        }
+
     }
 
     public void AttemptDoorOpen()
@@ -66,7 +125,7 @@ public class LevelManager : MonoBehaviour
         if (currentSigilsCollected >= SigilsRequiredForUnlock)
         {
             FindObjectOfType<EnemyManager>().ClearAllEnemies();
-            CompleteLevel();
+            movementManager.endLevel();
             Debug.Log("Hi");
         }
     }
