@@ -23,8 +23,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        gridManager.GenerateGrid();
-        GenerateLevelOne();
+        /*gridManager.GenerateGrid();
+        GenerateLevelOne();*/
     }
 
     public void GenerateLevelOne()
