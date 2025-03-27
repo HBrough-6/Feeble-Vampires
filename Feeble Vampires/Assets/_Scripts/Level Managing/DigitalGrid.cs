@@ -232,26 +232,30 @@ public class DigitalGrid
                 tempResult.sigilCount = 6;
             }
 
-
+            // save the current run through the BFS if it reached end tiles and has enough sigil positions
             if (tempResult.endPoints.Count > 0 && tempResult.sigilPoints.Count > tempResult.sigilCount)
             {
                 tempResult.resultOfBFS = new int[width * height * 64];
                 for (int i = 0; i < grid.Length; i++)
                 {
                     DTile tTile = grid[i];
+                    // passes through wall tiles
                     if (tTile.type == 1 || tTile.type == 2)
                     {
                         tempResult.resultOfBFS[i] = tTile.type;
                     }
+                    // fills in tiles that weren't found
                     else if (!tTile.found)
                     {
                         tempResult.resultOfBFS[i] = 1;
                     }
+                    // passes through empty tiles
                     else
                     {
                         tempResult.resultOfBFS[i] = 0;
                     }
                 }
+                // place results in the list of results
                 results.Add(tempResult);
             }
 
