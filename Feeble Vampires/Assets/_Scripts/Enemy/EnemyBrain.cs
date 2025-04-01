@@ -51,7 +51,7 @@ public class EnemyBrain : MonoBehaviour
     {
         if (enemyManager.gameManager.movementManager.hanging == false)
         {
-            if (enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().mirage)
+            if (enemyManager.gameManager.movementManager.canSidestep)
             {
                 Debug.Log("Mirage Activated");
                 enemyManager.gameManager.movementManager.mirageSidestep(this);

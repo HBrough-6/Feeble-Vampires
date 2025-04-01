@@ -17,6 +17,11 @@ public class PlayerItems : MonoBehaviour
     void Start()
     {
         movementManager = FindObjectOfType<MovementManager>();
+
+        if (mirage)
+        {
+            movementManager.canSidestep = true;
+        }
     }
 
     // Update is called once per frame

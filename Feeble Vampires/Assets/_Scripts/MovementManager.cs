@@ -48,6 +48,7 @@ public class MovementManager : MonoBehaviour
 
     public bool timePieceActive;
     public bool isShrieking;
+    public bool canSidestep;
     public bool spawningBatBuddy;
 
     public GameObject batBuddy;
@@ -390,11 +391,12 @@ public class MovementManager : MonoBehaviour
 
     public void mirageSidestep(EnemyBrain specificEnemy)
     {
+        int finalPathPoint = historicPathPoints.Count - 1;
         //backtrack to the previous space in your travel path
         player.transform.position = new Vector3
-            (historicPathPoints[historicPathPoints.Count - 1].x, player.transform.position.y,
-            historicPathPoints[historicPathPoints.Count - 1].y);
-        historicPathPoints.RemoveAt(historicPathPoints.Count - 1);
+            (historicPathPoints[finalPathPoint].x, player.transform.position.y,
+            historicPathPoints[finalPathPoint].y);
+        historicPathPoints.RemoveAt(finalPathPoint);
 
         for (int i = 0; i < specificEnemy.enemySight.seenTilesLocations.Length; i++)
         {
@@ -406,7 +408,7 @@ public class MovementManager : MonoBehaviour
             else if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && historicPathPoints.Count == 0)
             {
                 Debug.Log("Can't retreat further, I admit defeat...");
-                player.GetComponent<PlayerItems>().mirage = false;
+                canSidestep = false;
                 specificEnemy.SpottedPlayer();
                 return;
             }
