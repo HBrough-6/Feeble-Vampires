@@ -397,6 +397,7 @@ public class MovementManager : MonoBehaviour
         player.transform.position = new Vector3
             (historicPathPoints[finalPathPoint].x, player.transform.position.y, historicPathPoints[finalPathPoint].y);
         playerPosInGrid = gridManager.WorldToCellPos(player.transform.position);
+        endPoint.transform.position = new Vector3(player.transform.position.x, endPoint.transform.position.y, player.transform.position.z);
         historicPathPoints.RemoveAt(finalPathPoint);
 
         if (historicPathPoints.Count == 0) finalPathPoint = -1;
