@@ -392,20 +392,23 @@ public class MovementManager : MonoBehaviour
     public void mirageSidestep(EnemyBrain specificEnemy)
     {
         int finalPathPoint = historicPathPoints.Count - 1;
+
         //backtrack to the previous space in your travel path
         player.transform.position = new Vector3
-            (historicPathPoints[finalPathPoint].x, player.transform.position.y,
-            historicPathPoints[finalPathPoint].y);
+            (historicPathPoints[finalPathPoint].x, player.transform.position.y, historicPathPoints[finalPathPoint].y);
+        playerPosInGrid = gridManager.WorldToCellPos(player.transform.position);
         historicPathPoints.RemoveAt(finalPathPoint);
+
+        if (historicPathPoints.Count == 0) finalPathPoint = -1;
 
         for (int i = 0; i < specificEnemy.enemySight.seenTilesLocations.Length; i++)
         {
-            if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && historicPathPoints.Count > 0)
+            if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && finalPathPoint > 0)
             {
                 //if you are still in enemy sight, and you still have spaces you moved through, do it again
                 mirageSidestep(specificEnemy);
             }
-            else if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && historicPathPoints.Count == 0)
+            else if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && finalPathPoint == -1)
             {
                 Debug.Log("Can't retreat further, I admit defeat...");
                 canSidestep = false;
