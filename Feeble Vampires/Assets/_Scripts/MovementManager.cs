@@ -417,6 +417,8 @@ public class MovementManager : MonoBehaviour
                 return;
             }
         }
+
+        pathPoints[0] = playerPosInGrid;
     }
 
     public void prepareBatBuddy()
