@@ -21,11 +21,18 @@ public class TitleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        previousMenuHolder = settingsMenuHolder;
-        currentMenuHolder = settingsMenuHolder;
+        previousMenuHolder = mainMenuHolder;
+        currentMenuHolder = mainMenuHolder;
         returnToMainMenu();
     }
-
+    
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            returntoPrevious();
+        }
+    }
     public void startGame()
     {
         SceneManager.LoadScene(1);
@@ -92,7 +99,6 @@ public class TitleManager : MonoBehaviour
 
     public void disableUI()
     {
-        mainMenuHolder.SetActive(false);
         settingsMenuHolder.SetActive(false);
         audioSettingsMenuHolder.SetActive(false);
         videoSettingsMenuHolder.SetActive(false);
