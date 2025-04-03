@@ -35,6 +35,7 @@ public class PlayerItems : MonoBehaviour
             {
                 movementManager.hyperExtendTime();
                 movementManager.timePieceActive = true;
+                removeItem(ref brokenTimePiece, "Broken Timepiece");
             }
         }
 
@@ -43,6 +44,7 @@ public class PlayerItems : MonoBehaviour
             if (shriek && !movementManager.isShrieking)
             {
                 movementManager.startShrieking();
+                removeItem(ref shriek, "Shriek");
             }
         }
 
@@ -51,6 +53,7 @@ public class PlayerItems : MonoBehaviour
             if (bloodDope && !movementManager.doping)
             {
                 movementManager.dopeDouble();
+                removeItem(ref bloodDope, "Blood Dope");
             }
         }
 
@@ -62,31 +65,36 @@ public class PlayerItems : MonoBehaviour
                 movementManager.spawningBatBuddy = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck(ref brokenTimePiece, "Broken Timepiece");
+        if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck(ref shriek, "Shriek");
+        if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck(ref mirage, "Mirage");
+        if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
     }
 
-    public void itemSlotCheck(bool newItem)
+    public void itemSlotCheck(ref bool newItem, string itemName)
     {
         for (int i = 0; i < equippedItemSlots.Count; i++)
         {
-            if (equippedItemNames[i] == newItem.ToString())
+            if (equippedItemNames[i] == newItem.ToString() || newItem)
             {
                 return;
             }
             else if (!equippedItemSlots[i])
             {
                 equippedItemSlots[i] = true;
-                equippedItemNames[i] = newItem.ToString();
+                equippedItemNames[i] = itemName;
+                newItem = true;
                 return;
             }
         }
-        newItem = false;
     }
 
-    public void removeItem(bool usedItem)
+    public void removeItem(ref bool usedItem, string itemName)
     {
         for (int i = 0; i < equippedItemSlots.Count; i++)
         {
-            if (equippedItemNames[i] == usedItem.ToString())
+            if (equippedItemNames[i] == itemName)
             {
                 equippedItemNames[i] = "";
                 equippedItemSlots[i] = false;

@@ -2417,7 +2417,7 @@ MonoBehaviour:
   brokenTimePiece: 0
   shriek: 0
   mirage: 0
-  bloodDope: 1
+  bloodDope: 0
   batBuddy: 0
   equippedItemSlots: 0000
   equippedItemNames:
