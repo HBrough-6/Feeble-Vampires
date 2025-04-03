@@ -48,6 +48,12 @@ public class MovementManager : MonoBehaviour
 
     public bool timePieceActive;
     public bool isShrieking;
+    public bool canSidestep;
+    public bool spawningBatBuddy;
+
+    public GameObject batBuddy;
+
+    int placeholderSpaceCap;
 
     private void Awake()
     {
@@ -258,13 +264,29 @@ public class MovementManager : MonoBehaviour
 
     public void submitMovement()
     {
+        //spawn the bat buddy if it's being prepared
+        if (spawningBatBuddy)
+        {
+            batBuddy.transform.position = endPoint.transform.position;
+            spaceCap = placeholderSpaceCap;
+            resetMovement();
+            gameManager.resetTimer(false);
+            spawningBatBuddy = false;
+            return;
+        }
+
         RaycastHit hit;
 
         if (Physics.Raycast(endPoint.transform.position, Vector3.down, out hit, 1.2f))
         {
+            if (player.GetComponent<PlayerAbilities>().currentlyTracking)
+                player.GetComponent<PlayerAbilities>().currentlyTracking = false;
+
             if (hit.collider.CompareTag("Sigil"))
             {
                 hit.collider.GetComponent<Sigil>().Collect();
+                player.GetComponent<PlayerAbilities>().sniffEnemies();
+                if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
             }
             if (hit.collider.CompareTag("Door"))
             {
@@ -315,6 +337,8 @@ public class MovementManager : MonoBehaviour
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
+
+        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
     }
 
     public void initializeOrigin()
@@ -365,8 +389,41 @@ public class MovementManager : MonoBehaviour
         submitMovement();
     }
 
-    public void mirageSidestep()
+    public void mirageSidestep(EnemyBrain specificEnemy)
     {
-        //expand out to find the first available empty safe space and move there
+        int finalPathPoint = historicPathPoints.Count - 1;
+
+        //backtrack to the previous space in your travel path
+        player.transform.position = new Vector3
+            (historicPathPoints[finalPathPoint].x, player.transform.position.y, historicPathPoints[finalPathPoint].y);
+        playerPosInGrid = gridManager.WorldToCellPos(player.transform.position);
+        endPoint.transform.position = new Vector3(player.transform.position.x, endPoint.transform.position.y, player.transform.position.z);
+        historicPathPoints.RemoveAt(finalPathPoint);
+
+        if (historicPathPoints.Count == 0) finalPathPoint = -1;
+
+        for (int i = 0; i < specificEnemy.enemySight.seenTilesLocations.Length; i++)
+        {
+            if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && finalPathPoint > 0)
+            {
+                //if you are still in enemy sight, and you still have spaces you moved through, do it again
+                mirageSidestep(specificEnemy);
+            }
+            else if (playerPosInGrid == specificEnemy.enemySight.seenTilesLocations[i] && finalPathPoint == -1)
+            {
+                Debug.Log("Can't retreat further, I admit defeat...");
+                canSidestep = false;
+                specificEnemy.SpottedPlayer();
+                return;
+            }
+        }
+
+        pathPoints[0] = playerPosInGrid;
+    }
+
+    public void prepareBatBuddy()
+    {
+        placeholderSpaceCap = spaceCap;
+        spaceCap = 9999;
     }
 }

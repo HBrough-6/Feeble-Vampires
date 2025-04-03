@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &111426614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seenTilesLocations: []
   sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
     type: 3}
 --- !u!114 &111426617
@@ -498,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f18ebfd23aad54fad8e7b70438309a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySight: {fileID: 0}
   posInGrid: {x: -1, y: -1}
   moveDir: {x: 0, y: 0}
 --- !u!114 &111426618
@@ -512,6 +514,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84f21baa20cdd4489864555993f48fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &119738089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119738093}
+  - component: {fileID: 119738092}
+  - component: {fileID: 119738091}
+  - component: {fileID: 119738090}
+  m_Layer: 0
+  m_Name: BatBuddy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &119738090
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119738089}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &119738091
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119738089}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &119738092
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119738089}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &119738093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119738089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221079683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,13 +2389,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 0
-  isSwifter: 0
-  swiftLevel: 0
+  canEcholocate: 1
+  isSwifter: 1
   canRushAttack: 0
-  smarter: 0
-  hideable: 1
+  smarter: 1
+  hideable: 0
   isGreedy: 0
+  strongestInstinct: 1
+  scentTracker: 1
+  currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
   experiencePoints: 2
@@ -2306,8 +2415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementManager: {fileID: 0}
   brokenTimePiece: 0
-  shriek: 1
-  itemSlots: 
+  shriek: 0
+  mirage: 1
+  batBuddy: 0
+  equippedItemSlots: 0000
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2699,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
   pathPoints: []
+  historicPathPoints: []
   upBlocked: 0
   leftBlocked: 0
   downBlocked: 0
@@ -2601,9 +2713,10 @@ MonoBehaviour:
   timeLimit: 0
   levelManager: {fileID: 0}
   skillSelectionHolder: {fileID: 221079683}
-  timePieceExtension: 0
   timePieceActive: 0
   isShrieking: 0
+  spawningBatBuddy: 0
+  batBuddy: {fileID: 119738089}
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -2959,7 +3072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridMiniMap: {fileID: 2124033200}
-  gridManager: {fileID: 0}
+  gridManager: {fileID: 1041244745}
 --- !u!1 &1572626554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,7 +3417,9 @@ MonoBehaviour:
   SigilsRequiredForUnlock: 1
   currentSigilsCollected: 0
   winText: {fileID: 409452997}
+  zoneTwoStart: 6
   currentLevel: 1
+  safeZoneVisited: 0
 --- !u!4 &1723147154
 Transform:
   m_ObjectHideFlags: 0
@@ -3874,6 +3989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  enemies: []
 --- !u!4 &1931230596
 Transform:
   m_ObjectHideFlags: 0
@@ -4305,7 +4421,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 35.223022, y: -82.22372, z: 180.68594, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4484,6 +4600,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[0].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[1].y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[2].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[2].y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[3].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400291905725984979, guid: 64c45dc2a58f7324181019755955862c,
+        type: 3}
+      propertyPath: moveNodes.Array.data[3].y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2854191324044093814, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
       propertyPath: m_Name
@@ -4492,7 +4643,7 @@ PrefabInstance:
     - target: {fileID: 2854191324044093814, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5775706035621374076, guid: 64c45dc2a58f7324181019755955862c,
         type: 3}
@@ -4572,3 +4723,4 @@ SceneRoots:
   - {fileID: 1389284906}
   - {fileID: 1723147154}
   - {fileID: 1041244747}
+  - {fileID: 119738093}

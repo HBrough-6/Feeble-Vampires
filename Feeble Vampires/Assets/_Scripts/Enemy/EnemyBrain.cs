@@ -6,7 +6,7 @@ public class EnemyBrain : MonoBehaviour
     private EnemyManager enemyManager;
 
     private EnemyMovement enemyMovement;
-    private EnemySight enemySight;
+    public EnemySight enemySight;
     private EnemyDeathArea enemyDeathArea;
 
     public Vector2Int posInGrid = new Vector2Int(-1, -1);
@@ -51,12 +51,15 @@ public class EnemyBrain : MonoBehaviour
     {
         if (enemyManager.gameManager.movementManager.hanging == false)
         {
-            if (enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().mirage)
+            if (enemyManager.gameManager.movementManager.canSidestep)
             {
-                enemyManager.gameManager.movementManager.mirageSidestep();
+                Debug.Log("Mirage Activated");
+                enemyManager.gameManager.movementManager.mirageSidestep(this);
             }
             else
             {
+                Debug.Log("Player spotted");
+
                 enemyManager.PlayerSpotted();
             }
         }

@@ -4,11 +4,14 @@ public class PlayerAbilities : MonoBehaviour
 {
     public bool canEcholocate;
     public bool isSwifter;
-    public int swiftLevel;
     public bool canRushAttack;
     public bool smarter;
     public bool hideable;
     public bool isGreedy;
+    public bool strongestInstinct;
+    public bool scentTracker;
+
+    public bool currentlyTracking;
 
     public UIManager uiManager;
     public MovementManager movementManager;
@@ -25,7 +28,7 @@ public class PlayerAbilities : MonoBehaviour
 
         if (isSwifter)
         {
-            swiftLevel += 1;
+            movementManager.spaceCap += 1;
         }
 
         if (smarter)
@@ -33,20 +36,17 @@ public class PlayerAbilities : MonoBehaviour
             movementManager.timeLimit = movementManager.baseTime + 2;
         }
 
-        movementManager.spaceCap += swiftLevel;
+        if (strongestInstinct)
+        {
+            movementManager.timeLimit /= 2;
+            movementManager.spaceCap *= 2;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
-
-    public void GetSwift()
-    {
-        swiftLevel += 1;
-        movementManager.spaceCap += swiftLevel;
-        spendPoints();
     }
 
     public void GetSmart()
@@ -59,5 +59,13 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (isGreedy) experiencePoints--;
         else experiencePoints -= 2;
+    }
+
+    public void sniffEnemies()
+    {
+        if (scentTracker)
+        {
+            currentlyTracking = true;
+        }
     }
 }

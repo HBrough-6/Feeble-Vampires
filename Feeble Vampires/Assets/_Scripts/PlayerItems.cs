@@ -11,12 +11,17 @@ public class PlayerItems : MonoBehaviour
     public bool mirage;
     public bool batBuddy;
 
-    public List<bool> itemSlots;
+    public List<bool> equippedItemSlots;
 
     // Start is called before the first frame update
     void Start()
     {
         movementManager = FindObjectOfType<MovementManager>();
+
+        if (mirage)
+        {
+            movementManager.canSidestep = true;
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +41,15 @@ public class PlayerItems : MonoBehaviour
             if (shriek && !movementManager.isShrieking)
             {
                 movementManager.startShrieking();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (batBuddy && !movementManager.spawningBatBuddy)
+            {
+                movementManager.prepareBatBuddy();
+                movementManager.spawningBatBuddy = true;
             }
         }
     }
