@@ -2420,6 +2420,9 @@ MonoBehaviour:
   bloodDope: 1
   batBuddy: 0
   equippedItemSlots: 0000
+  equippedItemNames:
+  - 
+  - 
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0

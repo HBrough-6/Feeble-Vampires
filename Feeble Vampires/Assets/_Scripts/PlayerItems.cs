@@ -81,4 +81,17 @@ public class PlayerItems : MonoBehaviour
         }
         newItem = false;
     }
+
+    public void removeItem(bool usedItem)
+    {
+        for (int i = 0; i < equippedItemSlots.Count; i++)
+        {
+            if (equippedItemNames[i] == usedItem.ToString())
+            {
+                equippedItemNames[i] = "";
+                equippedItemSlots[i] = false;
+                usedItem = false;
+            }
+        }
+    }
 }
