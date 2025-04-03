@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour
 
     private void CompleteLevel()
     {
+        PlayerAbilities.experiencePoints += 2;
         // increase level count
         currentLevel++;
         if (currentLevel == 2)

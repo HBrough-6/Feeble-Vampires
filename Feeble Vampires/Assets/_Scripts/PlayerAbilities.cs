@@ -13,7 +13,7 @@ public class PlayerAbilities : MonoBehaviour
     public UIManager uiManager;
     public MovementManager movementManager;
 
-    public int experiencePoints;
+    public static int experiencePoints;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,8 @@ public class PlayerAbilities : MonoBehaviour
         }
 
         movementManager.spaceCap += swiftLevel;
+
+        experiencePoints = 0;
     }
 
     // Update is called once per frame
@@ -44,20 +46,35 @@ public class PlayerAbilities : MonoBehaviour
 
     public void GetSwift()
     {
-        swiftLevel += 1;
-        movementManager.spaceCap += swiftLevel;
-        spendPoints();
+        if (experiencePoints < 2)
+        {
+            Debug.Log("You do not have enough experience points");
+        }
+        else
+        {
+            spendPoints();
+            swiftLevel += 1;
+            movementManager.spaceCap += swiftLevel;
+        }
+            
     }
 
     public void GetSmart()
     {
-        movementManager.timeLimit = movementManager.baseTime + 2;
-        spendPoints();
+        if (experiencePoints < 2)
+        {
+            Debug.Log("You do not have enough experience points");
+        }
+        else
+        {
+            spendPoints();
+            movementManager.timeLimit = movementManager.baseTime + 2;
+        }
     }
 
     public void spendPoints()
     {
         if (isGreedy) experiencePoints--;
-        else experiencePoints -= 2;
+        else experiencePoints -= 2;   
     }
 }

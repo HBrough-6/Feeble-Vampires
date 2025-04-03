@@ -157,7 +157,7 @@ public class MovementManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 resetMovement();
             }
