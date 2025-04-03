@@ -13,6 +13,7 @@ public class PlayerItems : MonoBehaviour
     public bool batBuddy;
 
     public List<bool> equippedItemSlots;
+    public List<string> equippedItemNames;
 
     // Start is called before the first frame update
     void Start()
@@ -61,5 +62,23 @@ public class PlayerItems : MonoBehaviour
                 movementManager.spawningBatBuddy = true;
             }
         }
+    }
+
+    public void itemSlotCheck(bool newItem)
+    {
+        for (int i = 0; i < equippedItemSlots.Count; i++)
+        {
+            if (equippedItemNames[i] == newItem.ToString())
+            {
+                return;
+            }
+            else if (!equippedItemSlots[i])
+            {
+                equippedItemSlots[i] = true;
+                equippedItemNames[i] = newItem.ToString();
+                return;
+            }
+        }
+        newItem = false;
     }
 }
