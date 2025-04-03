@@ -9,6 +9,7 @@ public class PlayerItems : MonoBehaviour
     public bool brokenTimePiece;
     public bool shriek;
     public bool mirage;
+    public bool bloodDope;
     public bool batBuddy;
 
     public List<bool> equippedItemSlots;
@@ -45,6 +46,14 @@ public class PlayerItems : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (bloodDope && !movementManager.doping)
+            {
+                movementManager.dopeDouble();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             if (batBuddy && !movementManager.spawningBatBuddy)
             {
