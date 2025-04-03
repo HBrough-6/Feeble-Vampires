@@ -49,6 +49,7 @@ public class MovementManager : MonoBehaviour
     public bool timePieceActive;
     public bool isShrieking;
     public bool canSidestep;
+    public bool doping;
     public bool spawningBatBuddy;
 
     public GameObject batBuddy;
@@ -326,6 +327,12 @@ public class MovementManager : MonoBehaviour
             }
         }
 
+        if (doping)
+        {
+            spaceCap /= 2;
+            doping = false;
+        }
+
         player.transform.position = new Vector3
             (endPoint.transform.position.x, player.transform.position.y, endPoint.transform.position.z);
         initializeOrigin();
@@ -419,6 +426,14 @@ public class MovementManager : MonoBehaviour
         }
 
         pathPoints[0] = playerPosInGrid;
+    }
+
+    public void dopeDouble()
+    {
+        resetMovement();
+        submitMovement();
+        spaceCap *= 2;
+        doping = true;
     }
 
     public void prepareBatBuddy()

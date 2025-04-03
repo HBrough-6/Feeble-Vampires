@@ -2416,9 +2416,13 @@ MonoBehaviour:
   movementManager: {fileID: 0}
   brokenTimePiece: 0
   shriek: 0
-  mirage: 1
+  mirage: 0
+  bloodDope: 0
   batBuddy: 0
   equippedItemSlots: 0000
+  equippedItemNames:
+  - 
+  - 
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,8 +2702,17 @@ MonoBehaviour:
   endPoint: {fileID: 1386344183}
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
-  pathPoints: []
-  historicPathPoints: []
+  pathPoints:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  historicPathPoints:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
   upBlocked: 0
   leftBlocked: 0
   downBlocked: 0
@@ -2715,6 +2728,8 @@ MonoBehaviour:
   skillSelectionHolder: {fileID: 221079683}
   timePieceActive: 0
   isShrieking: 0
+  canSidestep: 0
+  doping: 0
   spawningBatBuddy: 0
   batBuddy: {fileID: 119738089}
 --- !u!4 &1269597651
