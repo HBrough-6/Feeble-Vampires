@@ -64,4 +64,12 @@ public class EnemyManager : MonoBehaviour
     {
         gameManager.gameOver();
     }
+
+    public void CreateEnemy()
+    {
+        // copy the grid from the gridManager
+        // find where the player starts and avoid starting there
+        // pathfind 3-4 nodes, can have one of the later nodes in the starting player chunk
+        // create enemy and return path
+    }
 }

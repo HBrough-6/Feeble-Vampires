@@ -59,6 +59,11 @@ public class GridManager : MonoBehaviour
     private StartTileInfo tileInfo1;
 
     private int redoCount = 0;
+
+    public DigitalGrid dGrid;
+
+
+    public int[] resultingGrid;
     private void Awake()
     {
         grid = GetComponent<Grid>();
@@ -542,6 +547,12 @@ public class GridManager : MonoBehaviour
             Debug.Log("Reran " + timesRun + " time(s)");
         }
 
+        // save the int grid
+        resultingGrid = results.resultOfBFS;
+        dGrid.grid = ConvertIntGrid(resultingGrid);
+        // set the public dGrid to the result of the verified grid
+        this.dGrid = dGrid;
+
         // spawn tiles
         for (int row = 0; row < height * 8; row++)
         {
@@ -586,6 +597,22 @@ public class GridManager : MonoBehaviour
         Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
         Vector2Int doorPos = results.endPoints[UnityEngine.Random.Range(0, results.endPoints.Count)];
         Instantiate(doorPrefab, CellToWorldPos(doorPos), transform.rotation, obstructionsParent);
+    }
+
+    public DTile[] ConvertIntGrid(int[] grid)
+    {
+        DTile[] newGrid = new DTile[grid.Length];
+
+        // convert grid into Digital Grid
+        for (int row = 0; row < height * 8; row++)
+        {
+            for (int col = 0; col < width * 8; col++)
+            {
+                newGrid[col + row * width * 8] = new DTile(grid[col + row * width * 8], new Vector2Int(col, row));
+            }
+        }
+
+        return newGrid;
     }
 
     private Array2DInt RotateChunk(Chunk chunk, int rotationTimes)
@@ -1457,6 +1484,37 @@ public class GridManager : MonoBehaviour
         if (GUILayout.Button("Go Next Level"))
         {
             levelManager.GoToNextLevel();
+        }
+        if (GUILayout.Button("Test PQ"))
+        {
+            DTilePriorityQueue PQ = new DTilePriorityQueue();
+
+            PQ.Pop();
+
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
+            Debug.Log(PQ.PrintDist());
+            PQ.Pop();
+            Debug.Log(PQ.PrintDist());
+
         }
     }
 }

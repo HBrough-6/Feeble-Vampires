@@ -8,11 +8,8 @@ public class DigitalGrid
     // fill grid with chunks (done in grid manager) -- DONE
     // then verify -- check multiple starting tiles
     public DTile[] grid;
-    // keeps track of what chunks have been filled
-    public bool[] chunkTracker;
 
     public int width, height;
-    private bool gridCreated = false;
     // TileIndex = .x + .y * 8 * width;
     public void SetUpGrid(int width, int height)
     {
@@ -20,7 +17,6 @@ public class DigitalGrid
         this.width = width;
         this.height = height;
         grid = new DTile[width * height * 8 * 8];
-        chunkTracker = new bool[width * height];
 
         // fill the grid with tiles 
         for (int row = 0; row < height * 8; row++)
@@ -93,6 +89,16 @@ public class DigitalGrid
         return new Vector2Int(x % 8, y % 8);
     }
 
+    public void ResetGridAfterSearch()
+    {
+        // reset all tiles to unfound
+        for (int i = 0; i < grid.Length; i++)
+        {
+            grid[i].found = false;
+            grid[i].prev = null;
+        }
+    }
+
     /// <summary>
     /// Checks if the digital grid is valid
     /// </summary>
@@ -106,15 +112,15 @@ public class DigitalGrid
             grid[i].found = false;
         }
 
-        List<DResult> dResult = new List<DResult>();
-
         // bfs
         // let Q be a queue
         Queue<DTile> Q = new Queue<DTile>();
-        // find a root
+        // find possible roots
         List<DTile> root = new List<DTile>();
+        // list to store results of each run of BFS
         List<DResult> results = new List<DResult>();
 
+        // find all possible roots
         for (int i = 0; i < width * 8; i++)
         {
             if (grid[i].type != 1 && grid[i].type != 2)
@@ -168,17 +174,14 @@ public class DigitalGrid
                 if (VerifyPos(v.adjacentTiles[3]))
                     rightIndex = GetTileIndex(v.adjacentTiles[3]);
 
-                Debug.Log("Checking neighbors of tile " + v.pos +
+                /*Debug.Log("Checking neighbors of tile " + v.pos +
                     "\n Up - Pos: " + v.adjacentTiles[0] + " Index: " + upIndex
                     + "\n Down - Pos: " + v.adjacentTiles[1] + " Index: " + downIndex
                     + "\n left - Pos: " + v.adjacentTiles[2] + " Index: " + leftIndex
-                    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);
+                    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);*/
 
                 // check if the position was validated, tile has not been found, and the tile is not a wall
-                if (upIndex != -1
-                    && !grid[upIndex].found
-                    && grid[upIndex].type != 1
-                    && grid[upIndex].type != 2)
+                if (upIndex != -1 && !grid[upIndex].found && grid[upIndex].type != 1 && grid[upIndex].type != 2)
                 {
                     Q.Enqueue(grid[upIndex]);
                     grid[upIndex].found = true;

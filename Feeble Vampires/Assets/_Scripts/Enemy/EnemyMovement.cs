@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -7,6 +8,14 @@ public class EnemyMovement : MonoBehaviour
         Loop,
         PingPong
     }
+
+    // creating enemy pathfinding
+    // function to set temporary destination
+    // uses dijkstra's algorithm to find the path
+    // try to find the path with the fewest turns (wish)
+    // run pingpong movement there and back
+    // continue from last movePoint
+    // 
 
     private GridManager gridManager;
     private EnemyBrain enemyBrain;
@@ -167,6 +176,26 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyBrain.posInGrid = new Vector2Int(x, y);
         transform.position = gridManager.CellToWorldPos(x, y);
+    }
 
+    // returns the node pathing for a temporary path
+    public Vector2Int[] CreatePathToPoint(Vector2Int dest)
+    {
+        ///////////////////////////// add 0.01 or something small to the dist when a turn is made
+        DTile[] grid = gridManager.dGrid.grid;
+
+        // dikjsta's through until the path to the point is found
+        // set the source's dist to 0
+        grid[gridManager.dGrid.GetTileIndex(dest)].dist = 0;
+        Queue<DTile> Q = new Queue<DTile>();
+
+        // find the corners of the path
+        //// compare the positions of the nodes (node1 - node2)
+        //// if the either x or y are 0, the node is in the same path
+        //// keep track of if x or y is the same
+        //// if x or y switches, go back 1 element in the DTile array and
+        //// set that as the new corner and swap if x or y is being used
+        // return the corners as a Vector2Int array
+        return new Vector2Int[1];
     }
 }

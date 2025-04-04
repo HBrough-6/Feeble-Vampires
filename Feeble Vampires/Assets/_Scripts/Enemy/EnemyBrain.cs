@@ -61,4 +61,9 @@ public class EnemyBrain : MonoBehaviour
             }
         }
     }
+
+    public void SetMovement(Vector2Int[] path)
+    {
+        enemyMovement.moveNodes = path;
+    }
 }
