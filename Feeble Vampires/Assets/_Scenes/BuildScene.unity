@@ -1000,6 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seenTilesLocations: []
   sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
     type: 3}
 --- !u!114 &111426617
@@ -1014,6 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f18ebfd23aad54fad8e7b70438309a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySight: {fileID: 0}
   posInGrid: {x: -1, y: -1}
   moveDir: {x: 0, y: 0}
 --- !u!114 &111426618
@@ -7155,13 +7157,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canEcholocate: 0
   isSwifter: 0
-  swiftLevel: 0
   canRushAttack: 0
   smarter: 0
   hideable: 1
   isGreedy: 0
+  strongestInstinct: 0
+  scentTracker: 0
+  currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
+  experiencePoints: 0
 --- !u!114 &1108902554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7178,8 +7183,10 @@ MonoBehaviour:
   brokenTimePiece: 0
   shriek: 1
   mirage: 0
+  bloodDope: 0
   batBuddy: 0
-  itemSlots: 
+  equippedItemSlots: 
+  equippedItemNames: []
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,6 +8062,10 @@ MonoBehaviour:
   skillSelectionHolder: {fileID: 221079683}
   timePieceActive: 0
   isShrieking: 0
+  canSidestep: 0
+  doping: 0
+  spawningBatBuddy: 0
+  batBuddy: {fileID: 0}
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -8642,7 +8653,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridMiniMap: {fileID: 2124033200}
   gridManager: {fileID: 0}
-  xpText: {fileID: 2016030401}
 --- !u!114 &1440215152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8674,9 +8684,6 @@ MonoBehaviour:
   videoSettingsMenuHolder: {fileID: 313031263}
   keybindsMenuHolder: {fileID: 1219490548}
   tutorialMenuHolder: {fileID: 0}
-  collectionsMenuHolder: {fileID: 0}
-  currentMenuHolder: {fileID: 0}
-  previousMenuHolder: {fileID: 0}
   buttonLabels: []
 --- !u!1 &1441627639
 GameObject:
@@ -10192,7 +10199,9 @@ MonoBehaviour:
   SigilsRequiredForUnlock: 1
   currentSigilsCollected: 0
   winText: {fileID: 409452997}
+  zoneTwoStart: 6
   currentLevel: 1
+  safeZoneVisited: 0
 --- !u!4 &1723147154
 Transform:
   m_ObjectHideFlags: 0
@@ -11888,6 +11897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  enemies: []
 --- !u!4 &1931230596
 Transform:
   m_ObjectHideFlags: 0
