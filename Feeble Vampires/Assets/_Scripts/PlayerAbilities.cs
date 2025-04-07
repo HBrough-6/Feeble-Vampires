@@ -41,12 +41,30 @@ public class PlayerAbilities : MonoBehaviour
             movementManager.timeLimit /= 2;
             movementManager.spaceCap *= 2;
         }
+        movementManager.spaceCap += swiftLevel;
+
+        experiencePoints = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void GetSwift()
+    {
+        if (experiencePoints < 2)
+        {
+            Debug.Log("You do not have enough experience points");
+        }
+        else
+        {
+            spendPoints();
+            swiftLevel += 1;
+            movementManager.spaceCap += swiftLevel;
+        }
+            
     }
 
     public void GetSmart()
