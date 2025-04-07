@@ -60,7 +60,7 @@ public class MovementManager : MonoBehaviour
     {
         baseCap = 2;
         spaceCap = baseCap;
-        baseTime = 5;
+        baseTime = 10;
         timeLimit = baseTime;
         distance = 0;
         initializeOrigin();
@@ -164,12 +164,12 @@ public class MovementManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 resetMovement();
             }
 
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 submitMovement();
             }

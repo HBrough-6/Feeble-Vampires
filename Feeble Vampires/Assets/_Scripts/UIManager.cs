@@ -9,7 +9,6 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text gridMiniMap;
     public GridManager gridManager;
-    public TextMeshProUGUI xpText;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xpText.text = "XP Points: " + PlayerAbilities.experiencePoints;
+        
     }
 
     public void makeMap()

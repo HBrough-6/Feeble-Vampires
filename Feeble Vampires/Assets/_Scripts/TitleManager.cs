@@ -12,27 +12,21 @@ public class TitleManager : MonoBehaviour
     public GameObject videoSettingsMenuHolder;
     public GameObject keybindsMenuHolder;
     public GameObject tutorialMenuHolder;
-    public GameObject collectionsMenuHolder;
-    public GameObject currentMenuHolder;
-    public GameObject previousMenuHolder;
 
     public List<TextMeshProUGUI> buttonLabels;
 
     // Start is called before the first frame update
     void Start()
     {
-        previousMenuHolder = mainMenuHolder;
-        currentMenuHolder = mainMenuHolder;
         returnToMainMenu();
     }
-    
-    private void Update()
+
+    // Update is called once per frame
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            returntoPrevious();
-        }
+        
     }
+
     public void startGame()
     {
         SceneManager.LoadScene(1);
@@ -45,67 +39,50 @@ public class TitleManager : MonoBehaviour
 
     public void returnToMainMenu()
     {
-        disableUI();
-        setCurrentActive(mainMenuHolder);
-    }
-
-    public void returntoPrevious()
-    {
-        //Debug.Log("go back");
-        currentMenuHolder.SetActive(false);
-        currentMenuHolder = previousMenuHolder;
-        currentMenuHolder.SetActive(true);
-        previousMenuHolder = mainMenuHolder;
-    }
-
-    public void settingsMenu()
-    {
-        setCurrentActive(settingsMenuHolder);
-    }
-
-    public void audioSettingsMenu()
-    {
-        setCurrentActive(audioSettingsMenuHolder);
-    }
-
-    public void videoSettingsMenu()
-    {
-        setCurrentActive(videoSettingsMenuHolder);
-    }
-
-    public void keybindsMenu()
-    {
-        setCurrentActive(keybindsMenuHolder);
-    }
-
-    public void tutorialMenu()
-    {
-        setCurrentActive(tutorialMenuHolder);
-    }
-
-    public void collectionsMenu()
-    {
-        setCurrentActive(collectionsMenuHolder);
-    }
-
-    public void setCurrentActive(GameObject holder)
-    {
-        previousMenuHolder = currentMenuHolder;
-        previousMenuHolder.SetActive(false);
-
-        currentMenuHolder = holder;
-        currentMenuHolder.SetActive(true);
-    }
-
-    public void disableUI()
-    {
+        mainMenuHolder.SetActive(true);
         settingsMenuHolder.SetActive(false);
         audioSettingsMenuHolder.SetActive(false);
         videoSettingsMenuHolder.SetActive(false);
         keybindsMenuHolder.SetActive(false);
         tutorialMenuHolder.SetActive(false);
-        collectionsMenuHolder.SetActive(false);
     }
+
+    public void settingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(true);
+    }
+
+    public void audioSettingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(true);
+    }
+
+    public void videoSettingsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(false);
+        videoSettingsMenuHolder.SetActive(true);
+    }
+
+    public void keybindsMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        settingsMenuHolder.SetActive(false);
+        audioSettingsMenuHolder.SetActive(false);
+        videoSettingsMenuHolder.SetActive(false);
+        keybindsMenuHolder.SetActive(true);
+    }
+
+    public void tutorialMenu()
+    {
+        mainMenuHolder.SetActive(false);
+        tutorialMenuHolder.SetActive(true);
+    }
+
     public void rebindKey(int keySlot, KeyCode keyCode)
     {
         //buttonLabels[keySlot].GetComponent<TMP_Text>() = keyCode.ToString();
