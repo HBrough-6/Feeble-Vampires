@@ -81,6 +81,8 @@ public class LevelManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
+        PlayerAbilities.experiencePoints += 2;
+        // increase level count
         // increase current level count
         currentLevel++;
         Debug.Log(currentLevel);
