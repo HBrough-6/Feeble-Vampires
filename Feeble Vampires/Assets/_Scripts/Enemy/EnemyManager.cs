@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     private List<EnemyBrain> enemies;
     private List<EnemyBrain> deadEnemies;
 
+    public int MinPathDist = 7;
+
     // displays enemy paths when created
     public bool displayPath = true;
 
@@ -127,7 +129,7 @@ public class EnemyManager : MonoBehaviour
         // and make sure the new destination is at least 5 tiles away from the enemy's starting position
         Vector2Int firstDestination = openTiles[UnityEngine.Random.Range(0, openTiles.Count)];
         while (gridManager.GetChunkLocation(firstDestination) != gridManager.GetChunkLocation(startLocation)
-            && Vector2Int.Distance(firstDestination, startLocation) > 5 && Vector2Int.Distance(firstDestination, enemyStartPos) > 5)
+            && Vector2Int.Distance(firstDestination, startLocation) > 5 && Vector2Int.Distance(firstDestination, enemyStartPos) < MinPathDist)
         {
             firstDestination = openTiles[UnityEngine.Random.Range(0, openTiles.Count)];
             timesRun++;
