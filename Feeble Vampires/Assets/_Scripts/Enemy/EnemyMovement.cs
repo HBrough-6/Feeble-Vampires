@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     public Vector2Int[] moveNodes;
     private int targetNode = 0;
 
+    public float turnWeight = 0.1f;
 
     public MoveType moveType = MoveType.Loop;
     private bool retracingSteps = false;
@@ -178,24 +179,181 @@ public class EnemyMovement : MonoBehaviour
         transform.position = gridManager.CellToWorldPos(x, y);
     }
 
-    // returns the node pathing for a temporary path
-    public Vector2Int[] CreatePathToPoint(Vector2Int dest)
+    public void SetPosInGrid(Vector2Int pos)
     {
+        enemyBrain.posInGrid = pos;
+        transform.position = gridManager.CellToWorldPos(pos.x, pos.y);
+    }
+
+    // returns the node pathing for a temporary path
+    public List<Vector2Int> CreatePathToPoint(Vector2Int dest)
+    {
+        DigitalGrid dGrid = gridManager.dGrid;
         ///////////////////////////// add 0.01 or something small to the dist when a turn is made
         DTile[] grid = gridManager.dGrid.grid;
 
-        // dikjsta's through until the path to the point is found
-        // set the source's dist to 0
-        grid[gridManager.dGrid.GetTileIndex(dest)].dist = 0;
-        Queue<DTile> Q = new Queue<DTile>();
+        for (int i = 0; i < grid.Length; i++)
+        {
+            grid[i].dist = int.MaxValue;
+        }
 
+        // dikjsta's through until the path to the point is found
+        DTile startTile = grid[dGrid.GetTileIndex(enemyBrain.posInGrid)];
+        // set the source's dist to 0
+        startTile.dist = 0;
+
+
+        // grid[gridManager.dGrid.GetTileIndex(dest)].dist = 0;
+        DTilePriorityQueue PQ = new DTilePriorityQueue();
+        List<DTile> visited = new List<DTile>();
+
+        PQ.Insert(startTile);
+
+        Debug.Log(PQ.Count);
+        while (!PQ.Empty)
+        {
+            Debug.Log("1");
+            // if the tile has already been visited, go to next best tile
+            DTile current = PQ.Pop();
+            if (visited.IndexOf(current) > -1)
+            {
+                continue;
+            }
+            // node is visited
+            visited.Add(current);
+            // found the destination
+            if (current.pos == dest)
+            {
+                break;
+            }
+            // find the tiles of each neighbor
+
+            // above neighbor
+            if (dGrid.VerifyPos(current.adjacentTiles[0]))
+            {
+                DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[0])];
+                // check if the tile is a wall and that it hasn't been visited already
+                Debug.Log("up neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+
+                if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
+                {
+                    Debug.Log("neighbor is not visited");
+                    // add 1 to the current distance and assign that to the neighbor
+                    float newDist = current.dist + 1f;
+                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    if (newDist < Neighbor.dist)
+                    {
+                        Debug.Log("up neighbor has new dist of " + newDist);
+                        Neighbor.dist = newDist;
+                        Neighbor.prev = current;
+                        PQ.Insert(Neighbor);
+                    }
+                }
+            }
+
+            // down neighbor
+            if (dGrid.VerifyPos(current.adjacentTiles[1]))
+            {
+                DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[1])];
+                // check if the tile is a wall and that it hasn't been visited already
+                Debug.Log("down neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
+                {
+                    // add 1 to the current distance and assign that to the neighbor
+                    float newDist = current.dist + 1f;
+                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    if (newDist < Neighbor.dist)
+                    {
+                        Debug.Log("Down neighbor has new dist of " + newDist);
+                        Neighbor.dist = newDist;
+                        Neighbor.prev = current;
+                        PQ.Insert(Neighbor);
+                    }
+                }
+            }
+
+            // left neighbor
+            if (dGrid.VerifyPos(current.adjacentTiles[2]))
+            {
+
+                DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[2])];
+                Debug.Log("left neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // check if the tile is a wall and that it hasn't been visited already
+                if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
+                {
+                    // add 1 to the current distance and assign that to the neighbor
+                    float newDist = current.dist + 1f;
+                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    if (newDist < Neighbor.dist)
+                    {
+                        Debug.Log("left neighbor has new dist of " + newDist);
+                        Neighbor.dist = newDist;
+                        Neighbor.prev = current;
+                        PQ.Insert(Neighbor);
+                    }
+                }
+            }
+
+            // right neighbor
+            if (dGrid.VerifyPos(current.adjacentTiles[3]))
+            {
+
+                DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[3])];
+                Debug.Log("right neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // check if the tile is a wall and that it hasn't been visited already
+                if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
+                {
+                    // add 1 to the current distance and assign that to the neighbor
+                    float newDist = current.dist + 1f;
+                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    if (newDist < Neighbor.dist)
+                    {
+                        Debug.Log("right neighbor has new dist of " + newDist);
+                        Neighbor.dist = newDist;
+                        Neighbor.prev = current;
+                        PQ.Insert(Neighbor);
+                    }
+                }
+            }
+        }
+
+        // create the final path
+        List<Vector2Int> tempPath = new List<Vector2Int>();
+        // get the final tile
+        DTile currentTile = grid[dGrid.GetTileIndex(dest)];
+        // find all parent tiles
+        while (currentTile.prev != null)
+        {
+            // insert tiles at the start of the list
+            tempPath.Insert(0, currentTile.pos);
+            currentTile = currentTile.prev;
+        }
+
+        List<Vector2Int> corners = new List<Vector2Int>();
+
+        int times = 0;
+        string stPath = "";
+        // initialize the direction variable
+        Vector2Int dir = Vector2Int.zero;
         // find the corners of the path
-        //// compare the positions of the nodes (node1 - node2)
-        //// if the either x or y are 0, the node is in the same path
-        //// keep track of if x or y is the same
-        //// if x or y switches, go back 1 element in the DTile array and
-        //// set that as the new corner and swap if x or y is being used
+        for (int i = 0; i < tempPath.Count - 1; i++)
+        {
+            times++;
+            // compare the positions of the nodes (node1 - node2)
+            Vector2Int newDir = tempPath[i] - tempPath[i + 1];
+
+            stPath += tempPath[i].ToString() + ", ";
+            // if the new direction equals the old direction, they are traveling in the same direction
+            // if not the same, tempPath[i] is a corner
+            if (dir != newDir)
+            {
+                // set the current direction
+                dir = newDir;
+                corners.Add(tempPath[i]);
+            }
+        }
+        Debug.Log("Path: " + stPath);
         // return the corners as a Vector2Int array
-        return new Vector2Int[1];
+        return corners;
     }
 }

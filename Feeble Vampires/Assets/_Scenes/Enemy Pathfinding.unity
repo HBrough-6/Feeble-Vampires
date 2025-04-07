@@ -1858,6 +1858,7 @@ MonoBehaviour:
   sigilLocations: []
   RotateTiles: 1
   successfullyGenerated: 0
+  resultingGrid: 
 --- !u!156049354 &1167860516
 Grid:
   m_ObjectHideFlags: 0
@@ -3083,9 +3084,14 @@ MonoBehaviour:
   SigilsRequiredForUnlock: 1
   currentSigilsCollected: 0
   winText: {fileID: 0}
-  zoneTwoStart: 6
-  currentLevel: 1
-  safeZoneVisited: 0
+  levelsPerZoneEasy: 3
+  levelsPerZoneMedium: 4
+  levelsPerZoneHard: 5
+  currentLevelsPerZone: 0
+  difficulty: 0
+  currentLevel: 0
+  safeZoneOneVisited: 0
+  safeZoneTwoVisited: 0
 --- !u!4 &1919189960
 Transform:
   m_ObjectHideFlags: 0

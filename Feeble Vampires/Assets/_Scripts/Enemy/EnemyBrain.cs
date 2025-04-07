@@ -24,7 +24,7 @@ public class EnemyBrain : MonoBehaviour
 
     private void Start()
     {
-        enemyManager.AddEnemy(this);
+        // enemyManager.AddEnemy(this);
     }
 
     /// <summary>

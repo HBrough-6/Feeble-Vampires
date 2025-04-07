@@ -11,7 +11,8 @@ public class DTilePriorityQueue
     // Lambda expression to find the right child index
     private int Right(int i) => 2 * i + 2;
 
-    private int Count => PQ.Count;
+    public int Count => PQ.Count;
+    public bool Empty => PQ.Count < 1;
 
     private void Swap(int i, int j)
     {
@@ -67,6 +68,23 @@ public class DTilePriorityQueue
         {
             Swap(i, smallest);
             MinHeapify(smallest);
+        }
+    }
+
+    private void UWHeapify(DTile Tile)
+    {
+        if (PQ.Count == 0)
+            throw new System.InvalidOperationException("Heap is empty");
+
+        int i = PQ.IndexOf(Tile);
+        if (i < 0)
+            throw new System.InvalidOperationException("Tile not in heap");
+
+        if (i < PQ.Count && PQ[i].dist < PQ[Parent(i)].dist)
+        {
+            Swap(i, Parent(i));
+            i = Parent(i); ;
+
         }
     }
 

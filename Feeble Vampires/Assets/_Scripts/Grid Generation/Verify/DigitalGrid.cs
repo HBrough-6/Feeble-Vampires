@@ -13,7 +13,7 @@ public class DigitalGrid
     // TileIndex = .x + .y * 8 * width;
     public void SetUpGrid(int width, int height)
     {
-        Debug.Log("setting width of " + width + " and height of " + height);
+        //Debug.Log("setting width of " + width + " and height of " + height);
         this.width = width;
         this.height = height;
         grid = new DTile[width * height * 8 * 8];

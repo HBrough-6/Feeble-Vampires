@@ -17,10 +17,14 @@ public class LevelManager : MonoBehaviour
 
     private GridManager gridManager;
     private MovementManager movementManager;
+    private EnemyManager enemyManager;
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
     public GameObject winText;
+
+    // public accessor for startLocation
+    public Vector2Int StartLocation => startLocation;
 
     // The level that zone two starts at
     // public int zoneTwoStart = 6;
@@ -41,6 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         gridManager = FindAnyObjectByType<GridManager>();
         movementManager = FindAnyObjectByType<MovementManager>();
+        enemyManager = FindObjectOfType<EnemyManager>();
         doorLocations = new Vector2Int[2];
     }
 
@@ -157,7 +162,6 @@ public class LevelManager : MonoBehaviour
                         Debug.Log("Hard difficulty only has randomly generated layouts on levels 2-11");
                         return new Vector2Int(-1, -1);
                 }
-                break;
             default:
                 Debug.Log("How did you get here, there are only 3 difficulty levels");
                 return new Vector2Int(-1, -1);
@@ -168,7 +172,7 @@ public class LevelManager : MonoBehaviour
     {
         // increase current level count
         currentLevel++;
-        Debug.Log(currentLevel);
+        // Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
 
         // player is in zone 1 and the safe space hasn't been visited yet
@@ -193,6 +197,7 @@ public class LevelManager : MonoBehaviour
                 gridManager.height = LevelSize.y;
                 gridManager.GenerateGrid();
                 gridManager.FillLevel(LevelSize.x, LevelSize.y);
+
             }
         }
         else if (currentLevel == totalNumLevels - 1)
@@ -207,11 +212,11 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("dasfsffsdfamk");
             gridManager.width = LevelSize.x;
             gridManager.height = LevelSize.y;
             gridManager.GenerateGrid();
             gridManager.FillLevel(LevelSize.x, LevelSize.y);
+            enemyManager.CreateEnemy();
         }
 
     }

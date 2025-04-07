@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
 
     public float timeBetweenIncrement = 0.2f;
 
-    private LevelManager levelManager;
+    public LevelManager levelManager;
 
     public Chunk tempChunkStorage;
     public Grid grid;
@@ -67,6 +67,7 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         grid = GetComponent<Grid>();
+        levelManager = FindObjectOfType<LevelManager>();
         sigilLocations = new List<Vector2Int>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
@@ -74,7 +75,6 @@ public class GridManager : MonoBehaviour
 
     private void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
         GenerateGrid();
     }
 
@@ -166,7 +166,7 @@ public class GridManager : MonoBehaviour
         Vector2Int[] enemyThreeMovement = { new Vector2Int(3, 10), new Vector2Int(0, 10)
                 , new Vector2Int(0, 0), new Vector2Int(3, 0), new Vector2Int(3, 1) };
 
-        EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
+        /*EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyOne.moveNodes = enemyOneMovement;
         EnemyOne.moveType = EnemyMovement.MoveType.PingPong;
 
@@ -176,7 +176,7 @@ public class GridManager : MonoBehaviour
 
         EnemyMovement EnemyThree = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(3, 10)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyThree.moveNodes = enemyThreeMovement;
-        EnemyThree.moveType = EnemyMovement.MoveType.PingPong;
+        EnemyThree.moveType = EnemyMovement.MoveType.PingPong;*/
 
         levelManager.SetStartLocation(new Vector2Int(1, 0));
         levelManager.SetSigilRequirement(2);
@@ -202,7 +202,7 @@ public class GridManager : MonoBehaviour
         Vector2Int[] enemyThreeMovement = { new Vector2Int(15, 11), new Vector2Int(15, 0)
                 , new Vector2Int(14, 0), new Vector2Int(14, 11)};
 
-        EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
+        /*EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyOne.moveNodes = enemyOneMovement;
         EnemyOne.moveType = EnemyMovement.MoveType.PingPong;
 
@@ -213,7 +213,7 @@ public class GridManager : MonoBehaviour
         EnemyMovement EnemyThree = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(3, 10)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyThree.moveNodes = enemyThreeMovement;
         EnemyThree.moveType = EnemyMovement.MoveType.Loop;
-
+*/
         levelManager.SetStartLocation(new Vector2Int(7, 0));
         levelManager.SetSigilRequirement(2);
     }
@@ -581,7 +581,7 @@ public class GridManager : MonoBehaviour
 
         List<int> possible = Enumerable.Range(1, results.sigilPoints.Count).ToList();
         List<int> randomSigils = new List<int>();
-        Debug.Log(results.sigilPoints.Count);
+        //Debug.Log(results.sigilPoints.Count);
         for (int i = 0; i < results.sigilCount; i++)
         {
             int index = UnityEngine.Random.Range(0, possible.Count);
@@ -590,7 +590,7 @@ public class GridManager : MonoBehaviour
         }
         for (int i = 0; i < randomSigils.Count; i++)
         {
-            Debug.Log(i + " sigilpoints: " + randomSigils.Count);
+            //Debug.Log(i + " sigilpoints: " + randomSigils.Count);
             Instantiate(sigilPrefab, CellToWorldPos(results.sigilPoints[i]), transform.rotation, SigilParent);
         }
 
