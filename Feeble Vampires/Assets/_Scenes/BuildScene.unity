@@ -228,6 +228,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4186526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
+=======
 --- !u!1 &5625206
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +365,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5625206}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &9075494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1039,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 119738093}
@@ -1173,6 +1178,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 700, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &245976514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1231,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &313031263 stripped
+=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258011027}
@@ -1738,12 +1746,15 @@ CanvasRenderer:
   m_GameObject: {fileID: 332768616}
   m_CullTransparentMesh: 1
 --- !u!1 &333292516
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_CorrespondingSourceObject: {fileID: 597235342497269101, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &325483950 stripped
+=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 333292517}
@@ -2206,12 +2217,15 @@ CanvasRenderer:
   m_GameObject: {fileID: 392919771}
   m_CullTransparentMesh: 1
 --- !u!1 &409452997
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6916900909698119508, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &409452997 stripped
+=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 409452998}
@@ -2319,11 +2333,14 @@ CanvasRenderer:
   m_GameObject: {fileID: 410681071}
   m_CullTransparentMesh: 1
 --- !u!1 &433968838
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1773082661625885726, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433968839}
@@ -2528,6 +2545,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452802032}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &458891538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,6 +2664,8 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+<<<<<<< HEAD
+=======
 --- !u!1 &464153984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,6 +4056,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638334624}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &740065661
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,7 +4088,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1041244747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &825738094 stripped
+=======
 --- !u!1 &742313058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4840,6 +4863,7 @@ RectTransform:
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &825738094
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3809123689376932222, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
@@ -4851,6 +4875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -5551,6 +5577,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857521710}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &858873271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6953,7 +6980,10 @@ MonoBehaviour:
   currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
+<<<<<<< HEAD
   experiencePoints: 0
+=======
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!114 &1108902554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7128,7 +7158,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 111426615}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1205241405
+=======
 --- !u!1 &1180152563
 GameObject:
   m_ObjectHideFlags: 0
@@ -7264,6 +7296,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1180152563}
   m_CullTransparentMesh: 1
 --- !u!1 &1193409546
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7295,6 +7328,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1547789884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1219490548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1297767250809126300, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
@@ -7302,6 +7336,7 @@ GameObject:
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269597649
+=======
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -7406,6 +7441,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1193409546}
   m_CullTransparentMesh: 1
 --- !u!1 &1194720883
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7514,6 +7550,8 @@ RectTransform:
   - {fileID: 1552269458}
   m_Father: {fileID: 1572369710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -8076,6 +8114,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381743996}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &1386344183
 GameObject:
   m_ObjectHideFlags: 0
@@ -8511,6 +8550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543673d45096f0743879b5f890ebcbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
 --- !u!1 &1589339910
 GameObject:
   m_ObjectHideFlags: 0
@@ -9257,6 +9298,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721120873}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &1723147152
 GameObject:
   m_ObjectHideFlags: 0
@@ -10105,12 +10147,14 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853264119}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1 &1874724158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1225201736979265744, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+=======
 --- !u!1 &1861316000
 GameObject:
   m_ObjectHideFlags: 0
@@ -10395,6 +10439,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877327322}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &1889112588
 GameObject:
   m_ObjectHideFlags: 0
@@ -10678,7 +10723,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &1924110820 stripped
+=======
 --- !u!1 &1915694153
 GameObject:
   m_ObjectHideFlags: 0
@@ -10792,6 +10839,7 @@ RectTransform:
   m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1924110820
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2295774772044841736, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
@@ -10803,6 +10851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -10964,6 +11014,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927220940}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &1931230594
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,7 +11061,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1950677085 stripped
+=======
 --- !u!1 &1936586988
 GameObject:
   m_ObjectHideFlags: 0
@@ -11087,6 +11140,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1936586988}
   m_CullTransparentMesh: 1
 --- !u!1 &1943409645
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7325240036472341943, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
@@ -11098,6 +11152,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
   m_GameObject: {fileID: 1943409645}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -11533,6 +11589,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961945367}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1 &2008959866
 GameObject:
   m_ObjectHideFlags: 0
@@ -11564,7 +11621,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1041244747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &2016030401 stripped
+=======
 --- !u!1 &2016030399
 GameObject:
   m_ObjectHideFlags: 0
@@ -12268,12 +12327,15 @@ RectTransform:
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070802745
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 922825808096233705, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
   m_PrefabInstance: {fileID: 2811828617335671619}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 0}
+=======
   m_GameObject: {fileID: 2070802743}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12565,12 +12627,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124033198}
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!114 &2124033200 stripped
+=======
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -12966,6 +13031,7 @@ RectTransform:
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127513930
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1657477524726199391, guid: 51d32f8a5241bdd49979ee81c5bbdf65,
     type: 3}
@@ -12980,6 +13046,7 @@ MonoBehaviour:
 --- !u!1001 &2811828617335671619
 PrefabInstance:
   m_ObjectHideFlags: 0
+<<<<<<< HEAD
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
@@ -13170,6 +13237,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d32f8a5241bdd49979ee81c5bbdf65, type: 3}
+=======
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -13205,6 +13273,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127513928}
   m_CullTransparentMesh: 1
+>>>>>>> parent of 5e5731a (Revert "Merge branch 'ui_update' into Dev")
 --- !u!1001 &5048547179078587844
 PrefabInstance:
   m_ObjectHideFlags: 0
