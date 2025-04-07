@@ -84,6 +84,8 @@ public class LevelManager : MonoBehaviour
         PlayerAbilities.experiencePoints += 2;
         // increase level count
         // increase current level count
+        PlayerAbilities.experiencePoints += 2;
+        // increase level count
         currentLevel++;
         Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
