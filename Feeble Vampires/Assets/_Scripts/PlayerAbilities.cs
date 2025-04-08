@@ -53,6 +53,46 @@ public class PlayerAbilities : MonoBehaviour
 
     }
 
+    public void activateSkill(TMPro.TextMeshProUGUI skillToActivate)
+    {
+        if (skillToActivate.text == "Echolocation")
+        {
+            canEcholocate = true;
+        }
+        else if (skillToActivate.text == "Swift Step")
+        {
+            isSwifter = true;
+        }
+        else if (skillToActivate.text == "Hemoglobin Rush")
+        {
+            canRushAttack = true;
+        }
+        else if (skillToActivate.text == "Neural Formation")
+        {
+            smarter = true;
+        }
+        else if (skillToActivate.text == "Hang")
+        {
+            hideable = true;
+        }
+        else if (skillToActivate.text == "Cheapskate")
+        {
+            isGreedy = true;
+        }
+        else if (skillToActivate.text == "Apex Instinct")
+        {
+            strongestInstinct = true;
+        }
+        else if (skillToActivate.text == "Scent Tracker")
+        {
+            scentTracker = true;
+        }
+        else if (skillToActivate.text == "Clone")
+        {
+            clone = true;
+        }
+    }
+
     public void GetSwift()
     {
         if (experiencePoints < 2)
