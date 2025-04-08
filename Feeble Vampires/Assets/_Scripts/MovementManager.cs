@@ -445,7 +445,6 @@ public class MovementManager : MonoBehaviour
     {
         player.transform.position = new Vector3(startingPosInGrid.x, player.transform.position.y, startingPosInGrid.y);
         player.GetComponent<PlayerAbilities>().clone = false;
-
     }
 
     public void prepareBatBuddy()
