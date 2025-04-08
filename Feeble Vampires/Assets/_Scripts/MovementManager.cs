@@ -444,6 +444,10 @@ public class MovementManager : MonoBehaviour
     public void cloneReset()
     {
         player.transform.position = new Vector3(startingPosInGrid.x, player.transform.position.y, startingPosInGrid.y);
+        playerPosInGrid = startingPosInGrid;
+        pathPoints[0] = playerPosInGrid;
+        endPoint.transform.position = new Vector3(player.transform.position.x, endPoint.transform.position.y, player.transform.position.z);
+        pathPoints[0] = playerPosInGrid;
         player.GetComponent<PlayerAbilities>().clone = false;
     }
 
