@@ -2397,6 +2397,7 @@ MonoBehaviour:
   isGreedy: 0
   strongestInstinct: 1
   scentTracker: 1
+  clone: 1
   currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}

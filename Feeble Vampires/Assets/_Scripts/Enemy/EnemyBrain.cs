@@ -60,9 +60,17 @@ public class EnemyBrain : MonoBehaviour
             }
             else
             {
-                Debug.Log("Player spotted");
+                if (enemyManager.gameManager.movementManager.player.GetComponent<PlayerAbilities>().clone)
+                {
+                    enemyManager.gameManager.movementManager.player.GetComponent<PlayerAbilities>().clone = false;
+                    enemyManager.gameManager.movementManager.cloneReset();
+                }
+                else
+                {
+                    Debug.Log("Player spotted");
 
-                enemyManager.PlayerSpotted();
+                    enemyManager.PlayerSpotted();
+                }
             }
         }
     }
