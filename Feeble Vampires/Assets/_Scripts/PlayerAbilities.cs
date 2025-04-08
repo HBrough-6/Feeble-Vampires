@@ -42,7 +42,7 @@ public class PlayerAbilities : MonoBehaviour
             movementManager.timeLimit /= 2;
             movementManager.spaceCap *= 2;
         }
-        movementManager.spaceCap += swiftLevel;
+        //movementManager.spaceCap += swiftLevel;
 
         experiencePoints = 0;
     }
@@ -62,8 +62,8 @@ public class PlayerAbilities : MonoBehaviour
         else
         {
             spendPoints();
-            swiftLevel += 1;
-            movementManager.spaceCap += swiftLevel;
+            //swiftLevel += 1;
+            //movementManager.spaceCap += swiftLevel;
         }
             
     }
