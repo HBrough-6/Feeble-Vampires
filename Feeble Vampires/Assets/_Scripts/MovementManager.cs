@@ -56,6 +56,8 @@ public class MovementManager : MonoBehaviour
 
     int placeholderSpaceCap;
 
+    Vector2Int startingPosInGrid;
+
     private void Awake()
     {
         baseCap = 2;
@@ -86,6 +88,9 @@ public class MovementManager : MonoBehaviour
         gameManager.resetTimer(false);
 
         skillSelectionHolder.SetActive(false);
+
+        playerPosInGrid = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.z));
+        startingPosInGrid = playerPosInGrid;
     }
 
     // Update is called once per frame
@@ -434,6 +439,12 @@ public class MovementManager : MonoBehaviour
         submitMovement();
         spaceCap *= 2;
         doping = true;
+    }
+
+    public void cloneReset()
+    {
+        player.transform.position = new Vector3(startingPosInGrid.x, player.transform.position.y, startingPosInGrid.y);
+        player.GetComponent<PlayerAbilities>().clone = false;
     }
 
     public void prepareBatBuddy()

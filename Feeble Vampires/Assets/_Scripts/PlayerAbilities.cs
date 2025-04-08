@@ -10,6 +10,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool isGreedy;
     public bool strongestInstinct;
     public bool scentTracker;
+    public bool clone;
 
     public bool currentlyTracking;
 
