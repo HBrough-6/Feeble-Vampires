@@ -62,6 +62,8 @@ public class GridManager : MonoBehaviour
 
     public DigitalGrid dGrid;
 
+    public int sigilCount = 0;
+
 
     public int[] resultingGrid;
     private void Awake()
@@ -93,41 +95,6 @@ public class GridManager : MonoBehaviour
                 }
 
             }
-        }
-    }
-
-    public void CreateGrid(int wid, int hei)
-    {
-        width = wid;
-        height = hei;
-
-        GenerateGrid();
-        //        FakeLevelTwo();
-
-        StartTileInfo tileInfo = new StartTileInfo();
-
-
-        bool success = false;
-
-        // using for loop for infinite loop protection
-        for (int i = 0; i < 200 && !success; i++)
-        {
-            Debug.Log("Generating new map");
-            FillWholeGrid();
-            //VerifyGrid(/*out tileInfo*/);
-            StartCoroutine(VerifyGrid());
-            //*yield return new WaitForSeconds(timeBetweenIncrement);*//*
-        }
-
-        if (success)
-        {
-            Debug.Log("Successfully generated");
-            PlaceObjects(tileInfo);
-
-        }
-        else
-        {
-            Debug.Log("Failed Generation");
         }
     }
 
@@ -275,34 +242,6 @@ public class GridManager : MonoBehaviour
                 {
                     Instantiate(blackTile, worldPos, transform.rotation, tilesParent);
                 }
-            }
-        }
-    }
-
-    private void FillWholeGrid()
-    {
-        // reset the number of obstructed tiles
-        obstructedTiles = 0;
-
-        // clear tiles from the grid
-        for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(obstructionsParent.GetChild(i).gameObject);
-        }
-        for (int i = SigilParent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(SigilParent.GetChild(i).gameObject);
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        // possible point of failure
-        // clear sigil locations
-        sigilLocations.Clear();
-
-        for (int chunkRow = 0; chunkRow < height; chunkRow++)
-        {
-            for (int chunkCol = 0; chunkCol < width; chunkCol++)
-            {
-                ImportGridChunk(new Vector2Int(chunkCol, chunkRow), GetChunkFromFiles());
             }
         }
     }
@@ -537,19 +476,15 @@ public class GridManager : MonoBehaviour
                     }
                 }
                 results = dGrid.Verify();
-                // bandaid patch for when the start point is covered over
-                if (results != null && results.resultOfBFS[dGrid.GetTileIndex(results.startPoint.x, results.startPoint.y)] != 0)
-                {
-                    Debug.Log("bug happened");
-                    results = null;
-                }
+
             }
-            Debug.Log("Reran " + timesRun + " time(s)");
+            // Debug.Log("Reran " + timesRun + " time(s)");
         }
 
         // save the int grid
         resultingGrid = results.resultOfBFS;
         dGrid.grid = ConvertIntGrid(resultingGrid);
+        sigilCount = results.sigilCount;
         // set the public dGrid to the result of the verified grid
         this.dGrid = dGrid;
 
@@ -597,6 +532,7 @@ public class GridManager : MonoBehaviour
         Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
         Vector2Int doorPos = results.endPoints[UnityEngine.Random.Range(0, results.endPoints.Count)];
         Instantiate(doorPrefab, CellToWorldPos(doorPos), transform.rotation, obstructionsParent);
+        levelManager.SetStartLocation(results.startPoint);
     }
 
     public DTile[] ConvertIntGrid(int[] grid)
@@ -609,6 +545,27 @@ public class GridManager : MonoBehaviour
             for (int col = 0; col < width * 8; col++)
             {
                 newGrid[col + row * width * 8] = new DTile(grid[col + row * width * 8], new Vector2Int(col, row));
+            }
+        }
+
+        return newGrid;
+    }
+
+    // used to make a copy of the grid
+    public DTile[] GetVerifiedGridFromResults()
+    {
+        // make sure there are results to use
+        if (resultingGrid == null)
+            return null;
+
+        DTile[] newGrid = new DTile[resultingGrid.Length];
+
+        // convert grid into Digital Grid
+        for (int row = 0; row < height * 8; row++)
+        {
+            for (int col = 0; col < width * 8; col++)
+            {
+                newGrid[col + row * width * 8] = new DTile(resultingGrid[col + row * width * 8], new Vector2Int(col, row));
             }
         }
 
@@ -1142,341 +1099,8 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
-    private void PlaceObjects(StartTileInfo info)
-    {
-        // set the start position
-        levelManager.SetStartLocation(info.startPos);
-
-        List<Vector2Int> sigilLocations = new List<Vector2Int>();
-        // copy sigil locations
-        for (int i = 0; i < info.sigilLocations.Count; i++)
-        {
-            sigilLocations.Add(new Vector2Int(info.sigilLocations[i].x, info.sigilLocations[i].y));
-        }
-        // choose sigil locations
-        for (int i = 0; i < sigilLocations.Count && i < info.sigilCount; i++)
-        {
-            // get a random sigil location and spawn a sigil
-            int rand = UnityEngine.Random.Range(0, sigilLocations.Count);
-            Instantiate(sigilPrefab, CellToWorldPos(sigilLocations[rand]), transform.rotation, obstructionsParent);
-            // remove that location from the list
-            sigilLocations.RemoveAt(rand);
-        }
-
-        // choose random door location
-        int randomNum = UnityEngine.Random.Range(0, info.doorLocations.Count);
-        Debug.Log("door length " + info.doorLocations.Count);
-        Instantiate(doorPrefab, CellToWorldPos(info.doorLocations[randomNum]), transform.rotation, SigilParent);
-
-    }
-
-    // runs a modified version of breadth first search to discover all tiles that are accessible to the player
-    /*private void VerifyGrid()
-    {
-        // find all the points on the bottom and top row that are not obstructed
-        List<Vector2Int> bottomRow = new List<Vector2Int>();
-        List<Vector2Int> topRow = new List<Vector2Int>();
-
-        // lists to store what tile is started at and how many tiles are accessible from that tile
-        List<Vector2Int> startPositions = new List<Vector2Int>();
-        int tileCount = 0;
-
-        List<Tile> savedFoundTiles = new List<Tile>();
-        Vector2Int bestStartPos;
-
-        // determine which tiles are not obstructed
-        for (int i = 0; i < width * 8; i++)
-        {
-            // check the bottom row
-            if (!GetTileObstructed(i, 0))
-            {
-                bottomRow.Add(new Vector2Int(i, 0));
-            }
-            // check the top row
-            if (!GetTileObstructed(i, height * 8 - 1))
-            {
-                topRow.Add(new Vector2Int(i, height * 8 - 1));
-            }
-        }
-
-        *//*        // if the generated map has no space on the top or bottom, regenerate the grid and verify it again
-                if (bottomRow.Count == 0 || topRow.Count < 2)
-                {
-                    redoCount++;
-                    return;
-                }*//*
-
-        int randNum = UnityEngine.Random.Range(0, bottomRow.Count);
-        Vector2Int currentStartPos = bottomRow[randNum];
-        bestStartPos = currentStartPos;
-
-        // take the current start position out of the list of untested starting tiles and place it in the list tested of starting tiles
-        bottomRow.Remove(currentStartPos);
-
-        while (bottomRow.Count > 0)
-        {
-            // Debug.Log(bottomRow.Count);
-            for (int i = SigilParent.childCount - 1; i >= 0; i--)
-            {
-                Destroy(SigilParent.GetChild(i).gameObject);
-            }
-
-            // create tiles to search through
-            List<Tile> tiles = new List<Tile>();
-            for (int row = 0; row < height * 8; row++)
-            {
-                for (int col = 0; col < width * 8; col++)
-                {
-                    Tile temp = new(new Vector2Int(col, row), false);
-                    tiles.Add(temp);
-                    *//*Debug.Log("Tile with position: " + col + "," + row + " created at index " + tiles.IndexOf(temp));*//*
-                }
-            }
-
-            // queue to store discovered tiles
-            Queue<Tile> foundTiles = new Queue<Tile>();
-
-            // store the number of found tiles
-            int numFoundTiles = 0;
-
-            foundTiles.Enqueue(tiles[currentStartPos.x]);
-            foundTiles.Peek().found = true;
-            numFoundTiles++;
-
-            // run BFS on one of the random tiles
-            while (foundTiles.Count > 0)
-            {
-                Tile tile = foundTiles.Dequeue();
-                Vector2Int pos = tile.posInGrid;
-
-                // uncomment this and turn this function into a coroutine to show how the algorithm goes through the board
-                //yield return new WaitForSeconds(timeBetweenIncrement);
-                //Instantiate(foundTilePrefab, CellToWorldPos(pos) + Vector3.up, transform.rotation, SigilParent);
-
-                Vector2Int upTile = pos + new Vector2Int(0, 1);
-                Vector2Int downTile = pos + new Vector2Int(0, -1);
-                Vector2Int leftTile = pos + new Vector2Int(-1, 0);
-                Vector2Int rightTile = pos + new Vector2Int(1, 0);
-
-                int upTileIndex = upTile.x + upTile.y * 8 * width;
-                int downTileIndex = downTile.x + downTile.y * 8 * width;
-                int leftTileIndex = leftTile.x + leftTile.y * 8 * width;
-                int rightTileIndex = rightTile.x + rightTile.y * 8 * width;
-
-                #region Check Surrounding Tiles
-                // check if the tile that is being checked is at a valid position and that it hasn't been found
-                // check the tile directly above
-                if (IsPosValid(upTile) && !GetTileObstructed(upTile) && !tiles[upTileIndex].found)
-                {
-                    // set the tile to found
-                    tiles[upTileIndex].found = true;
-                    // enqueue the tile
-                    foundTiles.Enqueue(tiles[upTileIndex]);
-                    // increase the count of found tiles
-                    numFoundTiles++;
-                }
-                // check the tile directly below
-                if (IsPosValid(downTile) && !GetTileObstructed(downTile) && !tiles[downTileIndex].found)
-                {
-                    // set the tile to found
-                    tiles[downTileIndex].found = true;
-                    // enqueue the tile
-                    foundTiles.Enqueue(tiles[downTileIndex]);
-                    // increase the count of found tiles
-                    numFoundTiles++;
-                }
-                // check the tile directly to the left
-                if (IsPosValid(leftTile) && !GetTileObstructed(leftTile) && !tiles[leftTileIndex].found)
-                {
-                    // set the tile to found
-                    tiles[leftTileIndex].found = true;
-                    // enqueue the tile
-                    foundTiles.Enqueue(tiles[leftTileIndex]);
-                    // increase the count of found tiles
-                    numFoundTiles++;
-                }
-                // check the tile directly to the right
-                if (IsPosValid(rightTile) && !GetTileObstructed(rightTile) && !tiles[rightTileIndex].found)
-                {
-                    // set the tile to found
-                    tiles[rightTileIndex].found = true;
-                    // enqueue the tile
-                    foundTiles.Enqueue(tiles[rightTileIndex]);
-                    // increase the count of found tiles
-                    numFoundTiles++;
-                }
-                #endregion
-            }
-
-
-            // check if the BFS found any of the tiles on the top row of the grid
-            bool[] topTiles = new bool[topRow.Count];
-            int topTilesAccessible = 0;
-            for (int i = 0; i < topRow.Count; i++)
-            {
-                // find the index of the tile
-                int tileIndex = topRow[i].x + topRow[i].y * 8;
-                if (tiles[tileIndex].found)
-                {
-                    topTiles[i] = true;
-                    topTilesAccessible++;
-                }
-            }
-
-            *//*            if (topTilesAccessible < 2)
-                        {
-                            redoCount++;
-                            return;
-                        }*//*
-
-            // check if the current BST hits another start point in the list
-            for (int i = 0; i < bottomRow.Count; i++)
-            {
-                // if the BST built from the current start point hits a point on the bottom row, remove it from the bottom row list
-                if (tiles[bottomRow[i].x].found)
-                {
-                    bottomRow.RemoveAt(i);
-                    // decrement to stay at the correct index
-                    i--;
-                }
-            }
-
-            // compare the best run
-            Debug.Log("numFoundTiles: " + numFoundTiles + " tileCount: " + tileCount);
-            if (numFoundTiles > tileCount)
-            {
-                // set the count
-                tileCount = numFoundTiles;
-                // keep the bigger BST
-                savedFoundTiles = tiles;
-                bestStartPos = currentStartPos;
-
-                Debug.Log("Updating found tiles");
-            }
-
-            if (bottomRow.Count > 0)
-            {
-                // choose another random start point
-                randNum = UnityEngine.Random.Range(0, bottomRow.Count);
-                //Debug.Log("Count: " + bottomRow.Count + " RandNum: " + randNum);
-                currentStartPos = bottomRow[randNum];
-            }
-            // use when displaying BST
-            *//*// destroy all found tile markers
-            for (int i = SigilParent.childCount - 1; i >= 0; i--)
-            {
-                Destroy(SigilParent.GetChild(i).gameObject);
-            }*//*
-        }
-
-        if (savedFoundTiles.Count == 0)
-        {
-            redoCount++;
-            return;
-        }
-
-
-        // display the best start tile
-        Instantiate(foundTilePrefab, CellToWorldPos(bestStartPos) + Vector3.up, transform.rotation, SigilParent);
-
-        List<Vector2Int> validSigilLocations = new List<Vector2Int>();
-        Vector2Int startChunk = GetChunkLocation(bestStartPos);
-        // check each sigil location
-        for (int i = 0; i < sigilLocations.Count; i++)
-        {
-            // get the index of the tile
-            int tileIndex = sigilLocations[i].x + sigilLocations[i].y * 8 * width;
-            // if the sigil location was found during the BST, add it to the list of valid sigils
-            // don't include the sigil that is in the starting chunk
-            Debug.Log("tileIndex: " + tileIndex + " savedFoundTiles; " + savedFoundTiles.Count);
-            Debug.Log("Sigil at index " + i + " found is " + savedFoundTiles[tileIndex].found +
-                " chunk location " + GetChunkLocation(sigilLocations[i]) + " Actual Location " + sigilLocations[i]
-                + "Location Stored in Tile: " + savedFoundTiles[tileIndex].posInGrid);
-
-            if (savedFoundTiles[tileIndex].found && GetChunkLocation(sigilLocations[i]) != startChunk)
-            {
-                validSigilLocations.Add(sigilLocations[i]);
-                Debug.Log("found valid location");
-            }
-        }
-
-        // choose a random sigil to be the first spawned
-        int randSigil = UnityEngine.Random.Range(0, validSigilLocations.Count);
-        int chunkCount = width * height;
-        int sigilCount;
-        if (chunkCount < 7)
-        {
-            sigilCount = 2;
-        }
-        else if (chunkCount < 13)
-        {
-            sigilCount = 5;
-        }
-        else
-        {
-            sigilCount = 6;
-        }
-
-        // spawn the first sigil
-        Instantiate(sigilPrefab, CellToWorldPos(validSigilLocations[randSigil]), transform.rotation, obstructionsParent);
-
-        validSigilLocations.RemoveAt(randSigil);
-        for (int i = 0; i < sigilCount - 1; i++)
-        {
-            // do something about distance between sigils
-            // spawn another random sigil
-            randSigil = UnityEngine.Random.Range(0, validSigilLocations.Count);
-            //Debug.Log(randSigil + "  validSigilLocations count " + validSigilLocations.Count);
-            Debug.Log("Random number: " + randSigil + " number of sigil locations" + validSigilLocations.Count);
-            Instantiate(sigilPrefab, CellToWorldPos(validSigilLocations[randSigil]), transform.rotation, obstructionsParent);
-
-            validSigilLocations.RemoveAt(randSigil);
-        }
-
-
-        // list to store valid 2x1 areas at the top of the screen
-        List<Vector2Int> doorPositions = new List<Vector2Int>();
-        // find a 2x1 area at the top for the exit door
-        for (int i = 0; i < topRow.Count - 1; i++)
-        {
-
-            int tileIndex = topRow[i].x + topRow[i].y * 8 * width;
-            // check if there is a valid tile to the right of the current index
-            // and check if that tile was found in the BST
-            if (topRow[i].x == (topRow[i + 1].x - 1))
-            {
-                doorPositions.Add(topRow[i]);
-            }
-        }
-
-        // choose a random position from the list and spawn a door there
-        int randomDoor = UnityEngine.Random.Range(0, doorPositions.Count);
-        Vector2Int doorPosition = doorPositions[randomDoor];
-        // sDebug.Log(randomDoor + "   " + doorPositions.Count);
-        Instantiate(doorPrefab, CellToWorldPos(doorPosition), transform.rotation, SigilParent);
-
-        // set positions
-
-        levelManager.SetSigilRequirement(sigilCount);
-        levelManager.SetStartLocation(bestStartPos);
-        levelManager.SetDoorLocation(doorPosition);
-
-        // Generate Enemy Locations
-        successfullyGenerated = true;
-    }*/
-
-    //
-
     private void OnGUI()
     {
-        if (GUILayout.Button("make new layout"))
-        {
-            FillWholeGrid();
-        }
-        if (GUILayout.Button("make new layout"))
-        {
-            StartCoroutine(CheckAllTiles());
-        }
         if (GUILayout.Button("Data Grid"))
         {
             FillLevel(width, height);
@@ -1485,36 +1109,13 @@ public class GridManager : MonoBehaviour
         {
             levelManager.GoToNextLevel();
         }
-        if (GUILayout.Button("Test PQ"))
+        if (GUILayout.Button("Add Enemy"))
         {
-            DTilePriorityQueue PQ = new DTilePriorityQueue();
-
-            PQ.Pop();
-
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            PQ.Insert(new DTile(UnityEngine.Random.Range(0, 100)));
-            Debug.Log(PQ.PrintDist());
-            PQ.Pop();
-            Debug.Log(PQ.PrintDist());
-
+            FindObjectOfType<EnemyManager>().CreateEnemy();
+        }
+        if (GUILayout.Button("Clear Enemies"))
+        {
+            FindObjectOfType<EnemyManager>().ClearAllEnemies();
         }
     }
 }

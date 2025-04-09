@@ -135,11 +135,13 @@ public class DigitalGrid
             timesRun++;
             DResult tempResult = new DResult();
 
-            DTile startTile = root[Random.Range(0, root.Count)];
+            int rand = Random.Range(0, root.Count);
+            DTile startTile = root[rand];
             tempResult.startPoint = startTile.pos;
 
-            Q.Enqueue(root[0]);
-            root[0].found = true;
+            Q.Enqueue(startTile);
+            startTile.found = true;
+            root.RemoveAt(rand);
 
 
             // while Q is not empty
@@ -250,7 +252,7 @@ public class DigitalGrid
                     // fills in tiles that weren't found
                     else if (!tTile.found)
                     {
-                        tempResult.resultOfBFS[i] = 1;
+                        // tempResult.resultOfBFS[i] = 1;
                     }
                     // passes through empty tiles
                     else
@@ -260,8 +262,15 @@ public class DigitalGrid
                 }
                 // place results in the list of results
                 results.Add(tempResult);
+                Debug.Log("added result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+            }
+            else
+            {
+                Debug.Log("failed result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+
             }
 
+            string st = "removed start points: ";
             // check all the tiles in the bottom row
             for (int i = 0; i < width * 8; i++)
             {
@@ -270,8 +279,10 @@ public class DigitalGrid
                 {
                     // if a tile has been found, remove it from the possible root list
                     root.Remove(temp);
+                    st += temp.pos + " ";
                 }
             }
+            Debug.Log(st);
 
             // if there are more starting tiles to check, reset all tiles status'
             if (root.Count > 0)
@@ -286,9 +297,15 @@ public class DigitalGrid
 
         // determine the best start point
         if (results.Count == 0)
+        {
+            Debug.Log("no results");
             return null;
+        }
         else if (results.Count == 1)
+        {
+            Debug.Log("Only 1 result");
             return results[0];
+        }
         else
         {
             int priority = 0;
@@ -297,8 +314,11 @@ public class DigitalGrid
             for (int i = 0; i < results.Count; i++)
             {
                 int tempPriority = results[i].endPoints.Count + results[i].sigilPoints.Count;
+                Debug.Log("tempPriority: " + tempPriority + " old priority" + priority);
                 if (tempPriority > priority)
+                {
                     bestIndex = i;
+                }
             }
             return results[bestIndex];
         }

@@ -12,6 +12,8 @@ public class EnemyBrain : MonoBehaviour
     public Vector2Int posInGrid = new Vector2Int(-1, -1);
     public Vector2Int moveDir = Vector2Int.zero;
 
+    public Vector2Int tempDestination;
+
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
@@ -25,6 +27,15 @@ public class EnemyBrain : MonoBehaviour
     private void Start()
     {
         // enemyManager.AddEnemy(this);
+    }
+
+    private void Update()
+    {
+        /*if (Input.GetKeyUp(KeyCode.P))
+        {
+            Debug.Log("Setting temporary destination");
+            enemyMovement.SetTemporaryDestination(tempDestination);
+        }*/
     }
 
     /// <summary>

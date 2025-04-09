@@ -170,6 +170,7 @@ public class LevelManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
+        enemyManager.ClearAllEnemies();
         // increase current level count
         currentLevel++;
         // Debug.Log(currentLevel);
@@ -192,12 +193,13 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("daamk");
                 gridManager.width = LevelSize.x;
                 gridManager.height = LevelSize.y;
                 gridManager.GenerateGrid();
                 gridManager.FillLevel(LevelSize.x, LevelSize.y);
 
+                // spawn enemies
+                enemyManager.SpawnEnemies(gridManager.sigilCount + 1);
             }
         }
         else if (currentLevel == totalNumLevels - 1)
@@ -216,9 +218,10 @@ public class LevelManager : MonoBehaviour
             gridManager.height = LevelSize.y;
             gridManager.GenerateGrid();
             gridManager.FillLevel(LevelSize.x, LevelSize.y);
-            enemyManager.CreateEnemy();
-        }
 
+            // spawn enemies
+            enemyManager.SpawnEnemies(gridManager.sigilCount + 1);
+        }
     }
 
     public void AttemptDoorOpen()
@@ -244,6 +247,7 @@ public class LevelManager : MonoBehaviour
 
     public void SetStartLocation(Vector2Int sPos)
     {
+        //Debug.Log("start position set to " + sPos);
         startLocation = sPos;
         movementManager.setPlayerPos(gridManager.CellToWorldPos(startLocation));
         movementManager.playerPosInGrid = startLocation;

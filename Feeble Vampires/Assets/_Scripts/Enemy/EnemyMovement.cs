@@ -6,7 +6,8 @@ public class EnemyMovement : MonoBehaviour
     public enum MoveType
     {
         Loop,
-        PingPong
+        PingPong,
+        Buddy
     }
 
     // creating enemy pathfinding
@@ -25,8 +26,14 @@ public class EnemyMovement : MonoBehaviour
 
     public float turnWeight = 0.1f;
 
-    public MoveType moveType = MoveType.Loop;
+    public MoveType moveType = MoveType.PingPong;
+
     private bool retracingSteps = false;
+
+    public Vector2Int[] tempPath;
+    public bool buddyRetracingSteps = false;
+    public Vector2Int savedMoveDir;
+    public int buddyTargetNode = 0;
 
     private Transform body;
 
@@ -61,6 +68,9 @@ public class EnemyMovement : MonoBehaviour
                 break;
             case MoveType.PingPong:
                 PingPongMove();
+                break;
+            case MoveType.Buddy:
+                BatBuddyMovement();
                 break;
             default:
                 break;
@@ -131,13 +141,98 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void BatBuddyMovement()
+    {
+        // check if the current tile is the target tile
+        // Debug.Log(enemyBrain.posInGrid + " ?= " + tempPath[buddyTargetNode]);
+        if (enemyBrain.posInGrid == tempPath[buddyTargetNode])
+        {
+            // reached the last node in the series
+            // go backwards
+            if (buddyTargetNode == tempPath.Length - 1)
+            {
+                // Debug.Log("bat buddy movement reached end, going backwards");
+                buddyRetracingSteps = true;
+                buddyTargetNode--;
+                // face the next node
+                RotateTowardsBuddyNode();
+            }
+            // reached the start node after walking through the whole new path
+            else if (buddyTargetNode == 0 && buddyRetracingSteps)
+            {
+                // Debug.Log("bat buddy movement over");
+                // reset buddyRetracingSteps
+                buddyRetracingSteps = false;
+                // restore the saved move direction
+                RotateTowardsNextNode();
+                // reset the move type
+                moveType = MoveType.PingPong;
+            }
+            else
+            {
+                // go up through the nodes if not retracing steps or down if you are retracing steps
+                buddyTargetNode += buddyRetracingSteps ? -1 : 1;
+                // Debug.Log("bat buddy movement next node");
+                // face the next node
+                RotateTowardsBuddyNode();
+
+            }
+        }
+        else
+        {
+            // move to the next position
+            // Debug.Log("bat buddy move");
+            SetPosInGrid(enemyBrain.posInGrid.x + enemyBrain.moveDir.x, enemyBrain.posInGrid.y + enemyBrain.moveDir.y);
+        }
+    }
+    private void RotateTowardsBuddyNode()
+    {
+        // find the moveDir
+        // get the direction of the next node
+        // get the vector of movement 
+        Vector2 targetDirection = new Vector2Int(tempPath[buddyTargetNode].x, tempPath[buddyTargetNode].y) - enemyBrain.posInGrid;
+        //// Debug.Log("new Direction" + targetDirection);
+
+        // normalize movement
+        targetDirection.Normalize();
+
+        // convert Vector2 to Vector2Int
+        int vectX = (int)targetDirection.x;
+        int vectY = (int)targetDirection.y;
+        // assign new move direction
+        enemyBrain.moveDir = new Vector2Int(vectX, vectY);
+
+        // rotate to face the MoveDir
+
+        // facing right
+        if (enemyBrain.moveDir == new Vector2Int(1, 0))
+        {
+            body.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        // facing left
+        else if (enemyBrain.moveDir == new Vector2Int(-1, 0))
+        {
+            body.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        // facing forwards
+        else if (enemyBrain.moveDir == new Vector2Int(0, 1))
+        {
+            body.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        // facing backwards
+        else if (enemyBrain.moveDir == new Vector2Int(0, -1))
+        {
+            body.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+
     private void RotateTowardsNextNode()
     {
         // find the moveDir
         // get the direction of the next node
         // get the vector of movement 
         Vector2 targetDirection = new Vector2Int(moveNodes[targetNode].x, moveNodes[targetNode].y) - enemyBrain.posInGrid;
-        //Debug.Log("new Direction" + targetDirection);
+        //// Debug.Log("new Direction" + targetDirection);
 
         // normalize movement
         targetDirection.Normalize();
@@ -190,7 +285,7 @@ public class EnemyMovement : MonoBehaviour
     {
         DigitalGrid dGrid = gridManager.dGrid;
         ///////////////////////////// add 0.01 or something small to the dist when a turn is made
-        DTile[] grid = gridManager.dGrid.grid;
+        DTile[] grid = gridManager.GetVerifiedGridFromResults();
 
         for (int i = 0; i < grid.Length; i++)
         {
@@ -209,10 +304,10 @@ public class EnemyMovement : MonoBehaviour
 
         PQ.Insert(startTile);
 
-        Debug.Log(PQ.Count);
+        // Debug.Log(PQ.Count);
         while (!PQ.Empty)
         {
-            Debug.Log("1");
+            // Debug.Log("1");
             // if the tile has already been visited, go to next best tile
             DTile current = PQ.Pop();
             if (visited.IndexOf(current) > -1)
@@ -233,17 +328,17 @@ public class EnemyMovement : MonoBehaviour
             {
                 DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[0])];
                 // check if the tile is a wall and that it hasn't been visited already
-                Debug.Log("up neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // Debug.Log("up neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
 
                 if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
                 {
-                    Debug.Log("neighbor is not visited");
+                    // Debug.Log("neighbor is not visited");
                     // add 1 to the current distance and assign that to the neighbor
                     float newDist = current.dist + 1f;
-                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    // Debug.Log(newDist + " < " + Neighbor.dist);
                     if (newDist < Neighbor.dist)
                     {
-                        Debug.Log("up neighbor has new dist of " + newDist);
+                        // Debug.Log("up neighbor has new dist of " + newDist);
                         Neighbor.dist = newDist;
                         Neighbor.prev = current;
                         PQ.Insert(Neighbor);
@@ -256,15 +351,15 @@ public class EnemyMovement : MonoBehaviour
             {
                 DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[1])];
                 // check if the tile is a wall and that it hasn't been visited already
-                Debug.Log("down neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // Debug.Log("down neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
                 if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
                 {
                     // add 1 to the current distance and assign that to the neighbor
                     float newDist = current.dist + 1f;
-                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    // Debug.Log(newDist + " < " + Neighbor.dist);
                     if (newDist < Neighbor.dist)
                     {
-                        Debug.Log("Down neighbor has new dist of " + newDist);
+                        // Debug.Log("Down neighbor has new dist of " + newDist);
                         Neighbor.dist = newDist;
                         Neighbor.prev = current;
                         PQ.Insert(Neighbor);
@@ -277,16 +372,16 @@ public class EnemyMovement : MonoBehaviour
             {
 
                 DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[2])];
-                Debug.Log("left neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // Debug.Log("left neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
                 // check if the tile is a wall and that it hasn't been visited already
                 if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
                 {
                     // add 1 to the current distance and assign that to the neighbor
                     float newDist = current.dist + 1f;
-                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    // Debug.Log(newDist + " < " + Neighbor.dist);
                     if (newDist < Neighbor.dist)
                     {
-                        Debug.Log("left neighbor has new dist of " + newDist);
+                        // Debug.Log("left neighbor has new dist of " + newDist);
                         Neighbor.dist = newDist;
                         Neighbor.prev = current;
                         PQ.Insert(Neighbor);
@@ -299,16 +394,16 @@ public class EnemyMovement : MonoBehaviour
             {
 
                 DTile Neighbor = grid[dGrid.GetTileIndex(current.adjacentTiles[3])];
-                Debug.Log("right neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
+                // Debug.Log("right neighbor - type 1:" + (Neighbor.type != 1) + " type 2: " + (Neighbor.type != 2) + " visited: " + (visited.IndexOf(Neighbor) > -1) + " index: " + visited.IndexOf(Neighbor) + " position: " + Neighbor.pos);
                 // check if the tile is a wall and that it hasn't been visited already
                 if (Neighbor.type != 1 && Neighbor.type != 2 && visited.IndexOf(Neighbor) < 0)
                 {
                     // add 1 to the current distance and assign that to the neighbor
                     float newDist = current.dist + 1f;
-                    Debug.Log(newDist + " < " + Neighbor.dist);
+                    // Debug.Log(newDist + " < " + Neighbor.dist);
                     if (newDist < Neighbor.dist)
                     {
-                        Debug.Log("right neighbor has new dist of " + newDist);
+                        // Debug.Log("right neighbor has new dist of " + newDist);
                         Neighbor.dist = newDist;
                         Neighbor.prev = current;
                         PQ.Insert(Neighbor);
@@ -353,8 +448,18 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         corners.Add(tempPath[tempPath.Count - 1]);
-        Debug.Log("Path: " + stPath + " count: " + corners.Count);
+        // Debug.Log("Path: " + stPath + " count: " + corners.Count);
         // return the corners as a Vector2Int array
         return corners;
+    }
+
+
+    public void SetTemporaryDestination(Vector2Int dest)
+    {
+        List<Vector2Int> path = CreatePathToPoint(dest);
+        tempPath = path.ToArray();
+        savedMoveDir = enemyBrain.moveDir;
+        moveType = MoveType.Buddy;
+        RotateTowardsBuddyNode();
     }
 }
