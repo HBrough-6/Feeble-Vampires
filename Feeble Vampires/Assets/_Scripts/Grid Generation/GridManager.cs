@@ -77,7 +77,7 @@ public class GridManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateGrid();
+        GenerateGrid(true);
     }
 
     public IEnumerator CheckAllTiles()
@@ -199,7 +199,7 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
-    public void GenerateGrid()
+    public void GenerateGrid(bool placeTiles)
     {
         int cellHeight = height * chunkSize;
         int cellWidth = width * chunkSize;
@@ -229,30 +229,20 @@ public class GridManager : MonoBehaviour
 
         // delete old tiles
 
-
-        bool isWhite = true;
-
         // spawn tiles at positions on grid
         for (int z = 0; z < cellHeight; z++)
         {
-            isWhite = !isWhite;
             for (int x = 0; x < cellWidth; x++)
             {
-                isWhite = !isWhite;
-
                 cellPosInGrid.z = z;
                 cellPosInGrid.x = x;
                 cellPosInGrid.y = 0;
 
                 Vector3 worldPos = grid.CellToWorld(cellPosInGrid);
 
-                if (isWhite)
+                if (placeTiles)
                 {
-                    Instantiate(whiteTile, worldPos, transform.rotation, tilesParent);
-                }
-                else
-                {
-                    Instantiate(blackTile, worldPos, transform.rotation, tilesParent);
+                    Instantiate(Resources.Load("LevelPrefabs/Zone_1_Tile"), worldPos, transform.rotation, tilesParent);
                 }
             }
         }

@@ -106,9 +106,11 @@ public class DigitalGrid
     public DResult Verify()
     {
         int timesRun = 0;
+        Debug.Log(grid.Length);
         // reset all tiles to make sure they are all unfound
         for (int i = 0; i < grid.Length; i++)
         {
+            Debug.Log(i);
             grid[i].found = false;
         }
 
@@ -252,7 +254,7 @@ public class DigitalGrid
                     // fills in tiles that weren't found
                     else if (!tTile.found)
                     {
-                        // tempResult.resultOfBFS[i] = 1;
+                        tempResult.resultOfBFS[i] = 1;
                     }
                     // passes through empty tiles
                     else
@@ -262,11 +264,11 @@ public class DigitalGrid
                 }
                 // place results in the list of results
                 results.Add(tempResult);
-                Debug.Log("added result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+                //Debug.Log("added result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
             }
             else
             {
-                Debug.Log("failed result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+                //Debug.Log("failed result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
 
             }
 
@@ -282,7 +284,7 @@ public class DigitalGrid
                     st += temp.pos + " ";
                 }
             }
-            Debug.Log(st);
+            //Debug.Log(st);
 
             // if there are more starting tiles to check, reset all tiles status'
             if (root.Count > 0)
@@ -298,7 +300,7 @@ public class DigitalGrid
         // determine the best start point
         if (results.Count == 0)
         {
-            Debug.Log("no results");
+            //Debug.Log("no results");
             return null;
         }
         else if (results.Count == 1)
