@@ -170,6 +170,8 @@ public class LevelManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
+        // give the player experience points
+        PlayerAbilities.experiencePoints += 2;
         enemyManager.ClearAllEnemies();
         // increase current level count
         currentLevel++;
