@@ -101,6 +101,18 @@ public class GridManager : MonoBehaviour
     #region GridCreation
 
     #region Build Levels
+
+    public void VisitSafeZone()
+    {
+        // delete previous level
+        // spawn safe room
+        // play door animation
+        //// what does the safe zone have in it?
+        /// door that asks you to confirm leaving the safe zone
+        /// working vendor
+        /// connected to a grid
+    }
+
     public void FakeLevelTwo()
     {
         for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
