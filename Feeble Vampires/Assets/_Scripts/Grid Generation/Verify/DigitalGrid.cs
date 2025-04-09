@@ -8,19 +8,15 @@ public class DigitalGrid
     // fill grid with chunks (done in grid manager) -- DONE
     // then verify -- check multiple starting tiles
     public DTile[] grid;
-    // keeps track of what chunks have been filled
-    public bool[] chunkTracker;
 
     public int width, height;
-    private bool gridCreated = false;
     // TileIndex = .x + .y * 8 * width;
     public void SetUpGrid(int width, int height)
     {
-        Debug.Log("setting width of " + width + " and height of " + height);
+        //Debug.Log("setting width of " + width + " and height of " + height);
         this.width = width;
         this.height = height;
         grid = new DTile[width * height * 8 * 8];
-        chunkTracker = new bool[width * height];
 
         // fill the grid with tiles 
         for (int row = 0; row < height * 8; row++)
@@ -93,6 +89,16 @@ public class DigitalGrid
         return new Vector2Int(x % 8, y % 8);
     }
 
+    public void ResetGridAfterSearch()
+    {
+        // reset all tiles to unfound
+        for (int i = 0; i < grid.Length; i++)
+        {
+            grid[i].found = false;
+            grid[i].prev = null;
+        }
+    }
+
     /// <summary>
     /// Checks if the digital grid is valid
     /// </summary>
@@ -106,15 +112,15 @@ public class DigitalGrid
             grid[i].found = false;
         }
 
-        List<DResult> dResult = new List<DResult>();
-
         // bfs
         // let Q be a queue
         Queue<DTile> Q = new Queue<DTile>();
-        // find a root
+        // find possible roots
         List<DTile> root = new List<DTile>();
+        // list to store results of each run of BFS
         List<DResult> results = new List<DResult>();
 
+        // find all possible roots
         for (int i = 0; i < width * 8; i++)
         {
             if (grid[i].type != 1 && grid[i].type != 2)
@@ -129,11 +135,13 @@ public class DigitalGrid
             timesRun++;
             DResult tempResult = new DResult();
 
-            DTile startTile = root[Random.Range(0, root.Count)];
+            int rand = Random.Range(0, root.Count);
+            DTile startTile = root[rand];
             tempResult.startPoint = startTile.pos;
 
-            Q.Enqueue(root[0]);
-            root[0].found = true;
+            Q.Enqueue(startTile);
+            startTile.found = true;
+            root.RemoveAt(rand);
 
 
             // while Q is not empty
@@ -168,17 +176,14 @@ public class DigitalGrid
                 if (VerifyPos(v.adjacentTiles[3]))
                     rightIndex = GetTileIndex(v.adjacentTiles[3]);
 
-                Debug.Log("Checking neighbors of tile " + v.pos +
+                /*Debug.Log("Checking neighbors of tile " + v.pos +
                     "\n Up - Pos: " + v.adjacentTiles[0] + " Index: " + upIndex
                     + "\n Down - Pos: " + v.adjacentTiles[1] + " Index: " + downIndex
                     + "\n left - Pos: " + v.adjacentTiles[2] + " Index: " + leftIndex
-                    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);
+                    + "\n right - Pos: " + v.adjacentTiles[3] + " Index: " + rightIndex);*/
 
                 // check if the position was validated, tile has not been found, and the tile is not a wall
-                if (upIndex != -1
-                    && !grid[upIndex].found
-                    && grid[upIndex].type != 1
-                    && grid[upIndex].type != 2)
+                if (upIndex != -1 && !grid[upIndex].found && grid[upIndex].type != 1 && grid[upIndex].type != 2)
                 {
                     Q.Enqueue(grid[upIndex]);
                     grid[upIndex].found = true;
@@ -247,7 +252,7 @@ public class DigitalGrid
                     // fills in tiles that weren't found
                     else if (!tTile.found)
                     {
-                        tempResult.resultOfBFS[i] = 1;
+                        // tempResult.resultOfBFS[i] = 1;
                     }
                     // passes through empty tiles
                     else
@@ -257,8 +262,15 @@ public class DigitalGrid
                 }
                 // place results in the list of results
                 results.Add(tempResult);
+                Debug.Log("added result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+            }
+            else
+            {
+                Debug.Log("failed result has: " + tempResult.endPoints.Count + "endpoints, " + tempResult.sigilPoints.Count + " sigil points, starts at " + tempResult.startPoint);
+
             }
 
+            string st = "removed start points: ";
             // check all the tiles in the bottom row
             for (int i = 0; i < width * 8; i++)
             {
@@ -267,8 +279,10 @@ public class DigitalGrid
                 {
                     // if a tile has been found, remove it from the possible root list
                     root.Remove(temp);
+                    st += temp.pos + " ";
                 }
             }
+            Debug.Log(st);
 
             // if there are more starting tiles to check, reset all tiles status'
             if (root.Count > 0)
@@ -283,9 +297,15 @@ public class DigitalGrid
 
         // determine the best start point
         if (results.Count == 0)
+        {
+            Debug.Log("no results");
             return null;
+        }
         else if (results.Count == 1)
+        {
+            Debug.Log("Only 1 result");
             return results[0];
+        }
         else
         {
             int priority = 0;
@@ -294,8 +314,11 @@ public class DigitalGrid
             for (int i = 0; i < results.Count; i++)
             {
                 int tempPriority = results[i].endPoints.Count + results[i].sigilPoints.Count;
+                Debug.Log("tempPriority: " + tempPriority + " old priority" + priority);
                 if (tempPriority > priority)
+                {
                     bestIndex = i;
+                }
             }
             return results[bestIndex];
         }
