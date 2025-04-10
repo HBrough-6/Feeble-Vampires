@@ -25,7 +25,7 @@ public class PlayerAbilities : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
 
-        if (canEcholocate) uiManager.makeMap();
+        uiManager.makeMap();
 
         if (isSwifter)
         {
