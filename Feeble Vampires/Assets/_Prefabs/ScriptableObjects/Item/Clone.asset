@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7a4c291ebe93d49af7772499188da6, type: 3}
+  m_Name: Clone
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Clone
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4bcd50f7ff687744ab5dd49e101c6347,
+    type: 3}
+  <ItemDescription>k__BackingField: ' (Passive) - Upon death, restarts the current
+    level you are on instead of ending the game.'

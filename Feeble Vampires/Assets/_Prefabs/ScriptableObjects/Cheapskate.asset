@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53f6d23b1bf8b5f4a9ac405bee1c371f, type: 3}
-  m_Name: Neural_Formation
+  m_Name: Cheapskate
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Neural Formation
+  <DisplayName>k__BackingField: Cheapskate
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: The player gains additional time per turn.
+  <SkillDescription>k__BackingField: every skill that the player acquires only costs
+    one Experience Point instead of two.
