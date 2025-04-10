@@ -32,14 +32,17 @@ public class LevelManager : MonoBehaviour
     public int levelsPerZoneEasy = 3;
     public int levelsPerZoneMedium = 4;
     public int levelsPerZoneHard = 5;
+
     public int currentLevelsPerZone;
     private int totalNumLevels;
 
     public Difficulty difficulty = Difficulty.Easy;
 
-    public int currentLevel = 1;
-    public bool safeZoneOneVisited = false;
-    public bool safeZoneTwoVisited = false;
+    public int currentLevel = 0;
+    public int currentZone = 1;
+    public bool safeZoneVisited = false;
+
+    private SafeZone safeZone;
 
     private void Awake()
     {
@@ -47,12 +50,15 @@ public class LevelManager : MonoBehaviour
         movementManager = FindAnyObjectByType<MovementManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
         doorLocations = new Vector2Int[2];
+        safeZone = FindObjectOfType<SafeZone>();
     }
 
     private void Start()
     {
         /*gridManager.GenerateGrid();
         GenerateLevelOne();*/
+        currentLevel = 0;
+        SetGameDifficulty(difficulty);
     }
 
     public void GenerateLevelOne()
@@ -101,6 +107,7 @@ public class LevelManager : MonoBehaviour
             case Difficulty.Easy:
                 switch (currentLevel)
                 {
+                    case 1:
                     case 2:
                     case 3:
                         return new Vector2Int(2, 2);
@@ -170,55 +177,65 @@ public class LevelManager : MonoBehaviour
 
     public void GoToNextLevel()
     {
+        safeZone.DeactivateSafeZone();
         // give the player experience points
         PlayerAbilities.experiencePoints += 2;
         enemyManager.ClearAllEnemies();
-        // increase current level count
-        currentLevel++;
+
         // Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
 
+        int rand = Random.Range(0, 10);
         // player is in zone 1 and the safe space hasn't been visited yet
-        if (currentLevel == 1)
+        if (currentLevel == 0)
         {
             // import level 1;
             GenerateLevelOne();
+            currentLevel++;
         }
-        // check that the player hasn't visited the safe zone in its current zone
-        else if ((!safeZoneOneVisited && currentLevel <= currentLevelsPerZone + 1) || (!safeZoneTwoVisited && currentLevel < totalNumLevels))
+        // the safe zone has not been visited - 4/10 chance to spawn the safe zone - formula to check if the level is the last in the zone
+        else if (!safeZoneVisited && ((rand > 5) || currentLevel == currentLevelsPerZone * currentZone + 1))
         {
-            // attempt to visit safe zone
-            if ((Random.Range(0, 10) + currentLevel % currentLevelsPerZone > 10 || currentLevel == currentLevelsPerZone + 1 || currentLevel == totalNumLevels - 1) && false)
-            {
-                // gridManager.VisitSafeZone();
-                Debug.Log("Go to Safezone");
-            }
-            else
-            {
-                gridManager.width = LevelSize.x;
-                gridManager.height = LevelSize.y;
-                gridManager.GenerateGrid();
-                gridManager.FillLevel(LevelSize.x, LevelSize.y);
+            Debug.Log("!" + safeZoneVisited + rand + " > 5" + currentLevel + " == " + currentLevelsPerZone + " * " + currentZone + " + 1");
+            // generate the floor
+            gridManager.width = 2;
+            gridManager.height = 2;
+            gridManager.GenerateGrid(false);
 
-                // spawn enemies
-                enemyManager.SpawnEnemies(gridManager.sigilCount + 1);
-            }
+            SetStartLocation(new Vector2Int(3, 0));
+
+            // place the safe zone
+            Debug.Log("safeZone");
+            safeZone.ActivateSafeZone();
+            safeZoneVisited = true;
         }
+        // player is at the final level
         else if (currentLevel == totalNumLevels - 1)
         {
+            Debug.Log("final level");
             // import final level
             // gridManager.StartFinalLevel()
+            currentLevel++;
         }
         else if (currentLevel == totalNumLevels)
         {
+            Debug.Log("You win");
             // end the game
             // pull up game winning screen
         }
         else
         {
+            currentLevel++;
+            Debug.Log("at level" + currentLevel);
+            // reached the first level of zone 2, reset the safezonevisited
+            if (currentLevel == currentLevelsPerZone + 2)
+            {
+                currentZone = 2;
+                safeZoneVisited = false;
+            }
             gridManager.width = LevelSize.x;
             gridManager.height = LevelSize.y;
-            gridManager.GenerateGrid();
+            gridManager.GenerateGrid(true);
             gridManager.FillLevel(LevelSize.x, LevelSize.y);
 
             // spawn enemies
