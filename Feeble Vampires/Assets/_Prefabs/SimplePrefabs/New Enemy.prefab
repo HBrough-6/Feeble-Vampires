@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4863892988142355522}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Pivot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,6 +298,10 @@ MonoBehaviour:
   moveNodes: []
   turnWeight: 0.1
   moveType: 1
+  tempPath: []
+  buddyRetracingSteps: 0
+  savedMoveDir: {x: 0, y: 0}
+  buddyTargetNode: 0
 --- !u!114 &6454703045341461384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,8 +329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f18ebfd23aad54fad8e7b70438309a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySight: {fileID: 0}
   posInGrid: {x: -1, y: -1}
   moveDir: {x: 0, y: 0}
+  tempDestination: {x: 0, y: 0}
 --- !u!114 &7943589026259092373
 MonoBehaviour:
   m_ObjectHideFlags: 0
