@@ -15,5 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Hemoglobin Rush
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: The player can move an additional two spaces
-    after killing an enemy.
+  <SkillDescription>k__BackingField: '+2 Movement For 1 Turn After Killing an Enemy '

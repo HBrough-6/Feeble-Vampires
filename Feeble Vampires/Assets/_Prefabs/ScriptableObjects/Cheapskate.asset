@@ -15,5 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Cheapskate
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: every skill that the player acquires only costs
-    one Experience Point instead of two.
+  <SkillDescription>k__BackingField: -1 Skill Cost

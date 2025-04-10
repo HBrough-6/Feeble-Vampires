@@ -15,4 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Neural Formation
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: The player gains additional time per turn.
+  <SkillDescription>k__BackingField: +2 seconds to move timer

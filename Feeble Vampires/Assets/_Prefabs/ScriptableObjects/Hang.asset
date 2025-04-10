@@ -15,6 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Hang
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: Once per level, if the player does not move
-    before their turn ends, the enemies will move a normal distance and will remain
-    on their normal path instead of pathing towards the player.
+  <SkillDescription>k__BackingField: No Penalty For First Timer Fail Per Level

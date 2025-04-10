@@ -15,4 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Echolocation
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: Show the player a map of nearby areas.
+  <SkillDescription>k__BackingField: Displays a mini map
