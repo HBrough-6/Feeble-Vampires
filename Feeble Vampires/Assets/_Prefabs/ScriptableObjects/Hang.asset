@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hang
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Hang
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: efeff1054fb08404b97f482735d0d759,
+    type: 3}
   <SkillLevel>k__BackingField: 1
   <SkillDescription>k__BackingField: No Penalty For First Timer Fail Per Level

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hemoglobin_Rush
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Hemoglobin Rush
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: faa28866fd3ee854da9b4431a5a925b8,
+    type: 3}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: '+2 Movement For 1 Turn After Killing an Enemy '
+  <SkillDescription>k__BackingField: +2 Movement For 1 Turn After Killing an Enemy

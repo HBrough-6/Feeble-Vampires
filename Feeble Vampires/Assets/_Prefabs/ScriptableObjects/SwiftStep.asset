@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SwiftStep
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Swift Step
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: c0db6182b98f52842bcb17f70da6ac8c,
+    type: 3}
   <SkillLevel>k__BackingField: 1
   <SkillDescription>k__BackingField: '+1 Movement Distance '

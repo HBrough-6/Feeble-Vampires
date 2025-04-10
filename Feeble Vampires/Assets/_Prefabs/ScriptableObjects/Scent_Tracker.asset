@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Scent_Tracker
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Scent Tracker
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: a900583dcea90eb4399af82356307264,
+    type: 3}
   <SkillLevel>k__BackingField: 1
   <SkillDescription>k__BackingField: Reveal enemies on sigil pickup

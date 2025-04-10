@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cheapskate
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Cheapskate
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 422cd449e1f461c4091e05743198d952,
+    type: 3}
   <SkillLevel>k__BackingField: 1
   <SkillDescription>k__BackingField: -1 Skill Cost
