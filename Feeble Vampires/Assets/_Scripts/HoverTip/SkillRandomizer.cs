@@ -27,6 +27,8 @@ public class SkillRandomizer : MonoBehaviour
         if (skill2Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite ==
             skill1Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite)
             skill2Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = skills[Random.Range(0, skills.Count - 1)].Icon;
+
+        //skill1Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = 
     }
 
     // Update is called once per frame
