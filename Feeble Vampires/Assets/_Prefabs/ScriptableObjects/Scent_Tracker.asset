@@ -15,5 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Scent Tracker
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: "Every time the player picks up a sigil, they
-    are notified of the enemies\u2019 current locations."
+  <SkillDescription>k__BackingField: Reveal enemies on sigil pickup

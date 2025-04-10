@@ -15,6 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Apex Instinct
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: You have half the normal amount of time to move,
-    but automatically double any movement distance that you have at all stages of
-    the game.
+  <SkillDescription>k__BackingField: Halve Time to Move, Double All Movement

@@ -15,5 +15,4 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Swift Step
   <Icon>k__BackingField: {fileID: 0}
   <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: The player can move an additional space per
-    turn.
+  <SkillDescription>k__BackingField: '+1 Movement Distance '
