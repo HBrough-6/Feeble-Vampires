@@ -448,7 +448,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        Debug.Log("Path: " + stPath + " count: " + corners.Count);
+        //Debug.Log("Path: " + stPath + " count: " + corners.Count);
         corners.Add(tempPath[tempPath.Count - 1]);
         // return the corners as a Vector2Int array
         return corners;

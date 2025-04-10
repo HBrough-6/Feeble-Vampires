@@ -38,6 +38,8 @@ public class GridManager : MonoBehaviour
     public GameObject sigilPrefab;
     public GameObject doorPrefab;
     public GameObject EnemyPrefab;
+    public GameObject actualDoorPrefab;
+    private EnemyManager enemyManager;
 
     public GameObject foundTilePrefab;
 
@@ -73,6 +75,7 @@ public class GridManager : MonoBehaviour
         sigilLocations = new List<Vector2Int>();
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
+        enemyManager = FindObjectOfType<EnemyManager>();
     }
 
     private void Start()
@@ -145,7 +148,7 @@ public class GridManager : MonoBehaviour
         Vector2Int[] enemyThreeMovement = { new Vector2Int(3, 10), new Vector2Int(0, 10)
                 , new Vector2Int(0, 0), new Vector2Int(3, 0), new Vector2Int(3, 1) };
 
-        /*EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
+        EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyOne.moveNodes = enemyOneMovement;
         EnemyOne.moveType = EnemyMovement.MoveType.PingPong;
 
@@ -155,7 +158,11 @@ public class GridManager : MonoBehaviour
 
         EnemyMovement EnemyThree = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(3, 10)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyThree.moveNodes = enemyThreeMovement;
-        EnemyThree.moveType = EnemyMovement.MoveType.PingPong;*/
+        EnemyThree.moveType = EnemyMovement.MoveType.PingPong;
+
+        enemyManager.AddEnemy(EnemyOne.GetComponent<EnemyBrain>());
+        enemyManager.AddEnemy(EnemyTwo.GetComponent<EnemyBrain>());
+        enemyManager.AddEnemy(EnemyThree.GetComponent<EnemyBrain>());
 
         levelManager.SetStartLocation(new Vector2Int(1, 0));
         levelManager.SetSigilRequirement(2);
@@ -181,7 +188,7 @@ public class GridManager : MonoBehaviour
         Vector2Int[] enemyThreeMovement = { new Vector2Int(15, 11), new Vector2Int(15, 0)
                 , new Vector2Int(14, 0), new Vector2Int(14, 11)};
 
-        /*EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
+        EnemyMovement EnemyOne = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(9, 0)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyOne.moveNodes = enemyOneMovement;
         EnemyOne.moveType = EnemyMovement.MoveType.PingPong;
 
@@ -192,7 +199,11 @@ public class GridManager : MonoBehaviour
         EnemyMovement EnemyThree = Instantiate(EnemyPrefab, CellToWorldPos(new Vector2Int(3, 10)), transform.rotation).GetComponent<EnemyMovement>();
         EnemyThree.moveNodes = enemyThreeMovement;
         EnemyThree.moveType = EnemyMovement.MoveType.Loop;
-*/
+
+        enemyManager.AddEnemy(EnemyOne.GetComponent<EnemyBrain>());
+        enemyManager.AddEnemy(EnemyTwo.GetComponent<EnemyBrain>());
+        enemyManager.AddEnemy(EnemyThree.GetComponent<EnemyBrain>());
+
         levelManager.SetStartLocation(new Vector2Int(7, 0));
         levelManager.SetSigilRequirement(2);
     }
@@ -531,10 +542,13 @@ public class GridManager : MonoBehaviour
             Instantiate(sigilPrefab, CellToWorldPos(results.sigilPoints[i]), transform.rotation, SigilParent);
         }
 
-        Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
+        //Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
         Vector2Int doorPos = results.endPoints[UnityEngine.Random.Range(0, results.endPoints.Count)];
         Instantiate(doorPrefab, CellToWorldPos(doorPos), transform.rotation, obstructionsParent);
         levelManager.SetStartLocation(results.startPoint);
+        //Instantiate(actualDoorPrefab, CellToWorldPos(doorPos) - new Vector3(0, 0, 0.5f), transform.rotation, obstructionsParent);
+
+        levelManager.SetSigilRequirement(sigilCount);
     }
 
     public DTile[] ConvertIntGrid(int[] grid)
@@ -1101,23 +1115,23 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
-    private void OnGUI()
-    {
-        if (GUILayout.Button("Data Grid"))
-        {
-            FillLevel(width, height);
-        }
-        if (GUILayout.Button("Go Next Level"))
-        {
-            levelManager.GoToNextLevel();
-        }
-        if (GUILayout.Button("Add Enemy"))
-        {
-            FindObjectOfType<EnemyManager>().CreateEnemy();
-        }
-        if (GUILayout.Button("Clear Enemies"))
-        {
-            FindObjectOfType<EnemyManager>().ClearAllEnemies();
-        }
-    }
+    /*  private void OnGUI()
+      {
+          if (GUILayout.Button("Data Grid"))
+          {
+              FillLevel(width, height);
+          }
+          if (GUILayout.Button("Go Next Level"))
+          {
+              levelManager.GoToNextLevel();
+          }
+          if (GUILayout.Button("Add Enemy"))
+          {
+              FindObjectOfType<EnemyManager>().CreateEnemy();
+          }
+          if (GUILayout.Button("Clear Enemies"))
+          {
+              FindObjectOfType<EnemyManager>().ClearAllEnemies();
+          }
+      }*/
 }

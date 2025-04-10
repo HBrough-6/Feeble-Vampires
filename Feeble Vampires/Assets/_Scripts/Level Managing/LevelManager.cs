@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     private GridManager gridManager;
     private MovementManager movementManager;
     private EnemyManager enemyManager;
+    private UIManager uiManager;
+    private GameManager gameManager;
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
@@ -42,6 +44,8 @@ public class LevelManager : MonoBehaviour
     public int currentZone = 1;
     public bool safeZoneVisited = false;
 
+    public bool inSafeZone = false;
+
     private SafeZone safeZone;
 
     private void Awake()
@@ -51,6 +55,8 @@ public class LevelManager : MonoBehaviour
         enemyManager = FindObjectOfType<EnemyManager>();
         doorLocations = new Vector2Int[2];
         safeZone = FindObjectOfType<SafeZone>();
+        uiManager = FindObjectOfType<UIManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
@@ -59,6 +65,7 @@ public class LevelManager : MonoBehaviour
         GenerateLevelOne();*/
         currentLevel = 0;
         SetGameDifficulty(difficulty);
+        GoToNextLevel();
     }
 
     public void GenerateLevelOne()
@@ -116,6 +123,7 @@ public class LevelManager : MonoBehaviour
                         return rand > 0.5 ? new Vector2Int(3, 2) : new Vector2Int(2, 3);
                     case 6:
                     case 7:
+                        Debug.Log("last level easy");
                         return new Vector2Int(3, 3);
                     default:
                         Debug.Log("Easy difficulty difficulty only has randomly generated layouts on 2-7");
@@ -137,6 +145,7 @@ public class LevelManager : MonoBehaviour
 
                     case 8:
                     case 9:
+                        Debug.Log("last level med");
                         return rand > 0.5 ? new Vector2Int(3, 4) : new Vector2Int(4, 3);
 
 
@@ -163,6 +172,7 @@ public class LevelManager : MonoBehaviour
                         return rand > 0.5 ? new Vector2Int(3, 4) : new Vector2Int(4, 3);
                     case 10:
                     case 11:
+                        Debug.Log("last level hard");
                         return rand > 0.5 ? new Vector2Int(5, 4) : new Vector2Int(4, 5);
 
                     default:
@@ -178,12 +188,19 @@ public class LevelManager : MonoBehaviour
     public void GoToNextLevel()
     {
         safeZone.DeactivateSafeZone();
-        // give the player experience points
-        PlayerAbilities.experiencePoints += 2;
+        if (inSafeZone)
+        {
+            // give the player experience points
+            PlayerAbilities.experiencePoints += 2;
+        }
         enemyManager.ClearAllEnemies();
+        gameManager.skillSelecting = false;
+
+        inSafeZone = false;
 
         // Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
+        movementManager.UpdateHeightAndWidth(LevelSize.y, LevelSize.x);
 
         int rand = Random.Range(0, 10);
         // player is in zone 1 and the safe space hasn't been visited yet
@@ -196,18 +213,27 @@ public class LevelManager : MonoBehaviour
         // the safe zone has not been visited - 4/10 chance to spawn the safe zone - formula to check if the level is the last in the zone
         else if (!safeZoneVisited && ((rand > 5) || currentLevel == currentLevelsPerZone * currentZone + 1))
         {
-            Debug.Log("!" + safeZoneVisited + rand + " > 5" + currentLevel + " == " + currentLevelsPerZone + " * " + currentZone + " + 1");
+            //Debug.Log("!" + safeZoneVisited + rand + " > 5" + currentLevel + " == " + currentLevelsPerZone + " * " + currentZone + " + 1");
             // generate the floor
             gridManager.width = 2;
             gridManager.height = 2;
             gridManager.GenerateGrid(false);
-
+            movementManager.UpdateHeightAndWidth(gridManager.height, gridManager.width);
             SetStartLocation(new Vector2Int(3, 0));
 
             // place the safe zone
-            Debug.Log("safeZone");
+            //Debug.Log("safeZone");
             safeZone.ActivateSafeZone();
             safeZoneVisited = true;
+
+            SetSigilRequirement(0);
+            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 6)), transform.rotation, gridManager.obstructionsParent);
+            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 7)), transform.rotation, gridManager.obstructionsParent);
+            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 8)), transform.rotation, gridManager.obstructionsParent);
+
+            inSafeZone = true;
+            // pause the timer
+            gameManager.skillSelecting = true;
         }
         // player is at the final level
         else if (currentLevel == totalNumLevels - 1)
@@ -216,12 +242,14 @@ public class LevelManager : MonoBehaviour
             // import final level
             // gridManager.StartFinalLevel()
             currentLevel++;
+            winText.SetActive(true);
         }
         else if (currentLevel == totalNumLevels)
         {
             Debug.Log("You win");
             // end the game
             // pull up game winning screen
+            winText.SetActive(true);
         }
         else
         {
@@ -241,6 +269,8 @@ public class LevelManager : MonoBehaviour
             // spawn enemies
             enemyManager.SpawnEnemies(gridManager.sigilCount + 1);
         }
+
+        uiManager.UpdateLevel(currentLevel);
     }
 
     public void AttemptDoorOpen()
@@ -276,5 +306,11 @@ public class LevelManager : MonoBehaviour
     {
         doorLocations[0] = dPos;
         doorLocations[1] = dPos + new Vector2Int(1, 0);
+    }
+
+    public void SetDoorLocation(int x, int y)
+    {
+        doorLocations[0] = new Vector2Int(x, y);
+        doorLocations[1] = new Vector2Int(x + 1, y);
     }
 }

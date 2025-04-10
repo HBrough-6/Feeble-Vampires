@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +7,8 @@ public class UIManager : MonoBehaviour
     public TMP_Text gridMiniMap;
     public GridManager gridManager;
     public TextMeshProUGUI xpText;
+
+    public TMP_Text levelText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +18,10 @@ public class UIManager : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void UpdateXP(int amount)
     {
-        xpText.text = "XP Points: " + PlayerAbilities.experiencePoints;
+        xpText.text = "XP Points: " + amount;
     }
 
     public void makeMap()
@@ -30,7 +29,7 @@ public class UIManager : MonoBehaviour
         gridMiniMap.text = "";
 
         string addedText;
-        
+
         for (int xAxis = gridManager.width * 8 - 1; xAxis >= 0; xAxis--)
         {
             for (int yAxis = gridManager.height * 8 - 1; yAxis >= 0; yAxis--)
@@ -42,7 +41,7 @@ public class UIManager : MonoBehaviour
                 else if ((xAxis == yAxis) || ((xAxis + yAxis) % 2 == 0))
                 {
                     addedText = "<color=white>\u25a0</color>";
-                    
+
                 }
                 else
                 {
@@ -78,5 +77,10 @@ public class UIManager : MonoBehaviour
             }
             gridMiniMap.text += "\n";
         }
+    }
+
+    public void UpdateLevel(int level)
+    {
+        levelText.text = "Level " + level;
     }
 }

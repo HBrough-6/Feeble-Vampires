@@ -110,7 +110,7 @@ public class DigitalGrid
         // reset all tiles to make sure they are all unfound
         for (int i = 0; i < grid.Length; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             grid[i].found = false;
         }
 
@@ -305,7 +305,7 @@ public class DigitalGrid
         }
         else if (results.Count == 1)
         {
-            Debug.Log("Only 1 result");
+            //Debug.Log("Only 1 result");
             return results[0];
         }
         else
@@ -316,7 +316,7 @@ public class DigitalGrid
             for (int i = 0; i < results.Count; i++)
             {
                 int tempPriority = results[i].endPoints.Count + results[i].sigilPoints.Count;
-                Debug.Log("tempPriority: " + tempPriority + " old priority" + priority);
+                //Debug.Log("tempPriority: " + tempPriority + " old priority" + priority);
                 if (tempPriority > priority)
                 {
                     bestIndex = i;

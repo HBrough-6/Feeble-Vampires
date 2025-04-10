@@ -13,6 +13,8 @@ public class MovementManager : MonoBehaviour
     public GridManager gridManager;
     // Heath Change
     public Vector2Int playerPosInGrid;
+    // Heath Change
+    private SkillRandomizer skillRandomizer;
 
     public List<Vector2> pathPoints;
     public List<Vector2> historicPathPoints;
@@ -26,8 +28,8 @@ public class MovementManager : MonoBehaviour
 
     public GameManager gameManager;
 
-    private int maxWidth;
-    private int maxHeight;
+    public int maxWidth;
+    public int maxHeight;
 
     public EnemyManager enemyManager;
 
@@ -80,6 +82,8 @@ public class MovementManager : MonoBehaviour
         // Heath Change
         playerPosInGrid = new Vector2Int(0, 0);
 
+        skillRandomizer = FindObjectOfType<SkillRandomizer>();
+
         maxWidth = (gridManager.width * 8) - 1;
         maxHeight = (gridManager.height * 8) - 1;
 
@@ -87,7 +91,8 @@ public class MovementManager : MonoBehaviour
 
         gameManager.resetTimer(false);
 
-        skillSelectionHolder.SetActive(false);
+        // Dont need this anymore - Heath
+        // skillSelectionHolder.SetActive(false);
 
         playerPosInGrid = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.z));
         startingPosInGrid = playerPosInGrid;
@@ -181,7 +186,8 @@ public class MovementManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                endLevel();
+                // disabled for now - heath
+                // endLevel();
             }
         }
     }
@@ -258,14 +264,26 @@ public class MovementManager : MonoBehaviour
 
     public void endLevel()
     {
-        gameManager.skillSelecting = true;
-        skillSelectionHolder.SetActive(true);
+        // skillSelectionHolder.SetActive(true);
+        // prevents giving the player an extra skill at the end of the safe zone
+        if (!levelManager.inSafeZone)
+        {
+            // heath change
+            gameManager.skillSelecting = true;
+            skillRandomizer.Activate();
+        }
+        else
+        {
+            levelManager.GoToNextLevel();
+            Debug.Log(levelManager.inSafeZone);
+        }
     }
 
     public void FinishSelecting()
     {
         gameManager.skillSelecting = false;
-        skillSelectionHolder.SetActive(false);
+        // heath change
+        // skillSelectionHolder.SetActive(false);
     }
 
     public void submitMovement()
@@ -455,5 +473,12 @@ public class MovementManager : MonoBehaviour
     {
         placeholderSpaceCap = spaceCap;
         spaceCap = 9999;
+    }
+
+
+    public void UpdateHeightAndWidth(int width, int height)
+    {
+        maxWidth = (width * 8) - 1;
+        maxHeight = (height * 8) - 1;
     }
 }

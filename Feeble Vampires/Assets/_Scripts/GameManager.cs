@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int failedTimerCount;
     public float internalTimer;
 
+    private PlayerAbilities playerAbilities;
+
     public MovementManager movementManager;
 
     UIManager uiManager;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
+        //gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
         dead = false;
         skillSelecting = false;
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour
         movementManager = FindObjectOfType<MovementManager>();
 
         timer = movementManager.timeLimit;
+
+        playerAbilities = FindObjectOfType<PlayerAbilities>();
     }
 
 
@@ -62,9 +66,9 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
-        gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
+        //gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
         dead = true;
-
+        gameOverHolder.SetActive(true);
         if (playerHealth != 0) playerHealth = 0;
     }
 
@@ -92,6 +96,7 @@ public class GameManager : MonoBehaviour
     public void resetTimer(bool expired)
     {
         timer = movementManager.timeLimit;
+
         internalTimer = 0;
 
         if (movementManager.player.GetComponent<PlayerAbilities>().hideable)

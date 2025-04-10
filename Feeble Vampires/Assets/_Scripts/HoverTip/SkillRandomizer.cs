@@ -1,47 +1,135 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class SkillRandomizer : MonoBehaviour
 {
-    //public TextMeshProUGUI skill1Text;
-    //public TextMeshProUGUI skill2Text;
-    public GameObject skill1Button;
-    public GameObject skill2Button;
-    //public List<string> skills;
+    private PlayerAbilities playerAbilities;
+    private SkillHolderManager skillHolderManager;
+    private GameObject skillSelectHolder;
+    private LevelManager levelManager;
+    private GameManager gameManager;
+
+    public SkillButton skill1Button;
+    public SkillButton skill2Button;
+
     public List<SkillSO> skills;
 
-    // Start is called before the first frame update
-    void Start()
+    public List<SkillSO> ChosenSkills = new List<SkillSO>();
+
+    public int buttonOneSkill;
+    public int buttonTwoSkill;
+
+    private void Awake()
     {
-        //skill1Text.text = skills[Random.Range(0, skills.Count - 1)];
-        //skill2Text.text = skills[Random.Range(0, skills.Count - 1)];
-
-        //if (skill2Text == skill1Text) skill2Text.text = skills[Random.Range(0, skills.Count - 1)];
-
-        skill1Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = skills[Random.Range(0, skills.Count - 1)].Icon;
-        skill2Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = skills[Random.Range(0, skills.Count - 1)].Icon;
-
-        if (skill2Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite ==
-            skill1Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite)
-            skill2Button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = skills[Random.Range(0, skills.Count - 1)].Icon;
-
-        skill1Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text =
-            skills[Random.Range(0, skills.Count - 1)].SkillDescription;
-        skill2Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text =
-            skills[Random.Range(0, skills.Count - 1)].SkillDescription;
-
-        if (skill2Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text ==
-            skill1Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text)
-            skill2Button.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text =
-                skills[Random.Range(0, skills.Count - 1)].SkillDescription;
+        playerAbilities = FindObjectOfType<PlayerAbilities>();
+        skillHolderManager = FindObjectOfType<SkillHolderManager>();
+        skillSelectHolder = transform.GetChild(0).gameObject;
+        levelManager = FindObjectOfType<LevelManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
     {
-        
+        skillSelectHolder.SetActive(true);
+        FillButtons();
+    }
+
+    public void Deactivate()
+    {
+        skillSelectHolder.SetActive(false);
+        levelManager.GoToNextLevel();
+        gameManager.skillSelecting = false;
+    }
+
+    public void FillButtons()
+    {
+        if (ChosenSkills.Count >= 3)
+        {
+            // player has max skills, do not add any more
+            SkillsFull();
+            return;
+        }
+        List<int> skillIndexes = new List<int>();
+        // fill a list with ints 
+        for (int i = 0; i < skills.Count; i++)
+        {
+            skillIndexes.Add(i);
+        }
+
+        // remove the indexes that each of the already chosen skills are at
+        for (int i = 0; i < ChosenSkills.Count; i++)
+        {
+            int indexToRemove = skills.IndexOf(ChosenSkills[i]);
+            Debug.Log("removed at" + indexToRemove);
+            skillIndexes.RemoveAt(indexToRemove);
+        }
+
+        // choose a random number
+        int skillIndex = Random.Range(0, skillIndexes.Count);
+        buttonOneSkill = skillIndexes[skillIndex];
+        // remove that number from the skill indexes
+        skillIndexes.RemoveAt(skillIndex);
+
+        // choose a second number
+        skillIndex = Random.Range(0, skillIndexes.Count);
+        buttonTwoSkill = skillIndexes[skillIndex];
+
+        // get the skill at index 1
+        SkillSO skill1 = skills[buttonOneSkill];
+
+        // assign it to button one on the UI
+        skill1Button.AssignSkill(skill1);
+
+        // get the skill at index 2
+        SkillSO skill2 = skills[buttonTwoSkill];
+
+        // assign it to button two on the UI
+        skill2Button.AssignSkill(skill2);
+    }
+
+    private void SkillsFull()
+    {
+        buttonOneSkill = buttonTwoSkill = -1;
+    }
+
+    public void UseButtonOne()
+    {
+        // if the player has too many skills
+        if (buttonOneSkill == -1)
+        {
+            Deactivate();
+            return;
+        }
+
+
+        // add the skill to the player's current skills
+        ChosenSkills.Add(skills[buttonOneSkill]);
+        // add the skill to the display
+        skillHolderManager.AddSkill(skills[buttonOneSkill]);
+
+        // activate the skill
+        playerAbilities.activateSkill(skills[buttonOneSkill].DisplayName);
+
+
+    }
+
+    public void UseButtonTwo()
+    {
+        // if the player has too many skills
+        if (buttonTwoSkill == -1)
+        {
+            Deactivate();
+            return;
+        }
+
+        // add the skill to the player's current skills
+        ChosenSkills.Add(skills[buttonTwoSkill]);
+        // add the skill to the display
+        skillHolderManager.AddSkill(skills[buttonTwoSkill]);
+
+        // activate the skill
+        playerAbilities.activateSkill(skills[buttonTwoSkill].DisplayName);
+
+        Deactivate();
     }
 }

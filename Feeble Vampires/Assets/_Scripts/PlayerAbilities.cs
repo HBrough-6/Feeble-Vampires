@@ -29,16 +29,19 @@ public class PlayerAbilities : MonoBehaviour
 
         if (isSwifter)
         {
+            // this should be moved out of start and into a function that is called when the skill is gained
             movementManager.spaceCap += 1;
         }
 
         if (smarter)
         {
+            // this should be moved out of start and into a function that is called when the skill is gained
             movementManager.timeLimit = movementManager.baseTime + 2;
         }
 
         if (strongestInstinct)
         {
+            // this should be moved out of start and into a function that is called when the skill is gained
             movementManager.timeLimit /= 2;
             movementManager.spaceCap *= 2;
         }
@@ -47,45 +50,60 @@ public class PlayerAbilities : MonoBehaviour
         experiencePoints = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    // heath
+    public void GainXP(int amount)
     {
-
+        experiencePoints += amount;
+        uiManager.UpdateXP(experiencePoints);
     }
 
-    
-    public void activateSkill(UnityEngine.UI.Image skillImage)
+
+    // heath reworked this
+    public void activateSkill(string skillName)
     {
-        if (skillImage.sprite.name == "Echolocation")
+        Debug.Log(skillName + "passed through");
+        if (skillName == "Echolocation")
         {
+            Debug.Log("echo");
             canEcholocate = true;
         }
-        else if (skillImage.sprite.name == "Swift_Step")
+        else if (skillName == "Swift Step")
         {
+            Debug.Log("Swift");
+            movementManager.spaceCap += 1;
             isSwifter = true;
         }
-        else if (skillImage.sprite.name == "hemoglobin")
+        else if (skillName == "Hemoglobin Rush")
         {
+            Debug.Log("Hemo");
             canRushAttack = true;
         }
-        else if (skillImage.sprite.name == "Neural Formation")
+        else if (skillName == "Neural Formation")
         {
+            Debug.Log("Neu");
+            movementManager.timeLimit = movementManager.baseTime + 2;
             smarter = true;
         }
-        else if (skillImage.sprite.name == "Hang")
+        else if (skillName == "Hang")
         {
+            Debug.Log("Hang");
             hideable = true;
         }
-        else if (skillImage.sprite.name == "Cheapskate")
+        else if (skillName == "Cheapskate")
         {
+            Debug.Log("Cheap");
             isGreedy = true;
         }
-        else if (skillImage.sprite.name == "Apex_Instinct")
+        else if (skillName == "Apex Instinct")
         {
+            Debug.Log("apex");
+            movementManager.timeLimit /= 2;
+            movementManager.spaceCap *= 2;
             strongestInstinct = true;
         }
-        else if (skillImage.sprite.name == "Tracker")
+        else if (skillName == "Tracker")
         {
+            Debug.Log("Tracker");
             scentTracker = true;
         }
     }
@@ -142,7 +160,7 @@ public class PlayerAbilities : MonoBehaviour
             //swiftLevel += 1;
             //movementManager.spaceCap += swiftLevel;
         }
-            
+
     }
 
     public void GetSmart()
@@ -161,7 +179,7 @@ public class PlayerAbilities : MonoBehaviour
     public void spendPoints()
     {
         if (isGreedy) experiencePoints--;
-        else experiencePoints -= 2;   
+        else experiencePoints -= 2;
     }
 
     public void sniffEnemies()
