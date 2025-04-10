@@ -94,7 +94,6 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-
     public void activateSkill(TMPro.TextMeshProUGUI skillToActivate)
     {
         if (skillToActivate.text == "Echolocation")
