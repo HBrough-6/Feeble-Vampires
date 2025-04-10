@@ -56,35 +56,35 @@ public class PlayerAbilities : MonoBehaviour
     
     public void activateSkill(UnityEngine.UI.Image skillImage)
     {
-        if (skillImage.name == "Echolocation")
+        if (skillImage.sprite.name == "Echolocation")
         {
             canEcholocate = true;
         }
-        else if (skillImage.name == "Swift_Step")
+        else if (skillImage.sprite.name == "Swift_Step")
         {
             isSwifter = true;
         }
-        else if (skillImage.name == "hemoglobin")
+        else if (skillImage.sprite.name == "hemoglobin")
         {
             canRushAttack = true;
         }
-        else if (skillImage.name == "Neural Formation")
+        else if (skillImage.sprite.name == "Neural Formation")
         {
             smarter = true;
         }
-        else if (skillImage.name == "Hang")
+        else if (skillImage.sprite.name == "Hang")
         {
             hideable = true;
         }
-        else if (skillImage.name == "Cheapskate")
+        else if (skillImage.sprite.name == "Cheapskate")
         {
             isGreedy = true;
         }
-        else if (skillImage.name == "Apex_Instinct")
+        else if (skillImage.sprite.name == "Apex_Instinct")
         {
             strongestInstinct = true;
         }
-        else if (skillImage.name == "Tracker")
+        else if (skillImage.sprite.name == "Tracker")
         {
             scentTracker = true;
         }
