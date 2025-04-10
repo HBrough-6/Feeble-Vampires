@@ -1522,6 +1522,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 75809767270445564, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_Name
+      value: Text (TMP) (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 263580417673863007, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
@@ -1531,6 +1536,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266155606830835471, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_Name
+      value: Text (TMP)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680168046341702997, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680168046341702997, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1108902553}
+    - target: {fileID: 2680168046341702997, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: activateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 4942094010546877483, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -1637,6 +1662,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
+--- !u!1 &502792738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8267405150775361996, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4043239151630214009, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &515614282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,14 +2123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b362115d572934681df6ee0d6d1035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill1Button: {fileID: 502792739}
+  skill2Button: {fileID: 502792738}
   skills:
-  - Apex Instinct
-  - Echolocation
-  - Hang
-  - Hemoglobin Rush
-  - Neural Formation
-  - Scent Tracker
-  - Swift Step
+  - {fileID: 11400000, guid: 37d7a64b56ae37d4cb9b5cc38837942d, type: 2}
+  - {fileID: 11400000, guid: e9ad2c669a180154ebafb97e3076be63, type: 2}
+  - {fileID: 11400000, guid: 7bedc5f771f91df4cbc6a51f37e25ef5, type: 2}
+  - {fileID: 11400000, guid: d0cdf0988ca2e374087b9bc356816f39, type: 2}
+  - {fileID: 11400000, guid: defbb922d7d3efa4f854c027322b1f04, type: 2}
+  - {fileID: 11400000, guid: d0fe4d7cf9e419a4fa4d9cf90e3a695a, type: 2}
+  - {fileID: 11400000, guid: 92f0a1ed8622f834c98dcacefc4bca8a, type: 2}
 --- !u!4 &646378052
 Transform:
   m_ObjectHideFlags: 0

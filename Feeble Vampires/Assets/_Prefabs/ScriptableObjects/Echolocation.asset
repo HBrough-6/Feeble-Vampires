@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Echolocation
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Echolocation
-  <Icon>k__BackingField: {fileID: 21300000, guid: c0db6182b98f52842bcb17f70da6ac8c,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 0409052d84e2ea54288db2879d414231,
     type: 3}
   <SkillLevel>k__BackingField: 1
   <SkillDescription>k__BackingField: Show the player a map of nearby areas.
