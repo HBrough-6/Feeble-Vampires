@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
@@ -18,6 +19,11 @@ public class PlayerAbilities : MonoBehaviour
     public MovementManager movementManager;
 
     public static int experiencePoints;
+
+    [Header("Particle Systems")]
+    public GameObject scentTrackerParticles;
+    public GameObject hemoglobinRushParticles;
+
 
     // Start is called before the first frame update
     void Start()
@@ -187,6 +193,19 @@ public class PlayerAbilities : MonoBehaviour
         if (scentTracker)
         {
             currentlyTracking = true;
+            StartCoroutine(scentTrackerPulse());
         }
+    }
+
+    public IEnumerator scentTrackerPulse()
+    {
+        scentTrackerParticles.SetActive(true);
+        yield return new WaitForSeconds(3.9f);
+        scentTrackerParticles.SetActive(false);
+    }
+
+    public void toggleHemoglobinEnergy()
+    {
+        hemoglobinRushParticles.SetActive(!hemoglobinRushParticles.activeInHierarchy);
     }
 }

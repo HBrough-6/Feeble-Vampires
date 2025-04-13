@@ -329,6 +329,7 @@ public class MovementManager : MonoBehaviour
         {
             spaceCap -= 2;
             hemoglobinRushing = false;
+            player.GetComponent<PlayerAbilities>().toggleHemoglobinEnergy();
         }
 
         if (timePieceActive)
@@ -395,6 +396,7 @@ public class MovementManager : MonoBehaviour
     {
         spaceCap += 2;
         hemoglobinRushing = true;
+        player.GetComponent<PlayerAbilities>().toggleHemoglobinEnergy();
     }
 
     public void switchHangingStates()
