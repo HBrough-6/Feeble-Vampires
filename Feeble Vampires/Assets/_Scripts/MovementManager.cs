@@ -286,16 +286,20 @@ public class MovementManager : MonoBehaviour
         // skillSelectionHolder.SetActive(false);
     }
 
+    
+
     public void submitMovement()
     {
         //spawn the bat buddy if it's being prepared
         if (spawningBatBuddy)
         {
             batBuddy.transform.position = endPoint.transform.position;
+            Vector2 batBuddyPos = new Vector2(batBuddy.transform.position.x, batBuddy.transform.position.z);
             spaceCap = placeholderSpaceCap;
             resetMovement();
             gameManager.resetTimer(false);
             spawningBatBuddy = false;
+            //enemy.GetComponent<EnemyMovement>().SetTemporaryDestination(batBuddyPos);
             return;
         }
 
