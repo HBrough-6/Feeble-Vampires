@@ -73,6 +73,7 @@ public class PlayerItems : MonoBehaviour
             {
                 movementManager.gameManager.instakilled = true;
                 movementManager.gameManager.gameOver();
+                removeItem(ref leech, "Leech");
             }
         }
 
