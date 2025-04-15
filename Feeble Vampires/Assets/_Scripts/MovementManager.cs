@@ -296,6 +296,7 @@ public class MovementManager : MonoBehaviour
         if (spawningBatBuddy)
         {
             shortestDistance = 9000;
+            batBuddy.GetComponent<BatDespawn>().caught = false;
             batBuddy.transform.position = endPoint.transform.position;
             Vector2Int batBuddyPos = new Vector2Int(Mathf.RoundToInt(batBuddy.transform.position.x),
                 Mathf.RoundToInt(batBuddy.transform.position.z));
@@ -316,6 +317,7 @@ public class MovementManager : MonoBehaviour
             }
 
             targetedEnemy.SetTemporaryDestination(batBuddyPos);
+            batBuddy.GetComponent<BatDespawn>().watchedEnemy = targetedEnemy;
             return;
         }
 
