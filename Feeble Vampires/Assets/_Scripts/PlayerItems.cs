@@ -71,6 +71,7 @@ public class PlayerItems : MonoBehaviour
         {
             if (leech)
             {
+                movementManager.gameManager.instakilled = true;
                 movementManager.gameManager.gameOver();
             }
         }
