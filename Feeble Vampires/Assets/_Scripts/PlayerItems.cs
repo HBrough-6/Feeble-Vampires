@@ -57,7 +57,7 @@ public class PlayerItems : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             if (batBuddy && !movementManager.spawningBatBuddy)
             {
@@ -70,6 +70,7 @@ public class PlayerItems : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck(ref shriek, "Shriek");
         if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck(ref mirage, "Mirage");
         if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
+        //if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
     }
 
     public void itemSlotCheck(ref bool newItem, string itemName)

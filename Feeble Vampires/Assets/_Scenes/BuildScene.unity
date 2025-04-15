@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canEcholocate: 0
   isSwifter: 0
-  canRushAttack: 1
+  canRushAttack: 0
   smarter: 0
   hideable: 0
   isGreedy: 0
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   shriek: 0
   mirage: 0
   bloodDope: 0
-  batBuddy: 0
+  batBuddy: 1
   equippedItemSlots: 0000
   equippedItemNames:
   - 

@@ -286,20 +286,36 @@ public class MovementManager : MonoBehaviour
         // skillSelectionHolder.SetActive(false);
     }
 
-    
+    EnemyMovement targetedEnemy;
+    float detectedDistance;
+    float shortestDistance;
 
     public void submitMovement()
     {
         //spawn the bat buddy if it's being prepared
         if (spawningBatBuddy)
         {
+            shortestDistance = 9000;
             batBuddy.transform.position = endPoint.transform.position;
-            Vector2 batBuddyPos = new Vector2(batBuddy.transform.position.x, batBuddy.transform.position.z);
+            Vector2Int batBuddyPos = new Vector2Int(Mathf.RoundToInt(batBuddy.transform.position.x),
+                Mathf.RoundToInt(batBuddy.transform.position.z));
             spaceCap = placeholderSpaceCap;
             resetMovement();
             gameManager.resetTimer(false);
             spawningBatBuddy = false;
-            //enemy.GetComponent<EnemyMovement>().SetTemporaryDestination(batBuddyPos);
+
+            for (int i = 0; i < enemyManager.enemies.Count; i++)
+            {
+                detectedDistance = Vector3.Distance(batBuddy.transform.position, enemyManager.enemies[i].transform.position);
+
+                if (shortestDistance > detectedDistance)
+                {
+                    shortestDistance = detectedDistance;
+                    targetedEnemy = enemyManager.enemies[i].enemyMovement;
+                }
+            }
+            Debug.Log(batBuddyPos);
+            targetedEnemy.SetTemporaryDestination(batBuddyPos);
             return;
         }
 

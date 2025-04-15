@@ -5,7 +5,7 @@ public class EnemyBrain : MonoBehaviour
     private GridManager gridManager;
     private EnemyManager enemyManager;
 
-    private EnemyMovement enemyMovement;
+    public EnemyMovement enemyMovement;
     public EnemySight enemySight;
     private EnemyDeathArea enemyDeathArea;
 
