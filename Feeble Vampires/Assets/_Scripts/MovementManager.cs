@@ -314,7 +314,7 @@ public class MovementManager : MonoBehaviour
                     targetedEnemy = enemyManager.enemies[i].enemyMovement;
                 }
             }
-            Debug.Log(batBuddyPos);
+
             targetedEnemy.SetTemporaryDestination(batBuddyPos);
             return;
         }
