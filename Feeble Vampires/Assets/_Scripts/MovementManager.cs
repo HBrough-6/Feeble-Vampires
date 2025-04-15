@@ -14,7 +14,7 @@ public class MovementManager : MonoBehaviour
     // Heath Change
     public Vector2Int playerPosInGrid;
     // Heath Change
-    private SkillRandomizer skillRandomizer;
+    public SkillRandomizer skillRandomizer;
 
     public List<Vector2> pathPoints;
     public List<Vector2> historicPathPoints;
@@ -82,7 +82,8 @@ public class MovementManager : MonoBehaviour
         // Heath Change
         playerPosInGrid = new Vector2Int(0, 0);
 
-        skillRandomizer = FindObjectOfType<SkillRandomizer>();
+        //temp change - christophe
+        //skillRandomizer = FindObjectOfType<SkillRandomizer>();
 
         maxWidth = (gridManager.width * 8) - 1;
         maxHeight = (gridManager.height * 8) - 1;
