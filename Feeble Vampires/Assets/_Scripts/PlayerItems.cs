@@ -11,6 +11,7 @@ public class PlayerItems : MonoBehaviour
     public bool mirage;
     public bool bloodDope;
     public bool batBuddy;
+    public bool leech;
 
     public List<bool> equippedItemSlots;
     public List<string> equippedItemNames;
@@ -57,7 +58,7 @@ public class PlayerItems : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (batBuddy && !movementManager.spawningBatBuddy)
             {
@@ -66,11 +67,19 @@ public class PlayerItems : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (leech)
+            {
+                movementManager.gameManager.gameOver();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck(ref brokenTimePiece, "Broken Timepiece");
         if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck(ref shriek, "Shriek");
         if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck(ref mirage, "Mirage");
         if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
-        //if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
+        //if (Input.GetKeyDown(KeyCode.Keypad5)) itemSlotCheck(ref leech, "Leech");
     }
 
     public void itemSlotCheck(ref bool newItem, string itemName)

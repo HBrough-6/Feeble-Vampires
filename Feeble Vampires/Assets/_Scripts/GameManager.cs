@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerAbilities playerAbilities;
 
+    public bool instakilled;
+
     public MovementManager movementManager;
 
     UIManager uiManager;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         playerHealth = 3;
         dead = false;
         skillSelecting = false;
+        instakilled = false;
 
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
