@@ -160,6 +160,7 @@ MonoBehaviour:
   timer: 0
   failedTimerCount: 0
   internalTimer: 0
+  instakilled: 0
   movementManager: {fileID: 1269597650}
 --- !u!4 &9075496
 Transform:
@@ -1545,7 +1546,8 @@ MonoBehaviour:
   shriek: 0
   mirage: 0
   bloodDope: 0
-  batBuddy: 1
+  batBuddy: 0
+  leech: 0
   equippedItemSlots: 0000
   equippedItemNames:
   - 
