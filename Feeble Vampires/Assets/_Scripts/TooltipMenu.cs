@@ -5,15 +5,11 @@ using TMPro;
 
 public class TooltipMenu : MonoBehaviour
 {
+    private List<SkillSO> skills = new List<SkillSO>();
 
+    [SerializeField] private TextMeshPro[] skillDesc = new TextMeshPro[3];
+    
     public GameObject TooltipBox;
-
-    public TextMeshPro skill1Desc;
-    public TextMeshPro skill2Desc;
-    public TextMeshPro skill3Desc;
-
-    public TextMeshPro item1Desc;
-    public TextMeshPro item2Desc;
 
     void Awake()
     {
@@ -33,8 +29,14 @@ public class TooltipMenu : MonoBehaviour
         }
     }
 
+    public void AddSkillDesc(SkillSO skilldesc)
+    {
+        if (skills.Count >= 3)
+            return;
 
-    //needs references to the CurrentSkills list
+        skills.Add(skilldesc);
 
+        skillDesc[skills.Count - 1].text = skills[skills.Count - 1].SkillDescription;
+    }
     //function that updates the description text when items/skills are gained
 }
