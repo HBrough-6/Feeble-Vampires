@@ -31,8 +31,6 @@ public class PlayerAbilities : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
 
-        uiManager.makeMap();
-
         if (isSwifter)
         {
             // this should be moved out of start and into a function that is called when the skill is gained
@@ -54,6 +52,8 @@ public class PlayerAbilities : MonoBehaviour
         //movementManager.spaceCap += swiftLevel;
 
         experiencePoints = 0;
+
+        uiManager.makeMap();
     }
 
     // heath

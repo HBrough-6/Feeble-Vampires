@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f6d23b1bf8b5f4a9ac405bee1c371f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e7a4c291ebe93d49af7772499188da6, type: 3}
   m_Name: Clone
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Clone
   <Icon>k__BackingField: {fileID: 21300000, guid: 4bcd50f7ff687744ab5dd49e101c6347,
     type: 3}
-  <SkillLevel>k__BackingField: 1
-  <SkillDescription>k__BackingField: (Passive) - Upon death, restarts the current
+  <ItemDescription>k__BackingField: (Passive) - Upon death, restarts the current
     level you are on instead of ending the game.

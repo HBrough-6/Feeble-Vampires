@@ -1870,6 +1870,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: SkillRandomizer, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2719887500924822893, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719887500924822893, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: skills.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d640f75792136a47903d9537fc9b80c,
+        type: 2}
     - target: {fileID: 2837982549447800101, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive

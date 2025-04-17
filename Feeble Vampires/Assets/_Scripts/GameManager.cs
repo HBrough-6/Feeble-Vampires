@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     UIManager uiManager;
 
     PlayerItems playerItems;
+    LevelManager levelManager;
     bool selfDestruct;
     public GameObject bigSkillSelectMenu;
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
 
         playerAbilities = FindObjectOfType<PlayerAbilities>();
         playerItems = FindObjectOfType<PlayerItems>();
+        levelManager = FindObjectOfType<LevelManager>();
 
         bigSkillSelectMenu.SetActive(false);
     }
@@ -91,6 +93,16 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
+        playerAbilities.canEcholocate = false;
+        playerAbilities.isSwifter = false;
+        playerAbilities.canRushAttack = false;
+        playerAbilities.smarter = false;
+        playerAbilities.hideable = false;
+        playerAbilities.isGreedy = false;
+        playerAbilities.strongestInstinct = false;
+        playerAbilities.scentTracker = false;
+        playerAbilities.clone = false;
+
         if (selfDestruct)
         {
             selfDestruct = false;
@@ -104,7 +116,14 @@ public class GameManager : MonoBehaviour
 
     public void leechSkillSelect(string skillToActivate)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelManager.currentLevel = 0;
+        levelManager.GoToNextLevel();
+        bigSkillSelectMenu.SetActive(false);
+        dead = false;
+        gameOverHolder.SetActive(false);
+        playerHealth = 3;
+
         if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
 
