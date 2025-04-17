@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     UIManager uiManager;
 
+    PlayerItems playerItems;
+    bool selfDestruct;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         timer = movementManager.timeLimit;
 
         playerAbilities = FindObjectOfType<PlayerAbilities>();
+        playerItems = FindObjectOfType<PlayerItems>();
     }
 
 
@@ -73,6 +77,8 @@ public class GameManager : MonoBehaviour
         dead = true;
         gameOverHolder.SetActive(true);
         if (playerHealth != 0) playerHealth = 0;
+
+        if (playerItems.leech) selfDestruct = true;
     }
 
     public void Win()
@@ -83,6 +89,11 @@ public class GameManager : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        if (selfDestruct)
+        {
+            selfDestruct = false;
+        }
     }
 
     public void exit()
