@@ -15,5 +15,5 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Clone
   <Icon>k__BackingField: {fileID: 21300000, guid: 4bcd50f7ff687744ab5dd49e101c6347,
     type: 3}
-  <ItemDescription>k__BackingField: ' (Passive) - Upon death, restarts the current
-    level you are on instead of ending the game.'
+  <ItemDescription>k__BackingField: (Passive) - Upon death, restarts the current
+    level you are on instead of ending the game.

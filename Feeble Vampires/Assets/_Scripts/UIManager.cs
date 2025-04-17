@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text levelText;
 
-    PlayerAbilities player;
+    public PlayerAbilities player;
 
     Color transparent;
 

@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
 
     UIManager uiManager;
 
+    PlayerItems playerItems;
+    LevelManager levelManager;
+    bool selfDestruct;
+    public GameObject bigSkillSelectMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,10 @@ public class GameManager : MonoBehaviour
         timer = movementManager.timeLimit;
 
         playerAbilities = FindObjectOfType<PlayerAbilities>();
+        playerItems = FindObjectOfType<PlayerItems>();
+        levelManager = FindObjectOfType<LevelManager>();
+
+        bigSkillSelectMenu.SetActive(false);
     }
 
 
@@ -73,6 +82,8 @@ public class GameManager : MonoBehaviour
         dead = true;
         gameOverHolder.SetActive(true);
         if (playerHealth != 0) playerHealth = 0;
+
+        if (playerItems.leech) selfDestruct = true;
     }
 
     public void Win()
@@ -82,7 +93,38 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        playerAbilities.canEcholocate = false;
+        playerAbilities.isSwifter = false;
+        playerAbilities.canRushAttack = false;
+        playerAbilities.smarter = false;
+        playerAbilities.hideable = false;
+        playerAbilities.isGreedy = false;
+        playerAbilities.strongestInstinct = false;
+        playerAbilities.scentTracker = false;
+        playerAbilities.clone = false;
+
+        if (selfDestruct)
+        {
+            selfDestruct = false;
+            bigSkillSelectMenu.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void leechSkillSelect(string skillToActivate)
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelManager.currentLevel = 0;
+        levelManager.GoToNextLevel();
+        bigSkillSelectMenu.SetActive(false);
+        dead = false;
+        gameOverHolder.SetActive(false);
+        playerHealth = 3;
+
+        if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
 
     public void exit()
