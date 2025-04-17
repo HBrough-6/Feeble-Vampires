@@ -318,6 +318,7 @@ public class MovementManager : MonoBehaviour
 
             targetedEnemy.SetTemporaryDestination(batBuddyPos);
             batBuddy.GetComponent<BatDespawn>().watchedEnemy = targetedEnemy;
+            player.GetComponent<PlayerItems>().removeItem(ref player.GetComponent<PlayerItems>().batBuddy, "Bat Buddy");
             return;
         }
 
