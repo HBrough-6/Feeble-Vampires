@@ -1547,7 +1547,7 @@ MonoBehaviour:
   mirage: 0
   bloodDope: 0
   batBuddy: 0
-  leech: 0
+  leech: 1
   equippedItemSlots: 0000
   equippedItemNames:
   - 
