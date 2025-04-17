@@ -596,6 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &180844141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &258452686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,6 +2228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &528960481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,6 +2476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &559710946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,6 +2649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &591361272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,6 +3038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &746799245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,6 +3232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &762829442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4465,7 +4479,7 @@ MonoBehaviour:
   mirage: 0
   bloodDope: 0
   batBuddy: 0
-  leech: 1
+  leech: 0
   equippedItemSlots: 0000
   equippedItemNames:
   - 
@@ -5016,6 +5030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &1387156216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,6 +5252,7 @@ MonoBehaviour:
   gridManager: {fileID: 1041244745}
   xpText: {fileID: 736611120}
   levelText: {fileID: 521554645}
+  player: {fileID: 0}
 --- !u!1 &1468174022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,6 +5306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &1468174025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5591,6 +5610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7298394c2993074c90542022ccf9da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillDescription: {fileID: 0}
+  skillSprite: {fileID: 0}
 --- !u!114 &1602626961
 MonoBehaviour:
   m_ObjectHideFlags: 0
