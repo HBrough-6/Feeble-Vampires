@@ -5,9 +5,6 @@ using TMPro;
 
 public class TooltipMenu : MonoBehaviour
 {
-    private List<SkillSO> skills = new List<SkillSO>();
-
-    [SerializeField] private TextMeshPro[] skillDesc = new TextMeshPro[3];
     
     public GameObject TooltipBox;
 
@@ -29,14 +26,4 @@ public class TooltipMenu : MonoBehaviour
         }
     }
 
-    public void AddSkillDesc(SkillSO skilldesc)
-    {
-        if (skills.Count >= 3)
-            return;
-
-        skills.Add(skilldesc);
-
-        skillDesc[skills.Count - 1].text = skills[skills.Count - 1].SkillDescription;
-    }
-    //function that updates the description text when items/skills are gained
 }

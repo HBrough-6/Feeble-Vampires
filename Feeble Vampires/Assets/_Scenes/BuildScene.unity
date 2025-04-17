@@ -565,7 +565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -20.8, y: -80.48}
+  m_AnchoredPosition: {x: 11.49, y: -89}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &204956043
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill 2 description
+  m_text: You do not currently have a skill.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -745,7 +745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -20.8, y: -128.1}
+  m_AnchoredPosition: {x: 11.49, y: -137}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &269972438
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill 3 description
+  m_text: You do not currently have a skill.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1251,7 +1251,7 @@ PrefabInstance:
     - target: {fileID: 879659984748415689, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1083321347197565553, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -1261,7 +1261,7 @@ PrefabInstance:
     - target: {fileID: 2466941063439979104, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2680168046341702997, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -1292,6 +1292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142126105713840701, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4942094010546877483, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -1453,6 +1458,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8379149669848337947, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: skillDesc.Array.data[0]
+      value: 
+      objectReference: {fileID: 1921539843}
+    - target: {fileID: 8379149669848337947, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: skillDesc.Array.data[1]
+      value: 
+      objectReference: {fileID: 204956043}
+    - target: {fileID: 8379149669848337947, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: skillDesc.Array.data[2]
+      value: 
+      objectReference: {fileID: 269972438}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1460,11 +1480,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 120515058}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 879659984748415689, guid: 1220e59e96ebcae4ab941871a856dd12,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 502792740}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
 --- !u!114 &502792738 stripped
 MonoBehaviour:
@@ -1472,35 +1488,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 502792737}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502792739}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49b362115d572934681df6ee0d6d1035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &502792739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 879659984748415689, guid: 1220e59e96ebcae4ab941871a856dd12,
-    type: 3}
-  m_PrefabInstance: {fileID: 502792737}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &502792740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502792739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da41f0cb2d6e7c49863770ef15524f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillDesc:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  TooltipBox: {fileID: 120515057}
 --- !u!114 &521554645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4502514374466554712, guid: 1220e59e96ebcae4ab941871a856dd12,
@@ -2572,10 +2565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da41f0cb2d6e7c49863770ef15524f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDesc:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   TooltipBox: {fileID: 120515057}
 --- !u!114 &1515198846 stripped
 MonoBehaviour:
@@ -3327,7 +3316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -20.8, y: -31}
+  m_AnchoredPosition: {x: 11.49, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1921539843
@@ -3350,7 +3339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill 1 description
+  m_text: You do not currently have a skill.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3384,7 +3373,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
