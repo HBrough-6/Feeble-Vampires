@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
 
     public bool inSafeZone = false;
 
-    private SafeZone safeZone;
+    public SafeZone safeZone;
 
     private void Awake()
     {
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         movementManager = FindAnyObjectByType<MovementManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
         doorLocations = new Vector2Int[2];
-        safeZone = FindObjectOfType<SafeZone>();
+
         uiManager = FindObjectOfType<UIManager>();
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -63,6 +63,7 @@ public class LevelManager : MonoBehaviour
     {
         /*gridManager.GenerateGrid();
         GenerateLevelOne();*/
+        safeZone = FindObjectOfType<SafeZone>();
         currentLevel = 0;
         SetGameDifficulty(difficulty);
         GoToNextLevel();
