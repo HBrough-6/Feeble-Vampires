@@ -112,6 +112,11 @@ public class PlayerAbilities : MonoBehaviour
             Debug.Log("Tracker");
             scentTracker = true;
         }
+        else if (skillName == "Clone")
+        {
+            Debug.Log("Clone");
+            clone = true;
+        }
     }
 
     public void activateSkill(TMPro.TextMeshProUGUI skillToActivate)

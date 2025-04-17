@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     PlayerItems playerItems;
     bool selfDestruct;
+    public GameObject bigSkillSelectMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
 
         playerAbilities = FindObjectOfType<PlayerAbilities>();
         playerItems = FindObjectOfType<PlayerItems>();
+
+        bigSkillSelectMenu.SetActive(false);
     }
 
 
@@ -88,12 +91,21 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         if (selfDestruct)
         {
             selfDestruct = false;
+            bigSkillSelectMenu.SetActive(true);
         }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void leechSkillSelect(string skillToActivate)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
 
     public void exit()
