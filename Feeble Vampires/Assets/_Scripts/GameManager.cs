@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     bool selfDestruct;
     public GameObject bigSkillSelectMenu;
 
+    GridManager gridManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
         playerAbilities = FindObjectOfType<PlayerAbilities>();
         playerItems = FindObjectOfType<PlayerItems>();
         levelManager = FindObjectOfType<LevelManager>();
+        gridManager = FindObjectOfType<GridManager>();
 
         bigSkillSelectMenu.SetActive(false);
     }
@@ -130,6 +133,10 @@ public class GameManager : MonoBehaviour
         dead = false;
         gameOverHolder.SetActive(false);
         playerHealth = 3;
+
+        gridManager.width = 2;
+        gridManager.height = 2;
+        gridManager.GenerateGrid(true);
 
         if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
