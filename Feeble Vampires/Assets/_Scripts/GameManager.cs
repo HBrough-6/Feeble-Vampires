@@ -128,16 +128,16 @@ public class GameManager : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         levelManager.currentLevel = 0;
-        levelManager.GoToNextLevel();
-        bigSkillSelectMenu.SetActive(false);
-        dead = false;
-        gameOverHolder.SetActive(false);
-        playerHealth = 3;
 
         gridManager.width = 2;
         gridManager.height = 2;
         gridManager.GenerateGrid(true);
 
+        levelManager.GoToNextLevel();
+        bigSkillSelectMenu.SetActive(false);
+        dead = false;
+        gameOverHolder.SetActive(false);
+        playerHealth = 3;
         if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
 
