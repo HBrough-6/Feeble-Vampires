@@ -17,9 +17,18 @@ public class GameManager : MonoBehaviour
 
     private PlayerAbilities playerAbilities;
 
+    public bool instakilled;
+
     public MovementManager movementManager;
 
     UIManager uiManager;
+
+    PlayerItems playerItems;
+    LevelManager levelManager;
+    bool selfDestruct;
+    public GameObject bigSkillSelectMenu;
+
+    GridManager gridManager;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +37,7 @@ public class GameManager : MonoBehaviour
         playerHealth = 3;
         dead = false;
         skillSelecting = false;
+        instakilled = false;
 
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
@@ -35,6 +45,11 @@ public class GameManager : MonoBehaviour
         timer = movementManager.timeLimit;
 
         playerAbilities = FindObjectOfType<PlayerAbilities>();
+        playerItems = FindObjectOfType<PlayerItems>();
+        levelManager = FindObjectOfType<LevelManager>();
+        gridManager = FindObjectOfType<GridManager>();
+
+        bigSkillSelectMenu.SetActive(false);
     }
 
 
@@ -46,7 +61,7 @@ public class GameManager : MonoBehaviour
             takeDamage(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap();
+        if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap(true);
 
         if (!dead && !skillSelecting && !movementManager.spawningBatBuddy)
         {
@@ -70,6 +85,8 @@ public class GameManager : MonoBehaviour
         dead = true;
         gameOverHolder.SetActive(true);
         if (playerHealth != 0) playerHealth = 0;
+
+        if (playerItems.leech) selfDestruct = true;
     }
 
     public void Win()
@@ -79,7 +96,49 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        playerAbilities.canEcholocate = false;
+        playerAbilities.isSwifter = false;
+        playerAbilities.canRushAttack = false;
+        playerAbilities.smarter = false;
+        playerAbilities.hideable = false;
+        playerAbilities.isGreedy = false;
+        playerAbilities.strongestInstinct = false;
+        playerAbilities.scentTracker = false;
+        playerAbilities.clone = false;
+
+        playerItems.removeItem("Broken Timepiece");
+        playerItems.removeItem("Shriek");
+        playerItems.removeItem("Mirage");
+        playerItems.removeItem("Blood Dope");
+        playerItems.removeItem("Leech");
+        playerItems.removeItem("Bat Buddy");
+
+        if (selfDestruct)
+        {
+            selfDestruct = false;
+            bigSkillSelectMenu.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void leechSkillSelect(string skillToActivate)
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelManager.currentLevel = 0;
+
+        gridManager.width = 2;
+        gridManager.height = 2;
+        gridManager.GenerateGrid(true);
+
+        levelManager.GoToNextLevel();
+        bigSkillSelectMenu.SetActive(false);
+        dead = false;
+        gameOverHolder.SetActive(false);
+        playerHealth = 3;
+        if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
     }
 
     public void exit()

@@ -10,6 +10,7 @@ public class PlayerItems : MonoBehaviour
     public bool mirage;
     public bool bloodDope;
     public bool batBuddy;
+    public bool leech;
 
     public List<bool> equippedItemSlots;
     public List<string> equippedItemNames;
@@ -34,7 +35,7 @@ public class PlayerItems : MonoBehaviour
             {
                 movementManager.hyperExtendTime();
                 movementManager.timePieceActive = true;
-                removeItem(ref brokenTimePiece, "Broken Timepiece");
+                removeItem("Broken Timepiece");
             }
         }
 
@@ -43,7 +44,7 @@ public class PlayerItems : MonoBehaviour
             if (shriek && !movementManager.isShrieking)
             {
                 movementManager.startShrieking();
-                removeItem(ref shriek, "Shriek");
+                removeItem("Shriek");
             }
         }
 
@@ -52,11 +53,11 @@ public class PlayerItems : MonoBehaviour
             if (bloodDope && !movementManager.doping)
             {
                 movementManager.dopeDouble();
-                removeItem(ref bloodDope, "Blood Dope");
+                removeItem("Blood Dope");
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (batBuddy && !movementManager.spawningBatBuddy)
             {
@@ -65,17 +66,29 @@ public class PlayerItems : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck(ref brokenTimePiece, "Broken Timepiece");
-        if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck(ref shriek, "Shriek");
-        if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck(ref mirage, "Mirage");
-        if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck(ref bloodDope, "Blood Dope");
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (leech)
+            {
+                movementManager.gameManager.instakilled = true;
+                movementManager.gameManager.gameOver();
+                removeItem("Leech");
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck("Broken Timepiece");
+        if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck("Shriek");
+        if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck("Mirage");
+        if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck("Blood Dope");
+        if (Input.GetKeyDown(KeyCode.Keypad5)) itemSlotCheck("Leech");
+        if (Input.GetKeyDown(KeyCode.Keypad6)) itemSlotCheck("Bat Buddy");
     }
 
-    public void itemSlotCheck(ref bool newItem, string itemName)
+    public void itemSlotCheck(string itemName)
     {
         for (int i = 0; i < equippedItemSlots.Count; i++)
         {
-            if (equippedItemNames[i] == newItem.ToString() || newItem)
+            if (equippedItemNames[i] == itemName)
             {
                 return;
             }
@@ -84,21 +97,70 @@ public class PlayerItems : MonoBehaviour
                 Debug.Log("here");
                 equippedItemSlots[i] = true;
                 equippedItemNames[i] = itemName;
-                newItem = true;
+
+                if (itemName == "Broken Timepiece")
+                {
+                    brokenTimePiece = true;
+                }
+                else if (itemName == "Shriek")
+                {
+                    shriek = true;
+                }
+                else if (itemName == "Mirage")
+                {
+                    mirage = true;
+                }
+                else if (itemName == "Blood Dope")
+                {
+                    bloodDope = true;
+                }
+                else if (itemName == "Leech")
+                {
+                    leech = true;
+                }
+                else if (itemName == "Bat Buddy")
+                {
+                    batBuddy = true;
+                }
+
                 return;
             }
         }
     }
 
-    public void removeItem(ref bool usedItem, string itemName)
+    public void removeItem(string itemName)
     {
         for (int i = 0; i < equippedItemSlots.Count; i++)
         {
-            if (equippedItemNames[i] == itemName)
+            if (equippedItemNames[i] == itemName && equippedItemSlots[i])
             {
                 equippedItemNames[i] = "";
                 equippedItemSlots[i] = false;
-                usedItem = false;
+
+                if (itemName == "Broken Timepiece")
+                {
+                    brokenTimePiece = false;
+                }
+                else if (itemName == "Shriek")
+                {
+                    shriek = false;
+                }
+                else if (itemName == "Mirage")
+                {
+                    mirage = false;
+                }
+                else if (itemName == "Blood Dope")
+                {
+                    bloodDope = false;
+                }
+                else if (itemName == "Leech")
+                {
+                    leech = false;
+                }
+                else if (itemName == "Bat Buddy")
+                {
+                    batBuddy = false;
+                }
             }
         }
     }

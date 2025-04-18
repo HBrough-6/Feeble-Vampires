@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
-    private TMP_Text skillDescription;
-    private Image skillSprite;
+    public TMP_Text skillDescription;
+    public Image skillSprite;
 
     private void Awake()
     {
         skillDescription = transform.GetChild(0).GetComponent<TMP_Text>();
-        skillSprite = transform.GetChild(2).GetComponent<Image>();
+        skillSprite = transform.GetChild(1).GetComponent<Image>();
     }
 
     public void AssignSkill(SkillSO skill)

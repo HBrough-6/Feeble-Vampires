@@ -286,16 +286,39 @@ public class MovementManager : MonoBehaviour
         // skillSelectionHolder.SetActive(false);
     }
 
+    EnemyMovement targetedEnemy;
+    float detectedDistance;
+    float shortestDistance;
+
     public void submitMovement()
     {
         //spawn the bat buddy if it's being prepared
         if (spawningBatBuddy)
         {
+            shortestDistance = 9000;
+            batBuddy.GetComponent<BatDespawn>().caught = false;
             batBuddy.transform.position = endPoint.transform.position;
+            Vector2Int batBuddyPos = new Vector2Int(Mathf.RoundToInt(batBuddy.transform.position.x),
+                Mathf.RoundToInt(batBuddy.transform.position.z));
             spaceCap = placeholderSpaceCap;
             resetMovement();
             gameManager.resetTimer(false);
             spawningBatBuddy = false;
+
+            for (int i = 0; i < enemyManager.enemies.Count; i++)
+            {
+                detectedDistance = Vector3.Distance(batBuddy.transform.position, enemyManager.enemies[i].transform.position);
+
+                if (shortestDistance > detectedDistance)
+                {
+                    shortestDistance = detectedDistance;
+                    targetedEnemy = enemyManager.enemies[i].enemyMovement;
+                }
+            }
+
+            targetedEnemy.SetTemporaryDestination(batBuddyPos);
+            batBuddy.GetComponent<BatDespawn>().watchedEnemy = targetedEnemy;
+            player.GetComponent<PlayerItems>().removeItem("Bat Buddy");
             return;
         }
 
@@ -310,7 +333,7 @@ public class MovementManager : MonoBehaviour
             {
                 hit.collider.GetComponent<Sigil>().Collect();
                 player.GetComponent<PlayerAbilities>().sniffEnemies();
-                if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+                uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
             }
             if (hit.collider.CompareTag("Door"))
             {
@@ -334,6 +357,7 @@ public class MovementManager : MonoBehaviour
         {
             spaceCap -= 2;
             hemoglobinRushing = false;
+            player.GetComponent<PlayerAbilities>().toggleHemoglobinEnergy();
         }
 
         if (timePieceActive)
@@ -367,13 +391,15 @@ public class MovementManager : MonoBehaviour
         gameManager.resetTimer(false);
         playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
 
-        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+        uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
 
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
 
-        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+        uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
+
+        if (player.GetComponent<PlayerAbilities>().currentlyTracking) player.GetComponent<PlayerAbilities>().currentlyTracking = false;
     }
 
     public void initializeOrigin()
@@ -400,6 +426,7 @@ public class MovementManager : MonoBehaviour
     {
         spaceCap += 2;
         hemoglobinRushing = true;
+        player.GetComponent<PlayerAbilities>().toggleHemoglobinEnergy();
     }
 
     public void switchHangingStates()

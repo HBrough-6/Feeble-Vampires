@@ -5,7 +5,7 @@ public class EnemyBrain : MonoBehaviour
     private GridManager gridManager;
     private EnemyManager enemyManager;
 
-    private EnemyMovement enemyMovement;
+    public EnemyMovement enemyMovement;
     public EnemySight enemySight;
     private EnemyDeathArea enemyDeathArea;
 
@@ -66,8 +66,7 @@ public class EnemyBrain : MonoBehaviour
             {
                 Debug.Log("Mirage Activated");
                 enemyManager.gameManager.movementManager.mirageSidestep(this);
-                enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().removeItem
-                    (ref enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().mirage, "Mirage");
+                enemyManager.gameManager.movementManager.player.GetComponent<PlayerItems>().removeItem("Mirage");
             }
             else
             {

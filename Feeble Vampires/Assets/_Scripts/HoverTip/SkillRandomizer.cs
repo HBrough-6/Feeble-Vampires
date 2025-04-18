@@ -132,4 +132,9 @@ public class SkillRandomizer : MonoBehaviour
 
         Deactivate();
     }
+
+    public void skipSkillAction()
+    {
+        Deactivate();
+    }
 }

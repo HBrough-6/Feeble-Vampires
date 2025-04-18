@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
@@ -19,13 +20,16 @@ public class PlayerAbilities : MonoBehaviour
 
     public static int experiencePoints;
 
+    [Header("Particle Systems")]
+    public GameObject scentTrackerParticles;
+    public GameObject hemoglobinRushParticles;
+
+
     // Start is called before the first frame update
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
         movementManager = FindObjectOfType<MovementManager>();
-
-        if (canEcholocate) uiManager.makeMap();
 
         if (isSwifter)
         {
@@ -48,6 +52,8 @@ public class PlayerAbilities : MonoBehaviour
         //movementManager.spaceCap += swiftLevel;
 
         experiencePoints = 0;
+
+        uiManager.makeMap(canEcholocate);
     }
 
     // heath
@@ -105,6 +111,11 @@ public class PlayerAbilities : MonoBehaviour
         {
             Debug.Log("Tracker");
             scentTracker = true;
+        }
+        else if (skillName == "Clone")
+        {
+            Debug.Log("Clone");
+            clone = true;
         }
     }
 
@@ -187,6 +198,19 @@ public class PlayerAbilities : MonoBehaviour
         if (scentTracker)
         {
             currentlyTracking = true;
+            StartCoroutine(scentTrackerPulse());
         }
+    }
+
+    public IEnumerator scentTrackerPulse()
+    {
+        scentTrackerParticles.SetActive(true);
+        yield return new WaitForSeconds(3.9f);
+        scentTrackerParticles.SetActive(false);
+    }
+
+    public void toggleHemoglobinEnergy()
+    {
+        hemoglobinRushParticles.SetActive(!hemoglobinRushParticles.activeInHierarchy);
     }
 }

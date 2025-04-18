@@ -10,12 +10,20 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text levelText;
 
+    public PlayerAbilities player;
+
+    Color transparent;
+
     // Start is called before the first frame update
     void Start()
     {
         gridMiniMap.text = "";
 
         gridManager = FindObjectOfType<GridManager>();
+
+        player = FindObjectOfType<PlayerAbilities>();
+
+        transparent = new Color(0, 0, 0, 0);
     }
 
 
@@ -24,7 +32,7 @@ public class UIManager : MonoBehaviour
         xpText.text = "XP Points: " + amount;
     }
 
-    public void makeMap()
+    public void makeMap(bool canEcholocate)
     {
         gridMiniMap.text = "";
 
@@ -34,7 +42,11 @@ public class UIManager : MonoBehaviour
         {
             for (int yAxis = gridManager.height * 8 - 1; yAxis >= 0; yAxis--)
             {
-                if (gridManager.GetTileObstructed(yAxis, xAxis))
+                if (!canEcholocate)
+                {
+                    addedText = "<color=#00000000>\u25a0</color>";
+                }
+                else if (gridManager.GetTileObstructed(yAxis, xAxis))
                 {
                     addedText = "<color=red>\u25a0</color>";
                 }
