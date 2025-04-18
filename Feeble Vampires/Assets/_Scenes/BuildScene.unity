@@ -2057,6 +2057,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: SkillRandomizer, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5488190505513728047, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 310
+      objectReference: {fileID: 0}
     - target: {fileID: 5527529019875834476, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -4447,7 +4452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 1
+  canEcholocate: 0
   isSwifter: 0
   canRushAttack: 0
   smarter: 0

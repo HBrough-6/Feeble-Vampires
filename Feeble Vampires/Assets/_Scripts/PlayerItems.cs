@@ -135,6 +135,31 @@ public class PlayerItems : MonoBehaviour
             {
                 equippedItemNames[i] = "";
                 equippedItemSlots[i] = false;
+
+                if (itemName == "Broken Timepiece")
+                {
+                    brokenTimePiece = false;
+                }
+                else if (itemName == "Shriek")
+                {
+                    shriek = false;
+                }
+                else if (itemName == "Mirage")
+                {
+                    mirage = false;
+                }
+                else if (itemName == "Blood Dope")
+                {
+                    bloodDope = false;
+                }
+                else if (itemName == "Leech")
+                {
+                    leech = false;
+                }
+                else if (itemName == "Bat Buddy")
+                {
+                    batBuddy = false;
+                }
             }
         }
     }

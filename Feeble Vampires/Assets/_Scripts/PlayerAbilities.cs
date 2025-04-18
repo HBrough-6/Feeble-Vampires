@@ -53,7 +53,7 @@ public class PlayerAbilities : MonoBehaviour
 
         experiencePoints = 0;
 
-        uiManager.makeMap();
+        uiManager.makeMap(canEcholocate);
     }
 
     // heath

@@ -333,7 +333,7 @@ public class MovementManager : MonoBehaviour
             {
                 hit.collider.GetComponent<Sigil>().Collect();
                 player.GetComponent<PlayerAbilities>().sniffEnemies();
-                if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+                uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
             }
             if (hit.collider.CompareTag("Door"))
             {
@@ -386,13 +386,15 @@ public class MovementManager : MonoBehaviour
         gameManager.resetTimer(false);
         playerPosInGrid = gridManager.WorldToCellPos(endPoint.transform.position);
 
-        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+        uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
 
         hanging = false;
 
         enemyManager.EnemiesTakeTurn();
 
-        if (player.GetComponent<PlayerAbilities>().canEcholocate) uiManager.makeMap();
+        uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
+
+        if (player.GetComponent<PlayerAbilities>().currentlyTracking) player.GetComponent<PlayerAbilities>().currentlyTracking = false;
     }
 
     public void initializeOrigin()

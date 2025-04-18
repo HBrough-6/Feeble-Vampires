@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
         xpText.text = "XP Points: " + amount;
     }
 
-    public void makeMap()
+    public void makeMap(bool canEcholocate)
     {
         gridMiniMap.text = "";
 
@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         {
             for (int yAxis = gridManager.height * 8 - 1; yAxis >= 0; yAxis--)
             {
-                if (!player.canEcholocate)
+                if (!canEcholocate)
                 {
                     addedText = "<color=#00000000>\u25a0</color>";
                 }
