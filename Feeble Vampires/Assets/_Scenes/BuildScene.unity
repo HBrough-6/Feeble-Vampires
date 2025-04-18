@@ -1888,7 +1888,7 @@ PrefabInstance:
     - target: {fileID: 2837982549447800101, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100496500323996169, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -4447,7 +4447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 0
+  canEcholocate: 1
   isSwifter: 0
   canRushAttack: 0
   smarter: 0

@@ -103,11 +103,12 @@ public class GameManager : MonoBehaviour
         playerAbilities.scentTracker = false;
         playerAbilities.clone = false;
 
-        playerItems.removeItem(ref playerItems.brokenTimePiece, "Broken Timepiece");
-        playerItems.removeItem(ref playerItems.shriek, "Shriek");
-        playerItems.removeItem(ref playerItems.mirage, "Mirage");
-        playerItems.removeItem(ref playerItems.bloodDope, "Blood Dope");
-        playerItems.removeItem(ref playerItems.leech, "Leech");
+        playerItems.removeItem("Broken Timepiece");
+        playerItems.removeItem("Shriek");
+        playerItems.removeItem("Mirage");
+        playerItems.removeItem("Blood Dope");
+        playerItems.removeItem("Leech");
+        playerItems.removeItem("Bat Buddy");
 
         if (selfDestruct)
         {
