@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -10,17 +11,20 @@ public class Shop : MonoBehaviour
     private GameObject itemSelectHolder;
     private LevelManager levelManager;
     private GameManager gameManager;
+    private PlayerItems playerItems;
 
     private GameObject shopHolder;
 
-    public ItemButton[] itemButtons = new ItemButton[2];
+    public ItemButton[] itemButtons = new ItemButton[3];
 
     private ItemSO[] availableItems = new ItemSO[3];
 
     public List<ItemSO> possibleItems;
     public List<ItemSO> currentItems;
 
-    private List<int> itemsInButton = new List<int>();
+    public List<int> itemsInButton = new List<int>();
+
+    public List<ItemButton> itemButton = new List<ItemButton>();
 
     [SerializeField] private GameObject dialogueHolder;
     private TMP_Text dialogueObject;
@@ -40,13 +44,11 @@ public class Shop : MonoBehaviour
         itemSelectHolder = shopHolder.transform.GetChild(2).gameObject;
         /*dialogueHolder = transform.GetChild(1).gameObject;*/
         dialogueObject = dialogueHolder.transform.GetChild(1).GetComponent<TMP_Text>();
+        playerItems = FindObjectOfType<PlayerItems>();
     }
 
     public void ActivateVendor()
     {
-        // choose random items
-        ChooseRandomItems();
-
         // set the current dialogue to the correct text
         currentText = firstDialogue;
         dialogueObject.text = currentText;
@@ -62,7 +64,8 @@ public class Shop : MonoBehaviour
     public void CloseShop()
     {
         // disable to window
-        itemSelectHolder.SetActive(false);
+        shopHolder.SetActive(false);
+        shopHolder.SetActive(false);
         // set the player to not interacting
         gameManager.skillSelecting = false;
     }
@@ -94,16 +97,25 @@ public class Shop : MonoBehaviour
         }
 
         // get the items from the list
-        // choose 2 items
+        // choose 3 items
         // assign them to the current Items
         int index1 = Random.Range(0, indexes.Count);
-
         itemsInButton.Add(indexes[index1]);
         indexes.RemoveAt(index1);
+        itemButtons[0].AssignItem(possibleItems[itemsInButton[0]]);
+
         int index2 = Random.Range(0, indexes.Count);
-
         itemsInButton.Add(indexes[index2]);
+        itemButtons[1].AssignItem(possibleItems[itemsInButton[1]]);
 
+        indexes.RemoveAt(index2);
+
+        int index3 = Random.Range(0, indexes.Count);
+        itemsInButton.Add(indexes[index3]);
+        Debug.Log(itemsInButton[2]);
+        Debug.Log(possibleItems[itemsInButton[2]].DisplayName);
+        Debug.Log(itemButtons.Length);
+        itemButtons[2].AssignItem(possibleItems[itemsInButton[2]]);
     }
 
     public void PurchaseItem(int itemIndex)
@@ -114,12 +126,12 @@ public class Shop : MonoBehaviour
     // pass through either 1 or 2 to use button 1 or 2
     public void UseButton(int button)
     {
-        if (button != 1 && button != 2)
+        if (button < 1 || button > 3)
         {
             return;
         }
 
-        if (currentItems.Count > 2)
+        if (currentItems.Count >= 2)
         {
             // if the player has too many items, give the option to replace one of them
 
@@ -127,11 +139,15 @@ public class Shop : MonoBehaviour
         else
         {
             // add the item to the currentItems
-            currentItems.Add(possibleItems[itemsInButton[button]]);
+            currentItems.Add(possibleItems[itemsInButton[button - 1]]);
             // add the item to the display
-
+            itemHolderManager.AddItem(currentItems[currentItems.Count - 1]);
             // activate the item
+            bool fakeRef = true;
+            playerItems.itemSlotCheck(ref fakeRef, currentItems[currentItems.Count - 1].DisplayName);
             // disable the option to purchase that item
+            Debug.Log("button " + button);
+            itemButtons[button - 1].GetComponent<Button>().interactable = false;
         }
     }
 
@@ -146,35 +162,10 @@ public class Shop : MonoBehaviour
         {
             dialogueHolder.SetActive(false);
             itemSelectHolder.SetActive(true);
+            // choose random items
+            ChooseRandomItems();
         }
     }
-
-    /*/// <summary>
-    /// Randomly chooses and assign dialogue from the Resources folder Dialogue Options 
-    /// </summary>
-    public void ChooseRandomDialogue()
-    {
-        // fill a list with numbers 0 - dialogueOptions.count
-        List<int> indexes = new List<int>();
-        for (int i = 0; i < dialogueOptions.Length; i++)
-        {
-            indexes.Add(i);
-        }
-
-        // if dialogue indexes is not -1, remove that index from the list
-        if (previousDialogueOption != -1)
-        {
-            indexes.RemoveAt(previousDialogueOption);
-        }
-        // choose a random number from that list
-        int rand = Random.Range(0, dialogueOptions.Length);
-        DialogueSO dialogue = dialogueOptions[rand];
-        // if dialogue index is -1, assign it to current index of the dialogue option
-        previousDialogueOption = rand;
-
-        // change the text to have the same text as the dialogueOption
-        dialogueObject.text = dialogueOptions[rand].DialogueOption;
-    }*/
 
 
     private void OnGUI()

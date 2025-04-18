@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
 {
-    private TMP_Text itemDescription;
-    private Image itemSprite;
+    public TMP_Text itemDescription;
+    public Image itemSprite;
     private void Awake()
     {
         itemDescription = transform.GetChild(0).GetComponent<TMP_Text>();
@@ -15,6 +15,10 @@ public class ItemButton : MonoBehaviour
 
     public void AssignItem(ItemSO item)
     {
+        if (item == null)
+        {
+            Debug.Log("is null item");
+        }
         itemDescription.text = item.ItemDescription;
         itemSprite.sprite = item.Icon;
     }
