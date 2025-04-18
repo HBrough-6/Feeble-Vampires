@@ -96,7 +96,8 @@ public class PlayerItems : MonoBehaviour
             else if (!equippedItemSlots[i])
             {
                 equippedItemSlots[i] = true;
-                
+                equippedItemNames[i] = itemName;
+
                 if (itemName == "Broken Timepiece")
                 {
                     brokenTimePiece = true;
@@ -131,7 +132,7 @@ public class PlayerItems : MonoBehaviour
     {
         for (int i = 0; i < equippedItemSlots.Count; i++)
         {
-            if (equippedItemNames[i] == itemName)
+            if (equippedItemNames[i] == itemName && equippedItemSlots[i])
             {
                 equippedItemNames[i] = "";
                 equippedItemSlots[i] = false;
