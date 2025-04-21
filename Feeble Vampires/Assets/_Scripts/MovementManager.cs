@@ -395,6 +395,11 @@ public class MovementManager : MonoBehaviour
         uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
 
         if (player.GetComponent<PlayerAbilities>().currentlyTracking) player.GetComponent<PlayerAbilities>().currentlyTracking = false;
+
+        if (baseCap < spaceCap && player.GetComponent<PlayerAbilities>().isSwifter)
+        {
+            StartCoroutine(player.GetComponent<PlayerAbilities>().swiftStepPulse());
+        }
     }
 
     public void initializeOrigin()
