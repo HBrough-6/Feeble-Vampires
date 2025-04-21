@@ -23,6 +23,7 @@ public class PlayerAbilities : MonoBehaviour
     [Header("Particle Systems")]
     public GameObject scentTrackerParticles;
     public GameObject hemoglobinRushParticles;
+    public GameObject swiftStepParticles;
 
 
     // Start is called before the first frame update

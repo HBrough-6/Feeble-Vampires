@@ -139,6 +139,8 @@ public class GameManager : MonoBehaviour
         gameOverHolder.SetActive(false);
         playerHealth = 3;
         if (skillToActivate != "") playerAbilities.activateSkill(skillToActivate);
+
+        playerItems.leechParticles.SetActive(false);
     }
 
     public void exit()

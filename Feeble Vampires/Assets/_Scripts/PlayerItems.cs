@@ -16,6 +16,9 @@ public class PlayerItems : MonoBehaviour
     public List<bool> equippedItemSlots;
     public List<string> equippedItemNames;
 
+    [Header("Particle Systems")]
+    public GameObject leechParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +77,8 @@ public class PlayerItems : MonoBehaviour
                 movementManager.gameManager.instakilled = true;
                 movementManager.gameManager.gameOver();
                 removeItem("Leech");
+
+                leechParticles.SetActive(true);
             }
         }
 
