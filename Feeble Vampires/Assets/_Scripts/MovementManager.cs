@@ -396,7 +396,7 @@ public class MovementManager : MonoBehaviour
 
         if (player.GetComponent<PlayerAbilities>().currentlyTracking) player.GetComponent<PlayerAbilities>().currentlyTracking = false;
 
-        if (baseCap < spaceCap && player.GetComponent<PlayerAbilities>().isSwifter)
+        if (distance > baseCap && player.GetComponent<PlayerAbilities>().isSwifter)
         {
             StartCoroutine(player.GetComponent<PlayerAbilities>().swiftStepPulse());
         }

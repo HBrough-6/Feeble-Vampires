@@ -1934,6 +1934,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 482997682091513827, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 879659984748415689, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
@@ -4428,6 +4433,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100599037}
   m_CullTransparentMesh: 1
+--- !u!1 &1106218620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2028336619561243198, guid: e755f77b877b58a46b1e4b046e6e5df8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2143843514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1108902548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,7 +4579,7 @@ MonoBehaviour:
   movementManager: {fileID: 0}
   scentTrackerParticles: {fileID: 80609652}
   hemoglobinRushParticles: {fileID: 57409099}
-  swiftStepParticles: {fileID: 2143843516}
+  swiftStepParticles: {fileID: 1106218620}
 --- !u!114 &1108902554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6948,6 +6959,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1108902552}
     m_Modifications:
+    - target: {fileID: 1927463740891739053, guid: e755f77b877b58a46b1e4b046e6e5df8,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028336619561243198, guid: e755f77b877b58a46b1e4b046e6e5df8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888030588426184474, guid: e755f77b877b58a46b1e4b046e6e5df8,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5115412187156786741, guid: e755f77b877b58a46b1e4b046e6e5df8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7025,13 +7051,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e755f77b877b58a46b1e4b046e6e5df8, type: 3}
 --- !u!4 &2143843515 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5115412187156786741, guid: e755f77b877b58a46b1e4b046e6e5df8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2143843514}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2143843516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7238650734908500625, guid: e755f77b877b58a46b1e4b046e6e5df8,
+  m_CorrespondingSourceObject: {fileID: 8711815198663817263, guid: e755f77b877b58a46b1e4b046e6e5df8,
     type: 3}
   m_PrefabInstance: {fileID: 2143843514}
   m_PrefabAsset: {fileID: 0}
