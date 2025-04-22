@@ -71,13 +71,16 @@ public class UIManager : MonoBehaviour
                     }
                 }
 
-                var sigils = GameObject.FindObjectsOfType<Sigil>();
-                for (int i = 0; i < sigils.Length; i++)
+                if (canEcholocate)
                 {
-                    if (xAxis == Mathf.RoundToInt(sigils[i].transform.position.z) &&
-                            yAxis == Mathf.RoundToInt(sigils[i].transform.position.x))
+                    var sigils = GameObject.FindObjectsOfType<Sigil>();
+                    for (int i = 0; i < sigils.Length; i++)
                     {
-                        addedText = "<color=purple>\u25a0</color>";
+                        if (xAxis == Mathf.RoundToInt(sigils[i].transform.position.z) &&
+                                yAxis == Mathf.RoundToInt(sigils[i].transform.position.x))
+                        {
+                            addedText = "<color=purple>\u25a0</color>";
+                        }
                     }
                 }
                 if (xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
