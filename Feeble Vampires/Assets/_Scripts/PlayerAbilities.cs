@@ -206,7 +206,6 @@ public class PlayerAbilities : MonoBehaviour
     public IEnumerator scentTrackerPulse()
     {
         scentTrackerParticles.SetActive(false);
-        Debug.Log("showing energy");
         scentTrackerParticles.SetActive(true);
         yield return new WaitForSeconds(3.9f);
         scentTrackerParticles.SetActive(false);
@@ -221,7 +220,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         swiftStepParticles.SetActive(false);
         swiftStepParticles.SetActive(true);
-        yield return new WaitForSeconds(3.9f);
+        yield return new WaitForSeconds(9.54f);
         swiftStepParticles.SetActive(false);
     }
 }

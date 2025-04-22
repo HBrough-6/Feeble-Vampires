@@ -341,6 +341,11 @@ public class MovementManager : MonoBehaviour
             }
         }
 
+        if (distance > baseCap && player.GetComponent<PlayerAbilities>().isSwifter)
+        {
+            StartCoroutine(player.GetComponent<PlayerAbilities>().swiftStepPulse());
+        }
+
         historicPathPoints.Clear();
         for (int i = 0; i < pathPoints.Count; i++)
         {
@@ -395,11 +400,6 @@ public class MovementManager : MonoBehaviour
         uiManager.makeMap(player.GetComponent<PlayerAbilities>().canEcholocate);
 
         if (player.GetComponent<PlayerAbilities>().currentlyTracking) player.GetComponent<PlayerAbilities>().currentlyTracking = false;
-
-        if (distance > baseCap && player.GetComponent<PlayerAbilities>().isSwifter)
-        {
-            StartCoroutine(player.GetComponent<PlayerAbilities>().swiftStepPulse());
-        }
     }
 
     public void initializeOrigin()
