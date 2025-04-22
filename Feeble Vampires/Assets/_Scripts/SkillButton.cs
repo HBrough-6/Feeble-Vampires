@@ -10,7 +10,7 @@ public class SkillButton : MonoBehaviour
     private void Awake()
     {
         skillDescription = transform.GetChild(0).GetComponent<TMP_Text>();
-        skillSprite = transform.GetChild(1).GetComponent<Image>();
+        skillSprite = transform.GetChild(2).GetComponent<Image>();
     }
 
     public void AssignSkill(SkillSO skill)

@@ -53,6 +53,7 @@ public class GridManager : MonoBehaviour
     private int premadeChunksCount;
 
     public List<Vector2Int> sigilLocations;
+    private GameObject[] sigilPrefabs;
 
     public bool RotateTiles = true;
 
@@ -76,6 +77,7 @@ public class GridManager : MonoBehaviour
         premadeChunks = Resources.LoadAll<Chunk>("PreMade Chunks");
         premadeChunksCount = premadeChunks.Length;
         enemyManager = FindObjectOfType<EnemyManager>();
+        sigilPrefabs = Resources.LoadAll<GameObject>("LevelPrefabs/Sigils");
     }
 
     private void Start()
@@ -176,8 +178,8 @@ public class GridManager : MonoBehaviour
         ImportGridChunk(new Vector2Int(0, 1), Resources.Load("PreMade Chunks/GridChunk15") as Chunk, 1);
         ImportGridChunk(new Vector2Int(1, 1), Resources.Load("PreMade Chunks/GridChunk9") as Chunk, 1);
 
-        Instantiate(sigilPrefab, CellToWorldPos(new Vector2Int(11, 15)), transform.rotation, obstructionsParent);
-        Instantiate(sigilPrefab, CellToWorldPos(new Vector2Int(11, 4)), transform.rotation, obstructionsParent);
+        Instantiate(sigilPrefabs[0], CellToWorldPos(new Vector2Int(11, 15)), transform.rotation, obstructionsParent);
+        Instantiate(sigilPrefabs[1], CellToWorldPos(new Vector2Int(11, 4)), transform.rotation, obstructionsParent);
         Instantiate(doorPrefab, CellToWorldPos(new Vector2Int(6, 15)), transform.rotation, obstructionsParent);
 
         // 9,0 - 9,3 - 14,3 - 14,10 - pingpong move
@@ -527,19 +529,29 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        List<int> possible = Enumerable.Range(1, results.sigilPoints.Count).ToList();
+        List<int> possible = Enumerable.Range(0, results.sigilPoints.Count).ToList();
+        List<int> sigilPrefabIndexes = Enumerable.Range(0, sigilPrefabs.Length).ToList();
         List<int> randomSigils = new List<int>();
+        List<int> selectedPrefabs = new List<int>();
         //Debug.Log(results.sigilPoints.Count);
         for (int i = 0; i < results.sigilCount; i++)
         {
+            // choose a random location and random sigil prefab
             int index = UnityEngine.Random.Range(0, possible.Count);
+            int sigilPrefabIndex = UnityEngine.Random.Range(0, sigilPrefabIndexes.Count);
+
+            // store indexes for the location and the prefab
             randomSigils.Add(possible[index]);
+            selectedPrefabs.Add(sigilPrefabIndexes[sigilPrefabIndex]);
+
+            // remove the indexes from the possible choices
+            sigilPrefabIndexes.RemoveAt(sigilPrefabIndex);
             possible.RemoveAt(index);
         }
         for (int i = 0; i < randomSigils.Count; i++)
         {
             //Debug.Log(i + " sigilpoints: " + randomSigils.Count);
-            Instantiate(sigilPrefab, CellToWorldPos(results.sigilPoints[i]), transform.rotation, SigilParent);
+            Instantiate(sigilPrefabs[selectedPrefabs[i]], CellToWorldPos(results.sigilPoints[randomSigils[i]]), transform.rotation, SigilParent);
         }
 
         //Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
@@ -550,6 +562,8 @@ public class GridManager : MonoBehaviour
 
         levelManager.SetSigilRequirement(sigilCount);
     }
+
+
 
     public DTile[] ConvertIntGrid(int[] grid)
     {
