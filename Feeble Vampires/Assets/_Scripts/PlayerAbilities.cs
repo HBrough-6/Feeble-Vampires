@@ -205,6 +205,7 @@ public class PlayerAbilities : MonoBehaviour
 
     public IEnumerator scentTrackerPulse()
     {
+        scentTrackerParticles.SetActive(false);
         scentTrackerParticles.SetActive(true);
         yield return new WaitForSeconds(3.9f);
         scentTrackerParticles.SetActive(false);
@@ -213,5 +214,13 @@ public class PlayerAbilities : MonoBehaviour
     public void toggleHemoglobinEnergy()
     {
         hemoglobinRushParticles.SetActive(!hemoglobinRushParticles.activeInHierarchy);
+    }
+
+    public IEnumerator swiftStepPulse()
+    {
+        swiftStepParticles.SetActive(false);
+        swiftStepParticles.SetActive(true);
+        yield return new WaitForSeconds(9.54f);
+        swiftStepParticles.SetActive(false);
     }
 }
