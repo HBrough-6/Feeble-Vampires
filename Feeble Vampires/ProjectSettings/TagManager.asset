@@ -9,6 +9,7 @@ TagManager:
   - TitleManager
   - Sigil
   - Door
+  - ShopInteract
   layers:
   - Default
   - TransparentFX

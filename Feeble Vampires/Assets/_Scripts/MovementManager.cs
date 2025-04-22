@@ -339,6 +339,11 @@ public class MovementManager : MonoBehaviour
             {
                 levelManager.AttemptDoorOpen();
             }
+            if (hit.collider.CompareTag("ShopInteract"))
+            {
+                FindObjectOfType<Shop>().ActivateVendor();
+                Debug.Log("Vendor");
+            }
         }
 
         historicPathPoints.Clear();

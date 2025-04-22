@@ -6,7 +6,7 @@ public class SkillHolderManager : MonoBehaviour
 {
     private List<SkillSO> skills = new List<SkillSO>();
 
-    [SerializeField] private Image[] skillIcons = new Image[3];
+    [SerializeField] private Image[] skillIcons = new Image[2];
 
 
     public void AddSkill(SkillSO skill)
@@ -20,5 +20,10 @@ public class SkillHolderManager : MonoBehaviour
 
         // assign the newest skill to an Icon
         skillIcons[skills.Count - 1].sprite = skills[skills.Count - 1].Icon;
+    }
+
+    public void ReplaceSkill(SkillSO toReplace, SkillSO newSkill)
+    {
+
     }
 }

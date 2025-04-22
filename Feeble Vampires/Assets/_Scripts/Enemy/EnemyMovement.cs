@@ -39,6 +39,8 @@ public class EnemyMovement : MonoBehaviour
 
     private bool rotateOnNextMove = false;
 
+    public Vector2Int newPos;
+
     private void Awake()
     {
         // get the grid
@@ -52,6 +54,14 @@ public class EnemyMovement : MonoBehaviour
     {
         // place the enemy at the start of it's movement
         SetPosInGrid(moveNodes[0].x, moveNodes[0].y);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.N))
+        {
+            SetTemporaryDestination(newPos);
+        }
     }
 
     #region Movement

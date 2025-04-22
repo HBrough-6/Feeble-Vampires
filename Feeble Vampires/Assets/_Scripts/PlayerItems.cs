@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -100,6 +99,7 @@ public class PlayerItems : MonoBehaviour
             }
             else if (!equippedItemSlots[i])
             {
+                Debug.Log("here");
                 equippedItemSlots[i] = true;
                 equippedItemNames[i] = itemName;
 
