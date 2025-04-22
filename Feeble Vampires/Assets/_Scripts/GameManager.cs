@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
         gridManager = FindObjectOfType<GridManager>();
 
-        bigSkillSelectMenu.SetActive(false);
+        // bigSkillSelectMenu.SetActive(false);
     }
 
 

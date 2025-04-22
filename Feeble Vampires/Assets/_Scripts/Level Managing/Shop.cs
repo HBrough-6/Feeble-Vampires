@@ -20,11 +20,12 @@ public class Shop : MonoBehaviour
     private ItemSO[] availableItems = new ItemSO[3];
 
     public List<ItemSO> possibleItems;
+
     public List<ItemSO> currentItems;
 
     public List<int> itemsInButton = new List<int>();
 
-    public List<ItemButton> itemButton = new List<ItemButton>();
+    //public List<ItemButton> itemButton = new List<ItemButton>();
 
     [SerializeField] private GameObject dialogueHolder;
     private TMP_Text dialogueObject;
@@ -68,6 +69,7 @@ public class Shop : MonoBehaviour
         shopHolder.SetActive(false);
         // set the player to not interacting
         gameManager.skillSelecting = false;
+        ConfirmSelection();
     }
 
     public void ChooseRandomItems()
@@ -118,10 +120,6 @@ public class Shop : MonoBehaviour
         itemButtons[2].AssignItem(possibleItems[itemsInButton[2]]);
     }
 
-    public void PurchaseItem(int itemIndex)
-    {
-        ItemSO pItem = availableItems[itemIndex];
-    }
 
     // pass through either 1 or 2 to use button 1 or 2
     public void UseButton(int button)
@@ -139,17 +137,62 @@ public class Shop : MonoBehaviour
         else
         {
             // add the item to the currentItems
-            currentItems.Add(possibleItems[itemsInButton[button - 1]]);
-            // add the item to the display
-            itemHolderManager.AddItem(currentItems[currentItems.Count - 1]);
-            // activate the item
-            bool fakeRef = true;
-            playerItems.itemSlotCheck(ref fakeRef, currentItems[currentItems.Count - 1].DisplayName);
+
+
+
             // disable the option to purchase that item
             Debug.Log("button " + button);
             itemButtons[button - 1].GetComponent<Button>().interactable = false;
         }
     }
+
+
+
+    public void SelectButton(int button)
+    {
+        // check if the current button is one that is already selected
+        if (currentItems.IndexOf(possibleItems[itemsInButton[button - 1]]) != -1)
+        {
+            Debug.Log("Item already here");
+            // call the deselect function
+            DeselectButton(button);
+            return;
+        }
+
+        // make sure there is space available and the player has enough xp to buy items
+        if (currentItems.Count >= 2 /*|| PlayerAbilities.experiencePoints > currentItems.Count*/)
+        {
+
+            Debug.Log("currentItems count: " + currentItems.Count);
+            return;
+        }
+
+        // add item to current items
+        currentItems.Add(possibleItems[itemsInButton[button - 1]]);
+        // disable the button
+        itemButtons[button - 1].SetSelected(true);
+    }
+
+    public void DeselectButton(int button)
+    {
+        // enable the button
+        itemButtons[button - 1].SetSelected(false);
+        // remove the item from the list
+        currentItems.Remove(possibleItems[itemsInButton[button - 1]]);
+    }
+
+    private void ConfirmSelection()
+    {
+
+        for (int i = 0; i < currentItems.Count; i++)
+        {
+            // add the item to the display
+            itemHolderManager.AddItem(currentItems[i]);
+            // activate the item on the player
+            playerItems.itemSlotCheck(currentItems[i].DisplayName);
+        }
+    }
+
 
     public void DialogueButton()
     {
