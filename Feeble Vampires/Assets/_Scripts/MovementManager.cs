@@ -265,7 +265,7 @@ public class MovementManager : MonoBehaviour
 
     public void endLevel()
     {
-        // skillSelectionHolder.SetActive(true);
+        //skillSelectionHolder.SetActive(true);
         // prevents giving the player an extra skill at the end of the safe zone
         if (!levelManager.inSafeZone)
         {
