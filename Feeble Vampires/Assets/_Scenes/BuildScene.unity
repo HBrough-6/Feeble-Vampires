@@ -4109,7 +4109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &974301882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4868,6 +4868,7 @@ MonoBehaviour:
   endPoint: {fileID: 1386344183}
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
+  skillRandomizer: {fileID: 0}
   pathPoints:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
@@ -5891,6 +5892,7 @@ MonoBehaviour:
   currentZone: 1
   safeZoneVisited: 0
   inSafeZone: 0
+  safeZone: {fileID: 0}
 --- !u!4 &1723147154
 Transform:
   m_ObjectHideFlags: 0

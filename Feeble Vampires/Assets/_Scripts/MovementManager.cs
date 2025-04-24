@@ -180,7 +180,7 @@ public class MovementManager : MonoBehaviour
                 resetMovement();
             }
 
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.K) && distance > 0)
             {
                 submitMovement();
             }
