@@ -8,6 +8,7 @@ public class SkillRandomizer : MonoBehaviour
     private GameObject skillSelectHolder;
     private LevelManager levelManager;
     private GameManager gameManager;
+    private TooltipMenu tooltipMenu;
 
     public SkillButton skill1Button;
     public SkillButton skill2Button;
@@ -26,6 +27,7 @@ public class SkillRandomizer : MonoBehaviour
         skillSelectHolder = transform.GetChild(0).gameObject;
         levelManager = FindObjectOfType<LevelManager>();
         gameManager = FindObjectOfType<GameManager>();
+        tooltipMenu = FindObjectOfType<TooltipMenu>();
     }
 
     public void Activate()
