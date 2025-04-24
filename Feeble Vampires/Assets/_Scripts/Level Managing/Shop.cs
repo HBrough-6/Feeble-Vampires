@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -119,33 +118,6 @@ public class Shop : MonoBehaviour
         Debug.Log(itemButtons.Length);
         itemButtons[2].AssignItem(possibleItems[itemsInButton[2]]);
     }
-
-
-    // pass through either 1 or 2 to use button 1 or 2
-    public void UseButton(int button)
-    {
-        if (button < 1 || button > 3)
-        {
-            return;
-        }
-
-        if (currentItems.Count >= 2)
-        {
-            // if the player has too many items, give the option to replace one of them
-
-        }
-        else
-        {
-            // add the item to the currentItems
-
-
-
-            // disable the option to purchase that item
-            Debug.Log("button " + button);
-            itemButtons[button - 1].GetComponent<Button>().interactable = false;
-        }
-    }
-
 
 
     public void SelectButton(int button)
