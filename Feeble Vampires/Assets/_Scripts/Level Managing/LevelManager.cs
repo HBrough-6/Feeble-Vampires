@@ -228,9 +228,9 @@ public class LevelManager : MonoBehaviour
             safeZoneVisited = true;
 
             SetSigilRequirement(0);
-            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 6)), transform.rotation, gridManager.obstructionsParent);
-            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 7)), transform.rotation, gridManager.obstructionsParent);
-            Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 8)), transform.rotation, gridManager.obstructionsParent);
+            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 6)), transform.rotation, gridManager.obstructionsParent);
+            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 7)), transform.rotation, gridManager.obstructionsParent);
+            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 8)), transform.rotation, gridManager.obstructionsParent);
 
             inSafeZone = true;
             // pause the timer

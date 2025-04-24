@@ -207,6 +207,8 @@ public class GridManager : MonoBehaviour
         enemyManager.AddEnemy(EnemyThree.GetComponent<EnemyBrain>());
 
         levelManager.SetStartLocation(new Vector2Int(7, 0));
+        Instantiate(foundTilePrefab, CellToWorldPos(7, 0), transform.rotation, obstructionsParent);
+
         levelManager.SetSigilRequirement(2);
     }
 
@@ -554,7 +556,7 @@ public class GridManager : MonoBehaviour
             Instantiate(sigilPrefabs[selectedPrefabs[i]], CellToWorldPos(results.sigilPoints[randomSigils[i]]), transform.rotation, SigilParent);
         }
 
-        //Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
+        Instantiate(foundTilePrefab, CellToWorldPos(results.startPoint), transform.rotation, obstructionsParent);
         Vector2Int doorPos = results.endPoints[UnityEngine.Random.Range(0, results.endPoints.Count)];
         Instantiate(doorPrefab, CellToWorldPos(doorPos), transform.rotation, obstructionsParent);
         levelManager.SetStartLocation(results.startPoint);
