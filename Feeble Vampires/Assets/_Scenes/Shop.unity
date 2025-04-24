@@ -1409,6 +1409,10 @@ MonoBehaviour:
   skillIcons:
   - {fileID: 806506688}
   - {fileID: 197292456}
+  itemDesc:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &510186307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2466,7 @@ MonoBehaviour:
   movementManager: {fileID: 0}
   scentTrackerParticles: {fileID: 0}
   hemoglobinRushParticles: {fileID: 0}
+  swiftStepParticles: {fileID: 0}
 --- !u!114 &1108902554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2485,6 +2490,7 @@ MonoBehaviour:
   equippedItemNames:
   - 
   - 
+  leechParticles: {fileID: 0}
 --- !u!1 &1140736262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,6 +3032,7 @@ MonoBehaviour:
   endPoint: {fileID: 1386344183}
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
+  skillRandomizer: {fileID: 502792738}
   pathPoints:
   - {x: 0, y: 0}
   - {x: 0, y: 0}

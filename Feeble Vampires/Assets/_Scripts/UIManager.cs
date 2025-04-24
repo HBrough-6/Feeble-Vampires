@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateXP(int amount)
     {
-        xpText.text = " " + amount;
+        xpText.text = "XP: " + amount;
     }
 
     public void makeMap(bool canEcholocate)

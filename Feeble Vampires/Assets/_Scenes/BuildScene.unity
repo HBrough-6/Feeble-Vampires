@@ -2299,6 +2299,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1691459358631422968, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 243.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691459358631422968, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.79
+      objectReference: {fileID: 0}
     - target: {fileID: 2466941063439979104, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_IsActive
@@ -2307,7 +2317,7 @@ PrefabInstance:
     - target: {fileID: 2515461673083955998, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_text
-      value: 
+      value: XP
       objectReference: {fileID: 0}
     - target: {fileID: 2680168046341702997, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -2639,7 +2649,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 502792737}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1841654739}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49b362115d572934681df6ee0d6d1035, type: 3}
@@ -5380,7 +5390,7 @@ MonoBehaviour:
   endPoint: {fileID: 1386344183}
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
-  skillRandomizer: {fileID: 0}
+  skillRandomizer: {fileID: 502792738}
   pathPoints:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
@@ -5871,7 +5881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -43.76999, y: 9.36}
+  m_AnchoredPosition: {x: -43.76999, y: 9.359985}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1398541527
@@ -7233,6 +7243,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798726223}
   m_CullTransparentMesh: 1
+--- !u!1 &1841654739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 879659984748415689, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1849726377
 GameObject:
   m_ObjectHideFlags: 0
@@ -7572,7 +7588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1841654739}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1901903644
