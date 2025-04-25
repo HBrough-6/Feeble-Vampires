@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
             takeDamage(1);
         }
 
+        if (Input.GetKeyDown(KeyCode.M)) uiManager.gridMiniMap.gameObject.SetActive(!uiManager.gridMiniMap.isActiveAndEnabled);
+
         if (!dead && !skillSelecting && !movementManager.spawningBatBuddy)
         {
             internalTimer += Time.deltaTime;
