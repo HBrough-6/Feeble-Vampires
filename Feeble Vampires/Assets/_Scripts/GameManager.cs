@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         failedTimers.text = "Timer Fails: " + failedTimerCount;
         timerText.text = "Time Left: " + timer;
+
+        if (failedTimerCount > 1 && !dead) gameOver();
     }
 
     public void gameOver()
