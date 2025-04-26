@@ -2282,7 +2282,7 @@ MonoBehaviour:
     type: 3}
   doorPrefab: {fileID: 6388116158150247451, guid: eb94e289ced0b7049a13424204ce4d68,
     type: 3}
-  EnemyPrefab: {fileID: 7682219586750359938, guid: 4e51d864d51eeb541b59fb849f09cdc0,
+  EnemyPrefab: {fileID: 2876010585920897104, guid: 49e3c5435960f0543a0d9572460711c4,
     type: 3}
   actualDoorPrefab: {fileID: 922470041}
   foundTilePrefab: {fileID: 6388116158150247451, guid: aa85c0d98c057734ebef4a5fa5bef7e1,
@@ -5141,7 +5141,7 @@ MonoBehaviour:
   enemyStartPoints: []
   MinPathDist: 7
   displayPath: 0
-  EnemyPrefab: {fileID: 7682219586750359938, guid: 4e51d864d51eeb541b59fb849f09cdc0,
+  EnemyPrefab: {fileID: 2876010585920897104, guid: 49e3c5435960f0543a0d9572460711c4,
     type: 3}
 --- !u!4 &1931230596
 Transform:
