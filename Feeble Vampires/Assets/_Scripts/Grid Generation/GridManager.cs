@@ -7,17 +7,6 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    // Goal: Use a modified version of BFS to find out which tiles are discoverable from a random point in the bottom row.
-    // find each spot that has a sigil, count how many accessible tiles there are, spawn a door
-
-    // DONE store the best starting point's found tiles outside of the loop
-    // DONE don't spawn sigils when they are found in chunks, add their positions to a list
-    // DONE don't store the starting positions, just check if they are better
-    // after finding the best starting position, check the sigil positions against the found tiles and spawn random ones
-    // Choose a random sigil that is not in the same chunk as the start tile,
-    // then choose sigils that are a minimum distance away from the original 
-    // find a 2x1 area at the top of the map for doors to spawn
-
     public float timeBetweenIncrement = 0.2f;
 
     public LevelManager levelManager;
@@ -40,6 +29,9 @@ public class GridManager : MonoBehaviour
     public GameObject EnemyPrefab;
     public GameObject actualDoorPrefab;
     private EnemyManager enemyManager;
+
+    public GameObject cornerPrefab;
+    public GameObject outsideWallPrefab;
 
     public GameObject foundTilePrefab;
 
@@ -107,17 +99,6 @@ public class GridManager : MonoBehaviour
 
     #region Build Levels
 
-    public void VisitSafeZone()
-    {
-        // delete previous level
-        // spawn safe room
-        // play door animation
-        //// what does the safe zone have in it?
-        /// door that asks you to confirm leaving the safe zone
-        /// working vendor
-        /// connected to a grid
-    }
-
     public void FakeLevelTwo()
     {
         for (int i = obstructionsParent.childCount - 1; i >= 0; i--)
@@ -168,6 +149,8 @@ public class GridManager : MonoBehaviour
 
         levelManager.SetStartLocation(new Vector2Int(1, 0));
         levelManager.SetSigilRequirement(2);
+
+        CreateWalls(2, 2);
     }
 
     public void FakeLevelOne()
@@ -210,6 +193,7 @@ public class GridManager : MonoBehaviour
         Instantiate(foundTilePrefab, CellToWorldPos(7, 0), transform.rotation, obstructionsParent);
 
         levelManager.SetSigilRequirement(2);
+        CreateWalls(2, 2);
     }
 
     #endregion
@@ -563,9 +547,42 @@ public class GridManager : MonoBehaviour
         //Instantiate(actualDoorPrefab, CellToWorldPos(doorPos) - new Vector3(0, 0, 0.5f), transform.rotation, obstructionsParent);
 
         levelManager.SetSigilRequirement(sigilCount);
+
+        CreateWalls(width, height);
     }
 
+    private void CreateWalls(int width, int height)
+    {
+        // generate size in tiles
+        int tileWidth = width * 8;
+        int tileHeight = height * 8;
 
+        // find the location of each corner
+        Vector3 BL = new Vector3(-0.5f, 0, -0.5f);
+        Vector3 BR = BL + new Vector3(tileWidth, 0, 0);
+        Vector3 TL = BL + new Vector3(0, 0, tileHeight);
+        Vector3 TR = BL + new Vector3(tileWidth, 0, tileHeight);
+
+        // spawn corners at each location, rotated appropriately
+        Instantiate(cornerPrefab, BL, Quaternion.Euler(0, -90, 0), obstructionsParent);
+        Instantiate(cornerPrefab, BR, Quaternion.Euler(0, 180, 0), obstructionsParent);
+        Instantiate(cornerPrefab, TL, Quaternion.Euler(0, 0, 0), obstructionsParent);
+        Instantiate(cornerPrefab, TR, Quaternion.Euler(0, 90, 0), obstructionsParent);
+        // place walls starting at each corner
+        for (int i = 0; i < width; i++)
+        {
+            // bottom and top walls
+            Instantiate(outsideWallPrefab, BL + new Vector3(8 * i, 0, 0), Quaternion.Euler(0, 0, 0), obstructionsParent);
+            Instantiate(outsideWallPrefab, TR - new Vector3(8 * i, 0, 0), Quaternion.Euler(0, 180, 0), obstructionsParent);
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            // left and right walls
+            Instantiate(outsideWallPrefab, BR + new Vector3(0, 0, 8 * i), Quaternion.Euler(0, -90, 0), obstructionsParent);
+            Instantiate(outsideWallPrefab, TL - new Vector3(0, 0, 8 * i), Quaternion.Euler(0, 90, 0), obstructionsParent);
+        }
+    }
 
     public DTile[] ConvertIntGrid(int[] grid)
     {

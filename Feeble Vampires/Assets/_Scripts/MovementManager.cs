@@ -190,6 +190,13 @@ public class MovementManager : MonoBehaviour
                 // disabled for now - heath
                 // endLevel();
             }
+
+            if (distance > spaceCap)
+            {
+                removePathPoint();
+                endPoint.transform.position = new Vector3
+                        (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
+            }
         }
     }
 
