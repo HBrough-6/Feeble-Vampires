@@ -1914,6 +1914,7 @@ MonoBehaviour:
   currentlyTracking: 0
   uiManager: {fileID: 0}
   movementManager: {fileID: 0}
+  experiencePoints: 0
   scentTrackerParticles: {fileID: 0}
   hemoglobinRushParticles: {fileID: 0}
   swiftStepParticles: {fileID: 0}
@@ -2149,6 +2150,7 @@ MonoBehaviour:
   baseTime: 0
   timeLimit: 0
   levelManager: {fileID: 0}
+  playerAbilities: {fileID: 0}
   skillSelectionHolder: {fileID: 0}
   timePieceActive: 0
   isShrieking: 0
@@ -2645,7 +2647,7 @@ PrefabInstance:
     - target: {fileID: 4379376187543056969, guid: 38215be496535d84bb54599de32cf060,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -51.87
       objectReference: {fileID: 0}
     - target: {fileID: 4379376187543056969, guid: 38215be496535d84bb54599de32cf060,
         type: 3}
@@ -2655,7 +2657,7 @@ PrefabInstance:
     - target: {fileID: 4379376187543056969, guid: 38215be496535d84bb54599de32cf060,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -50.17
       objectReference: {fileID: 0}
     - target: {fileID: 4379376187543056969, guid: 38215be496535d84bb54599de32cf060,
         type: 3}
