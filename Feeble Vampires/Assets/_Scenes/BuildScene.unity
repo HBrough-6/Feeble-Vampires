@@ -4565,8 +4565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7025d64131dbb564cac0eedb0d8d6d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canEcholocate: 1
-  isSwifter: 1
+  canEcholocate: 0
+  isSwifter: 0
   canRushAttack: 0
   smarter: 0
   hideable: 0
