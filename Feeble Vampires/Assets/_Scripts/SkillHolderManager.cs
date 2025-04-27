@@ -34,7 +34,7 @@ public class SkillHolderManager : MonoBehaviour
         if (skills.Count >= 3)
             return;
 
-        //skillDesc[skills.Count - 1].text = skills[skills.Count - 1].SkillDescription;
+        skillDesc[skills.Count - 1].text = skills[skills.Count - 1].SkillDescription;
 
     }
 
