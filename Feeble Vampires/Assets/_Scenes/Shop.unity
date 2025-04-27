@@ -1705,6 +1705,11 @@ PrefabInstance:
       propertyPath: simulationSpeed
       value: 0.96
       objectReference: {fileID: 0}
+    - target: {fileID: 3170122971369289821, guid: 396e91489c9a8654cb86d2301b4a37ef,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7330417670093010528, guid: 396e91489c9a8654cb86d2301b4a37ef,
         type: 3}
       propertyPath: m_LocalScale.x
