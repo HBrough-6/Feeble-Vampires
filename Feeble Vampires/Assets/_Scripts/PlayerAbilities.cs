@@ -18,7 +18,7 @@ public class PlayerAbilities : MonoBehaviour
     public UIManager uiManager;
     public MovementManager movementManager;
 
-    public static int experiencePoints;
+    public int experiencePoints;
 
     [Header("Particle Systems")]
     public GameObject scentTrackerParticles;

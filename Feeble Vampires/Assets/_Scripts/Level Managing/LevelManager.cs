@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     private EnemyManager enemyManager;
     private UIManager uiManager;
     private GameManager gameManager;
+    private PlayerAbilities playerAbilities;
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
@@ -57,6 +58,7 @@ public class LevelManager : MonoBehaviour
 
         uiManager = FindObjectOfType<UIManager>();
         gameManager = FindObjectOfType<GameManager>();
+        playerAbilities = FindObjectOfType<PlayerAbilities>();
     }
 
     private void Start()
@@ -189,10 +191,10 @@ public class LevelManager : MonoBehaviour
     public void GoToNextLevel()
     {
         safeZone.DeactivateSafeZone();
-        if (inSafeZone)
+        if (!inSafeZone && currentLevel != 0)
         {
             // give the player experience points
-            PlayerAbilities.experiencePoints += 2;
+            //playerAbilities.GainXP(2);
         }
         enemyManager.ClearAllEnemies();
         gameManager.skillSelecting = false;
