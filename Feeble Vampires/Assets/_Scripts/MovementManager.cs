@@ -354,7 +354,7 @@ public class MovementManager : MonoBehaviour
             if (hit.collider.CompareTag("ShopInteract"))
             {
                 FindObjectOfType<Shop>().ActivateVendor();
-                Debug.Log("Vendor");
+                //Debug.Log("Vendor");
             }
         }
 

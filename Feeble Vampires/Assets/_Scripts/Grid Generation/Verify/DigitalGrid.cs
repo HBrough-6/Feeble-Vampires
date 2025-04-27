@@ -106,7 +106,7 @@ public class DigitalGrid
     public DResult Verify()
     {
         int timesRun = 0;
-        Debug.Log(grid.Length);
+        // Debug.Log(grid.Length);
         // reset all tiles to make sure they are all unfound
         for (int i = 0; i < grid.Length; i++)
         {

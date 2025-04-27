@@ -282,7 +282,6 @@ public class LevelManager : MonoBehaviour
         {
             FindObjectOfType<EnemyManager>().ClearAllEnemies();
             movementManager.endLevel();
-            Debug.Log("Hi");
         }
     }
 

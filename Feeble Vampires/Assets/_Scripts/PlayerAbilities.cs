@@ -68,54 +68,54 @@ public class PlayerAbilities : MonoBehaviour
     // heath reworked this
     public void activateSkill(string skillName)
     {
-        Debug.Log(skillName + "passed through");
+        Debug.Log(skillName + " passed through");
         if (skillName == "Echolocation")
         {
-            Debug.Log("echo");
+            //Debug.Log("echo");
             canEcholocate = true;
         }
         else if (skillName == "Swift Step")
         {
-            Debug.Log("Swift");
+            //Debug.Log("Swift");
             movementManager.spaceCap += 1;
             isSwifter = true;
         }
         else if (skillName == "Hemoglobin Rush")
         {
-            Debug.Log("Hemo");
+            //Debug.Log("Hemo");
             canRushAttack = true;
         }
         else if (skillName == "Neural Formation")
         {
-            Debug.Log("Neu");
+            //Debug.Log("Neu");
             movementManager.timeLimit = movementManager.baseTime + 2;
             smarter = true;
         }
         else if (skillName == "Hang")
         {
-            Debug.Log("Hang");
+            //Debug.Log("Hang");
             hideable = true;
         }
         else if (skillName == "Cheapskate")
         {
-            Debug.Log("Cheap");
+            //Debug.Log("Cheap");
             isGreedy = true;
         }
         else if (skillName == "Apex Instinct")
         {
-            Debug.Log("apex");
+            //Debug.Log("apex");
             movementManager.timeLimit /= 2;
             movementManager.spaceCap *= 2;
             strongestInstinct = true;
         }
         else if (skillName == "Tracker")
         {
-            Debug.Log("Tracker");
+            //Debug.Log("Tracker");
             scentTracker = true;
         }
         else if (skillName == "Clone")
         {
-            Debug.Log("Clone");
+            //Debug.Log("Clone");
             clone = true;
         }
     }
@@ -168,7 +168,7 @@ public class PlayerAbilities : MonoBehaviour
         }
         else
         {
-            spendPoints();
+            //spendPoints();
             //swiftLevel += 1;
             //movementManager.spaceCap += swiftLevel;
         }
@@ -183,15 +183,41 @@ public class PlayerAbilities : MonoBehaviour
         }
         else
         {
-            spendPoints();
+            //spendPoints();
             movementManager.timeLimit = movementManager.baseTime + 2;
         }
     }
 
-    public void spendPoints()
+    public bool spendPoints(int points, bool isSkill)
     {
-        if (isGreedy) experiencePoints--;
-        else experiencePoints -= 2;
+        Debug.Log("points: " + points + " isSkill: " + isSkill);
+        // check if player has enough xp
+        if (points <= experiencePoints || (isSkill && isGreedy && points - 1 <= experiencePoints))
+        {
+            if (isSkill && isGreedy)
+            {
+                experiencePoints--;
+                Debug.Log("greedy skill");
+            }
+            else if (isSkill && !isGreedy)
+            {
+                experiencePoints -= 2;
+                Debug.Log("skill");
+            }
+            else
+            {
+                Debug.Log("items");
+                experiencePoints -= points;
+            }
+            Debug.Log("returned true");
+            uiManager.UpdateXP(experiencePoints);
+            return true;
+        }
+        else
+        {
+            Debug.Log("returned false");
+            return false;
+        }
     }
 
     public void sniffEnemies()

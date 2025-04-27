@@ -103,7 +103,10 @@ public class SkillRandomizer : MonoBehaviour
             return;
         }
 
-
+        if (!playerAbilities.spendPoints(2, true))
+        {
+            return;
+        }
         // add the skill to the player's current skills
         ChosenSkills.Add(skills[buttonOneSkill]);
         // add the skill to the display
@@ -117,8 +120,12 @@ public class SkillRandomizer : MonoBehaviour
 
     public void UseButtonTwo()
     {
+        if (!playerAbilities.spendPoints(2, true))
+        {
+            return;
+        }
         // if the player has too many skills
-        if (buttonTwoSkill == -1)
+        if (buttonTwoSkill == -1 && !playerAbilities.spendPoints(2, true))
         {
             Deactivate();
             return;
