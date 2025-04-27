@@ -4868,7 +4868,7 @@ MonoBehaviour:
   endPoint: {fileID: 1386344183}
   gridManager: {fileID: 0}
   playerPosInGrid: {x: 0, y: 0}
-  skillRandomizer: {fileID: 0}
+  skillRandomizer: {fileID: 502792738}
   pathPoints:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
