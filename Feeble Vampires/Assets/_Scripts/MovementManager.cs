@@ -42,6 +42,7 @@ public class MovementManager : MonoBehaviour
     public int timeLimit;
 
     public LevelManager levelManager;
+    public PlayerAbilities playerAbilities;
 
     public GameObject skillSelectionHolder;
 
@@ -68,6 +69,7 @@ public class MovementManager : MonoBehaviour
         timeLimit = baseTime;
         distance = 0;
         initializeOrigin();
+        playerAbilities = FindObjectOfType<PlayerAbilities>();
     }
 
     // Start is called before the first frame update
@@ -279,11 +281,13 @@ public class MovementManager : MonoBehaviour
             // heath change
             gameManager.skillSelecting = true;
             skillRandomizer.Activate();
+            playerAbilities.GainXP(2);
         }
         else
         {
             levelManager.GoToNextLevel();
             Debug.Log(levelManager.inSafeZone);
+
         }
     }
 

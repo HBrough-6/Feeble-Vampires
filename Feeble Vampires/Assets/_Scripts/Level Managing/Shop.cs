@@ -149,8 +149,11 @@ public class Shop : MonoBehaviour
     {
         // enable the button
         itemButtons[button - 1].SetSelected(false);
-        // remove the item from the list
-        currentItems.Remove(possibleItems[itemsInButton[button - 1]]);
+        if (currentItems.IndexOf(possibleItems[itemsInButton[button - 1]]) != -1)
+        {
+            // remove the item from the list
+            currentItems.Remove(possibleItems[itemsInButton[button - 1]]);
+        }
     }
 
     private void ConfirmSelection()
@@ -163,6 +166,12 @@ public class Shop : MonoBehaviour
             // activate the item on the player
             playerItems.itemSlotCheck(currentItems[i].DisplayName);
         }
+
+        itemButtons[0].SetSelected(false);
+        itemButtons[1].SetSelected(false);
+        itemButtons[2].SetSelected(false);
+
+        currentItems = new List<ItemSO>();
     }
 
 
