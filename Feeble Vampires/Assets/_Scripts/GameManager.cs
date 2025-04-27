@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             takeDamage(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.M)) uiManager.makeMap(true);
+        if (Input.GetKeyDown(KeyCode.M)) uiManager.gridMiniMap.gameObject.SetActive(!uiManager.gridMiniMap.isActiveAndEnabled);
 
         if (!dead && !skillSelecting && !movementManager.spawningBatBuddy)
         {
@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         failedTimers.text = "Timer Fails: " + failedTimerCount;
         timerText.text = "Time Left: " + timer;
+
+        if (failedTimerCount > 1 && !dead) gameOver();
     }
 
     public void gameOver()
