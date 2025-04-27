@@ -127,6 +127,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7183693666378265659}
+  - component: {fileID: 9160141884893257811}
+  - component: {fileID: 2493553600640448629}
+  - component: {fileID: 1129583327219434658}
+  - component: {fileID: 7107901407682583501}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -152,6 +156,70 @@ Transform:
   - {fileID: 6976159070612146733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9160141884893257811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876010585920897104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73ed56a43f3bb04e8673ed888948e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveNodes: []
+  turnWeight: 0.1
+  moveType: 1
+  tempPath: []
+  buddyRetracingSteps: 0
+  savedMoveDir: {x: 0, y: 0}
+  buddyTargetNode: 0
+  newPos: {x: 0, y: 0}
+--- !u!114 &2493553600640448629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876010585920897104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbc0f80a2b904d4886fc0a16d933deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seenTilesLocations: []
+  sightTilePrefab: {fileID: 6388116158150247451, guid: a56fce659826b984c81d2bac28e47875,
+    type: 3}
+--- !u!114 &1129583327219434658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876010585920897104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f18ebfd23aad54fad8e7b70438309a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}
+  enemySight: {fileID: 0}
+  posInGrid: {x: -1, y: -1}
+  moveDir: {x: 0, y: 0}
+  tempDestination: {x: 0, y: 0}
+--- !u!114 &7107901407682583501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876010585920897104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84f21baa20cdd4489864555993f48fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4265917021710318424
 GameObject:
   m_ObjectHideFlags: 0
