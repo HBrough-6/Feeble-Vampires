@@ -5,16 +5,19 @@ public class SafeZone : MonoBehaviour
 {
     private GameObject zone;
     private TurnManager turnManager;
+    private GameManager gameManger;
 
     private void Awake()
     {
         zone = transform.GetChild(0).gameObject;
         turnManager = FindObjectOfType<TurnManager>();
+        gameManger = FindObjectOfType<GameManager>();
     }
 
     public void ActivateSafeZone()
     {
         zone.SetActive(true);
+        gameManger.skillSelecting = true;
         RandomizeShopInventory();
         // turnManager.DisableTimer();
     }

@@ -34,59 +34,121 @@ public class PlayerItems : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (brokenTimePiece && !movementManager.timePieceActive)
+            // use item 1
+            if (equippedItemSlots[0])
             {
-                movementManager.hyperExtendTime();
-                movementManager.timePieceActive = true;
-                removeItem("Broken Timepiece");
+                UseItem(equippedItemNames[0]);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (shriek && !movementManager.isShrieking)
+            // use item 2
+            if (equippedItemSlots[1])
             {
-                movementManager.startShrieking();
-                removeItem("Shriek");
+                UseItem(equippedItemNames[1]);
             }
         }
 
+        /*
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (bloodDope && !movementManager.doping)
-            {
-                movementManager.dopeDouble();
-                removeItem("Blood Dope");
-            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (batBuddy && !movementManager.spawningBatBuddy)
-            {
-                movementManager.prepareBatBuddy();
-                movementManager.spawningBatBuddy = true;
-            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (leech)
-            {
-                movementManager.gameManager.instakilled = true;
-                movementManager.gameManager.gameOver();
-                removeItem("Leech");
+            
+        }*/
 
-                leechParticles.SetActive(true);
-            }
+
+
+        //if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck("Broken Timepiece");
+        //if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck("Shriek");
+        //if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck("Mirage");
+        //if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck("Blood Dope");
+        //if (Input.GetKeyDown(KeyCode.Keypad5)) itemSlotCheck("");
+        //if (Input.GetKeyDown(KeyCode.Keypad6)) itemSlotCheck("Bat Buddy");
+    }
+
+    private void UseItem(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Broken Timepiece":
+                ActivateBrokenTimepiece();
+                break;
+            case "Shriek":
+                ActivateShriek();
+                break;
+            case "Blood Dope":
+                ActivateBloodDope();
+                break;
+            case "Leech":
+                ActivateLeech();
+                break;
+            case "Bat Buddy":
+                ActivateBatBuddy();
+                break;
+
+            default:
+                break;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Keypad1)) itemSlotCheck("Broken Timepiece");
-        if (Input.GetKeyDown(KeyCode.Keypad2)) itemSlotCheck("Shriek");
-        if (Input.GetKeyDown(KeyCode.Keypad3)) itemSlotCheck("Mirage");
-        if (Input.GetKeyDown(KeyCode.Keypad4)) itemSlotCheck("Blood Dope");
-        if (Input.GetKeyDown(KeyCode.Keypad5)) itemSlotCheck("Leech");
-        if (Input.GetKeyDown(KeyCode.Keypad6)) itemSlotCheck("Bat Buddy");
+    public void ActivateLeech()
+    {
+        if (leech)
+        {
+            movementManager.gameManager.instakilled = true;
+            movementManager.gameManager.gameOver();
+            removeItem("Leech");
+
+            leechParticles.SetActive(true);
+        }
+    }
+
+    private void ActivateBatBuddy()
+    {
+        if (batBuddy && !movementManager.spawningBatBuddy)
+        {
+            movementManager.prepareBatBuddy();
+            movementManager.spawningBatBuddy = true;
+        }
+    }
+
+    private void ActivateBloodDope()
+    {
+        if (bloodDope && !movementManager.doping)
+        {
+            movementManager.dopeDouble();
+            removeItem("Blood Dope");
+        }
+    }
+
+    private void ActivateShriek()
+    {
+        if (shriek && !movementManager.isShrieking)
+        {
+            movementManager.startShrieking();
+            removeItem("Shriek");
+        }
+    }
+
+    private void ActivateBrokenTimepiece()
+    {
+        if (brokenTimePiece && !movementManager.timePieceActive)
+        {
+            movementManager.hyperExtendTime();
+            movementManager.timePieceActive = true;
+            removeItem("Broken Timepiece");
+        }
     }
 
     public void itemSlotCheck(string itemName)
@@ -99,7 +161,7 @@ public class PlayerItems : MonoBehaviour
             }
             else if (!equippedItemSlots[i])
             {
-                Debug.Log("here");
+                //Debug.Log("here");
                 equippedItemSlots[i] = true;
                 equippedItemNames[i] = itemName;
 

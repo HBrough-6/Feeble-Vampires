@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     private LevelManager levelManager;
     private GameManager gameManager;
     private PlayerItems playerItems;
+    private MovementManager movementManager;
 
     private GameObject shopHolder;
 
@@ -33,6 +34,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private string secondDialogue;
     private string currentText;
 
+    public bool visited = false;
+    public int savedMove;
+
     private void Awake()
     {
         playerAbilities = FindObjectOfType<PlayerAbilities>();
@@ -45,19 +49,25 @@ public class Shop : MonoBehaviour
         /*dialogueHolder = transform.GetChild(1).gameObject;*/
         dialogueObject = dialogueHolder.transform.GetChild(1).GetComponent<TMP_Text>();
         playerItems = FindObjectOfType<PlayerItems>();
+        movementManager = FindObjectOfType<MovementManager>();
     }
 
     public void ActivateVendor()
     {
-        // set the current dialogue to the correct text
-        currentText = firstDialogue;
-        dialogueObject.text = currentText;
-        // turn on UI
-        shopHolder.SetActive(true);
-        dialogueHolder.SetActive(true);
+        if (!visited)
+        {
+            // set the current dialogue to the correct text
+            currentText = firstDialogue;
+            dialogueObject.text = currentText;
+            // turn on UI
+            shopHolder.SetActive(true);
+            dialogueHolder.SetActive(true);
 
-        // set the player to interacting
-        gameManager.skillSelecting = true;
+            // set the player to interacting
+            savedMove = movementManager.spaceCap;
+            movementManager.spaceCap = 0;
+            visited = true;
+        }
     }
 
 
@@ -65,10 +75,11 @@ public class Shop : MonoBehaviour
     {
         // disable to window
         shopHolder.SetActive(false);
-        shopHolder.SetActive(false);
-        // set the player to not interacting
-        gameManager.skillSelecting = false;
+        itemSelectHolder.SetActive(false);
+        itemsInButton.Clear();
         ConfirmSelection();
+
+        movementManager.spaceCap = savedMove;
     }
 
     public void ChooseRandomItems()
@@ -76,7 +87,7 @@ public class Shop : MonoBehaviour
         List<int> indexes = new List<int>();
         // get the player's current items
 
-        Debug.Log("possible items" + possibleItems.Count);
+        //Debug.Log("possible items" + possibleItems.Count);
         for (int i = 0; i < possibleItems.Count; i++)
         {
             indexes.Add(i);
@@ -113,9 +124,9 @@ public class Shop : MonoBehaviour
 
         int index3 = Random.Range(0, indexes.Count);
         itemsInButton.Add(indexes[index3]);
-        Debug.Log(itemsInButton[2]);
-        Debug.Log(possibleItems[itemsInButton[2]].DisplayName);
-        Debug.Log(itemButtons.Length);
+        //Debug.Log(itemsInButton[2]);
+        //Debug.Log(possibleItems[itemsInButton[2]].DisplayName);
+        //Debug.Log(itemButtons.Length);
         itemButtons[2].AssignItem(possibleItems[itemsInButton[2]]);
     }
 
@@ -132,10 +143,10 @@ public class Shop : MonoBehaviour
         }
 
         // make sure there is space available and the player has enough xp to buy items
-        if (currentItems.Count >= 2 /*|| PlayerAbilities.experiencePoints > currentItems.Count*/)
+        if (currentItems.Count >= 2 || playerAbilities.experiencePoints <= currentItems.Count)
         {
 
-            Debug.Log("currentItems count: " + currentItems.Count);
+            Debug.Log("currentItems count: " + currentItems.Count + "xp: " + playerAbilities.experiencePoints);
             return;
         }
 
@@ -167,11 +178,15 @@ public class Shop : MonoBehaviour
             playerItems.itemSlotCheck(currentItems[i].DisplayName);
         }
 
+        playerAbilities.spendPoints(currentItems.Count, false);
+        Debug.Log("spent " + currentItems.Count + " points");
         itemButtons[0].SetSelected(false);
         itemButtons[1].SetSelected(false);
         itemButtons[2].SetSelected(false);
 
         currentItems = new List<ItemSO>();
+
+
     }
 
 
