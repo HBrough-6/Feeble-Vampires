@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     private UIManager uiManager;
     private GameManager gameManager;
     private PlayerAbilities playerAbilities;
+    private Shop shop;
 
     private Vector2Int startLocation;
     private Vector2Int[] doorLocations;
@@ -59,6 +60,7 @@ public class LevelManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         gameManager = FindObjectOfType<GameManager>();
         playerAbilities = FindObjectOfType<PlayerAbilities>();
+        shop = FindObjectOfType<Shop>();
     }
 
     private void Start()
@@ -197,9 +199,10 @@ public class LevelManager : MonoBehaviour
             //playerAbilities.GainXP(2);
         }
         enemyManager.ClearAllEnemies();
-        gameManager.skillSelecting = false;
+
 
         inSafeZone = false;
+        shop.visited = false;
 
         // Debug.Log(currentLevel);
         Vector2Int LevelSize = GenerateDifficulty(currentLevel);
@@ -230,9 +233,8 @@ public class LevelManager : MonoBehaviour
             safeZoneVisited = true;
 
             SetSigilRequirement(0);
-            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 6)), transform.rotation, gridManager.obstructionsParent);
-            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 7)), transform.rotation, gridManager.obstructionsParent);
-            //Instantiate(gridManager.doorPrefab, gridManager.CellToWorldPos(new Vector2Int(15, 8)), transform.rotation, gridManager.obstructionsParent);
+
+            gameManager.skillSelecting = true;
 
             inSafeZone = true;
             // pause the timer
@@ -256,6 +258,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            gameManager.skillSelecting = false;
             currentLevel++;
             Debug.Log("at level" + currentLevel);
             // reached the first level of zone 2, reset the safezonevisited

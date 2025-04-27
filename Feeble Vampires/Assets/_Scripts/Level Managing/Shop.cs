@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     private LevelManager levelManager;
     private GameManager gameManager;
     private PlayerItems playerItems;
+    private MovementManager movementManager;
 
     private GameObject shopHolder;
 
@@ -33,6 +34,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private string secondDialogue;
     private string currentText;
 
+    public bool visited = false;
+    public int savedMove;
+
     private void Awake()
     {
         playerAbilities = FindObjectOfType<PlayerAbilities>();
@@ -45,19 +49,25 @@ public class Shop : MonoBehaviour
         /*dialogueHolder = transform.GetChild(1).gameObject;*/
         dialogueObject = dialogueHolder.transform.GetChild(1).GetComponent<TMP_Text>();
         playerItems = FindObjectOfType<PlayerItems>();
+        movementManager = FindObjectOfType<MovementManager>();
     }
 
     public void ActivateVendor()
     {
-        // set the current dialogue to the correct text
-        currentText = firstDialogue;
-        dialogueObject.text = currentText;
-        // turn on UI
-        shopHolder.SetActive(true);
-        dialogueHolder.SetActive(true);
+        if (!visited)
+        {
+            // set the current dialogue to the correct text
+            currentText = firstDialogue;
+            dialogueObject.text = currentText;
+            // turn on UI
+            shopHolder.SetActive(true);
+            dialogueHolder.SetActive(true);
 
-        // set the player to interacting
-        gameManager.skillSelecting = true;
+            // set the player to interacting
+            savedMove = movementManager.spaceCap;
+            movementManager.spaceCap = 0;
+            visited = true;
+        }
     }
 
 
@@ -67,9 +77,9 @@ public class Shop : MonoBehaviour
         shopHolder.SetActive(false);
         itemSelectHolder.SetActive(false);
         itemsInButton.Clear();
-        // set the player to not interacting
-        gameManager.skillSelecting = false;
         ConfirmSelection();
+
+        movementManager.spaceCap = savedMove;
     }
 
     public void ChooseRandomItems()

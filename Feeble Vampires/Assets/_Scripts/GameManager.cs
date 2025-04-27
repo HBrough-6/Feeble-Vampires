@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         //gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, -2000);
         playerHealth = 3;
         dead = false;
-        skillSelecting = false;
+        //skillSelecting = false;
         instakilled = false;
 
         uiManager = FindObjectOfType<UIManager>();

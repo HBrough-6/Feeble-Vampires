@@ -40,7 +40,6 @@ public class SkillRandomizer : MonoBehaviour
     {
         skillSelectHolder.SetActive(false);
         levelManager.GoToNextLevel();
-        gameManager.skillSelecting = false;
     }
 
     public void FillButtons()
