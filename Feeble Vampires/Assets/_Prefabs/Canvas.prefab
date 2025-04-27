@@ -7187,9 +7187,9 @@ MonoBehaviour:
   - {fileID: 1235801759418183364}
   - {fileID: 4626179035029621656}
   skillDesc:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1375742784480238304}
+  - {fileID: 1248097719814131785}
+  - {fileID: 5645745216960816448}
 --- !u!1 &3435366761048611913
 GameObject:
   m_ObjectHideFlags: 0
