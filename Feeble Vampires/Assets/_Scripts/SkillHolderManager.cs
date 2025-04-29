@@ -31,7 +31,7 @@ public class SkillHolderManager : MonoBehaviour
     //christophe addition
     public void AddSkillDesc(SkillSO skilldesc)
     {
-        if (skills.Count >= 3)
+        if (skills.Count > 3)
             return;
 
         skillDesc[skills.Count - 1].text = skills[skills.Count - 1].SkillDescription;
