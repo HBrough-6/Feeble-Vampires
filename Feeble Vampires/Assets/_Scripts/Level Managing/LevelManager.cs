@@ -277,6 +277,8 @@ public class LevelManager : MonoBehaviour
         }
 
         uiManager.UpdateLevel(currentLevel);
+
+        movementManager.startCamera();
     }
 
     public void AttemptDoorOpen()

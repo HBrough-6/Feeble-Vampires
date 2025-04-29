@@ -61,6 +61,8 @@ public class MovementManager : MonoBehaviour
 
     Vector2Int startingPosInGrid;
 
+    public GameObject cameraObject;
+
     private void Awake()
     {
         baseCap = 2;
@@ -99,6 +101,8 @@ public class MovementManager : MonoBehaviour
 
         playerPosInGrid = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.z));
         startingPosInGrid = playerPosInGrid;
+
+        startCamera();
     }
 
     // Update is called once per frame
@@ -199,6 +203,23 @@ public class MovementManager : MonoBehaviour
                 endPoint.transform.position = new Vector3
                         (pathPoints[distance - 1].x, endPoint.transform.position.y, pathPoints[distance - 1].y);
             }
+        }
+
+        if (cameraObject.transform.position.x + 5 <= player.transform.position.x)
+        {
+            cameraObject.transform.position += Vector3.right;
+        }
+        if (cameraObject.transform.position.x - 5 >= player.transform.position.x)
+        {
+            cameraObject.transform.position += Vector3.left;
+        }
+        if (cameraObject.transform.position.z + 4 <= player.transform.position.z - 4)
+        {
+            cameraObject.transform.position += Vector3.forward;
+        }
+        if (cameraObject.transform.position.z - 4 >= player.transform.position.z - 4)
+        {
+            cameraObject.transform.position += Vector3.back;
         }
     }
 
@@ -529,5 +550,11 @@ public class MovementManager : MonoBehaviour
     {
         maxWidth = (width * 8) - 1;
         maxHeight = (height * 8) - 1;
+    }
+
+    public void startCamera()
+    {
+        cameraObject.transform.position = new Vector3
+            (player.transform.position.x, cameraObject.transform.position.y, player.transform.position.z - 4);
     }
 }
