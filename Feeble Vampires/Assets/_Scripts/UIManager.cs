@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text gridMiniMap;
     public GridManager gridManager;
     public TextMeshProUGUI xpText;
+    public TMP_Text sigilText;
 
     public TMP_Text levelText;
 
@@ -30,6 +31,21 @@ public class UIManager : MonoBehaviour
     public void UpdateXP(int amount)
     {
         xpText.text = ": " + amount;
+    }
+
+    public void UpdateSigilText(int current, int max)
+    {
+        // makes the Sigil requirement disappear
+        if (current == -1 && max == -1)
+        {
+            sigilText.text = "";
+            return;
+        }
+
+        // update the text
+        string text = current + "/" + max + " Sigils";
+        sigilText.text = text;
+
     }
 
     public void makeMap(bool canEcholocate)

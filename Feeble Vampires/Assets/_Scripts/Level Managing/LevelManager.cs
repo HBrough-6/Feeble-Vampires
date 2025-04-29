@@ -239,6 +239,7 @@ public class LevelManager : MonoBehaviour
             inSafeZone = true;
             // pause the timer
             gameManager.skillSelecting = true;
+            uiManager.UpdateSigilText(-1, -1);
         }
         // player is at the final level
         else if (currentLevel == totalNumLevels - 1)
@@ -293,12 +294,14 @@ public class LevelManager : MonoBehaviour
     public void PickUpSigil()
     {
         currentSigilsCollected++;
+        uiManager.UpdateSigilText(currentSigilsCollected, SigilsRequiredForUnlock);
     }
 
     public void SetSigilRequirement(int sigils)
     {
         SigilsRequiredForUnlock = sigils;
         currentSigilsCollected = 0;
+        uiManager.UpdateSigilText(0, sigils);
     }
 
     public void SetStartLocation(Vector2Int sPos)
