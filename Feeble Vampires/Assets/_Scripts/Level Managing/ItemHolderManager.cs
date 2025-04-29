@@ -46,7 +46,7 @@ public class ItemHolderManager : MonoBehaviour
 
     public void AddItemDesc(ItemSO itemdesc)
     {
-        if (items.Count >= 2)
+        if (items.Count > 2)
             return;
 
         itemDesc[items.Count - 1].text = items[items.Count - 1].ItemDescription;
