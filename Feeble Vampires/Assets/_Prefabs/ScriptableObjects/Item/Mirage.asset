@@ -15,5 +15,5 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Mirage
   <Icon>k__BackingField: {fileID: 21300000, guid: 495373166cd85464eba6e39ca702fcc3,
     type: 3}
-  <ItemDescription>k__BackingField: (Passive) - If caught by an enemy, move forward
+  <ItemDescription>k__BackingField: (Passive) If caught by an enemy, move forward
     out of their line of sight and consume this item.

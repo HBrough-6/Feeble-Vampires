@@ -15,5 +15,5 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Leech
   <Icon>k__BackingField: {fileID: 21300000, guid: 8ba0fd5cc98d6b240bcae3bf14d2ec81,
     type: 3}
-  <ItemDescription>k__BackingField: (Active) - Instantly die and end your run, and
-    start the next run with a skill of your choice.
+  <ItemDescription>k__BackingField: (Active) Instantly die, and start the next run
+    with a skill of your choice.

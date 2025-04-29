@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7a4c291ebe93d49af7772499188da6, type: 3}
   m_Name: Broken Timepiece
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Mirage
-  <Icon>k__BackingField: {fileID: 21300000, guid: 495373166cd85464eba6e39ca702fcc3,
+  <DisplayName>k__BackingField: Broken Timepiece
+  <Icon>k__BackingField: {fileID: 21300000, guid: 183094f816a426a4aa4cc6e2da140709,
     type: 3}
-  <ItemDescription>k__BackingField: (Passive) - If caught by an enemy, move forward
-    out of their line of sight and consume this item.
+  <ItemDescription>k__BackingField: (Active) Your next turn is twice as long.

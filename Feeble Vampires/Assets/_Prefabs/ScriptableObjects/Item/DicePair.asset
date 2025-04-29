@@ -15,6 +15,5 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Dice Pair
   <Icon>k__BackingField: {fileID: 21300000, guid: 106cca548692a6c4c8a4c37c8c8a5d27,
     type: 3}
-  <ItemDescription>k__BackingField: Roll two dice. The first roll determines how
-    far you are able to move in the next turn. The second roll determines how long
-    you have to make that move.
+  <ItemDescription>k__BackingField: (Active) Roll two dice which determine move distance
+    and turn timer.
