@@ -4073,12 +4073,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921402157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.596393, y: 0, z: 0, w: 0.80269265}
-  m_LocalPosition: {x: 0.10637951, y: 12.91, z: -2.0515318}
+  m_LocalRotation: {x: 0.596393, y: -0, z: -0, w: 0.80269265}
+  m_LocalPosition: {x: 7, y: 13.91, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1108902552}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 73.224, y: 0, z: 0}
 --- !u!114 &921402161
 MonoBehaviour:
@@ -4851,7 +4851,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 895930171}
-  - {fileID: 921402160}
   - {fileID: 80609651}
   - {fileID: 57409098}
   - {fileID: 2143843515}
@@ -5292,6 +5291,7 @@ MonoBehaviour:
   doping: 0
   spawningBatBuddy: 0
   batBuddy: {fileID: 119738089}
+  cameraObject: {fileID: 921402157}
 --- !u!4 &1269597651
 Transform:
   m_ObjectHideFlags: 0
@@ -8074,6 +8074,7 @@ SceneRoots:
   - {fileID: 1931230596}
   - {fileID: 1386344187}
   - {fileID: 1269597651}
+  - {fileID: 921402160}
   - {fileID: 1108902552}
   - {fileID: 9075496}
   - {fileID: 1440215150}
