@@ -556,6 +556,6 @@ public class MovementManager : MonoBehaviour
     {
         int zPosition = playerPosInGrid.y - 4;
         cameraObject.transform.localPosition = new Vector3
-            (playerPosInGrid.x + 5, cameraObject.transform.position.y, zPosition);
+            (playerPosInGrid.x + 0, cameraObject.transform.position.y, zPosition);
     }
 }
