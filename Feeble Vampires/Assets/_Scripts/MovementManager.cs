@@ -59,7 +59,7 @@ public class MovementManager : MonoBehaviour
 
     int placeholderSpaceCap;
 
-    Vector2Int startingPosInGrid;
+    public Vector2Int startingPosInGrid;
 
     public GameObject cameraObject;
 

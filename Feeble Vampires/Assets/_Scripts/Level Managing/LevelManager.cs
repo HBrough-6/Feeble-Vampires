@@ -280,6 +280,8 @@ public class LevelManager : MonoBehaviour
         uiManager.UpdateLevel(currentLevel);
 
         movementManager.startCamera();
+
+        movementManager.startingPosInGrid = movementManager.playerPosInGrid;
     }
 
     public void AttemptDoorOpen()
