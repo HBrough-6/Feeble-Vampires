@@ -2542,7 +2542,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4322980452577900333, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
+    - {fileID: 8881408282196283149, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
+    - {fileID: 646496080329773212, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4942094010546877483, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -5506,6 +5509,7 @@ MonoBehaviour:
   doping: 0
   spawningBatBuddy: 0
   batBuddy: {fileID: 119738089}
+  startingPosInGrid: {x: 0, y: 0}
   cameraObject: {fileID: 921402157}
 --- !u!4 &1269597651
 Transform:
@@ -5942,6 +5946,7 @@ GameObject:
   - component: {fileID: 1440215150}
   - component: {fileID: 1440215151}
   - component: {fileID: 1440215152}
+  - component: {fileID: 1440215153}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -5995,6 +6000,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipBox: {fileID: 1162876699}
+--- !u!114 &1440215153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440215149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8f97d5e3a62704888e38d0a4c5e356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuHolder: {fileID: 0}
+  settingsMenuHolder: {fileID: 0}
+  audioSettingsMenuHolder: {fileID: 0}
+  videoSettingsMenuHolder: {fileID: 0}
+  keybindsMenuHolder: {fileID: 0}
+  tutorialMenuHolder: {fileID: 0}
+  collectionsMenuHolder: {fileID: 0}
+  currentMenuHolder: {fileID: 0}
+  previousMenuHolder: {fileID: 0}
+  buttonLabels: []
 --- !u!1 &1468174022
 GameObject:
   m_ObjectHideFlags: 0
