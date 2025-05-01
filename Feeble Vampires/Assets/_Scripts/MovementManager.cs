@@ -181,12 +181,12 @@ public class MovementManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L) || Input.GetMouseButtonDown(1))
             {
                 resetMovement();
             }
 
-            if (Input.GetKeyDown(KeyCode.K) && distance > 0)
+            if ((Input.GetKeyDown(KeyCode.K) || Input.GetMouseButtonDown(0)) && distance > 0)
             {
                 submitMovement();
             }
