@@ -5927,9 +5927,9 @@ MonoBehaviour:
   gridMiniMap: {fileID: 1515198846}
   gridManager: {fileID: 1041244745}
   xpText: {fileID: 736611120}
-  sigilText: {fileID: 0}
+  sigilText: {fileID: 1642112286}
   levelText: {fileID: 521554645}
-  player: {fileID: 0}
+  player: {fileID: 1108902553}
 --- !u!114 &1440215152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6642,6 +6642,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632908190}
   m_CullTransparentMesh: 1
+--- !u!114 &1642112286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 556331844834411842, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1677015049 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1375742784480238304, guid: 1220e59e96ebcae4ab941871a856dd12,
