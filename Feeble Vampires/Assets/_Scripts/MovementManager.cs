@@ -205,19 +205,19 @@ public class MovementManager : MonoBehaviour
             }
         }
 
-        if (cameraObject.transform.position.x + 5 <= player.transform.position.x)
+        if (cameraObject.transform.position.x + 3 <= player.transform.position.x)
         {
             cameraObject.transform.position += Vector3.right;
         }
-        if (cameraObject.transform.position.x - 5 >= player.transform.position.x)
+        if (cameraObject.transform.position.x - 3 >= player.transform.position.x)
         {
             cameraObject.transform.position += Vector3.left;
         }
-        if (cameraObject.transform.position.z + 4 <= player.transform.position.z - 4)
+        if (cameraObject.transform.position.z + 2 <= player.transform.position.z - 4)
         {
             cameraObject.transform.position += Vector3.forward;
         }
-        if (cameraObject.transform.position.z - 4 >= player.transform.position.z - 4)
+        if (cameraObject.transform.position.z - 2 >= player.transform.position.z - 4)
         {
             cameraObject.transform.position += Vector3.back;
         }
@@ -556,6 +556,6 @@ public class MovementManager : MonoBehaviour
     {
         int zPosition = playerPosInGrid.y - 4;
         cameraObject.transform.localPosition = new Vector3
-            (playerPosInGrid.x, cameraObject.transform.position.y, zPosition);
+            (playerPosInGrid.x + 5, cameraObject.transform.position.y, zPosition);
     }
 }
