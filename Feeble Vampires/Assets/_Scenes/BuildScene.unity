@@ -2724,6 +2724,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1518379748937568654, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1440215153}
+    - target: {fileID: 1518379748937568654, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: settingsMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1691459358631422968, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_Pivot.y
@@ -3197,6 +3207,16 @@ PrefabInstance:
       propertyPath: skillDesc.Array.data[2]
       value: 
       objectReference: {fileID: 1485769968}
+    - target: {fileID: 8465486958721376220, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1440215154}
+    - target: {fileID: 8465486958721376220, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 9215625232924681250, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_fontAsset
@@ -3267,6 +3287,36 @@ RectTransform:
 --- !u!4 &502792740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8623564278425956462, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7536377995429055582, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3486724299189982178, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1086535765263013856, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1621923093839878623, guid: 1220e59e96ebcae4ab941871a856dd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 502792737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &502792745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3481260962351558618, guid: 1220e59e96ebcae4ab941871a856dd12,
     type: 3}
   m_PrefabInstance: {fileID: 502792737}
   m_PrefabAsset: {fileID: 0}
@@ -7482,6 +7532,7 @@ GameObject:
   - component: {fileID: 1440215151}
   - component: {fileID: 1440215152}
   - component: {fileID: 1440215153}
+  - component: {fileID: 1440215154}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -7547,16 +7598,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8f97d5e3a62704888e38d0a4c5e356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuHolder: {fileID: 0}
-  settingsMenuHolder: {fileID: 0}
-  audioSettingsMenuHolder: {fileID: 0}
-  videoSettingsMenuHolder: {fileID: 0}
-  keybindsMenuHolder: {fileID: 0}
+  mainMenuHolder: {fileID: 502792744}
+  settingsMenuHolder: {fileID: 502792743}
+  audioSettingsMenuHolder: {fileID: 502792741}
+  videoSettingsMenuHolder: {fileID: 502792742}
+  keybindsMenuHolder: {fileID: 1426666412}
   tutorialMenuHolder: {fileID: 0}
   collectionsMenuHolder: {fileID: 0}
   currentMenuHolder: {fileID: 0}
   previousMenuHolder: {fileID: 0}
   buttonLabels: []
+--- !u!114 &1440215154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440215149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e686908e2570a04f80a96fbb153ff32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 502792745}
 --- !u!1 &1468174022
 GameObject:
   m_ObjectHideFlags: 0
