@@ -38,6 +38,11 @@ public class TitleManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void returnToTitle()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void quitGame()
     {
         Application.Quit();

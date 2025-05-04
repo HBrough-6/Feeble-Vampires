@@ -59,7 +59,7 @@ public class MovementManager : MonoBehaviour
 
     int placeholderSpaceCap;
 
-    Vector2Int startingPosInGrid;
+    public Vector2Int startingPosInGrid;
 
     public GameObject cameraObject;
 
@@ -181,12 +181,12 @@ public class MovementManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L) || Input.GetMouseButtonDown(1))
             {
                 resetMovement();
             }
 
-            if (Input.GetKeyDown(KeyCode.K) && distance > 0)
+            if ((Input.GetKeyDown(KeyCode.K) || Input.GetMouseButtonDown(0)) && distance > 0)
             {
                 submitMovement();
             }
@@ -205,19 +205,19 @@ public class MovementManager : MonoBehaviour
             }
         }
 
-        if (cameraObject.transform.position.x + 5 <= player.transform.position.x)
+        if (cameraObject.transform.position.x + 3 <= player.transform.position.x)
         {
             cameraObject.transform.position += Vector3.right;
         }
-        if (cameraObject.transform.position.x - 5 >= player.transform.position.x)
+        if (cameraObject.transform.position.x - 3 >= player.transform.position.x)
         {
             cameraObject.transform.position += Vector3.left;
         }
-        if (cameraObject.transform.position.z + 4 <= player.transform.position.z - 4)
+        if (cameraObject.transform.position.z + 2 <= player.transform.position.z - 4)
         {
             cameraObject.transform.position += Vector3.forward;
         }
-        if (cameraObject.transform.position.z - 4 >= player.transform.position.z - 4)
+        if (cameraObject.transform.position.z - 2 >= player.transform.position.z - 4)
         {
             cameraObject.transform.position += Vector3.back;
         }
@@ -554,7 +554,8 @@ public class MovementManager : MonoBehaviour
 
     public void startCamera()
     {
-        cameraObject.transform.position = new Vector3
-            (player.transform.position.x, cameraObject.transform.position.y, player.transform.position.z - 4);
+        int zPosition = playerPosInGrid.y - 4;
+        cameraObject.transform.localPosition = new Vector3
+            (playerPosInGrid.x + 0, cameraObject.transform.position.y, zPosition);
     }
 }
