@@ -43,6 +43,7 @@ public class EnemyBrain : MonoBehaviour
     /// </summary>
     public void Activate()
     {
+        enemyDeathArea.CheckForPlayer();
         enemySight.DetermineSightline();
         enemyMovement.Move();
         enemySight.DetermineSightline();
