@@ -34,10 +34,10 @@ public class EnemySight : MonoBehaviour
         seenTilesLocations = new Vector2Int[8];
         tileSeen = new bool[8];
 
-        rightSight = new Vector2Int[8];
-        leftSight = new Vector2Int[8];
-        upSight = new Vector2Int[8];
-        downSight = new Vector2Int[8];
+        rightSight = new Vector2Int[10];
+        leftSight = new Vector2Int[10];
+        upSight = new Vector2Int[10];
+        downSight = new Vector2Int[10];
 
         #region Initializing SightTiles
         rightSight[0] = new Vector2Int(1, 0);
@@ -48,6 +48,9 @@ public class EnemySight : MonoBehaviour
         rightSight[5] = new Vector2Int(4, 0);
         rightSight[6] = new Vector2Int(3, -1);
         rightSight[7] = new Vector2Int(4, -1);
+        // checks for seeing around corners
+        rightSight[8] = new Vector2Int(2, 1);
+        rightSight[9] = new Vector2Int(2, -1);
 
 
         leftSight[0] = new Vector2Int(-1, 0);
@@ -58,6 +61,8 @@ public class EnemySight : MonoBehaviour
         leftSight[5] = new Vector2Int(-4, 0);
         leftSight[6] = new Vector2Int(-3, -1);
         leftSight[7] = new Vector2Int(-4, -1);
+        leftSight[8] = new Vector2Int(-2, 1);
+        leftSight[9] = new Vector2Int(-2, -1);
 
 
         upSight[0] = new Vector2Int(0, 1);
@@ -68,6 +73,8 @@ public class EnemySight : MonoBehaviour
         upSight[5] = new Vector2Int(0, 4);
         upSight[6] = new Vector2Int(1, 3);
         upSight[7] = new Vector2Int(1, 4);
+        upSight[8] = new Vector2Int(-1, 2);
+        upSight[9] = new Vector2Int(1, 2);
 
 
         downSight[0] = new Vector2Int(0, -1);
@@ -78,6 +85,9 @@ public class EnemySight : MonoBehaviour
         downSight[5] = new Vector2Int(0, -4);
         downSight[6] = new Vector2Int(1, -3);
         downSight[7] = new Vector2Int(1, -4);
+        downSight[8] = new Vector2Int(-1, -2);
+        downSight[9] = new Vector2Int(1, -2);
+
 
         #endregion
 
@@ -95,8 +105,8 @@ public class EnemySight : MonoBehaviour
     public void DetermineSightline()
     {
         Vector2Int moveDir = enemyBrain.moveDir;
-        Vector2Int[] tempTiles = new Vector2Int[8];
-        Vector2Int[] sightedTileLocations = new Vector2Int[8];
+        Vector2Int[] tempTiles = new Vector2Int[10];
+        Vector2Int[] sightedTileLocations = new Vector2Int[10];
         Vector2Int enemyPos = enemyBrain.posInGrid;
 
         ResetSightline();
@@ -126,11 +136,14 @@ public class EnemySight : MonoBehaviour
         #endregion
 
         // assign each of the sight locations
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 10; i++)
         {
             sightedTileLocations[i] = enemyPos + tempTiles[i];
-            sightTileObjects[i].transform.position = gridManager.CellToWorldPos(sightedTileLocations[i].x, sightedTileLocations[i].y);
+            if (i < 8)
+                sightTileObjects[i].transform.position = gridManager.CellToWorldPos(sightedTileLocations[i].x, sightedTileLocations[i].y);
         }
+
+
 
         // is the first tile obstructed
         if (CheckSightTileValid(sightedTileLocations[0]))
@@ -141,8 +154,9 @@ public class EnemySight : MonoBehaviour
             {
                 tileSeen[1] = true;
                 // check if sighted tile location 2 and 3 are seen
-                if (CheckSightTileValid(sightedTileLocations[2]))
+                if (CheckSightTileValid(sightedTileLocations[2]) && CheckSightTileValid(sightedTileLocations[8]))
                 {
+                    Debug.Log(sightedTileLocations[8]);
                     tileSeen[2] = true;
                     if (CheckSightTileValid(sightedTileLocations[3]))
                         tileSeen[3] = true;
@@ -150,12 +164,14 @@ public class EnemySight : MonoBehaviour
                 // check if sighted tile location 4 and 5 are seen
                 if (CheckSightTileValid(sightedTileLocations[4]))
                 {
+                    Debug.Log(sightedTileLocations[9]);
+
                     tileSeen[4] = true;
                     if (CheckSightTileValid(sightedTileLocations[5]))
                         tileSeen[5] = true;
                 }
                 // check if sighted tile location 6 and 7 are seen
-                if (CheckSightTileValid(sightedTileLocations[6]))
+                if (CheckSightTileValid(sightedTileLocations[6]) && CheckSightTileValid(sightedTileLocations[9]))
                 {
                     tileSeen[6] = true;
                     if (CheckSightTileValid(sightedTileLocations[7]))
