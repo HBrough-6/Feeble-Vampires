@@ -14,8 +14,11 @@ public class EnemyDeathArea : MonoBehaviour
         player = FindObjectOfType<MovementManager>();
         playerAbilities = FindObjectOfType<PlayerAbilities>();
 
-        deathTiles = new Vector2Int[8];
+        deathTiles = new Vector2Int[9];
 
+        // [-1,1] [0,1] [1,1]
+        // [0,0] [0,0] [0,0]
+        // [0,0] [0,0] [0,0]
         deathTiles[0] = new Vector2Int(0, 1);
         deathTiles[1] = new Vector2Int(1, 1);
         deathTiles[2] = new Vector2Int(1, 0);
@@ -23,7 +26,8 @@ public class EnemyDeathArea : MonoBehaviour
         deathTiles[4] = new Vector2Int(0, -1);
         deathTiles[5] = new Vector2Int(-1, -1);
         deathTiles[6] = new Vector2Int(-1, 0);
-        deathTiles[7] = new Vector2Int(-1, -1);
+        deathTiles[7] = new Vector2Int(-1, 1);
+        deathTiles[8] = new Vector2Int(0, 0);
     }
 
     public void CheckForPlayer()

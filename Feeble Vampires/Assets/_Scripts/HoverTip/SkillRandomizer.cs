@@ -4,6 +4,7 @@ using UnityEngine;
 public class SkillRandomizer : MonoBehaviour
 {
     private PlayerAbilities playerAbilities;
+    private MovementManager movementManager;
     private SkillHolderManager skillHolderManager;
     private GameObject skillSelectHolder;
     private LevelManager levelManager;
@@ -20,6 +21,8 @@ public class SkillRandomizer : MonoBehaviour
     public int buttonOneSkill;
     public int buttonTwoSkill;
 
+    private int savedMove;
+
     private void Awake()
     {
         playerAbilities = FindObjectOfType<PlayerAbilities>();
@@ -28,18 +31,23 @@ public class SkillRandomizer : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
         gameManager = FindObjectOfType<GameManager>();
         tooltipMenu = FindObjectOfType<TooltipMenu>();
+        movementManager = FindObjectOfType<MovementManager>();
     }
 
     public void Activate()
     {
         skillSelectHolder.SetActive(true);
         FillButtons();
+        // disable player movement
+        savedMove = movementManager.spaceCap;
+        movementManager.spaceCap = 0;
     }
 
     public void Deactivate()
     {
         skillSelectHolder.SetActive(false);
         levelManager.GoToNextLevel();
+
     }
 
     public void FillButtons()
@@ -95,6 +103,8 @@ public class SkillRandomizer : MonoBehaviour
 
     public void UseButtonOne()
     {
+        // enable player movement
+        movementManager.spaceCap = savedMove;
         // if the player has too many skills
         if (buttonOneSkill == -1)
         {
@@ -119,6 +129,10 @@ public class SkillRandomizer : MonoBehaviour
 
     public void UseButtonTwo()
     {
+        // enable player movement
+        movementManager.spaceCap = savedMove;
+
+
         if (!playerAbilities.spendPoints(2, true))
         {
             return;
@@ -143,6 +157,7 @@ public class SkillRandomizer : MonoBehaviour
 
     public void skipSkillAction()
     {
+        movementManager.spaceCap = savedMove;
         Deactivate();
     }
 }

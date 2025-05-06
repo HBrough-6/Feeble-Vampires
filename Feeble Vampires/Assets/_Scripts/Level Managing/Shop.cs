@@ -205,17 +205,4 @@ public class Shop : MonoBehaviour
             ChooseRandomItems();
         }
     }
-
-
-    private void OnGUI()
-    {
-        if (GUILayout.Button("set"))
-        {
-            ActivateVendor();
-        }
-        if (GUILayout.Button("activate"))
-        {
-            DialogueButton();
-        }
-    }
 }
