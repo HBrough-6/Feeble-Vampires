@@ -217,7 +217,7 @@ public class LevelManager : MonoBehaviour
             currentLevel++;
         }
         // the safe zone has not been visited - 4/10 chance to spawn the safe zone - formula to check if the level is the last in the zone
-        else if (!safeZoneVisited && ((rand > 5) || currentLevel == currentLevelsPerZone * currentZone + 1))
+        else if (!safeZoneVisited && ((rand > 5) || currentLevel == currentLevelsPerZone * currentZone + 1 || playerAbilities.experiencePoints >= 3))
         {
             //Debug.Log("!" + safeZoneVisited + rand + " > 5" + currentLevel + " == " + currentLevelsPerZone + " * " + currentZone + " + 1");
             // generate the floor
