@@ -99,8 +99,8 @@ public class UIManager : MonoBehaviour
                         }
                     }
                 }
-                if (xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
-                    yAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.x))
+                if ((xAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.z) &&
+                    yAxis == Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").transform.position.x)) && canEcholocate)
                 {
                     addedText = "<color=blue>\u25a0</color>";
                 }
