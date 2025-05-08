@@ -64,6 +64,7 @@ public class EnemyManager : MonoBehaviour
         deadEnemies.Add(deadEnemy);
         enemies.Remove(deadEnemy);
         deadEnemy.gameObject.SetActive(false);
+        AudioManager.Instance.PlaySFX("Enemy Death");
     }
 
     /// <summary>

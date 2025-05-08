@@ -212,6 +212,7 @@ public class LevelManager : MonoBehaviour
         // player is in zone 1 and the safe space hasn't been visited yet
         if (currentLevel == 0)
         {
+            AudioManager.Instance.PlayMusic("Theme");
             // import level 1;
             GenerateLevelOne();
             currentLevel++;
@@ -219,6 +220,7 @@ public class LevelManager : MonoBehaviour
         // the safe zone has not been visited - 4/10 chance to spawn the safe zone - formula to check if the level is the last in the zone
         else if (!safeZoneVisited && ((rand > 5) || currentLevel == currentLevelsPerZone * currentZone + 1 || playerAbilities.experiencePoints >= 3))
         {
+            AudioManager.Instance.PlayMusic("Shop");
             //Debug.Log("!" + safeZoneVisited + rand + " > 5" + currentLevel + " == " + currentLevelsPerZone + " * " + currentZone + " + 1");
             // generate the floor
             gridManager.width = 2;
@@ -244,6 +246,8 @@ public class LevelManager : MonoBehaviour
         // player is at the final level
         else if (currentLevel == totalNumLevels - 1)
         {
+            AudioManager.Instance.PlayMusic("Theme");
+
             Debug.Log("final level");
             // import final level
             // gridManager.StartFinalLevel()
@@ -259,6 +263,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayMusic("Theme");
             gameManager.skillSelecting = false;
             currentLevel++;
             Debug.Log("at level" + currentLevel);

@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Start()
@@ -35,13 +36,14 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Sound not found");
 
         }
-
         else
         {
+            StopMusic();
             musicSource.clip = s.clip;
             musicSource.Play();
         }
     }
+
 
     public void PlaySFX(string name)
     {
@@ -57,5 +59,15 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
+    public void PlayButtonSound()
+    {
+        PlaySFX("Button Click");
     }
 }
