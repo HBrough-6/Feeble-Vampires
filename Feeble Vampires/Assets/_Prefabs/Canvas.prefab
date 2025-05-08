@@ -1793,7 +1793,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8623564278425956462}
-  - {fileID: 4554008980458063932}
   - {fileID: 817000683438308084}
   - {fileID: 1691459358631422968}
   - {fileID: 3063698849107206155}
@@ -1805,6 +1804,7 @@ RectTransform:
   - {fileID: 2013555414134975646}
   - {fileID: 5621087884407360063}
   - {fileID: 2589635559341420013}
+  - {fileID: 4554008980458063932}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12442,6 +12442,9 @@ MonoBehaviour:
   skillIcons:
   - {fileID: 4665629207658531984}
   - {fileID: 8452969720681284802}
+  itemDesc:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6622436518929228195
 GameObject:
   m_ObjectHideFlags: 0
