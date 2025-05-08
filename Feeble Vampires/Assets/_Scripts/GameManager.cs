@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     GridManager gridManager;
 
+    bool failureReset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
 
         // bigSkillSelectMenu.SetActive(false);
+
+        failureReset = false;
     }
 
 
@@ -168,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         internalTimer = 0;
 
-        if (movementManager.player.GetComponent<PlayerAbilities>().hideable)
+        if (movementManager.player.GetComponent<PlayerAbilities>().hideable && !failureReset)
         {
             movementManager.switchHangingStates();
             failure = false;
@@ -181,6 +185,10 @@ public class GameManager : MonoBehaviour
             if (failure)
             {
                 failedTimerCount++;
+            }
+            else
+            {
+                failureReset = true;
             }
             failure = true;
         }
