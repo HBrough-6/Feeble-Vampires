@@ -73,33 +73,39 @@ public class PlayerAbilities : MonoBehaviour
         {
             //Debug.Log("echo");
             canEcholocate = true;
+            AudioManager.Instance.PlaySFX("Echolocation");
         }
         else if (skillName == "Swift Step")
         {
             //Debug.Log("Swift");
             movementManager.spaceCap += 1;
             isSwifter = true;
+            //AudioManager.Instance.PlaySFX("Swift Step");
         }
         else if (skillName == "Hemoglobin Rush")
         {
             //Debug.Log("Hemo");
             canRushAttack = true;
+            AudioManager.Instance.PlaySFX("Hemoglobin Rush");
         }
         else if (skillName == "Neural Formation")
         {
             //Debug.Log("Neu");
             movementManager.timeLimit = movementManager.baseTime + 2;
             smarter = true;
+            AudioManager.Instance.PlaySFX("Neural Formation");
         }
         else if (skillName == "Hang")
         {
             //Debug.Log("Hang");
             hideable = true;
+            AudioManager.Instance.PlaySFX("Hang");
         }
         else if (skillName == "Cheapskate")
         {
             //Debug.Log("Cheap");
             isGreedy = true;
+            AudioManager.Instance.PlaySFX("Cheapskate");
         }
         else if (skillName == "Apex Instinct")
         {
@@ -107,16 +113,19 @@ public class PlayerAbilities : MonoBehaviour
             movementManager.timeLimit /= 2;
             movementManager.spaceCap *= 2;
             strongestInstinct = true;
+            AudioManager.Instance.PlaySFX("Apex Instinct");
         }
         else if (skillName == "Tracker")
         {
             //Debug.Log("Tracker");
             scentTracker = true;
+            AudioManager.Instance.PlaySFX("Tracker");
         }
         else if (skillName == "Clone")
         {
             //Debug.Log("Clone");
             clone = true;
+            AudioManager.Instance.PlaySFX("Clone");
         }
     }
 
