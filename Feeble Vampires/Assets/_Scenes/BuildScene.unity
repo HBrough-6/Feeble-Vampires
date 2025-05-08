@@ -2724,6 +2724,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: settingsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1621923093839878623, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1691459358631422968, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       propertyPath: m_Pivot.y
@@ -2844,6 +2849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481260962351558618, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3691300321246457825, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
@@ -3308,6 +3318,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 974301882}
+    - targetCorrespondingSourceObject: {fileID: 5621087884407360063, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 969957812}
+    - targetCorrespondingSourceObject: {fileID: 5621087884407360063, guid: 1220e59e96ebcae4ab941871a856dd12,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1632908191}
     - targetCorrespondingSourceObject: {fileID: 8623564278425956462, guid: 1220e59e96ebcae4ab941871a856dd12,
         type: 3}
       insertIndex: 2
@@ -3320,14 +3338,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 3
       addedObject: {fileID: 1557735034}
-    - targetCorrespondingSourceObject: {fileID: 5621087884407360063, guid: 1220e59e96ebcae4ab941871a856dd12,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 969957812}
-    - targetCorrespondingSourceObject: {fileID: 5621087884407360063, guid: 1220e59e96ebcae4ab941871a856dd12,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1632908191}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1220e59e96ebcae4ab941871a856dd12, type: 3}
 --- !u!114 &502792738 stripped
@@ -8802,7 +8812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1426666413
 Transform:
   m_ObjectHideFlags: 0
@@ -10814,7 +10824,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.85
+  m_fontSize: 27
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
