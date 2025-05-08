@@ -164,22 +164,25 @@ public class GameManager : MonoBehaviour
     public void resetTimer(bool expired)
     {
         timer = movementManager.timeLimit;
+        bool failure = true;
 
         internalTimer = 0;
 
         if (movementManager.player.GetComponent<PlayerAbilities>().hideable)
         {
             movementManager.switchHangingStates();
+            failure = false;
         }
 
         if (expired)
         {
             movementManager.enemyManager.EnemiesTakeTurn();
 
-            if (!movementManager.player.GetComponent<PlayerAbilities>().hideable)
+            if (failure)
             {
                 failedTimerCount++;
             }
+            failure = true;
         }
     }
 }
