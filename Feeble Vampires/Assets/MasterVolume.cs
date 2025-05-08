@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class MasterVolume : MonoBehaviour
 {
     [SerializeField] Slider soundSlider;
 
+    public float volume;
+
     // Start is called before the first frame update
     void Start()
     {
-        AdjustVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
+        PlayerPrefs.SetFloat("SavedMasterVolume", 1);
+        AdjustVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 1));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        volume = AudioListener.volume;
     }
 
     public void SetVolumeFromSlider()
