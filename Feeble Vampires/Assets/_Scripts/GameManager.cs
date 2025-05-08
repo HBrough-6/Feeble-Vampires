@@ -86,7 +86,12 @@ public class GameManager : MonoBehaviour
         //gameOverHolder.transform.localPosition = new Vector2(gameOverHolder.transform.localPosition.x, 0);
         dead = true;
         gameOverHolder.SetActive(true);
-        if (playerHealth != 0) playerHealth = 0;
+        if (playerHealth != 0)
+        {
+            playerHealth = 0;
+            AudioManager.Instance.PlayMusic("GameOver");
+
+        }
 
         if (playerItems.leech) selfDestruct = true;
     }

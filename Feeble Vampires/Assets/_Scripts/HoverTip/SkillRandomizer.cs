@@ -124,7 +124,7 @@ public class SkillRandomizer : MonoBehaviour
         // activate the skill
         playerAbilities.activateSkill(skills[buttonOneSkill].DisplayName);
 
-
+        AudioManager.Instance.PlaySFX("Skill Purchase");
     }
 
     public void UseButtonTwo()
@@ -151,8 +151,7 @@ public class SkillRandomizer : MonoBehaviour
 
         // activate the skill
         playerAbilities.activateSkill(skills[buttonTwoSkill].DisplayName);
-
-        Deactivate();
+        AudioManager.Instance.PlaySFX("Skill Purchase");
     }
 
     public void skipSkillAction()
