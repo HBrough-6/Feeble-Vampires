@@ -169,8 +169,12 @@ public class GameManager : MonoBehaviour
 
         if (expired)
         {
-            failedTimerCount++;
             movementManager.enemyManager.EnemiesTakeTurn();
+
+            if (!movementManager.player.GetComponent<PlayerAbilities>().hideable)
+            {
+                failedTimerCount++;
+            }
         }
     }
 }
