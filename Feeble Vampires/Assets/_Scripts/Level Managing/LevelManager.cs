@@ -282,6 +282,9 @@ public class LevelManager : MonoBehaviour
         movementManager.startCamera();
 
         movementManager.startingPosInGrid = movementManager.playerPosInGrid;
+
+        movementManager.uiManager.makeMap(movementManager.player.GetComponent<PlayerAbilities>().canEcholocate);
+        gameManager.resetTimer(false);
     }
 
     public void AttemptDoorOpen()

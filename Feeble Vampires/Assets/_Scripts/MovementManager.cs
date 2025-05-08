@@ -102,6 +102,8 @@ public class MovementManager : MonoBehaviour
         playerPosInGrid = new Vector2Int(Mathf.RoundToInt(player.transform.position.x), Mathf.RoundToInt(player.transform.position.z));
         startingPosInGrid = playerPosInGrid;
 
+        pathPoints[0] = playerPosInGrid;
+
         startCamera();
     }
 
